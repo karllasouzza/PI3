@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'PI3',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'pt-br',
     },
     meta: [
       { charset: 'utf-8' },
