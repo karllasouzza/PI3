@@ -1,5 +1,6 @@
 <template>
   <main class="container">
+    <!-- Baner -->
     <div class="Baner Background_000">
       <div>
         <BigTitle customclass="Color_fff" :text="Baner_Title_1"> </BigTitle>
@@ -15,7 +16,7 @@
         <nuxt-link to="/" class="Ver_mais Color_ff5">Ver mais</nuxt-link>
       </span>
     </div>
-    <!-- Baner -->
+    <!-- Parte remetente a pagina Sobre -->
     <div class="Sobre_Img"></div>
     <div class="Sobre">
       <p class="Title Color_000">{{ Sobre_Title }}</p>
@@ -24,21 +25,19 @@
         <nuxt-link to="/" class="Ver_mais Color_ff5">Ver mais</nuxt-link>
       </span>
     </div>
-    <!-- Parte remetente a pagina Sobre -->
+    <!-- Parte remetente a pagina Blog -->
 
     <div class="Blog">
       <p class="Title Color_000">{{ Blog_Title }}</p>
       <div class="L_ver_mais"><nuxt-link to="/">Ver mais</nuxt-link></div>
       <div class="Scroll"></div>
     </div>
-    <!-- Parte remetente a pagina Blog -->
-
+    <!-- Parte remetente a pagina Loguin-->
     <div class="Create_Acount">
       <div class="Svg"></div>
       <span class="Text_two"></span>
       <nuxt-link class="Button_Ver_mais" to="/">Ver mais</nuxt-link>
     </div>
-    <!-- Parte remetente a pagina Create acount -->
   </main>
 </template>
 
@@ -51,9 +50,11 @@ export default {
       Baner_Title_2: ' Colha',
       Baner_Destaque_1: 'Arvores',
       Baner_Destaque_2: ' Humanidade',
+      // Sobre
       Sobre_Title: '"Como vemos o mundo"',
       Sobre_Text:
         ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
+      // Blog
       Blog_Title: 'Postagem em alta',
     }
   },
@@ -61,12 +62,20 @@ export default {
 </script>
 
 <style scoped>
+/* Configurações da pagina */
 .container {
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
   grid-template-rows: 100vh 350px 350px 100vh;
+}
+.Ver_mais {
+  text-decoration: none;
+}
+.Ver_mais,
+.nuxt-link-active {
+  text-decoration: none;
 }
 
 /* Baner */
@@ -87,10 +96,6 @@ export default {
   color: white;
   margin-top: 16px;
 }
-.Title {
-  font-size: 35px;
-  font-weight: bold;
-}
 .Baner > div {
   width: 50%;
   display: flex;
@@ -101,13 +106,7 @@ export default {
 .Baner > div > p {
   margin-right: 1%;
 }
-.Ver_mais {
-  text-decoration: none;
-}
-.Ver_mais,
-.nuxt-link-active {
-  text-decoration: none;
-}
+
 /*  Parte remetente a pagina Sobre  */
 .Sobre_Img {
   width: 280px;
@@ -132,7 +131,6 @@ export default {
   align-items: flex-end;
   padding: 3%;
 }
-
 .Sobre > p.Title {
   width: 487.656px;
   text-align: left;
@@ -153,6 +151,12 @@ export default {
 .Scroll {
   overflow-x: scroll;
 }
+.Title {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/*  Parte remetente a pagina Loguin  */
 .Create_Acount {
   grid-row: 4/5;
   grid-column: 1/9;
