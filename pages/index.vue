@@ -13,7 +13,12 @@
 
       <span class="Text">
         {{ Sobre_Text }}
-        <nuxt-link to="/" class="Ver_mais Color_ff5">Ver mais</nuxt-link>
+        <Nlink
+          class="Color_ff5 Ver_mais"
+          :text="text_More"
+          :link="More_link"
+          acess=""
+        />
       </span>
     </div>
     <!-- Parte remetente a pagina Sobre -->
@@ -22,21 +27,36 @@
       <p class="Title Color_000">{{ Sobre_Title }}</p>
       <span class="Text">
         {{ Sobre_Text }}
-        <nuxt-link to="/" class="Ver_mais Color_ff5">Ver mais</nuxt-link>
+        <Nlink
+          class="Color_ff5 Ver_mais"
+          :text="text_More"
+          link="/sobre"
+          acess=""
+        />
       </span>
     </div>
     <!-- Parte remetente a pagina Blog -->
 
     <div class="Blog">
       <p class="Title Color_000">{{ Blog_Title }}</p>
-      <div class="L_ver_mais"><nuxt-link to="/">Ver mais</nuxt-link></div>
+      <Nlink
+        class="Color_ff5 Ver_mais"
+        :text="text_More"
+        link="/blog"
+        acess=""
+      />
       <div class="Scroll"></div>
     </div>
     <!-- Parte remetente a pagina Loguin-->
     <div class="Create_Acount">
       <div class="Svg"></div>
       <span class="Text_two"></span>
-      <nuxt-link class="Button_Ver_mais" to="/">Ver mais</nuxt-link>
+      <Nlink
+        class="Color_ff5 Ver_mais"
+        :text="text_More"
+        link="/loguin"
+        acess=""
+      />
     </div>
   </main>
 </template>
@@ -50,12 +70,18 @@ export default {
       Baner_Title_2: ' Colha',
       Baner_Destaque_1: 'Arvores',
       Baner_Destaque_2: ' Humanidade',
+
       // Sobre
       Sobre_Title: '"Como vemos o mundo"',
       Sobre_Text:
         ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
+
       // Blog
       Blog_Title: 'Postagem em alta',
+
+      // Ver mais
+      text_More: 'Ver mais',
+      More_link: '/banco de sementes',
     }
   },
 }
@@ -70,6 +96,7 @@ export default {
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
   grid-template-rows: 100vh 350px 350px 100vh;
 }
+
 .Ver_mais {
   text-decoration: none;
 }
