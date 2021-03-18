@@ -1,13 +1,13 @@
 export const state = () => ({
   /* Colors */
 
-  //
+  // Preto
   Color_000: '#000',
 
-  //
+  // Marrom
   Color_976: '#976947',
 
-  //
+  // Verde escuro
   Color_004: '#004b23',
 
   //
@@ -16,22 +16,26 @@ export const state = () => ({
   //
   Color_adf: '#00FF7F',
 
-  //
+  // Verde claro
   Color_238: '#238E23',
 
-  //
+  // Amarelo palido
   Color_fdc: '#FDCA40',
 
-  //
+  // Laranja
   Color_ff5: '#FF5714',
 
-  //
+  // Vermelho
   Color_d63: '#D63230',
 
-  //
+  // Branco
   Color_fff: '#ffff',
 
+  // Branco com transparência
   Color_ffc: '#fffc',
+
+  // Verde marinho
+  Color_00f: '#00FF7F',
 })
 
 // // mutations
