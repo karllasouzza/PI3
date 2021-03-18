@@ -1,5 +1,5 @@
 <template>
-  <header :style="{ background: Background_Header, color: Color_header }">
+  <header :style="{ background: Color_004, color: Color_fff }">
     <nav>
       <div v-for="(Logo_content, index) in Logo" :key="index" class="Logo">
         <!-- Svg -->
@@ -8,7 +8,7 @@
           :text="Logo_content.conteudo"
           :link="Logo_content.Link"
           :acess="Logo_content.key"
-          :style="{ color: Color_logo }"
+          :style="{ color: Color_fff }"
         />
       </div>
       <ul>
@@ -17,7 +17,7 @@
             :text="buttons.conteudo"
             :link="buttons.Link"
             :acess="buttons.key"
-            :style="{ color: Color_buttons }"
+            :style="{ color: Color_fff }"
           />
         </li>
         <li>
@@ -56,15 +56,12 @@ export default {
         { conteudo: 'Contato', Link: '/contato', key: '5' },
       ],
       Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
-      Color_header: '#fff',
-      Color_buttons: '#fff',
-      Color_logo: ' #fff  ',
     }
   },
   computed: {
     ...mapState({
-      Background_Header: (state) => state.Colors.HeaderBackground,
-      Icons: (state) => state.Colors.Icons,
+      Color_004: (state) => state.Colors.Color_004,
+      Color_fff: (state) => state.Colors.Color_fff,
     }),
   },
 }

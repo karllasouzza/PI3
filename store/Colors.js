@@ -1,26 +1,49 @@
 export const state = () => ({
-  Corlor_Detalhes: '#00FF7F',
-  Destaque_color: '#FF5714',
+  /* Colors */
 
-  //   Header
-  HeaderBackground: '#215E21',
+  //
+  Color_000: '#000',
 
-  // footer
-  Footer_Background: '#215E21',
-  Footer_Text_Color: '#fff',
-  Creators_background: '#976947',
+  //
+  Color_976: '#976947',
+
+  //
+  Color_004: '#004b23',
+
+  //
+  Color_007: '#007f5f',
+
+  //
+  Color_adf: '#00FF7F',
+
+  //
+  Color_238: '#238E23',
+
+  //
+  Color_fdc: '#FDCA40',
+
+  //
+  Color_ff5: '#FF5714',
+
+  //
+  Color_d63: '#D63230',
+
+  //
+  Color_fff: '#ffff',
+
+  Color_ffc: '#fffc',
 })
 
-// mutations
-export const mutations = {
-  Select_Color_Header(state, colorUrgent) {
-    state.Header_background = colorUrgent
-  },
-}
+// // mutations
+// export const mutations = {
+//   Select_Color_Header(state, colorUrgent) {
+//     state.Header_background = colorUrgent
+//   },
+// }
 
-// actions
-export const actions = {
-  Select_colors(context, Preferencies) {
-    context.commit('Select_Color_Header', Preferencies.Header_background)
-  },
-}
+// // actions
+// export const actions = {
+//   Select_colors(context, Preferencies) {
+//     context.commit('Select_Color_Header', Preferencies.Header_background)
+//   },
+// }

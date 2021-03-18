@@ -24,11 +24,15 @@
     <!-- Parte remetente a pagina Sobre -->
     <div class="Sobre_Img"></div>
     <div class="Sobre">
-      <p class="Title Color_000">{{ Sobre_Title }}</p>
+      <p class="Title Color_000">
+        {{ Sobre_Title }}
+        <TitleBorder customclass="Color_fff" :text="Sobre_Destaque" />
+      </p>
       <span class="Text">
         {{ Sobre_Text }}
         <Nlink
-          class="Color_ff5 Ver_mais"
+          class="Ver_mais"
+          :style="{ color: Color_ff5 }"
           :text="text_More"
           link="/sobre"
           acess=""
@@ -38,9 +42,10 @@
     <!-- Parte remetente a pagina Blog -->
 
     <div class="Blog">
-      <p class="Title Color_000">{{ Blog_Title }}</p>
+      <p :style="{ color: Color_000 }" class="Title">{{ Blog_Title }}</p>
       <Nlink
-        class="Color_ff5 Ver_mais"
+        :style="{ color: Color_ff5 }"
+        class="Ver_mais"
         :text="text_More"
         link="/blog"
         acess=""
@@ -62,6 +67,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -72,7 +78,8 @@ export default {
       Baner_Destaque_2: ' Humanidade',
 
       // Sobre
-      Sobre_Title: '"Como vemos o mundo"',
+      Sobre_Title: '"Como vemos o',
+      Sobre_Destaque: ' mundo"',
       Sobre_Text:
         ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
 
@@ -83,6 +90,43 @@ export default {
       text_More: 'Ver mais',
       More_link: '/banco de sementes',
     }
+  },
+  computed: {
+    ...mapState({
+      /* Colors */
+      //
+      Color_000: (state) => state.Colors.Color_000,
+
+      //
+      Color_976: (state) => state.Colors.Color_976,
+
+      //
+      Color_004: (state) => state.Colors.Color_004,
+
+      //
+      Color_007: (state) => state.Colors.Color_007,
+
+      //
+      Color_adf: (state) => state.Colors.Color_00f,
+
+      //
+      Color_238: (state) => state.Colors.Color_238,
+
+      //
+      Color_fdc: (state) => state.Colors.Color_fdc,
+
+      //
+      Color_ff5: (state) => state.Colors.Color_ff5,
+
+      //
+      Color_d63: (state) => state.Colors.Color_d63,
+
+      //
+      Color_fff: (state) => state.Colors.Color_fff,
+
+      //
+      Color_ffc: (state) => state.Colors.Color_ffc,
+    }),
   },
 }
 </script>

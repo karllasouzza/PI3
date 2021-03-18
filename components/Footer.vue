@@ -1,10 +1,10 @@
 <template>
-  <footer :style="{ background: Footer_background }">
+  <footer :style="{ background: Background_004 }">
     <div>
       <ul>
         <li>
           <Title
-            :style="{ color: Footer_Text_Color }"
+            :style="{ color: Color_fff }"
             :text="Nome_do_site"
             customclass=""
           />
@@ -14,14 +14,14 @@
         <li>
           <Title
             :text="Nome_do_site"
-            :style="{ color: Destaque }"
+            :style="{ color: Color_ff5 }"
             customclass="title"
           />
         </li>
         <li
           v-for="(Acess, index) in Acessibilidade"
           :key="index"
-          :style="{ color: Footer_Text_Color }"
+          :style="{ color: Color_fff }"
         >
           {{ Acess.text }}
         </li>
@@ -30,14 +30,14 @@
         <li>
           <Title
             :text="Nome_do_site"
-            :style="{ color: Destaque }"
+            :style="{ color: Color_ff5 }"
             customclass="title"
           />
         </li>
         <li
           v-for="(Fac, index) in Ajuda"
           :key="index"
-          :style="{ color: Footer_Text_Color }"
+          :style="{ color: Color_fff }"
         >
           {{ Fac.text }}
         </li>
@@ -46,22 +46,21 @@
         <li>
           <Title
             :text="Nome_do_site"
-            :style="{ color: Destaque }"
+            :style="{ color: Color_ff5 }"
             customclass="title"
           />
         </li>
         <li v-for="(Network, index) in Redes" :key="index">
-          <a href="/" :style="{ color: Footer_Text_Color }">
+          <a href="/" :style="{ color: Color_fff }">
             {{ Network.text }}
           </a>
         </li>
       </ul>
     </div>
 
-    <span
-      :style="{ background: Creators_background, color: Footer_Text_Color }"
-      >{{ Criadores }}</span
-    >
+    <span :style="{ background: Background_976, color: Color_fff }">{{
+      Criadores
+    }}</span>
   </footer>
 </template>
 
@@ -75,10 +74,10 @@ export default {
   computed: {
     ...mapState({
       // colors
-      Creators_background: (state) => state.Colors.Creators_background,
-      Footer_background: (state) => state.Colors.Footer_Background,
-      Footer_Text_Color: (state) => state.Colors.Footer_Text_Color,
-      Destaque: (state) => state.Colors.Destaque_color,
+      Background_976: (state) => state.Colors.Background_976,
+      Background_004: (state) => state.Colors.Background_004,
+      Color_fff: (state) => state.Colors.Color_fff,
+      Color_ff5: (state) => state.Colors.Color_ff5,
 
       // documentaçao
       Criadores: (state) => state.Documentation.Criadores,
