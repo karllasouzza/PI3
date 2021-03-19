@@ -1,20 +1,26 @@
 <template>
-  <main class="container">
+  <main
+    class="container"
+    :style="{
+      background: Color_fff,
+    }"
+  >
     <!-- Baner -->
-    <div class="Baner Background_000">
+    <div class="Baner">
       <div>
-        <BigTitle customclass="Color_fff" :text="Baner_Title_1"> </BigTitle>
-        <TitleBorder customclass="Color_fff" :text="Baner_Destaque_1" />
+        <BigTitle :color="Color_fff" :text="Baner_Title_1" />
+        <TitleBorder :color="Color_00f" :text="Baner_Destaque_1" />
       </div>
       <div>
-        <BigTitle customclass="Color_fff" :text="Baner_Title_2"> </BigTitle>
-        <TitleBorder customclass="Color_fff" :text="Baner_Destaque_2" />
+        <BigTitle :color="Color_fff" :text="Baner_Title_2" />
+        <TitleBorder :color="Color_00f" :text="Baner_Destaque_2" />
       </div>
 
       <span class="Text">
         {{ Sobre_Text }}
         <Nlink
-          class="Color_ff5 Ver_mais"
+          :color="Color_ff5"
+          class="Ver_mais"
           :text="text_More"
           :link="More_link"
           acess=""
@@ -24,15 +30,15 @@
     <!-- Parte remetente a pagina Sobre -->
     <div class="Sobre_Img"></div>
     <div class="Sobre">
-      <p class="Title Color_000">
+      <p class="Title" :style="{ color: Color_000 }">
         {{ Sobre_Title }}
-        <TitleBorder customclass="Color_fff" :text="Sobre_Destaque" />
+        <TitleBorder :color="Color_007" :text="Sobre_Destaque" />
       </p>
       <span class="Text">
         {{ Sobre_Text }}
         <Nlink
           class="Ver_mais"
-          :style="{ color: Color_ff5 }"
+          :color="Color_ff5"
           :text="text_More"
           link="/sobre"
           acess=""
@@ -44,7 +50,7 @@
     <div class="Blog">
       <p :style="{ color: Color_000 }" class="Title">{{ Blog_Title }}</p>
       <Nlink
-        :style="{ color: Color_ff5 }"
+        :color="Color_ff5"
         class="Ver_mais"
         :text="text_More"
         link="/blog"
@@ -57,7 +63,8 @@
       <div class="Svg"></div>
       <span class="Text_two"></span>
       <Nlink
-        class="Color_ff5 Ver_mais"
+        :color="Color_ff5"
+        class="Ver_mais"
         :text="text_More"
         link="/loguin"
         acess=""
@@ -107,7 +114,7 @@ export default {
       Color_007: (state) => state.Colors.Color_007,
 
       //
-      Color_adf: (state) => state.Colors.Color_00f,
+      Color_00f: (state) => state.Colors.Color_00f,
 
       //
       Color_238: (state) => state.Colors.Color_238,
