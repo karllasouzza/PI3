@@ -1,5 +1,5 @@
 <template>
-  <footer :style="{ background: Background_004 }">
+  <footer :style="{ background: Color_004 }">
     <div>
       <ul>
         <li>
@@ -58,7 +58,7 @@
       </ul>
     </div>
 
-    <span :style="{ background: Background_976, color: Color_fff }">{{
+    <span :style="{ background: Color_976, color: Color_fff }">{{
       Criadores
     }}</span>
   </footer>
@@ -74,8 +74,8 @@ export default {
   computed: {
     ...mapState({
       // colors
-      Background_976: (state) => state.Colors.Background_976,
-      Background_004: (state) => state.Colors.Background_004,
+      Color_976: (state) => state.Colors.Color_976,
+      Color_004: (state) => state.Colors.Color_004,
       Color_fff: (state) => state.Colors.Color_fff,
       Color_ff5: (state) => state.Colors.Color_ff5,
 

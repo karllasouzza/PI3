@@ -1,5 +1,5 @@
 <template>
-  <p :class="customclass">
+  <p :style="{ color: color }">
     {{ text }}
   </p>
 </template>
@@ -11,7 +11,7 @@ export default {
       default: null,
       required: true,
     },
-    customclass: {
+    color: {
       type: String,
       default: null,
       required: true,

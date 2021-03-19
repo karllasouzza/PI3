@@ -1,5 +1,5 @@
 <template>
-  <span :class="customclass">{{ text }}</span>
+  <span :style="{ color: color }">{{ text }}</span>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ export default {
       default: null,
       required: true,
     },
-    customclass: {
+    color: {
       type: String,
       default: null,
       required: true,

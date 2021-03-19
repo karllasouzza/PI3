@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :accesskey="acess" :to="link">
+  <nuxt-link :accesskey="acess" :style="{ color: color }" :to="link">
     {{ text }}
   </nuxt-link>
 </template>
@@ -21,6 +21,10 @@ export default {
       type: String,
       default: null,
       required: true,
+    },
+    color: {
+      type: String,
+      default: null,
     },
   },
 }
