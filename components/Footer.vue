@@ -3,20 +3,12 @@
     <div>
       <ul>
         <li>
-          <Title
-            :style="{ color: Color_fff }"
-            :text="Nome_do_site"
-            customclass=""
-          />
+          <Title :color="Color_fff" :text="Nome_do_site" />
         </li>
       </ul>
       <ul>
         <li>
-          <Title
-            :text="Nome_do_site"
-            :style="{ color: Color_ff5 }"
-            customclass="title"
-          />
+          <Title :text="Nome_do_site" :color="Color_ff5" />
         </li>
         <li
           v-for="(Acess, index) in Acessibilidade"
@@ -28,11 +20,7 @@
       </ul>
       <ul>
         <li>
-          <Title
-            :text="Nome_do_site"
-            :style="{ color: Color_ff5 }"
-            customclass="title"
-          />
+          <Title :text="Nome_do_site" :color="Color_ff5" />
         </li>
         <li
           v-for="(Fac, index) in Ajuda"
@@ -44,11 +32,7 @@
       </ul>
       <ul>
         <li>
-          <Title
-            :text="Nome_do_site"
-            :style="{ color: Color_ff5 }"
-            customclass="title"
-          />
+          <Title :text="Nome_do_site" :color="Color_ff5" />
         </li>
         <li v-for="(Network, index) in Redes" :key="index">
           <a href="/" :style="{ color: Color_fff }">

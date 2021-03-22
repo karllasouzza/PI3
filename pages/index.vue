@@ -2,7 +2,7 @@
   <main
     class="container"
     :style="{
-      background: Color_fff,
+      background: Color_ffc,
     }"
   >
     <!-- Baner -->
@@ -16,7 +16,7 @@
         <TitleBorder :color="Color_00f" :text="Baner_Destaque_2" />
       </div>
 
-      <span class="Text">
+      <span class="Text" :style="{ color: Color_fff }">
         {{ Sobre_Text }}
         <Nlink
           :color="Color_ff5"
@@ -34,7 +34,7 @@
         {{ Sobre_Title }}
         <TitleBorder :color="Color_007" :text="Sobre_Destaque" />
       </p>
-      <span class="Text">
+      <span class="Text" :style="{ color: Color_000 }">
         {{ Sobre_Text }}
         <Nlink
           class="Ver_mais"
@@ -48,18 +48,55 @@
     <!-- Parte remetente a pagina Blog -->
 
     <div class="Blog">
-      <p :style="{ color: Color_000 }" class="Title">{{ Blog_Title }}</p>
-      <Nlink
-        :color="Color_ff5"
-        class="Ver_mais"
-        :text="text_More"
-        link="/blog"
-        acess=""
-      />
-      <div class="Scroll"></div>
+      <p :style="{ color: Color_000 }" class="Title">
+        <span>{{ Blog_Title }}</span>
+        <Nlink
+          :color="Color_ff5"
+          class="Ver_mais"
+          :text="text_More"
+          link="/blog"
+          acess=""
+        />
+      </p>
+
+      <div class="Scroll">
+        <!-- cards -->
+        <Card
+          v-for="(post, index) in postUser"
+          :key="index"
+          :user-image="post.userImage"
+          :user-name="post.userName"
+          :post-time="post.time"
+          :card-text="post.cardText"
+          :cnt-cmt="post.cntCmt"
+          :cnt-fav="post.cntFav"
+          :cnt-love="post.cntLove"
+          :color="Color_000"
+          :background="Color_fff"
+        />
+      </div>
+      <!-- Parte remetente a pagina Login -->
     </div>
-    <!-- Parte remetente a pagina Loguin-->
-    <div class="Create_Acount">
+    <div class="Login">
+      <div class="svg">FOTO COM SVG</div>
+      <div class="Login_text">
+        <TitleBorder class="txt" :color="Color_238" :text="Login_Destaque_1" />
+        e nos<br />
+        deixe mostrar que com <br />
+        pequenas atitudes você faz<br />
+        uma grande diferencia na<br />
+
+        <TitleBorder
+          style="font-size: 20px"
+          :color="Color_238"
+          :text="Login_Destaque_2"
+        />
+        <br />
+
+        <span class="btn_inicio">Criar conta</span>
+      </div>
+    </div>
+    <!-- <div class="Create_Acount">
       <div class="Svg"></div>
       <span class="Text_two"></span>
       <Nlink
@@ -69,7 +106,7 @@
         link="/loguin"
         acess=""
       />
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -96,6 +133,60 @@ export default {
       // Ver mais
       text_More: 'Ver mais',
       More_link: '/banco de sementes',
+
+      // Card
+      postUser: [
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText:
+            ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?  Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText: 'Ola mundo',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText: 'Ola mundo',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText: 'Ola mundo',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText: 'Ola mundo',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+      ],
+
+      // Login
+      Login_Destaque_1: 'Crie sua conta',
+      Login_Destaque_2: 'preservação ambiental.',
     }
   },
   computed: {
@@ -145,7 +236,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
-  grid-template-rows: 100vh 350px 350px 100vh;
+  grid-template-rows: 100vh 350px 430px 100vh;
 }
 
 .Ver_mais {
@@ -171,7 +262,6 @@ export default {
 }
 .Baner > .Text {
   width: 408.562px;
-  color: white;
   margin-top: 16px;
 }
 .Baner > div {
@@ -194,10 +284,11 @@ export default {
   background-image: url(../assets/img/Inicio/Fotos/2.jpg);
   background-size: cover;
   background-position-x: right;
-  border-radius: 20px;
+  border-radius: 0 20px 0 20px;
   display: flex;
   align-self: flex-end;
   margin-bottom: 20%;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.11);
 }
 .Sobre {
   width: 100%;
@@ -223,11 +314,39 @@ export default {
 /*  Parte remetente a pagina Blog  */
 .Blog {
   grid-row: 3/4;
-  grid-column: 1/9;
-  padding: 0 40px;
+  grid-column: 2/8;
+}
+.Blog > p.Title {
+  display: flex;
+  justify-content: space-between;
+}
+.Blog > p.Title > a {
+  font-size: 16px;
+  padding: 6px;
+  border-radius: 0 20px 0 20px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.11);
 }
 .Scroll {
+  min-width: 100%;
+  min-height: 330px;
   overflow-x: scroll;
+  display: flex;
+}
+.Scroll::-webkit-scrollbar {
+  width: 16px;
+  background: transparent;
+}
+.Scroll::-webkit-scrollbar-thumb {
+  background: #004b23de;
+  cursor: pointer;
+  border-radius: 0 8px 0 8px;
+}
+.Scroll > .card:first-child {
+  margin-left: 1px;
 }
 .Title {
   font-size: 35px;
@@ -235,8 +354,28 @@ export default {
 }
 
 /*  Parte remetente a pagina Loguin  */
-.Create_Acount {
+.Login {
   grid-row: 4/5;
-  grid-column: 1/9;
+  grid-column: 2/8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Login_text {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_inicio {
+  color: #ffff;
+  border-radius: 3px;
+  border: 1px solid #238e23;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.Loguin > .Login_text > .txt {
+  font-size: 18px;
 }
 </style>

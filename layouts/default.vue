@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ButtonMenu />
     <Header />
     <Nuxt />
     <Footer />
@@ -37,7 +38,7 @@ html {
 }
 
 /* esqueletos */
-Create_loguin {
+.Create_loguin {
   padding: 0 1%;
   border: 2px solid;
 }

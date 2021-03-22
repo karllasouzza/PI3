@@ -4,7 +4,7 @@ export const state = () => ({
   Color_fff: '#ffff',
 
   // Branco com transparência
-  Color_ffc: '#fffc',
+  Color_ffc: '#e6e6e6',
 
   // Verde marinho
   Color_00f: '#00FF7F',

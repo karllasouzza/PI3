@@ -1,5 +1,6 @@
 <template>
   <header :style="{ background: Color_004, color: Color_fff }">
+    <input id="check" type="checkbox" />
     <div v-for="(Logo_content, index) in Logo" :key="index" class="Logo">
       <!-- Svg -->
 
@@ -10,7 +11,6 @@
         :style="{ color: Color_fff }"
       />
 
-      <input type="checkbox" id="check" />
       <label id="input" for="check">
         <svg
           version="1.1"
@@ -118,16 +118,8 @@ header {
   display: none;
 }
 
-#check {
-  display: none;
-}
-
 #icone {
   cursor: pointer;
-}
-
-#check:checked ~ header nav {
-  display: none;
 }
 
 a {
