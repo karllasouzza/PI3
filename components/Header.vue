@@ -1,17 +1,35 @@
 <template>
   <header :style="{ background: Color_004, color: Color_fff }">
-    <nav>
-      <div v-for="(Logo_content, index) in Logo" :key="index" class="Logo">
-        <!-- Svg -->
+    <div v-for="(Logo_content, index) in Logo" :key="index" class="Logo">
+      <!-- Svg -->
 
-        <Nlink
-          :text="Logo_content.conteudo"
-          :link="Logo_content.Link"
-          :acess="Logo_content.key"
-          :style="{ color: Color_fff }"
-        />
-      </div>
-      <ul>
+      <Nlink
+        :text="Logo_content.conteudo"
+        :link="Logo_content.Link"
+        :acess="Logo_content.key"
+        :style="{ color: Color_fff }"
+      />
+
+      <input type="checkbox" id="check" />
+      <label id="input" for="check">
+        <svg
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 18 14"
+          xml:space="preserve"
+          class="responsive-menu-icon"
+          height="1.7em"
+        >
+          <path
+            style="fill: rgb(255, 255, 255)"
+            d="M0,2V0h18v2H0z M0,6h18V4H0V6z M18,10H0V8h18V10z M18,14H0v-2h18V14z"
+          />
+        </svg>
+      </label>
+    </div>
+    <nav>
+      <ul :style="{ background: Color_004 }">
         <li v-for="(buttons, index) in Botoes" :key="index">
           <Nlink
             :text="buttons.conteudo"
@@ -54,6 +72,7 @@ export default {
         },
         { conteudo: 'Sobre', Link: '/sobre', key: '4' },
         { conteudo: 'Contato', Link: '/contato', key: '5' },
+        { conteudo: 'Criar conta', Link: '', key: '6' },
       ],
       Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
     }
@@ -71,18 +90,59 @@ export default {
 header {
   width: 100%;
   height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100%;
   opacity: 90%;
   position: fixed;
   top: 0%;
   left: 0;
   right: 0;
 }
+
+/* Parte do logo e menu retrátil */
+.Logo {
+  grid-row: 1/2;
+  grid-column: 1/2;
+
+  text-align: left;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2em;
+}
+
+.responsive-menu-icon {
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+#icone {
+  cursor: pointer;
+}
+
+#check:checked ~ header nav {
+  display: none;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Parte da navegação */
 nav {
+  grid-row: 1/2;
+  grid-column: 2/3;
+
   width: 100%;
 }
+
 nav,
 ul {
   height: 100%;
@@ -93,24 +153,56 @@ ul {
   justify-content: space-between;
   padding: 0 40px;
 }
+
 ul {
-  width: 40%;
+  width: auto;
   padding: 0;
 }
+
 ul > li {
   width: auto;
   height: auto;
   display: inline-block;
+  white-space: nowrap;
+
+  margin: 0em 0.7em;
 }
 
-.Logo {
-  display: flex;
-  width: auto;
-  height: auto;
-  justify-content: self-start;
-}
-a {
-  font-weight: bold;
-  text-decoration: none;
+@media (max-width: 967px) {
+  header {
+    grid-template-rows: 100% 100%;
+    grid-template-columns: 100%;
+  }
+
+  .logo {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+
+  .responsive-menu-icon {
+    display: inline-block;
+  }
+
+  nav {
+    grid-row: 2/3;
+    grid-column: 1/2;
+
+    height: auto;
+    padding: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+
+    position: relative;
+    top: 10.5em;
+  }
+
+  nav ul li {
+    margin: 0.7em 0em;
+    padding: 0.5em 100%;
+  }
 }
 </style>
