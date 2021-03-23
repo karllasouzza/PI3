@@ -111,7 +111,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 2em;
+  margin: 0 40px;
 }
 
 .responsive-menu-icon {
@@ -131,7 +131,6 @@ a {
 nav {
   grid-row: 1/2;
   grid-column: 2/3;
-
   width: 100%;
 }
 
