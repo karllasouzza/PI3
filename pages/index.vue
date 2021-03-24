@@ -78,22 +78,141 @@
       <!-- Parte remetente a pagina Login -->
     </div>
     <div class="Login">
-      <div class="svg">FOTO COM SVG</div>
+      <div class="svg">
+        <svg
+          width="305"
+          height="327"
+          viewBox="0 0 415 437"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <path
+            d="M147 76C147 42.863 173.863 16 207 16H256V68.1824C256 101.32 229.137 128.182 196 128.182H147V76Z"
+            fill="#238E23"
+          />
+          <path
+            d="M159 60C159 26.8629 185.863 0 219 0H268V52C268 85.1371 241.137 112 208 112H159V60Z"
+            fill="url(#pattern0)"
+          />
+          <path
+            d="M0 230C0 196.863 26.8629 170 60 170H109V222.182C109 255.32 82.1371 282.182 49 282.182H0V230Z"
+            fill="#238E23"
+          />
+          <path
+            d="M12 214C12 180.863 38.8629 154 72 154H121V206C121 239.137 94.1371 266 61 266H12V214Z"
+            fill="url(#pattern1)"
+          />
+          <path
+            d="M294 230C294 196.863 320.863 170 354 170H403V222.182C403 255.32 376.137 282.182 343 282.182H294V230Z"
+            fill="#238E23"
+          />
+          <path
+            d="M306 214C306 180.863 332.863 154 366 154H415V206C415 239.137 388.137 266 355 266H306V214Z"
+            fill="url(#pattern2)"
+          />
+          <path
+            d="M147 230C147 196.863 173.863 170 207 170H256V222.182C256 255.32 229.137 282.182 196 282.182H147V230Z"
+            fill="#238E23"
+          />
+          <path
+            d="M159 214C159 180.863 185.863 154 219 154H268V206C268 239.137 241.137 266 208 266H159V214Z"
+            fill="url(#pattern3)"
+          />
+          <path
+            d="M147 384C147 350.863 173.863 324 207 324H256V376.182C256 409.32 229.137 436.182 196 436.182H147V384Z"
+            fill="#238E23"
+          />
+          <path
+            d="M159 368C159 334.863 185.863 308 219 308H268V360C268 393.137 241.137 420 208 420H159V368Z"
+            fill="url(#pattern4)"
+          />
+          <defs>
+            <pattern
+              id="pattern0"
+              patternContentUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <use
+                xlink:href="#image0"
+                transform="translate(0 -0.365079) scale(0.00277778)"
+              />
+            </pattern>
+            <pattern
+              id="pattern1"
+              patternContentUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <use
+                xlink:href="#image0"
+                transform="translate(0 -0.365079) scale(0.00277778)"
+              />
+            </pattern>
+            <pattern
+              id="pattern2"
+              patternContentUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <use
+                xlink:href="#image0"
+                transform="translate(0 -0.365079) scale(0.00277778)"
+              />
+            </pattern>
+            <pattern
+              id="pattern3"
+              patternContentUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <use
+                xlink:href="#image0"
+                transform="translate(0 -0.365079) scale(0.00277778)"
+              />
+            </pattern>
+            <pattern
+              id="pattern4"
+              patternContentUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <use
+                xlink:href="#image0"
+                transform="translate(0 -0.365079) scale(0.00277778)"
+              />
+            </pattern>
+            <image
+              id="image0"
+              width="360"
+              height="640"
+              href="https://github.com/karllasouzza.png"
+            />
+          </defs>
+        </svg>
+      </div>
       <div class="Login_text">
-        <TitleBorder class="txt" :color="Color_238" :text="Login_Destaque_1" />
-        e nos<br />
-        deixe mostrar que com <br />
-        pequenas atitudes você faz<br />
-        uma grande diferencia na<br />
+        <span class="text">
+          <TitleBorder
+            class="txt"
+            :color="Color_238"
+            :text="Login_Destaque_1"
+          />
+          e nos deixe mostrar que com pequenas atitudes você faz uma grande
+          diferencia na
+          <TitleBorder
+            class="txt"
+            :color="Color_238"
+            :text="Login_Destaque_2"
+          />
+        </span>
 
-        <TitleBorder
-          style="font-size: 20px"
-          :color="Color_238"
-          :text="Login_Destaque_2"
-        />
-        <br />
-
-        <span class="btn_inicio">Criar conta</span>
+        <span
+          class="btn_inicio"
+          :style="{ color: Color_fff, background: Color_238 }"
+          >Criar conta</span
+        >
       </div>
     </div>
     <!-- <div class="Create_Acount">
@@ -236,7 +355,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
-  grid-template-rows: 100vh 350px 430px 100vh;
+  grid-template-rows: 100vh 380px 450px 80vh;
 }
 
 .Ver_mais {
@@ -315,6 +434,9 @@ export default {
 .Blog {
   grid-row: 3/4;
   grid-column: 2/8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .Blog > p.Title {
   display: flex;
@@ -332,7 +454,7 @@ export default {
 }
 .Scroll {
   min-width: 100%;
-  min-height: 330px;
+  min-height: 350px;
   overflow-x: scroll;
   display: flex;
 }
@@ -360,22 +482,42 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
-
 .Login_text {
+  width: 488px;
+  height: 266px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
 }
-
 .btn_inicio {
-  color: #ffff;
-  border-radius: 3px;
-  border: 1px solid #238e23;
-  text-decoration: none;
+  width: 100%;
+  height: 36px;
   font-size: 20px;
-  cursor: pointer;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background: rgb(35, 142, 35);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 10px 0 10px;
 }
-.Loguin > .Login_text > .txt {
-  font-size: 18px;
+.Login_text > span.text {
+  width: 100%;
+  font-size: 26px;
+}
+.Login_text > span.text .txt {
+  font-size: 28px;
+}
+.Login .svg {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
