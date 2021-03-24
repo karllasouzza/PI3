@@ -35,7 +35,7 @@
             :text="buttons.conteudo"
             :link="buttons.Link"
             :acess="buttons.key"
-            :style="{ color: Color_fff }"
+            :color="Color_fff"
           />
         </li>
         <li>
@@ -60,27 +60,26 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  data() {
-    return {
-      Botoes: [
-        { conteudo: 'Inicio', Link: '/', key: '1' },
-        { conteudo: 'Blog', Link: '/blog', key: '2' },
-        {
-          conteudo: 'Banco de sementes',
-          Link: '/banco de sementes',
-          key: '3',
-        },
-        { conteudo: 'Sobre', Link: '/sobre', key: '4' },
-        { conteudo: 'Contato', Link: '/contato', key: '5' },
-        { conteudo: 'Criar conta', Link: '', key: '6' },
-      ],
-      Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
-    }
-  },
+  data: () => ({
+    Botoes: [
+      { conteudo: 'Inicio', Link: '/', key: '1' },
+      { conteudo: 'Blog', Link: '/blog', key: '2' },
+      {
+        conteudo: 'Banco de sementes',
+        Link: '/banco de sementes',
+        key: '3',
+      },
+      { conteudo: 'Sobre', Link: '/sobre', key: '4' },
+      { conteudo: 'Contato', Link: '/contato', key: '5' },
+      { conteudo: 'Criar conta', Link: '', key: '6' },
+    ],
+    Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
+  }),
   computed: {
     ...mapState({
       Color_004: (state) => state.Colors.Color_004,
       Color_fff: (state) => state.Colors.Color_fff,
+      Color_00f: (state) => state.Colors.Color_00f,
     }),
   },
 }
@@ -142,8 +141,8 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
+  justify-content: flex-end;
+  padding: 0 1.5em;
 }
 
 ul {
@@ -158,6 +157,23 @@ ul > li {
   white-space: nowrap;
 
   margin: 0em 0.7em;
+}
+
+/* Animação de visibilidade do menu retrátil */
+@keyframes visibleUl {
+  0% {
+    transform: translateY(-10em);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0deg);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 967px) {
@@ -190,6 +206,8 @@ ul > li {
 
     position: relative;
     top: 10.5em;
+
+    animation: visibleUl 0.7s forwards;
   }
 
   nav ul li {
