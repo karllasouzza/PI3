@@ -454,7 +454,7 @@ export default {
 }
 .Scroll {
   min-width: 100%;
-  min-height: 330px;
+  min-height: 350px;
   overflow-x: scroll;
   display: flex;
 }

@@ -67,12 +67,12 @@ export default {
         { conteudo: 'Blog', Link: '/blog', key: '2' },
         {
           conteudo: 'Banco de sementes',
-          Link: '/banco de sementes',
+          Link: '/banco-de-sementes',
           key: '3',
         },
         { conteudo: 'Sobre', Link: '/sobre', key: '4' },
         { conteudo: 'Contato', Link: '/contato', key: '5' },
-        { conteudo: 'Criar conta', Link: '', key: '6' },
+        { conteudo: 'Criar conta', Link: 'entrar', key: '6' },
       ],
       Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
     }
@@ -98,6 +98,7 @@ header {
   top: 0%;
   left: 0;
   right: 0;
+  z-index: 999;
 }
 
 /* Parte do logo e menu retrátil */
