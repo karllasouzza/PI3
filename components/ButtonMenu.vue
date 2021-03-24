@@ -5,7 +5,10 @@
 #check {
   display: none;
 }
-#check:checked ~ header nav {
-  display: none;
+
+@media (max-width: 967px) {
+  #check:checked ~ header nav {
+    display: none;
+  }
 }
 </style>
