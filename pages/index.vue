@@ -378,6 +378,7 @@ export default {
   align-items: flex-start;
   justify-content: center;
   background-image: url(../assets/img/Inicio/Fotos/1.png);
+  background-repeat: no-repeat;
 }
 .Baner > .Text {
   width: 408.562px;
