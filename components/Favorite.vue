@@ -46,5 +46,18 @@ export default {
 <style scoped>
 svg {
   cursor: pointer;
+  animation: box 6s ease;
+}
+@keyframes box {
+  from {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 0;
+    fill-opacity: 0%;
+  }
+  to {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 100;
+    fill-opacity: 100%;
+  }
 }
 </style>
