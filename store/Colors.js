@@ -3,8 +3,8 @@ export const state = () => ({
   // Branco
   Color_fff: '#ffff',
 
-  // Branco com transparência
-  Color_ffc: '#999999',
+  // azul claro com transparência
+  Color_ffc: '#C0D9D9',
 
   // Verde marinho
   Color_00f: '#00FF7F',
@@ -21,8 +21,8 @@ export const state = () => ({
   // Amarelo palido
   Color_fdc: '#FDCA40',
 
-  // Laranja
-  Color_ff5: '#93DB70',
+  // Laranja vermelho
+  Color_ff5: '#FA4224',
 
   // Vermelho
   Color_d63: '#D63230',
