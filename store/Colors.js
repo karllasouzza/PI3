@@ -27,8 +27,8 @@ export const state = () => ({
   // Vermelho
   Color_d63: '#D63230',
 
-  // Marrom
-  Color_976: '#976947',
+  // verde escuro
+  Color_976: '#0A3C02',
 
   // Preto
   Color_000: '#000',
