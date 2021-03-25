@@ -87,6 +87,7 @@ export default {
 
 <style scoped>
 header {
+  z-index: 100;
   width: 100%;
   height: 55px;
   display: grid;
