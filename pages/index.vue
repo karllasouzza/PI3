@@ -89,7 +89,7 @@
         >
           <path
             d="M147 76C147 42.863 173.863 16 207 16H256V68.1824C256 101.32 229.137 128.182 196 128.182H147V76Z"
-            fill="#238E23"
+            class="folha"
           />
           <path
             d="M159 60C159 26.8629 185.863 0 219 0H268V52C268 85.1371 241.137 112 208 112H159V60Z"
@@ -97,7 +97,7 @@
           />
           <path
             d="M0 230C0 196.863 26.8629 170 60 170H109V222.182C109 255.32 82.1371 282.182 49 282.182H0V230Z"
-            fill="#238E23"
+            class="folha"
           />
           <path
             d="M12 214C12 180.863 38.8629 154 72 154H121V206C121 239.137 94.1371 266 61 266H12V214Z"
@@ -105,7 +105,7 @@
           />
           <path
             d="M294 230C294 196.863 320.863 170 354 170H403V222.182C403 255.32 376.137 282.182 343 282.182H294V230Z"
-            fill="#238E23"
+            class="folha"
           />
           <path
             d="M306 214C306 180.863 332.863 154 366 154H415V206C415 239.137 388.137 266 355 266H306V214Z"
@@ -113,7 +113,7 @@
           />
           <path
             d="M147 230C147 196.863 173.863 170 207 170H256V222.182C256 255.32 229.137 282.182 196 282.182H147V230Z"
-            fill="#238E23"
+            class="folha"
           />
           <path
             d="M159 214C159 180.863 185.863 154 219 154H268V206C268 239.137 241.137 266 208 266H159V214Z"
@@ -121,7 +121,7 @@
           />
           <path
             d="M147 384C147 350.863 173.863 324 207 324H256V376.182C256 409.32 229.137 436.182 196 436.182H147V384Z"
-            fill="#238E23"
+            class="folha"
           />
           <path
             d="M159 368C159 334.863 185.863 308 219 308H268V360C268 393.137 241.137 420 208 420H159V368Z"
@@ -378,6 +378,7 @@ export default {
   align-items: flex-start;
   justify-content: center;
   background-image: url(../assets/img/Inicio/Fotos/1.png);
+  background-repeat: no-repeat;
 }
 .Baner > .Text {
   width: 408.562px;
@@ -520,4 +521,29 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.folha {
+  animation: 5s ease-in infinite slidein;
+}
+
+@keyframes slidein {
+  0% {
+    fill: #61e719;
+  }
+  25% {
+    fill: #5b983e;
+  }
+  50% {
+    fill: #3f992f;
+  }
+  75% {
+    fill: #589b4d;
+  }
+  90% {
+    fill: #0b5c00;
+  }
+  100% {
+    fill: #61e719;
+  }
+}
+/* @media(max-width: ) */
 </style>
