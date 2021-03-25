@@ -21,7 +21,11 @@ export default {
 </script>
 <style scoped>
 p {
-  font-size: 45px;
   font-weight: bold;
+}
+@media (max-width: 967px) {
+  p {
+    font-weight: bold;
+  }
 }
 </style>

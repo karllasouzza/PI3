@@ -52,6 +52,7 @@
         <span>{{ Blog_Title }}</span>
         <Nlink
           :color="Color_ff5"
+          :style="{ background: Color_fff }"
           class="Ver_mais"
           :text="text_More"
           link="/blog"
@@ -80,8 +81,7 @@
     <div class="Login">
       <div class="svg">
         <svg
-          width="305"
-          height="327"
+          class="Login_svg"
           viewBox="0 0 415 437"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -390,6 +390,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  font-size: 35px;
 }
 .Baner > div > p {
   margin-right: 1%;
@@ -447,7 +448,6 @@ export default {
   font-size: 16px;
   padding: 6px;
   border-radius: 0 20px 0 20px;
-  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -518,8 +518,12 @@ export default {
   width: 50%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+}
+.Login .Login_svg {
+  width: 300px;
+  height: 327px;
 }
 .folha {
   animation: 5s ease-in infinite slidein;
@@ -545,5 +549,43 @@ export default {
     fill: #61e719;
   }
 }
-/* @media(max-width: ) */
+@media (max-width: 967px) {
+  .Baner div {
+    font-size: 25px;
+  }
+  .Title {
+    font-size: 25px;
+  }
+  .Sobre > span.Text {
+    width: 50%;
+    height: 50%;
+  }
+  .Sobre > p.Title {
+    width: 50%;
+    text-align: left;
+    margin-top: 3%;
+  }
+  .Login_text > span.text .txt[data-v-2a183b29] {
+    font-size: 25px;
+  }
+  .Login_text > span.text[data-v-2a183b29] {
+    width: 100%;
+    font-size: 25px;
+  }
+  .container {
+    grid-template-columns: 20px 1fr 1fr 1fr 1fr 1fr 1fr 20px;
+    grid-template-rows: 100vh 320px 360px 60vh;
+  }
+  .Sobre_Img {
+    margin-bottom: 45%;
+    width: 200px;
+    height: 260px;
+  }
+}
+@media (max-width: 800px) {
+  .Login_text > span.text {
+    width: 100%;
+    font-size: 20px;
+  }
+}
 </style>

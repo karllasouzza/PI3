@@ -24,6 +24,10 @@ span {
   font-weight: bold;
   -webkit-text-stroke-width: 1px; /* largura da borda */
   /* -webkit-text-stroke-color: #fff; cor da borda */
-  font-size: 45px;
+}
+@media (max-width: 967px) {
+  span {
+    font-weight: bold;
+  }
 }
 </style>
