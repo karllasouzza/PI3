@@ -260,7 +260,27 @@ export default {
           userName: 'Karlla souzza',
           time: '1 Minuto atraz',
           cardText:
-            ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?  Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
+            ' Tendo o príncipe necessidade de saber usar bem a natureza do animal, deve escolher a raposa e o leão, pois o leão não sabe se defender das armadilhas e a raposa não sabe se defender da força bruta dos lobos. Portanto é preciso ser raposa, para conhecer as armadilhas e leão, para aterrorizar os lobos.',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText:
+            'Tente. Sei lá, tem sempre um pôr-do-sol esperando para ser visto, uma árvore, um pássaro, um rio, uma nuvem, pelo menos sorria. Procure sentir amor. Imagine. Invente. Sonhe. Voe.',
+          cntLove: 1,
+          cntFav: 2,
+          cntCmt: 3,
+        },
+        {
+          userImage: '',
+          userName: 'Karlla souzza',
+          time: '1 Minuto atraz',
+          cardText:
+            'Aqueles que têm um grande autocontrole ou que estão totalmente absortos no trabalho falam pouco. Palavra e ação juntas não andam bem. Repare na natureza: trabalha continuamente, mas em silêncio.',
           cntLove: 1,
           cntFav: 2,
           cntCmt: 3,
@@ -278,25 +298,8 @@ export default {
           userImage: '',
           userName: 'Karlla souzza',
           time: '1 Minuto atraz',
-          cardText: 'Ola mundo',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
-        },
-        {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText: 'Ola mundo',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
-        },
-        {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText: 'Ola mundo',
+          cardText:
+            'O mundo tornou-se perigoso, porque os homens aprenderam a dominar a natureza antes de se dominarem a si mesmos.',
           cntLove: 1,
           cntFav: 2,
           cntCmt: 3,
@@ -456,7 +459,7 @@ export default {
 .Scroll {
   min-width: 100%;
   min-height: 350px;
-  overflow-x: scroll;
+  overflow-x: auto;
   display: flex;
 }
 .Scroll::-webkit-scrollbar {
@@ -586,6 +589,73 @@ export default {
   .Login_text > span.text {
     width: 100%;
     font-size: 20px;
+  }
+}
+@media (max-width: 856px) {
+  .Login .Login_svg {
+    width: 280px;
+    height: 307px;
+  }
+  .Login_text {
+    width: 50%;
+  }
+  .btn_inicio {
+    height: 42px;
+  }
+}
+@media (max-width: 664px) {
+  .Login .svg {
+    display: none;
+  }
+  .Login_text {
+    width: 86%;
+    height: 50%;
+    justify-content: space-around;
+    margin: 0;
+  }
+  .Login {
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    grid-template-rows: 100vh 320px 407px 60vh;
+  }
+  .Baner {
+    padding: 0 20px;
+  }
+  .Sobre_Img {
+    display: none;
+  }
+  .Sobre {
+    grid-column: 1/9;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .Sobre > span.Text {
+    width: 100%;
+  }
+  .Sobre > p.Title {
+    width: 100%;
+  }
+}
+@media (max-width: 425px) {
+  .Baner > .Text {
+    width: 100%;
+  }
+  .Login_text {
+    width: 86%;
+    height: 80%;
+    justify-content: space-around;
+    margin: 0;
+  }
+}
+@media (max-width: 375px) {
+  .container {
+    grid-template-columns: 5px 1fr 1fr 1fr 1fr 1fr 1fr 5px;
+  }
+  .Baner {
+    padding: 0 5px;
   }
 }
 </style>
