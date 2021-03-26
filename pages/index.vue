@@ -32,7 +32,7 @@
     <div class="Sobre">
       <p class="Title" :style="{ color: Color_000 }">
         {{ Sobre_Title }}
-        <TitleBorder :color="Color_007" :text="Sobre_Destaque" />
+        <TitleBorder :color="Color_238" :text="Sobre_Destaque" />
       </p>
       <span class="Text" :style="{ color: Color_000 }">
         {{ Sobre_Text }}
@@ -49,7 +49,10 @@
 
     <div class="Blog">
       <p :style="{ color: Color_000 }" class="Title">
-        <span>{{ Blog_Title }}</span>
+        <span
+          >{{ Blog_Title }}
+          <TitleBorder :text="Blog_Destaque" :color="Color_238" />
+        </span>
         <Nlink
           :color="Color_ff5"
           :style="{ background: Color_fff }"
@@ -215,17 +218,6 @@
         >
       </div>
     </div>
-    <!-- <div class="Create_Acount">
-      <div class="Svg"></div>
-      <span class="Text_two"></span>
-      <Nlink
-        :color="Color_ff5"
-        class="Ver_mais"
-        :text="text_More"
-        link="/loguin"
-        acess=""
-      />
-    </div> -->
   </main>
 </template>
 
@@ -247,8 +239,8 @@ export default {
         ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
 
       // Blog
-      Blog_Title: 'Postagem em alta',
-
+      Blog_Title: 'Postagens em ',
+      Blog_Destaque: 'alta',
       // Ver mais
       text_More: 'Ver mais',
       More_link: '/banco de sementes',
@@ -310,6 +302,16 @@ export default {
       Login_Destaque_1: 'Crie sua conta',
       Login_Destaque_2: 'preservação ambiental.',
     }
+  },
+  head: {
+    title: 'NomeDoSite | Inicio',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: '', // palavras utilizadas (SEO) "melhores remedios" , "soluçao adequada".
+      },
+    ],
   },
   computed: {
     ...mapState({
@@ -459,7 +461,7 @@ export default {
 .Scroll {
   min-width: 100%;
   min-height: 350px;
-  overflow-x: auto;
+  overflow-x: Scroll;
   display: flex;
 }
 .Scroll::-webkit-scrollbar {

@@ -22,6 +22,5 @@ export default {
 <style scoped>
 span {
   font-weight: bold;
-  font-size: 20px;
 }
 </style>
