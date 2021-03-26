@@ -9,6 +9,42 @@
         </p>
         <span>{{ text }}</span>
       </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.37 200.02">
+        <g id="Camada_2" data-name="Camada 2">
+          <g id="Camada_1-2" data-name="Camada 1">
+            <path
+              d="M8.26,2H176.73a5.64,5.64,0,0,1,5.64,5.64V192.39a5.64,5.64,0,0,1-5.64,5.63H8.26Z"
+              style="fill: none; stroke-width: 1.5px"
+              :stroke="Color_238"
+            />
+            <path
+              d="M2,2H162a5.63,5.63,0,0,1,5.64,5.64v166a5.64,5.64,0,0,1-5.64,5.64H2Z"
+              style="stroke-width: 1.5px"
+              :stroke="Color_238"
+              fill="url(#pattern0)"
+            />
+            <defs>
+              <pattern
+                id="pattern0"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use
+                  xlink:href="#image0"
+                  transform="translate(0 -0.365079) scale(0.00277778)"
+                />
+              </pattern>
+              <image
+                id="image0"
+                width="360"
+                height="640"
+                href="../assets/img/Inicio/Fotos/2.jpg"
+              />
+            </defs>
+          </g>
+        </g>
+      </svg>
     </div>
     <!-- objetivo   -->
     <div class="parte2">
@@ -23,6 +59,95 @@
         </p>
         <span>{{ text }}</span>
       </div>
+      <svg
+        viewBox="0 0 574 337"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <path
+          d="M60 2H514C546.033 2 572 27.9675 572 60V277C572 309.033 546.033 335 514 335H60C27.9675 335 2 309.033 2 277V60C2 27.9675 27.9675 2 60 2Z"
+          stroke="#238E23"
+          stroke-width="4"
+        />
+        <rect
+          x="39"
+          y="2"
+          width="533"
+          height="293"
+          rx="58"
+          fill="url(#pattern5)"
+          stroke="#238E23"
+          stroke-width="4"
+        />
+        <rect
+          x="183"
+          y="26"
+          width="246"
+          height="246"
+          rx="123"
+          fill="url(#pattern6)"
+          stroke="#238E23"
+          stroke-width="4"
+        />
+        <rect
+          x="208"
+          y="51"
+          width="196"
+          height="196"
+          rx="98"
+          fill="url(#pattern7)"
+          stroke="#238E23"
+          stroke-width="4"
+        />
+        <defs>
+          <pattern
+            id="pattern5"
+            patternContentUnits="objectBoundingBox"
+            width="1"
+            height="1"
+          >
+            <use
+              xlink:href="#image9"
+              transform="translate(0 -0.103429) scale(0.000244141 0.000441426)"
+            />
+          </pattern>
+          <pattern
+            id="pattern6"
+            patternContentUnits="objectBoundingBox"
+            width="1"
+            height="1"
+          >
+            <use
+              xlink:href="#image8"
+              transform="translate(-0.0347092) scale(0.000261088 0.000365764)"
+            />
+          </pattern>
+          <pattern
+            id="pattern7"
+            patternContentUnits="objectBoundingBox"
+            width="1"
+            height="1"
+          >
+            <use
+              xlink:href="#image8"
+              transform="translate(-0.0347092) scale(0.000261088 0.000365764)"
+            />
+          </pattern>
+          <image
+            id="image8"
+            width="4096"
+            height="2734"
+            xlink:href="../assets/img/Inicio/Fotos/5.jpg"
+          />
+          <image
+            id="image9"
+            width="4096"
+            height="2734"
+            xlink:href="../assets/img/Inicio/Fotos/6.jpg"
+          />
+        </defs>
+      </svg>
     </div>
     <!-- valor  -->
     <div class="parte3">
@@ -38,38 +163,41 @@
         <span>{{ text }}</span>
       </div>
       <svg
+        width="548"
+        height="509"
+        viewBox="0 0 548 509"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
       >
         <path
-          d="M2 60h302c109.35 0 198 88.65 198 198v249H200C90.65 507 2 418.35 2 309V60z"
-          :stroke="Color_238"
+          d="M2 60H304C413.352 60 502 148.648 502 258V507H200C90.6476 507 2 418.352 2 309V60Z"
+          stroke="#238E23"
           stroke-width="4"
         />
         <path
-          d="M46 2h302c109.35 0 198 88.65 198 198v249H244c-109.35 0-198-88.65-198-198V2z"
-          fill="url(#pattern0)"
-          :stroke="Color_238"
+          d="M46 2H348C457.352 2 546 90.6476 546 200V449H244C134.648 449 46 360.352 46 251V2Z"
+          fill="url(#pattern3)"
+          stroke="#238E23"
           stroke-width="4"
         />
         <defs>
           <pattern
-            id="pattern0"
+            id="pattern3"
             patternContentUnits="objectBoundingBox"
             width="1"
             height="1"
           >
             <use
-              xlink:href="#image0"
-              transform="matrix(.00058 0 0 .00058 -.17 0)"
+              xlink:href="#image3"
+              transform="translate(-0.171131) scale(0.000582579)"
             />
           </pattern>
           <image
-            id="image0"
-            width="2000"
-            height="2340"
-            xlink:href="../assets/img/Inicio/Fotos/2.jpg"
+            id="image3"
+            width="2304"
+            height="1746"
+            xlink:href="../assets/img/Inicio/Fotos/3.jpg"
           />
         </defs>
       </svg>
@@ -251,7 +379,7 @@ export default {
   margin-left: 5px;
 }
 svg {
-  width: 550px;
-  height: 515px;
+  width: 380px;
+  height: 345px;
 }
 </style>

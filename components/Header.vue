@@ -71,7 +71,7 @@ export default {
       },
       { conteudo: 'Sobre', Link: '/sobre', key: '4' },
       { conteudo: 'Contato', Link: '/contato', key: '5' },
-      { conteudo: 'Criar conta', Link: '', key: '6' },
+      { conteudo: 'Criar conta', Link: '/entrarUser', key: '6' },
     ],
     Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
   }),
