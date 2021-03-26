@@ -1,4 +1,4 @@
-<template>
+<template class="fundo">
   <section>
     <div class="main-container">
       <div class="form-container">
@@ -7,7 +7,9 @@
         <!-- Ja tem conta -->
         <div class="enter-account">
           <p>Já tem uma conta?</p>
-          <button @click="changeAccount">Faça login</button>
+          <p>
+            <button class="btn1" @click="changeAccount">Faça login</button>
+          </p>
         </div>
 
         <!-- Formulário de Login -->
@@ -16,12 +18,23 @@
           class="container-form-user"
         >
           <form @submit.prevent="validationFormLogin">
-            <label for="accountEmail">E-mail</label>
-            <input type="email" id="accountEmail" />
-            <label for="accountPassword">Senha</label>
-            <input type="password" id="accountPassword" />
-
-            <button type="submit">Fazer login</button>
+            <input
+              type="email"
+              id="accountEmail"
+              placeholder="E-mail"
+              v-model="accountEmail"
+              class="inputs"
+            />
+            <input
+              type="password"
+              id="accountPassword"
+              placeholder="Senha"
+              v-model="accountPassword"
+              class="inputs"
+            />
+            <p>
+              <button class="btn" type="submit">Fazer login</button>
+            </p>
           </form>
 
           <nuxt-link to="">Esqueceu a senha?</nuxt-link>
@@ -33,29 +46,70 @@
           :style="accountExchange ? 'display: none;' : 'display: block;'"
           class="container-form-user"
         >
-          <form>
-            <label for="name">Nome</label>
-            <input type="text" id="name" />
+          <form @submit.prevent>
+            <input
+              type="text"
+              id="name"
+              placeholder="Nome"
+              v-model="name"
+              class="inputs"
+            />
 
-            <label for="lastName">Sobrenome</label>
-            <input type="text" id="lastName" />
+            <input
+              type="text"
+              id="lastName"
+              placeholder="Sobrenome"
+              v-model="lastName"
+              class="inputs"
+            />
 
-            <label for="nascimento">Data de nascimento</label>
-            <input type="text" id="nascimento" />
+            <input
+              type="date"
+              id="date"
+              placeholder="Data Nascimento"
+              v-model="nascimento"
+              class="inputs"
+            />
 
-            <label for="genre">Gênero</label>
-            <input type="text" id="genre" />
+            <select
+              id="genre"
+              class="inputs"
+              placeholder="Genêro"
+              v-model="genre"
+              name="genre"
+            >
+              <option value="">Selecione seu genêro</option>
+              <option value="1">Masculino</option>
+              <option value="2">Feminino</option>
+              <option value="3">Prefiro não declarar</option>
+            </select>
 
-            <label for="email">E-mail</label>
-            <input type="email" id="email" />
+            <input
+              type="email"
+              id="email"
+              placeholder="E-mail"
+              v-model="email"
+              class="inputs"
+            />
 
-            <label for="password">Senha</label>
-            <input type="password" id="password" />
+            <input
+              type="password"
+              id="password"
+              placeholder="Senha"
+              v-model="password"
+              class="inputs"
+            />
 
-            <label for="confirmPassword">Confirme sua senha</label>
-            <input type="password" id="confirmPassword" />
-
-            <button type="submit">Criar conta</button>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirme sua senha"
+              v-model="confirmPassword"
+              class="inputs"
+            />
+            <p>
+              <button class="btn" type="submit">Criar conta</button>
+            </p>
           </form>
         </div>
       </div>
@@ -69,6 +123,14 @@ export default {
     return {
       accountExchange: true,
       visibleTitle: 'Fazer login',
+      accountEmail: '',
+      accountPassword: '',
+      name: '',
+      lastname: '',
+      date: '',
+      genre: '',
+      email: '',
+      password: '',
     }
   },
   methods: {
@@ -107,13 +169,13 @@ section .main-container .form-container {
 }
 
 section .main-container .form-container {
-  background-color: rgba(187, 23, 23, 0.842);
+  background-color: rgba(219, 215, 215, 0.842);
   border-radius: 0 10px 0px 10px;
 
-  height: 80%;
+  height: 97%;
   width: 40%;
 
-  margin: 2em 0;
+  margin: 0 auto;
 
   flex-direction: column;
 }
@@ -132,5 +194,32 @@ section .main-container .form-container .container-form-user,
 section .main-container .form-container .container-form-user form {
   display: flex;
   flex-direction: column;
+}
+
+section .main-container .form-container .container-form-user form .inputs {
+  width: 25rem;
+  margin: 5px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 5px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.btn {
+  border-radius: 15px;
+  background-color: green;
+  color: white;
+  width: 25rem;
+  height: 30px;
+}
+.btn1 {
+  border-radius: 15px;
+  background-color: rgb(219, 221, 219);
+  color: black;
+  width: 8rem;
+  height: 20px;
+  border: none;
+  padding: 5px;
 }
 </style>
