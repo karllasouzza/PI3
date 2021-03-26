@@ -67,8 +67,8 @@
           </pattern>
           <image
             id="image0"
-            width="2304"
-            height="1536"
+            width="2000"
+            height="2340"
             xlink:href="../assets/img/Inicio/Fotos/2.jpg"
           />
         </defs>
@@ -251,7 +251,7 @@ export default {
   margin-left: 5px;
 }
 svg {
-  width: 548px;
-  height: 509px;
+  width: 550px;
+  height: 515px;
 }
 </style>
