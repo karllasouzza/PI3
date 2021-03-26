@@ -2,11 +2,17 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  // // server
+  // server: {
+  //   host: '0.0.0.0',
+  //   port: 3000,
+  // },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'PI3',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'pt-br',
     },
     meta: [
       { charset: 'utf-8' },
