@@ -463,6 +463,8 @@ export default {
   min-height: 350px;
   overflow-x: Scroll;
   display: flex;
+  width: 400px;
+  margin: 1px auto;
 }
 .Scroll::-webkit-scrollbar {
   width: 16px;
