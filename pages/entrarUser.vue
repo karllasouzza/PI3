@@ -164,7 +164,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 section {
   display: grid;
   grid-template-rows: 55px 27em;
