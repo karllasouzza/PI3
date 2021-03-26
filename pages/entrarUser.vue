@@ -6,9 +6,15 @@
 
         <!-- Ja tem conta -->
         <div class="enter-account">
-          <p>Já tem uma conta?</p>
+          <p>{{ accountExchange ? 'Não' : 'Já' }} tem uma conta?</p>
           <p>
-            <button class="btn1" @click="changeAccount">Faça login</button>
+            <button
+              class="btn1"
+              :style="{ color: Color_238 }"
+              @click="changeAccount"
+            >
+              {{ accountExchange ? 'Criar conta' : 'Faça login' }}
+            </button>
           </p>
         </div>
 
@@ -118,11 +124,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data() {
     return {
       accountExchange: true,
       visibleTitle: 'Fazer login',
+
       accountEmail: '',
       accountPassword: '',
       name: '',
@@ -146,6 +155,11 @@ export default {
     validationFormLogin() {
       return console.log('Fui validado')
     },
+  },
+  computed: {
+    ...mapState({
+      Color_238: (state) => state.Colors.Color_238,
+    }),
   },
 }
 </script>
@@ -173,7 +187,7 @@ section .main-container .form-container {
   border-radius: 0 10px 0px 10px;
 
   height: 97%;
-  width: 40%;
+  width: 50%;
 
   margin: 0 auto;
 
@@ -214,12 +228,6 @@ section .main-container .form-container .container-form-user form .inputs {
   height: 30px;
 }
 .btn1 {
-  border-radius: 15px;
   background-color: rgb(219, 221, 219);
-  color: black;
-  width: 8rem;
-  height: 20px;
-  border: none;
-  padding: 5px;
 }
 </style>
