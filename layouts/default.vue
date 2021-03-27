@@ -1,5 +1,7 @@
 <template>
   <div>
+    <NotfSucess />
+    <NotfErro />
     <ButtonMenu />
     <Header />
     <Nuxt />
