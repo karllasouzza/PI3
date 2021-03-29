@@ -224,7 +224,7 @@ section .main-container .form-container .container-form-user form .inputs {
   width: 25rem;
   margin: 5px auto;
   padding: 10px;
-  border-radius: 0px 20px 0px 20px;
+  border-radius: 0px 20px 0px;
   border: none;
   margin-bottom: 5px;
   font-size: 12px;
@@ -238,7 +238,7 @@ section .main-container .form-container .container-form-user form .inputs {
   color: white;
   width: 25rem;
   height: 30px;
-  border-radius: 0px 20px 0px 20px;
+  border-radius: 0px 20px;
 }
 .text {
   color: #238e23;
