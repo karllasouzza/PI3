@@ -17,6 +17,7 @@
             </a>
           </p>
         </div>
+        <br />
 
         <!-- Formulário de Login -->
         <div
@@ -29,7 +30,7 @@
               id="accountEmail"
               placeholder="*Email"
               v-model="accountEmail"
-              class="inputs"
+              class="inputs2"
             />
             <p>
               <input
@@ -37,16 +38,20 @@
                 id="accountPassword"
                 placeholder="*Senha"
                 v-model="accountPassword"
-                class="inputs"
+                class="inputs2"
               />
             </p>
+            <br />
 
             <p>
               <button class="btn" type="submit">Entrar</button>
             </p>
           </form>
+          <br />
+
           <p>
             <nuxt-link to="" class="text1">Esqueceu a senha?</nuxt-link>
+            <br />
             <nuxt-link to="" class="text1">Precisa de ajuda?</nuxt-link>
           </p>
         </div>
@@ -57,69 +62,75 @@
           class="container-form-user"
         >
           <form @submit.prevent>
-            <input
-              type="text"
-              id="name"
-              placeholder="*Nome"
-              v-model="name"
-              class="inputs"
-            />
+            <div class="caixa">
+              <input
+                type="text"
+                id="name"
+                placeholder="*Nome"
+                v-model="name"
+                class="inputs1"
+              />
 
-            <input
-              type="text"
-              id="lastName"
-              placeholder="*Sobrenome"
-              v-model="lastName"
-              class="inputs"
-            />
+              <input
+                type="text"
+                id="lastName"
+                placeholder="*Sobrenome"
+                v-model="lastName"
+                class="inputs1"
+              />
+              <p>
+                <input
+                  type="date"
+                  id="*date"
+                  placeholder="*Data Nascimento"
+                  v-model="nascimento"
+                  class="inputs1"
+                />
 
-            <input
-              type="date"
-              id="*date"
-              placeholder="*Data Nascimento"
-              v-model="nascimento"
-              class="inputs"
-            />
+                <select
+                  id="genre"
+                  class="inputs1"
+                  placeholder="*Genêro"
+                  v-model="genre"
+                  name="genre"
+                >
+                  <option value="">*Selecione seu genêro</option>
+                  <option value="1">Masculino</option>
+                  <option value="2">Feminino</option>
+                  <option value="3">Prefiro não declarar</option>
+                </select>
 
-            <select
-              id="genre"
-              class="inputs"
-              placeholder="*Genêro"
-              v-model="genre"
-              name="genre"
-            >
-              <option value="">*Selecione seu genêro</option>
-              <option value="1">Masculino</option>
-              <option value="2">Feminino</option>
-              <option value="3">Prefiro não declarar</option>
-            </select>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="*Email"
+                  v-model="email"
+                  class="inputs2"
+                />
 
-            <input
-              type="email"
-              id="email"
-              placeholder="*Email"
-              v-model="email"
-              class="inputs"
-            />
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="*Senha"
+                  v-model="password"
+                  class="inputs2"
+                />
 
-            <input
-              type="password"
-              id="password"
-              placeholder="*Senha"
-              v-model="password"
-              class="inputs"
-            />
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  placeholder="*Confirme sua senha"
+                  v-model="confirmPassword"
+                  class="inputs2"
+                />
+                <br />
+              </p>
 
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="*Confirme sua senha"
-              v-model="confirmPassword"
-              class="inputs"
-            />
-            <p>
-              <button class="btn" type="submit">Cadastrar</button>
-            </p>
+              <p>
+                <button class="btn" type="submit">Cadastrar</button>
+              </p>
+            </div>
+            <br />
           </form>
         </div>
       </div>
@@ -194,12 +205,12 @@ section .main-container .form-container {
 
 section .main-container .form-container {
   background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 2px 30px 2px 30px;
+  border-radius: 0 20px 0 20px;
 
-  height: 100%;
+  height: 115%;
   width: 40%;
 
-  margin: 0 auto;
+  margin: 3px auto;
 
   flex-direction: column;
 }
@@ -218,33 +229,58 @@ section .main-container .form-container .container-form-user,
 section .main-container .form-container .container-form-user form {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
-
-section .main-container .form-container .container-form-user form .inputs {
-  width: 25rem;
-  margin: 5px auto;
-  padding: 10px;
-  border-radius: 0px 20px 0px;
+section .main-container .form-container .container-form-user form .inputs1 {
+  width: 13rem;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 0px 20px;
   border: none;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   font-size: 12px;
-  vertical-align: middle;
   background: rgba(255, 255, 255, 0.726);
   color: black;
+  align-items: center;
+  justify-content: center;
 }
-.btn {
+section .main-container .form-container .container-form-user form .inputs2 {
+  width: 26.4rem;
+  margin: 0;
+  padding: 15px;
+  border-radius: 0px 20px;
+  border: none;
+  margin-bottom: 3px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.726);
+  color: black;
+  align-items: center;
+  display: block;
+}
+section .main-container .form-container .container-form-user form .btn {
   border-radius: 15px;
   background-color: #238e23;
   color: white;
-  width: 25rem;
-  height: 30px;
+  width: 26.1rem;
+  height: 40px;
   border-radius: 0px 20px;
 }
-.text {
+section .main-container .form-container .container-form-user form .text {
   color: #238e23;
 }
 .text1 {
   color: #238e23;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 3px;
+  margin: 5px;
+  display: flex;
+}
+.caixa {
+  justify-content: center;
+  float: right;
+  padding: 28px;
+  margin: 15px;
 }
 </style>
