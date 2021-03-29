@@ -1,4 +1,4 @@
-<template class="fundo">
+<template>
   <section>
     <div class="main-container">
       <div class="form-container">
@@ -6,15 +6,15 @@
 
         <!-- Ja tem conta -->
         <div class="enter-account">
-          <p>{{ accountExchange ? 'Não' : 'Já' }} tem uma conta?</p>
+          <p>{{ accountExchange ? 'Não' : 'Já' }} possui conta?</p>
           <p>
-            <button
-              class="btn1"
+            <a
+              class="text"
               :style="{ color: Color_238 }"
               @click="changeAccount"
             >
-              {{ accountExchange ? 'Criar conta' : 'Faça login' }}
-            </button>
+              {{ accountExchange ? 'Criar conta' : 'Fazer login' }}
+            </a>
           </p>
         </div>
 
@@ -27,24 +27,28 @@
             <input
               type="email"
               id="accountEmail"
-              placeholder="E-mail"
+              placeholder="*Email"
               v-model="accountEmail"
               class="inputs"
             />
-            <input
-              type="password"
-              id="accountPassword"
-              placeholder="Senha"
-              v-model="accountPassword"
-              class="inputs"
-            />
             <p>
-              <button class="btn" type="submit">Fazer login</button>
+              <input
+                type="password"
+                id="accountPassword"
+                placeholder="*Senha"
+                v-model="accountPassword"
+                class="inputs"
+              />
+            </p>
+
+            <p>
+              <button class="btn" type="submit">Entrar</button>
             </p>
           </form>
-
-          <nuxt-link to="">Esqueceu a senha?</nuxt-link>
-          <nuxt-link to="">Precisa de ajuda?</nuxt-link>
+          <p>
+            <nuxt-link to="" class="text1">Esqueceu a senha?</nuxt-link>
+            <nuxt-link to="" class="text1">Precisa de ajuda?</nuxt-link>
+          </p>
         </div>
 
         <!-- Formulário de criar conta -->
@@ -56,7 +60,7 @@
             <input
               type="text"
               id="name"
-              placeholder="Nome"
+              placeholder="*Nome"
               v-model="name"
               class="inputs"
             />
@@ -64,15 +68,15 @@
             <input
               type="text"
               id="lastName"
-              placeholder="Sobrenome"
+              placeholder="*Sobrenome"
               v-model="lastName"
               class="inputs"
             />
 
             <input
               type="date"
-              id="date"
-              placeholder="Data Nascimento"
+              id="*date"
+              placeholder="*Data Nascimento"
               v-model="nascimento"
               class="inputs"
             />
@@ -80,11 +84,11 @@
             <select
               id="genre"
               class="inputs"
-              placeholder="Genêro"
+              placeholder="*Genêro"
               v-model="genre"
               name="genre"
             >
-              <option value="">Selecione seu genêro</option>
+              <option value="">*Selecione seu genêro</option>
               <option value="1">Masculino</option>
               <option value="2">Feminino</option>
               <option value="3">Prefiro não declarar</option>
@@ -93,7 +97,7 @@
             <input
               type="email"
               id="email"
-              placeholder="E-mail"
+              placeholder="*Email"
               v-model="email"
               class="inputs"
             />
@@ -101,7 +105,7 @@
             <input
               type="password"
               id="password"
-              placeholder="Senha"
+              placeholder="*Senha"
               v-model="password"
               class="inputs"
             />
@@ -109,12 +113,12 @@
             <input
               type="password"
               id="confirmPassword"
-              placeholder="Confirme sua senha"
+              placeholder="*Confirme sua senha"
               v-model="confirmPassword"
               class="inputs"
             />
             <p>
-              <button class="btn" type="submit">Criar conta</button>
+              <button class="btn" type="submit">Cadastrar</button>
             </p>
           </form>
         </div>
@@ -166,8 +170,14 @@ export default {
 
 <style>
 section {
+  widows: 100%;
+  height: 100%;
   display: grid;
   grid-template-rows: 55px 27em;
+  background-image: url(../assets/img/Inicio/Fotos/4.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 60px;
 }
 
 section .main-container,
@@ -183,11 +193,11 @@ section .main-container .form-container {
 }
 
 section .main-container .form-container {
-  background-color: rgba(219, 215, 215, 0.842);
-  border-radius: 0 10px 0px 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 2px 30px 2px 30px;
 
-  height: 97%;
-  width: 50%;
+  height: 100%;
+  width: 40%;
 
   margin: 0 auto;
 
@@ -214,20 +224,27 @@ section .main-container .form-container .container-form-user form .inputs {
   width: 25rem;
   margin: 5px auto;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 0px 20px 0px 20px;
   border: none;
   margin-bottom: 5px;
   font-size: 12px;
   vertical-align: middle;
+  background: rgba(255, 255, 255, 0.726);
+  color: black;
 }
 .btn {
   border-radius: 15px;
-  background-color: green;
+  background-color: #238e23;
   color: white;
   width: 25rem;
   height: 30px;
+  border-radius: 0px 20px 0px 20px;
 }
-.btn1 {
-  background-color: rgb(219, 221, 219);
+.text {
+  color: #238e23;
+}
+.text1 {
+  color: #238e23;
+  align-items: center;
 }
 </style>
