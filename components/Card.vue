@@ -8,7 +8,7 @@
       </div>
     </div>
     <span class="txt">{{ cardText }}</span>
-    <div class="btn">
+    <div class="btn_card">
       <div>
         <span class="counter"><Love /></span>{{ cntLove }}
       </div>
@@ -143,14 +143,14 @@ span.postTime {
   cursor: pointer;
   border-radius: 0 10px 0 10px;
 }
-.btn {
+.btn_card {
   width: 60%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-.btn > div {
+.btn_card > div {
   width: 38px;
   height: 100%;
   display: flex;
