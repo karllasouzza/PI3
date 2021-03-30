@@ -114,4 +114,12 @@ html {
   transform: translateX(10px);
   opacity: 0;
 }
+<<<<<<< HEAD
+=======
+@media (max-width: 425px) {
+  html {
+    font-size: 14px;
+  }
+}
+>>>>>>> ee35bcc5748424251900c51b9a146c5abf2eae8b
 </style>

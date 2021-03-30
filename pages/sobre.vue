@@ -382,4 +382,106 @@ svg {
   width: 380px;
   height: 345px;
 }
+
+@media (max-width: 1046px) {
+  .container > div.parte1 > div > span,
+  .container > div.parte2 > div > span,
+  .container > div.parte3 > div > span {
+    width: 80%;
+  }
+  .container > div.parte1 > div > p,
+  .container > div.parte2 > div > p,
+  .container > div.parte3 > div > p {
+    font-size: 25px;
+  }
+}
+@media (max-width: 1026px) {
+  .container > div.parte1 > div,
+  .container > div.parte2 > div,
+  .container > div.parte3 > div {
+    width: 60%;
+  }
+}
+@media (max-width: 832px) {
+  svg {
+    width: 340px;
+    height: 265px;
+  }
+  .container > div.parte2 > div > p,
+  .container > div.parte1 > div > p,
+  .container > div.parte3 > div > p {
+    font-size: 23px;
+  }
+}
+@media (max-width: 716px) {
+  .container > div.parte1,
+  .container > div.parte2,
+  .container > div.parte3 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 30px 1fr 1fr 1fr 1fr 1fr 1fr 30px;
+    grid-template-rows: 130vh 130vh 130vh;
+    padding: 40px 0;
+  }
+  .container > div.parte1 > div,
+  .container > div.parte2 > div,
+  .container > div.parte3 > div {
+    width: 90%;
+    height: 50%;
+    align-items: flex-start;
+  }
+  svg {
+    width: 300px;
+    height: 290px;
+  }
+  .container > div.parte1 > div > span,
+  .container > div.parte2 > div > span,
+  .container > div.parte3 > div > span {
+    width: 100%;
+  }
+}
+@media (max-width: 425px) {
+  .container > div.parte2 > div > p,
+  .container > div.parte1 > div > p,
+  .container > div.parte3 > div > p {
+    font-size: 20px;
+  }
+  .container > div.parte1 > div,
+  .container > div.parte2 > div,
+  .container > div.parte3 > div {
+    width: 95%;
+    height: 50%;
+  }
+}
+@media (max-width: 375px) {
+  .container {
+    padding: 10px 0;
+    grid-template-rows: 150vh 150vh 150vh;
+    grid-template-columns: 10px 1fr 1fr 1fr 1fr 1fr 1fr 10px;
+  }
+  .container > div.parte2 > div > p,
+  .container > div.parte1 > div > p,
+  .container > div.parte3 > div > p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 360px) {
+  .container > div.parte2 > div > p,
+  .container > div.parte1 > div > p,
+  .container > div.parte3 > div > p {
+    font-size: 18px;
+  }
+  .container > div.parte1 > div,
+  .container > div.parte2 > div,
+  .container > div.parte3 > div {
+    width: 100%;
+    height: 50%;
+  }
+}
 </style>
