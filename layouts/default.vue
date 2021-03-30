@@ -1,71 +1,14 @@
 <template>
   <div>
-    <transition name="slide-fade">
-      <NotfErro
-        v-if="notfErro"
-        :text="notf_erro"
-        :load="loadErro()"
-        @click="fecharErro()"
-      />
-    </transition>
-    <transition name="slide-fade">
-      <NotfSucess
-        v-if="notfSucess"
-        :text="notf_sucess"
-        :load="loadSucess()"
-        @click="fecharSucess()"
-      />
-    </transition>
+    <NotfSucess />
+    <NotfErro />
     <ButtonMenu />
     <Header />
     <Nuxt />
     <Footer />
   </div>
 </template>
-<script>
-import { mapState, mapMutations } from 'vuex'
-export default {
-  data() {
-    return {
-      intervaloErro: '',
-      intervaloSucess: '',
-    }
-  },
-  computed: {
-    ...mapState({
-      // notificaçao de erro
-      notf_erro: (state) => state.Notificacoes.mensagemErro,
-      notfErro: (state) => state.Notificacoes.notfErro,
 
-      // notificaçao de sucesso
-      notf_sucess: (state) => state.Notificacoes.mensagemSucess,
-      notfSucess: (state) => state.Notificacoes.notfSucess,
-    }),
-  },
-  methods: {
-    ...mapMutations({
-      notf_erro_false: 'Notificacoes/notf_erro_false',
-      notf_sucess_false: 'Notificacoes/notf_sucess_false',
-    }),
-    // setar um 'intervalo' para a notificaçao fechar
-    loadErro() {
-      this.intervaloErro = setInterval(this.fecharErro, 4000)
-    },
-    loadSucess() {
-      this.intervaloSucess = setInterval(this.fecharSucess, 4000)
-    },
-    // fechar a notificaçao
-    fecharSucess() {
-      this.notf_sucess_false()
-      clearInterval(this.intervaloSucess)
-    },
-    fecharErro() {
-      this.notf_erro_false()
-      clearInterval(this.intervaloErro)
-    },
-  },
-}
-</script>
 <style>
 html {
   font-family: sans-serif, Arial, Helvetica;
