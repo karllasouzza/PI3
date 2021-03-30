@@ -114,4 +114,9 @@ html {
   transform: translateX(10px);
   opacity: 0;
 }
+@media (max-width: 425px) {
+  html {
+    font-size: 14px;
+  }
+}
 </style>
