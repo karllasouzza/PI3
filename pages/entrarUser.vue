@@ -122,7 +122,7 @@
                 placeholder="*Confirme sua senha"
                 v-model="confirmPassword"
                 class="inputs2"
-/>
+              />
               <br />
             </p>
 
@@ -136,6 +136,96 @@
     </div>
   </section>
 </template>
+
+<script>
+import { mapState } from 'vuex'
+export default {
+  data() {
+    return {
+      accountExchange: true,
+      visibleTitle: 'Fazer login',
+      // Valida para o usuário logar
+      accountEmail: '',
+      accountPassword: '',
+      // para cadastro de usuário
+      name: '',
+      lastname: '',
+      date: '',
+      lastName: '',
+      genre: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    }
+  },
+  methods: {
+    changeAccount() {
+      if (this.accountExchange) {
+        this.visibleTitle = 'Criar conta'
+      } else {
+        this.visibleTitle = 'Fazer login'
+      }
+      this.accountExchange = !this.accountExchange
+    },
+    validationFormLogin() {
+      return console.log('Fui validado')
+      if (!this.accountEmail) {
+        return console.log('Seu e-mail não está preenchido.')
+      } else if (!this.accountPassword) {
+        return console.log('Sua senha não está preenchido.')
+      }
+      // Aqui será onde mandará para um arquivo os dados para ser pega a req
+      console.log('Sua req foi enviada!')
+    },
+    registerUser() {
+      // Verifica nome e sobrenome
+      if (!this.name) {
+        return console.log('Nome precisa ser preenchido.')
+      } else if (!this.lastName) {
+        return console.log('Sobrenome precisa ser preenchido.')
+      } else if (this.name.length < 3 || this.lastName.length < 3) {
+        console.log(
+          'nome ou sobrenome é muito pequeno. Deve ser maior de 3 caracteres!'
+        )
+      }
+      // Verifica se foi colocado data de aniversário
+      if (!this.birth) {
+        console.log('Obrigatório por sua idade.')
+      }
+      // Verifica o gênero
+      if (!this.genre) {
+        console.log('Obrigatório colocar seu gênero.')
+      }
+      // Verificação de email
+      const regexEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
+      if (!this.email) {
+        console.log('Obrigatório coloar e-mail.')
+      } else if (!regexEmail.test(this.email)) {
+        console.log(
+          'Esse e-mail não atende ao requisitos necessário, tente novamente.'
+        )
+      }
+      // Verificação de senha
+      if (!this.password) {
+        console.log('Obrigatório ter senha.')
+      } else if (!this.password.length < 7) {
+        console.log('A senha não pode ser menor que 7 caracteres.')
+      } else if (!this.confirmPassword) {
+        console.log(
+          'O campo de confirmar senha precisa estar preenchido exatamente igual a senha.'
+        )
+      } else if (this.password !== this.confirmPassword) {
+        console.log('A Senha não está igual na confirmação de senha.')
+      }
+    },
+  },
+  computed: {
+    ...mapState({
+      Color_238: (state) => state.Colors.Color_238,
+    }),
+  },
+}
+</script>
 
 <style>
 section {
