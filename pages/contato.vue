@@ -189,7 +189,6 @@ export default {
       Color_ffc: (state) => state.Colors.Color_ffc,
 
       // notificaçao
-      notf_erro: (state) => state.Notificacoes.mensagemErro,
     }),
   },
   methods: {
@@ -275,14 +274,12 @@ export default {
         return false
       }
 
-      // acaso o email esteja preechido corretamente
-      this.notf_erro_false()
-
-      //  se tudo certo enviar o usuario para a tela inicial
+      // acaso tudo esteja correto :)
       this.notf_sucess_true()
       this.set_Sucess({
         mensagemSucess: 'Mensagem enviada',
       })
+      //  se tudo estiver certo ira enviar o usuario para a tela inicial
       this.$router.push('/')
     },
     // nome > 3 sobrenome > 3

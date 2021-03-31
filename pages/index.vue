@@ -231,20 +231,17 @@ export default {
       Baner_Title_2: ' Colha',
       Baner_Destaque_1: 'Arvores',
       Baner_Destaque_2: ' Humanidade',
-
       // Sobre
       Sobre_Title: '"Como vemos o',
       Sobre_Destaque: ' mundo"',
       Sobre_Text:
         ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
-
       // Blog
       Blog_Title: 'Postagens em ',
       Blog_Destaque: 'alta',
       // Ver mais
       text_More: 'Ver mais',
       More_link: '/banco de sementes',
-
       // Card
       postUser: [
         {
@@ -297,7 +294,6 @@ export default {
           cntCmt: 3,
         },
       ],
-
       // Login
       Login_Destaque_1: 'Crie sua conta',
       Login_Destaque_2: 'preservação ambiental.',
@@ -318,34 +314,24 @@ export default {
       /* Colors */
       //
       Color_000: (state) => state.Colors.Color_000,
-
       //
       Color_976: (state) => state.Colors.Color_976,
-
       //
       Color_004: (state) => state.Colors.Color_004,
-
       //
       Color_007: (state) => state.Colors.Color_007,
-
       //
       Color_00f: (state) => state.Colors.Color_00f,
-
       //
       Color_238: (state) => state.Colors.Color_238,
-
       //
       Color_fdc: (state) => state.Colors.Color_fdc,
-
       //
       Color_ff5: (state) => state.Colors.Color_ff5,
-
       //
       Color_d63: (state) => state.Colors.Color_d63,
-
       //
       Color_fff: (state) => state.Colors.Color_fff,
-
       //
       Color_ffc: (state) => state.Colors.Color_ffc,
     }),
@@ -362,7 +348,6 @@ export default {
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
   grid-template-rows: 100vh 380px 450px 80vh;
 }
-
 .Ver_mais {
   text-decoration: none;
 }
@@ -370,7 +355,6 @@ export default {
 .nuxt-link-active {
   text-decoration: none;
 }
-
 /* Baner */
 .Baner {
   width: 100%;
@@ -400,7 +384,6 @@ export default {
 .Baner > div > p {
   margin-right: 1%;
 }
-
 /*  Parte remetente a pagina Sobre  */
 .Sobre_Img {
   width: 280px;
@@ -436,7 +419,6 @@ export default {
   width: 487.656px;
   height: 50%;
 }
-
 /*  Parte remetente a pagina Blog  */
 .Blog {
   grid-row: 3/4;
@@ -482,7 +464,6 @@ export default {
   font-size: 35px;
   font-weight: bold;
 }
-
 /*  Parte remetente a pagina Loguin  */
 .Login {
   grid-row: 4/5;
@@ -535,7 +516,6 @@ export default {
 .folha {
   animation: 5s ease-in infinite slidein;
 }
-
 @keyframes slidein {
   0% {
     fill: #61e719;
@@ -660,6 +640,13 @@ export default {
   }
   .Baner {
     padding: 0 5px;
+  }
+  .Scroll {
+    width: 300px;
+  }
+  .Sobre > p.Title {
+    width: 100%;
+    font-size: 23px;
   }
 }
 </style>
