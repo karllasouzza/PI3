@@ -31,9 +31,9 @@
       >
         <input
           v-model="userLogin"
+          ref="ref_userLogin"
           type="email"
           placeholder="Dígite seu e-mail."
-          required
         />
 
         <!-- Olho para ver senha -->
@@ -56,9 +56,9 @@
         </svg>
         <input
           v-model="userPassword"
+          ref="ref_userPassword"
           :type="showPassword"
           placeholder="Dígite sua senha."
-          required
         />
 
         <br />
@@ -91,38 +91,48 @@
         :style="changeOfForm ? 'display: none;' : 'display: flex;'"
         @submit.prevent="registerAccount"
       >
-        <input v-model="userName" type="text" placeholder="* Nome" required />
+        <input
+          v-model="userName"
+          ref="ref_userName"
+          type="text"
+          placeholder="* Nome"
+        />
         <input
           v-model="lastName"
+          ref="ref_lastName"
           type="text"
           placeholder="* Sobrenome"
-          required
         />
         <input
           v-model="dateOfBirth"
+          ref="ref_dateOfBirth"
           type="date"
           placeholder="* Data de nascimento"
-          required
         />
-        <select v-model="genre" required>
+        <select v-model="genre" ref="ref_genre">
           <option value="">Selecione seu Gênero</option>
           <option value="female">Feminino</option>
           <option value="male">Masculino</option>
           <option value="lgbtqia">lgbtqia+</option>
           <option value="nenhum">prefiro não dizer</option>
         </select>
-        <input v-model="email" type="email" placeholder="* E-mail" required />
+        <input
+          v-model="email"
+          ref="ref_email"
+          type="email"
+          placeholder="* E-mail"
+        />
         <input
           v-model="password"
+          ref="ref_password"
           type="password"
           placeholder="* Senha"
-          required
         />
         <input
           v-model="confirmPassword"
+          ref="ref_confirmPassword"
           type="password"
           placeholder="* Confirme sua senha"
-          required
         />
 
         <button
@@ -143,7 +153,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import Title from '../components/Title'
 import BigTitle from '../components/BigTitle'
 
@@ -170,13 +180,24 @@ export default {
     // Dados dos campos dos formulário de registro
     userName: '',
     lastName: '',
-    dateOfBirth: Date,
+    dateOfBirth: '',
     genre: '',
     email: '',
     password: '',
     confirmPassword: '',
   }),
   methods: {
+    ...mapActions({
+      set_Erro: 'Notificacoes/setErro',
+      set_Sucess: 'Notificacoes/setSucess',
+    }),
+    ...mapMutations({
+      notf_erro_true: 'Notificacoes/notf_erro_true',
+      notf_erro_false: 'Notificacoes/notf_erro_false',
+      notf_sucess_false: 'Notificacoes/notf_sucess_false',
+      notf_sucess_true: 'Notificacoes/notf_sucess_true',
+    }),
+
     // Muda de formulário
     changeForm() {
       this.changeOfForm = !this.changeOfForm
@@ -191,40 +212,138 @@ export default {
         return (this.showPassword = 'password')
       }
     },
+
+    // Função para verificar se usuário existe
     loginToAccount() {
       // userLogin e userPassword
+      if (!this.userLogin) {
+        this.$refs.ref_userLogin.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Preicsa ter e-mail preenchido.',
+        })
+        return
+      } else if (!this.userPassword) {
+        this.$refs.ref_userPassword.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Necessário ter a senha preenchida.',
+        })
+        return
+      }
+
       console.log('Verificando se esse usuário existe!')
     },
+
+    // Função para registrar usuário
     registerAccount() {
-      if (this.userName.length < 3) {
-        return console.log('Nome está pequeno demais, utilize um nome maior.')
+      // Verificação de nome e sobrenome
+      if (!this.userName) {
+        this.$refs.ref_userName.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Obrigatório colocar o nome.',
+        })
+        return
+      } else if (this.userName.length < 3) {
+        this.$refs.ref_userName.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Nome está pequeno demais, utilize um nome maior.',
+        })
+        return
+      } else if (!this.lastName) {
+        this.$refs.ref_lastName.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Obrigatório colocar o sobrenome.',
+        })
+        return
       } else if (this.lastName.length < 3) {
-        return console.log(
-          'Sobrenome está pequeno demais, utilize um sobrenome maior.'
-        )
+        this.$refs.ref_lastName.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro:
+            'Sobrenome está pequeno demais, utilize um sobrenome maior.',
+        })
+        return
+      }
+
+      // Verificação de idade
+      if (!this.dateOfBirth) {
+        this.$refs.ref_dateOfBirth.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Obrigatório colocar a data de nascimento.',
+        })
+        return
       }
 
       const year = new Date().getUTCFullYear()
       const userYear = new Date(this.dateOfBirth).getFullYear()
       const userYearResult = year - userYear
       if (userYearResult > 120) {
-        return console.log('Idade inválida, coloque uma idade correspondente.')
+        this.$refs.ref_dateOfBirth.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Idade inválida, coloque uma idade correspondente.',
+        })
+        return
       }
 
+      // Verificação do Gênero
+      if (!this.genre) {
+        this.$refs.ref_genre.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Obrigatório colocar gênero.',
+        })
+        return
+      }
+
+      // Verificação do E-mail
       const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
-      if (!regex.test(this.email)) {
-        return console.log('E-mail inválido.')
+      if (!this.email) {
+        this.$refs.ref_email.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Obrigatório colocar o e-mail.',
+        })
+        return
+      } else if (!regex.test(this.email)) {
+        this.$refs.ref_email.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'E-mail inválido.',
+        })
+        return
       }
 
+      // Verificação da Senha
       if (!this.password) {
-        return console.log('Necessário haver uma senha.')
+        this.$refs.ref_password.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Necessário haver uma senha.',
+        })
+        return
       } else if (this.password.length <= 7) {
-        return console.log('A senha precisa ser maior que 7(sete) caracteres.')
+        this.$refs.ref_password.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'A senha precisa ser maior que 7(sete) caracteres.',
+        })
+        return
       } else if (this.password !== this.confirmPassword) {
-        return console.log(
-          'Necessário que o confirmar senha seja igual a senha.'
-        )
+        this.$refs.ref_confirmPassword.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Necessário que o confirmar senha seja igual a senha.',
+        })
+        return
       }
+
+      console.log('Cadastrado com sucesso!')
     },
   },
   computed: {
@@ -271,6 +390,9 @@ section main {
 
   margin: 6em 0;
   padding: 1em;
+
+  /* Animação quando entra na página */
+  animation: animationForm 1s forwards;
 }
 
 /* Classes do título e troca de conta */
@@ -341,6 +463,16 @@ section main form .link-for-help {
   margin-bottom: 1em;
 }
 /* / */
+
+@keyframes animationForm {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 @media (max-width: 425px) {
   section main form .eye {
