@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :accesskey="acess" :style="{ color: color }" :to="link">
+  <nuxt-link :style="{ background: background, color: color }" :to="to">
     {{ text }}
   </nuxt-link>
 </template>
@@ -12,22 +12,34 @@ export default {
       default: null,
       required: true,
     },
-    link: {
-      type: String,
-      default: null,
-      required: true,
-    },
-    acess: {
-      type: String,
-      default: null,
-      required: true,
-    },
     color: {
       type: String,
       default: null,
+      required: true,
+    },
+    background: {
+      type: String,
+      default: null,
+      required: true,
+    },
+    to: {
+      type: String,
+      default: null,
+      required: true,
     },
   },
 }
 </script>
 
-<style></style>
+<style scoped>
+a {
+  width: 130px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+</style>
