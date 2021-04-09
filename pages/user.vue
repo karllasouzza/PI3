@@ -98,19 +98,21 @@
           placeholder="* Nome"
         />
         <input
+          disabled
           v-model="lastName"
           ref="ref_lastName"
           type="text"
-          placeholder="* Sobrenome"
+          placeholder="* Sobrenome - Desabilitado"
         />
         <input
+          disabled
           v-model="dateOfBirth"
           ref="ref_dateOfBirth"
           type="date"
-          placeholder="* Data de nascimento"
+          placeholder="* Data de nascimento - Desabilitado"
         />
-        <select v-model="genre" ref="ref_genre">
-          <option value="">Selecione seu Gênero</option>
+        <select disabled v-model="genre" ref="ref_genre">
+          <option value="">Selecione seu Gênero - Desabilitado</option>
           <option value="female">Feminino</option>
           <option value="male">Masculino</option>
           <option value="lgbtqia">lgbtqia+</option>
@@ -236,7 +238,7 @@ export default {
     },
 
     // Função para registrar usuário
-    registerAccount() {
+    async registerAccount() {
       // Verificação de nome e sobrenome
       if (!this.userName) {
         this.$refs.ref_userName.focus()
@@ -252,7 +254,7 @@ export default {
           mensagemErro: 'Nome está pequeno demais, utilize um nome maior.',
         })
         return
-      } else if (!this.lastName) {
+      } /* else if (!this.lastName) {
         this.$refs.ref_lastName.focus()
         this.notf_erro_true()
         this.set_Erro({
@@ -300,6 +302,7 @@ export default {
         })
         return
       }
+      */
 
       // Verificação do E-mail
       const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
@@ -343,7 +346,35 @@ export default {
         return
       }
 
-      console.log('Cadastrado com sucesso!')
+      // Realiza o cadastro, se der certo ele funcionará senão dará um erro
+      await this.$axios
+        .$post('/api/user', {
+          name: this.userName,
+          email: this.email,
+          password: this.password,
+        })
+        .then(() => {
+          this.notf_sucess_true()
+          this.set_Sucess({
+            mensagemSucess: 'Você foi cadastrado com sucesso.',
+          })
+
+          // Limpa os campos do formulário
+          this.userName = ''
+          this.lastName = ''
+          this.dateOfBirth = ''
+          this.genre = ''
+          this.email = ''
+          this.password = ''
+          this.confirmPassword = ''
+        })
+        .catch(() => {
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro:
+              'Houve um erro ao se registrar, tente novamente mais tarde.',
+          })
+        })
     },
   },
   computed: {
