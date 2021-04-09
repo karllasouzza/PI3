@@ -504,11 +504,4 @@ section main form .link-for-help {
     opacity: 1;
   }
 }
-
-@media (max-width: 425px) {
-  section main form .eye {
-    top: 2.5em;
-    left: 18em;
-  }
-}
 </style>
