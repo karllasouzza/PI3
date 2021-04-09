@@ -44,7 +44,14 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true,
+  },
+
+  // Adicionado Atalho de api, futuramente quando tiver em produção esse url será substituido por um .env
+  proxy: {
+    '/api/': 'http://pi-api.test/',
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

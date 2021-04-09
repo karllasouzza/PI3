@@ -1,7 +1,7 @@
 export const state = () => ({
   /* Colors */
   // Branco
-  Color_fff: '#ffff',
+  Color_fff: '#ffffff',
 
   // azul claro com transparência
   Color_ffc: '#C0D9D9',

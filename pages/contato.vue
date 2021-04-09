@@ -1,600 +1,524 @@
 <template>
-  <div class="Container">
-    <div class="content1 first-content1">
-      <div class="first-column1">
-        <h2 class="title title-primary1">Formulário de Contato</h2>
-        <br />
-        <form class="form">
-          <label class="label-input" for="">
-            <input type="text" placeholder="Nome" required="required" />
-          </label>
-
-          <label class="label-input" for="">
-            <input type="email" placeholder="Email" required="required" />
-          </label>
-
-          <label class="label-input" for="">
-            <select class="select">
-              <option disabled="" selected="">Selecione uma categoria:</option>
-              <option value="opcao1">Opção1</option>
-              <option value="opcao2">Opção2</option>
-              <option value="opcao3">Opção3</option>
+  <main class="container">
+    <section>
+      <!-- formulario -->
+      <div class="form" :style="{ background: Color_fff + '80' }">
+        <!-- titulo  -->
+        <Title :color="Color_000" :text="titulo1" />
+        <form action="">
+          <div class="inputs">
+            <input
+              id="nome"
+              ref="ref_nome"
+              v-model="nome"
+              type="text"
+              :placeholder="place_nome"
+              @keypress.enter="Validacao()"
+            />
+            <input
+              id="email"
+              ref="ref_email"
+              v-model="email"
+              :placeholder="place_email"
+              type="email"
+              name=""
+              @keypress.enter="Validacao()"
+            />
+            <select id="select" ref="ref_opcoes" v-model="opcoes" name="">
+              <option
+                v-for="(options, index) in option"
+                :id="options.id"
+                :key="index"
+                :value="options.value"
+              >
+                {{ options.text }}
+              </option>
             </select>
-          </label>
-          <br />
-
+          </div>
           <textarea
-            class="field"
+            id="textarea"
+            ref="ref_mensagem"
+            v-model="mensagem"
+            :placeholder="place_mensage"
+            name=""
+            cols="30"
             rows="10"
-            cols="10"
-            maxlength="200"
-            placeholder="Mensagem"
+            @keypress.enter="Validacao()"
           ></textarea>
-
-          <button class="btn btn-second">Enviar</button>
         </form>
+        <button
+          :style="{ background: Color_238, color: Color_fff }"
+          @click="Validacao()"
+        >
+          {{ button }}
+        </button>
       </div>
-      <div class="second-column">
-        <h2 class="title title-second">Outras opções</h2>
-        <br />
 
-        <div class="flex-container">
-          <div class="flex-container">Telefone (11) 1111-1111</div>
-          <div class="flex-container">Facebook Meio Ambiente</div>
-          <div class="flex-container">Email: meioambiente@gmail.com</div>
-          <div class="flex-container">Telegram (12) 1212-1212</div>
+      <div class="outros" :style="{ background: Color_fff + '80' }">
+        <Title :text="titulo2" :color="Color_000" />
+        <div
+          v-for="(Outros, index) in outros"
+          :key="index"
+          :style="{ background: Color_fff }"
+          @click="copiarText(Outros.valor)"
+        >
+          <span :style="{ color: Color_000 }">{{ Outros.label }}</span>
+          <span :style="{ color: Color_000 }">{{ Outros.text }}</span>
+          <span>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <g>
+                  <path
+                    d="M12.1222 15.4361L12.1222 3.39508"
+                    :stroke="Color_000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M15.0382 12.5084L12.1222 15.4364L9.20621 12.5084"
+                    :stroke="Color_000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16.7549 8.12799H17.6879C19.7229 8.12799 21.3719 9.77699 21.3719 11.813V16.697C21.3719 18.727 19.7269 20.372 17.6969 20.372L6.55695 20.372C4.52195 20.372 2.87195 18.722 2.87195 16.687V11.802C2.87195 9.77299 4.51795 8.12799 6.54695 8.12799L7.48895 8.12799"
+                    :stroke="Color_000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+              </g>
+            </svg>
+          </span>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script>
-export default {}
+import { mapState, mapActions, mapMutations } from 'vuex'
+export default {
+  data() {
+    return {
+      // formulario
+      titulo1: 'Formulario de contato',
+      button: 'Enviar',
+      nome: '',
+      email: '',
+      opcoes: '',
+      mensagem: '',
+      place_nome: '*Nome',
+      place_email: '*Email',
+      place_mensage: '*Mensagem',
+      option: [
+        { value: '', text: '*Selecione uma categoria', id: 'option0' },
+        { value: '1', text: 'O site nao abre', id: 'option1' },
+        { value: '2', text: 'O site esta com bugs', id: 'option2' },
+        { value: '3', text: 'Enviar um feedback', id: 'option3' },
+      ],
+
+      // outros
+      titulo2: 'Outras opções',
+      outros: [
+        {
+          label: 'Telefone:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'Email:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        },
+      ],
+      copiar: '',
+    }
+  },
+  computed: {
+    ...mapState({
+      /* Colors */
+      //
+      Color_000: (state) => state.Colors.Color_000,
+
+      //
+      Color_976: (state) => state.Colors.Color_976,
+
+      //
+      Color_004: (state) => state.Colors.Color_004,
+
+      //
+      Color_007: (state) => state.Colors.Color_007,
+
+      //
+      Color_00f: (state) => state.Colors.Color_00f,
+
+      //
+      Color_238: (state) => state.Colors.Color_238,
+
+      //
+      Color_fdc: (state) => state.Colors.Color_fdc,
+
+      //
+      Color_ff5: (state) => state.Colors.Color_ff5,
+
+      //
+      Color_d63: (state) => state.Colors.Color_d63,
+
+      //
+      Color_fff: (state) => state.Colors.Color_fff,
+
+      //
+      Color_ffc: (state) => state.Colors.Color_ffc,
+
+      // notificaçao
+    }),
+  },
+  methods: {
+    ...mapActions({
+      set_Erro: 'Notificacoes/setErro',
+      set_Sucess: 'Notificacoes/setSucess',
+    }),
+    ...mapMutations({
+      notf_erro_true: 'Notificacoes/notf_erro_true',
+      notf_erro_false: 'Notificacoes/notf_erro_false',
+      notf_sucess_false: 'Notificacoes/notf_sucess_false',
+      notf_sucess_true: 'Notificacoes/notf_sucess_true',
+    }),
+    // parte que copia na area de transferencia do user
+    copiarText(valor) {
+      if (valor === 0) {
+        navigator.clipboard.writeText(this.outros[0].text)
+      } else if (valor === 1) {
+        navigator.clipboard.writeText(this.outros[1].text)
+      } else if (valor === 2) {
+        navigator.clipboard.writeText(this.outros[2].text)
+      } else {
+        navigator.clipboard.writeText(this.outros[3].text)
+      }
+    },
+    Validacao() {
+      if (!this.nome) {
+        this.$refs.ref_nome.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'O campo"nome" é obrigatorio.',
+        })
+        return false
+      } else if (!this.validname(this.nome)) {
+        this.$refs.ref_nome.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Utilize um "Nome"válido.',
+        })
+        return false
+      }
+      // acaso o email nao esteja preenchido
+      if (!this.email) {
+        this.$refs.ref_email.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'O campo "Email" é obrigatorio',
+        })
+        return false
+      }
+      // se o email estiver preenchido mas de modo errado
+      else if (!this.validEmail(this.email)) {
+        this.$refs.ref_email.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Utilize um "e-mail"válido.',
+        })
+        return false
+      }
+
+      if (!this.opcoes) {
+        this.$refs.ref_opcoes.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'O campo "Categoria" é obrigatorio',
+        })
+        return false
+      }
+      if (!this.mensagem) {
+        this.$refs.ref_mensagem.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'O campo "Mensagem" é obrigatorio',
+        })
+        return false
+      }
+      if (this.mensagem.length <= 30) {
+        this.$refs.ref_mensagem.focus()
+        this.notf_erro_true()
+        this.set_Erro({
+          mensagemErro: 'Por favor nos conte um pouco mais',
+        })
+        return false
+      }
+
+      // acaso tudo esteja correto :)
+      this.notf_sucess_true()
+      this.set_Sucess({
+        mensagemSucess: 'Mensagem enviada',
+      })
+      //  se tudo estiver certo ira enviar o usuario para a tela inicial
+      this.$router.push('/')
+    },
+    // nome > 3 sobrenome > 3
+    validname(nome) {
+      const na = /^([a-z]{3,}([\s-][a-z]{3,})+)$/gi
+      return na.test(nome)
+    },
+    // funçao contendo o regex para a validaçao do email
+    validEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
+    },
+  },
+}
 </script>
+
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Open Sans', sans-serif;
-}
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 180vh;
-  background-color: #ecf0f1;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+  grid-template-rows: 100vh;
+  background-image: url(../assets/img/Inicio/Fotos/4.jpg);
+  background-position: center;
+  background-size: auto;
 }
-
-.content {
-  background-color: #fff;
-  border-radius: 15px;
-  width: 960px;
-  height: 90%;
+section {
+  width: 70%;
+  height: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 1/2;
+  grid-column: 2/8;
+  margin: auto;
+}
+/* formulario de contato  */
+section .form {
+  width: 70%;
+  height: 100%;
+  padding: 19.094px 4%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  border-radius: 0 20px;
 }
-.content::before {
-  content: '';
-  position: absolute;
-  background-color: green;
-  width: 40%;
-  height: 100%;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  left: 0;
-}
-.field1 {
-  position: relative;
-  top: 40%;
-  left: 40%;
-}
-.field {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 2px solid rgb(233, 232, 232);
-  width: 99%;
-  height: 150px;
-}
-.title {
-  font-size: 28px;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-.title-primary {
-  color: #fff;
-}
-.title-second {
-  color: rgb(72, 112, 12);
-}
-.description {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 30px;
-}
-.description-primary {
-  color: #fff;
-}
-.description-second {
-  color: yellowgreen;
-}
-.btn {
-  border-radius: 15px;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 10px;
-  padding: 10px 50px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 150px;
-  align-self: center;
-  border: none;
-  margin-top: 1rem;
-}
-.btn-primary {
-  background-color: transparent;
-  border: 1px solid #fff;
-  transition: background-color 0.5s;
-}
-.btn-primary:hover {
-  background-color: #fff;
-  color: rgb(4, 71, 4);
-}
-.btn-second {
-  background-color: green;
-  border: 1px solid yellowgreen;
-  transition: background-color 0.5s;
-}
-.btn-second:hover {
-  background-color: #fff;
-  border: 1px solid yellowgreen;
-  color: green;
-}
-
-.flex-container {
-  display: flex;
-  border-radius: 20px 50px;
-}
-.first-content {
-  display: flex;
-}
-.first-content .second-column {
-  z-index: 11;
-}
-.first-column {
-  text-align: center;
-  width: 40%;
-  z-index: 10;
-}
-.second-column {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: 100%;
-  padding: 10px;
-}
-
-.form input {
+.form span {
+  width: 100%;
   height: 45px;
-  width: 100%;
-  border: none;
-  background-color: #ecf0f1;
-}
-
-.label-input {
-  background-color: #ecf0f1;
+  font-size: 30px;
+  font-weight: bold;
   display: flex;
   align-items: center;
-  margin: 8px;
+  justify-content: center;
 }
-
-/* second content*/
-
-.second-content {
-  position: absolute;
-  display: flex;
-}
-.second-content .first-column {
-  order: 2;
-  z-index: -1;
-}
-.second-content .second-column {
-  order: 1;
-  z-index: -1;
-}
-.password {
-  color: green;
-  font-size: 14px;
-  margin: 15px 0;
-  text-align: center;
-}
-.password::first-letter {
-  text-transform: capitalize;
-}
-.select {
-  padding: 8px;
-  color: gray;
-  background-color: #eeeeee;
-  border: 0px solid #dddddd;
-  cursor: pointer;
-  height: 40px;
-  width: 98%;
-}
-.date {
-  color: gray;
-}
-
-.sign-in-js .first-content .first-column {
-  z-index: -1;
-}
-
-.sign-in-js .second-content .second-column {
-  z-index: 11;
-}
-.sign-in-js .second-content .first-column {
-  z-index: 13;
-}
-
-.sign-in-js .content::before {
-  left: 60%;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  animation: slidein 1.3s;
-
-  z-index: 12;
-}
-
-.sign-up-js .content::before {
-  animation: slideout 1.3s;
-
-  z-index: 12;
-}
-
-.sign-up-js .second-content .first-column,
-.sign-up-js .second-content .second-column {
-  z-index: -1;
-}
-
-.sign-up-js .first-content .second-column {
-  z-index: 11;
-}
-
-.sign-up-js .first-content .first-column {
-  z-index: 13;
-}
-
-.sign-in-js .first-content .second-column {
-  z-index: -1;
-  position: relative;
-  animation: deslocamentoEsq 1.3s;
-}
-
-.sign-up-js .second-content .second-column {
-  position: relative;
-  z-index: -1;
-  animation: deslocamentoDir 1.3s;
-}
-
-/*Animação com Css */
-
-@keyframes deslocamentoEsq {
-  from {
-    left: 0;
-    opacity: 1;
-    z-index: 12;
-  }
-
-  25% {
-    left: -80px;
-    opacity: 0.5;
-  }
-
-  50% {
-    left: -100px;
-    opacity: 0.2;
-  }
-
-  to {
-    left: -110px;
-    opacity: 0;
-    z-index: -1;
-  }
-}
-
-@keyframes deslocamentoDir {
-  from {
-    left: 0;
-    z-index: 12;
-  }
-
-  25% {
-    left: 80px;
-  }
-
-  50% {
-    left: 100px;
-  }
-
-  to {
-    left: 110px;
-    z-index: -1;
-  }
-}
-
-@keyframes slidein {
-  from {
-    left: 0;
-    width: 40%;
-  }
-
-  25% {
-    left: 5%;
-    width: 50%;
-  }
-
-  50% {
-    left: 25%;
-    width: 60%;
-  }
-
-  75% {
-    left: 45%;
-    width: 50%;
-  }
-
-  to {
-    left: 60%;
-    width: 40%;
-  }
-}
-
-@keyframes slideout {
-  from {
-    left: 60%;
-    width: 40%;
-  }
-
-  25% {
-    left: 45%;
-    width: 50%;
-  }
-
-  50% {
-    left: 25%;
-    width: 60%;
-  }
-
-  75% {
-    left: 5%;
-    width: 50%;
-  }
-
-  to {
-    left: 0;
-    width: 40%;
-  }
-}
-
-/*Versão Mobile*/
-@media screen and (max-width: 1040px) {
-  .content {
-    width: 100%;
-    height: 100%;
-  }
-
-  .content::before {
-    width: 100%;
-    height: 40%;
-    top: 0;
-    border-radius: 0;
-  }
-  .first-content,
-  .second-content {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .first-column,
-  .second-column {
-    width: 100%;
-  }
-
-  .sign-in-js .content::before {
-    top: 60%;
-    left: 0;
-    border-radius: 0;
-  }
-
-  .form {
-    width: 90%;
-  }
-
-  /* Animação Mobile com Css*/
-
-  @keyframes deslocamentoEsq {
-    from {
-      top: 0;
-      opacity: 1;
-      z-index: 12;
-    }
-
-    25% {
-      top: -80px;
-      opacity: 0.5;
-    }
-
-    50% {
-      top: -100px;
-      opacity: 0.2;
-    }
-
-    to {
-      top: -110px;
-      opacity: 0;
-      z-index: -1;
-    }
-  }
-
-  @keyframes deslocamentoDir {
-    from {
-      top: 0;
-      z-index: 12;
-    }
-
-    25% {
-      top: 80px;
-    }
-
-    50% {
-      top: 100px;
-    }
-
-    to {
-      top: 110px;
-      z-index: -1;
-    }
-  }
-
-  @keyframes slidein {
-    from {
-      top: 0;
-      height: 40%;
-    }
-
-    25% {
-      top: 5%;
-      height: 50%;
-    }
-
-    50% {
-      top: 25%;
-      height: 60%;
-    }
-
-    75% {
-      top: 45%;
-      height: 50%;
-    }
-
-    to {
-      top: 60%;
-      height: 40%;
-    }
-  }
-
-  @keyframes slideout {
-    from {
-      top: 60%;
-      height: 40%;
-    }
-
-    25% {
-      top: 45%;
-      height: 50%;
-    }
-
-    50% {
-      top: 25%;
-      height: 60%;
-    }
-
-    75% {
-      top: 5%;
-      height: 50%;
-    }
-
-    to {
-      top: 0;
-      height: 40%;
-    }
-  }
-}
-
-@media screen and (max-width: 740px) {
-  .form {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .form {
-    width: 100%;
-  }
-}
-
-/* Css da página de formulario de contato*/
-.first-content1 {
-  display: flex;
-}
-.first-content1 .second-column1 {
-  z-index: 11;
-}
-.first-column1 {
-  text-align: center;
+form {
   width: 100%;
-  z-index: 10;
+  height: 58%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
-.Container {
+.inputs {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+textarea {
+  width: 40%;
+  height: 100%;
+  border-radius: 0 15px;
+  background: rgba(255, 255, 255, 0.726);
+  padding: 2%;
+}
+input {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 0 15px;
+  background: rgba(255, 255, 255, 0.726);
+  padding: 2%;
+}
+select {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 0 15px;
+  background: #fff;
+  padding: 2%;
+}
+button {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 0 15px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.226);
+  padding: 1%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Outros  */
+section > div.outros {
+  width: 28.5%;
+  height: 100%;
+  background: revert;
+  border-radius: 0 20px;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+section > div.outros > span {
+  width: 100%;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #ecf0f1;
-}
-
-.content1 {
-  background-color: #fff;
-  border-radius: 15px;
-  width: 960px;
-  height: 90%;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-.content::before1 {
-  content: '';
-  position: absolute;
-  background-color: #ffff;
-  width: 100%;
-  height: 100%;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  left: 0;
-}
-.title1 {
-  font-size: 28px;
+  font-size: 25px;
   font-weight: bold;
-  text-transform: capitalize;
 }
-.title-primary1 {
-  color: green;
-  text-align: center;
-}
-.flex-container {
+section > div.outros > div {
+  width: 100%;
+  height: 80px;
+  border-radius: 0 20px;
   display: flex;
   flex-direction: column;
-  background-color: #ffff;
-  border-radius: 5px;
+  justify-content: center;
+  padding: 7%;
+  cursor: pointer;
 }
-.flex-container > div {
-  background-color: #f1f1f1;
-  width: 300px;
-  margin: 5px;
-  text-align: center;
-  line-height: 90px;
-  font-size: 18px;
+section > div.outros > div:hover {
+  background: #238e23eb !important;
+}
+section > div.outros > div > span:first-child {
+  font-weight: bold;
+}
+section > div.outros > div > span:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+section > div.outros > div > span > svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 972px) {
+  section {
+    width: 100%;
+    height: 800px;
+    flex-direction: column;
+  }
+  section > div.outros {
+    width: 70%;
+    height: 100%;
+    border-radius: 0 20px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  section > div.outros > div {
+    margin: 2% 6%;
+  }
+  .container {
+    grid-template-rows: 200vh;
+  }
+}
+@media (max-width: 679px) {
+  .container {
+    grid-template-columns: 20px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 20px;
+  }
+  section .form {
+    width: 80%;
+  }
+  section > div.outros {
+    width: 80%;
+  }
+}
+@media (max-width: 575px) {
+  section .form {
+    width: 100%;
+  }
+  section > div.outros {
+    width: 100%;
+  }
+}
+@media (max-width: 425px) {
+  form {
+    flex-direction: column;
+  }
+  .inputs {
+    width: 100%;
+    height: 176px;
+  }
+  input {
+    height: 37px;
+  }
+  form {
+    height: 74%;
+  }
+  textarea {
+    height: 40%;
+    width: 100%;
+  }
+  section {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 3%;
+    height: 983px;
+    flex-direction: column;
+    padding: 3%;
+  }
+  .container {
+    grid-template-rows: 206vh;
+  }
+  .form span {
+    height: 30px;
+    font-size: 25px;
+  }
+}
+@media (max-width: 320px) {
+  .form span {
+    height: 37px;
+    font-size: 22px;
+  }
+  .container {
+    grid-template-rows: 206vh;
+    grid-template-columns: 10px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 10px;
+  }
 }
 </style>

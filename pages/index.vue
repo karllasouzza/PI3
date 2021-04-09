@@ -1,221 +1,102 @@
 <template>
-  <main
-    class="container"
-    :style="{
-      background: Color_ffc,
-    }"
-  >
+  <main :as="idioma_Site()">
     <!-- Baner -->
-    <div class="Baner">
+    <div class="baner">
       <div>
-        <BigTitle :color="Color_fff" :text="Baner_Title_1" />
-        <TitleBorder :color="Color_00f" :text="Baner_Destaque_1" />
+        <p>
+          <TitleBorder :text="baner_title1" :color="Color_fff" />
+          <TitleBorder :text="baner_title2" :color="Color_fff" />
+        </p>
+        <ButtonSmall
+          :text="baner_button"
+          :background="Color_238"
+          :color="Color_fff"
+          to="/banco-de-sementes"
+        />
       </div>
+    </div>
+
+    <!-- Sobre -->
+    <div class="sobre">
+      <div class="img" />
       <div>
-        <BigTitle :color="Color_fff" :text="Baner_Title_2" />
-        <TitleBorder :color="Color_00f" :text="Baner_Destaque_2" />
+        <TitleBorder :text="sobre_title1" :color="Color_000" />
+        <span>{{ sobre_texto }}</span>
+        <ButtonSmall
+          :text="sobre_button"
+          :background="Color_238"
+          :color="Color_fff"
+          to="/sobre"
+        />
       </div>
-
-      <span class="Text" :style="{ color: Color_fff }">
-        {{ Sobre_Text }}
-        <Nlink
-          :color="Color_ff5"
-          class="Ver_mais"
-          :text="text_More"
-          :link="More_link"
-          acess=""
-        />
-      </span>
     </div>
-    <!-- Parte remetente a pagina Sobre -->
-    <div class="Sobre_Img"></div>
-    <div class="Sobre">
-      <p class="Title" :style="{ color: Color_000 }">
-        {{ Sobre_Title }}
-        <TitleBorder :color="Color_238" :text="Sobre_Destaque" />
-      </p>
-      <span class="Text" :style="{ color: Color_000 }">
-        {{ Sobre_Text }}
-        <Nlink
-          class="Ver_mais"
-          :color="Color_ff5"
-          :text="text_More"
-          link="/sobre"
-          acess=""
-        />
-      </span>
-    </div>
-    <!-- Parte remetente a pagina Blog -->
 
-    <div class="Blog">
-      <p :style="{ color: Color_000 }" class="Title">
-        <span
-          >{{ Blog_Title }}
-          <TitleBorder :text="Blog_Destaque" :color="Color_238" />
-        </span>
-        <Nlink
-          :color="Color_ff5"
-          :style="{ background: Color_fff }"
-          class="Ver_mais"
-          :text="text_More"
-          link="/blog"
-          acess=""
-        />
-      </p>
-
-      <div class="Scroll">
-        <!-- cards -->
-        <Card
-          v-for="(post, index) in postUser"
-          :key="index"
-          :user-image="post.userImage"
-          :user-name="post.userName"
-          :post-time="post.time"
-          :card-text="post.cardText"
-          :cnt-cmt="post.cntCmt"
-          :cnt-fav="post.cntFav"
-          :cnt-love="post.cntLove"
-          :color="Color_000"
+    <!-- Blog -->
+    <div class="blog" :style="{ background: Color_238 }">
+      <div>
+        <TitleBorder :text="blog_title1" :color="Color_fff" />
+        <span :style="{ color: Color_fff }">{{ blog_texto }}</span>
+        <ButtonSmall
+          :text="blog_button"
           :background="Color_fff"
+          :color="Color_238"
+          to="/blog"
+          class="desktop"
         />
       </div>
-      <!-- Parte remetente a pagina Login -->
-    </div>
-    <div class="Login">
-      <div class="svg">
-        <svg
-          class="Login_svg"
-          viewBox="0 0 415 437"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
+      <ButtonSmall
+        class="mobile"
+        :text="blog_button"
+        :background="Color_fff"
+        :color="Color_238"
+        to="/blog"
+      />
+      <div>
+        <nuxt-link
+          v-for="(cards, index) in card"
+          :key="index"
+          :to="cards.link"
+          :style="{ background: Color_fff }"
+          class="card"
         >
-          <path
-            d="M147 76C147 42.863 173.863 16 207 16H256V68.1824C256 101.32 229.137 128.182 196 128.182H147V76Z"
-            class="folha"
-          />
-          <path
-            d="M159 60C159 26.8629 185.863 0 219 0H268V52C268 85.1371 241.137 112 208 112H159V60Z"
-            fill="url(#pattern0)"
-          />
-          <path
-            d="M0 230C0 196.863 26.8629 170 60 170H109V222.182C109 255.32 82.1371 282.182 49 282.182H0V230Z"
-            class="folha"
-          />
-          <path
-            d="M12 214C12 180.863 38.8629 154 72 154H121V206C121 239.137 94.1371 266 61 266H12V214Z"
-            fill="url(#pattern1)"
-          />
-          <path
-            d="M294 230C294 196.863 320.863 170 354 170H403V222.182C403 255.32 376.137 282.182 343 282.182H294V230Z"
-            class="folha"
-          />
-          <path
-            d="M306 214C306 180.863 332.863 154 366 154H415V206C415 239.137 388.137 266 355 266H306V214Z"
-            fill="url(#pattern2)"
-          />
-          <path
-            d="M147 230C147 196.863 173.863 170 207 170H256V222.182C256 255.32 229.137 282.182 196 282.182H147V230Z"
-            class="folha"
-          />
-          <path
-            d="M159 214C159 180.863 185.863 154 219 154H268V206C268 239.137 241.137 266 208 266H159V214Z"
-            fill="url(#pattern3)"
-          />
-          <path
-            d="M147 384C147 350.863 173.863 324 207 324H256V376.182C256 409.32 229.137 436.182 196 436.182H147V384Z"
-            class="folha"
-          />
-          <path
-            d="M159 368C159 334.863 185.863 308 219 308H268V360C268 393.137 241.137 420 208 420H159V368Z"
-            fill="url(#pattern4)"
-          />
-          <defs>
-            <pattern
-              id="pattern0"
-              patternContentUnits="objectBoundingBox"
-              width="1"
-              height="1"
-            >
-              <use
-                xlink:href="#image0"
-                transform="translate(0 -0.365079) scale(0.00277778)"
-              />
-            </pattern>
-            <pattern
-              id="pattern1"
-              patternContentUnits="objectBoundingBox"
-              width="1"
-              height="1"
-            >
-              <use
-                xlink:href="#image0"
-                transform="translate(0 -0.365079) scale(0.00277778)"
-              />
-            </pattern>
-            <pattern
-              id="pattern2"
-              patternContentUnits="objectBoundingBox"
-              width="1"
-              height="1"
-            >
-              <use
-                xlink:href="#image0"
-                transform="translate(0 -0.365079) scale(0.00277778)"
-              />
-            </pattern>
-            <pattern
-              id="pattern3"
-              patternContentUnits="objectBoundingBox"
-              width="1"
-              height="1"
-            >
-              <use
-                xlink:href="#image0"
-                transform="translate(0 -0.365079) scale(0.00277778)"
-              />
-            </pattern>
-            <pattern
-              id="pattern4"
-              patternContentUnits="objectBoundingBox"
-              width="1"
-              height="1"
-            >
-              <use
-                xlink:href="#image0"
-                transform="translate(0 -0.365079) scale(0.00277778)"
-              />
-            </pattern>
-            <image
-              id="image0"
-              width="360"
-              height="640"
-              href="https://github.com/karllasouzza.png"
-            />
-          </defs>
-        </svg>
-      </div>
-      <div class="Login_text">
-        <span class="text">
-          <TitleBorder
-            class="txt"
-            :color="Color_238"
-            :text="Login_Destaque_1"
-          />
-          e nos deixe mostrar que com pequenas atitudes você faz uma grande
-          diferencia na
-          <TitleBorder
-            class="txt"
-            :color="Color_238"
-            :text="Login_Destaque_2"
-          />
-        </span>
+          <!-- 
+            :style="{ 'background-image': 'url(' + cards.img + ')' }"
 
-        <span
-          class="btn_inicio"
-          :style="{ color: Color_fff, background: Color_238 }"
-          >Criar conta</span
-        >
+         -->
+          <div class="img"></div>
+          <div class="text">
+            <p><Title :text="cards.titulo" :color="Color_000" /></p>
+            <span :style="{ color: Color_000 }">{{ cards.resumo }}</span>
+          </div>
+        </nuxt-link>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div class="login">
+      <div>
+        <p>
+          <TitleBorder :text="login_title1" :color="Color_fff" />
+        </p>
+        <span :style="{ color: Color_fff }">
+          {{ login_texto }}
+        </span>
+        <div>
+          <ButtonSmall
+            :text="login_button"
+            :background="Color_fff"
+            :color="Color_238"
+            to="/user"
+            class="desktop"
+          />
+          <ButtonMiddle
+            :text="login_button2"
+            :background="Color_238"
+            :color="Color_fff"
+            to="/user"
+            class="desktop"
+          />
+        </div>
       </div>
     </div>
   </main>
@@ -227,84 +108,59 @@ export default {
   data() {
     return {
       // Baner
-      Baner_Title_1: 'Plante',
-      Baner_Title_2: ' Colha',
-      Baner_Destaque_1: 'Arvores',
-      Baner_Destaque_2: ' Humanidade',
+      baner_title1: '',
+      baner_title2: '',
+      baner_button: '',
 
       // Sobre
-      Sobre_Title: '"Como vemos o',
-      Sobre_Destaque: ' mundo"',
-      Sobre_Text:
-        ' Lorem ipsum dolor sit amet consectetur adipisicin Tempore officiis sapiente necessitatibus voluptas, vitae aspernatur dolorlaboriosam minus similique? Nemo temporibus praesentium mollitia,nesciunt repellat eos ab sunt exercitationem eligendi?',
+      sobre_title1: '',
+      sobre_texto: '',
+      sobre_button: '',
 
       // Blog
-      Blog_Title: 'Postagens em ',
-      Blog_Destaque: 'alta',
-      // Ver mais
-      text_More: 'Ver mais',
-      More_link: '/banco de sementes',
-
-      // Card
-      postUser: [
+      blog_title1: '',
+      blog_texto: '',
+      blog_button: '',
+      card: [
         {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText:
-            ' Tendo o príncipe necessidade de saber usar bem a natureza do animal, deve escolher a raposa e o leão, pois o leão não sabe se defender das armadilhas e a raposa não sabe se defender da força bruta dos lobos. Portanto é preciso ser raposa, para conhecer as armadilhas e leão, para aterrorizar os lobos.',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
         },
         {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText:
-            'Tente. Sei lá, tem sempre um pôr-do-sol esperando para ser visto, uma árvore, um pássaro, um rio, uma nuvem, pelo menos sorria. Procure sentir amor. Imagine. Invente. Sonhe. Voe.',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
         },
         {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText:
-            'Aqueles que têm um grande autocontrole ou que estão totalmente absortos no trabalho falam pouco. Palavra e ação juntas não andam bem. Repare na natureza: trabalha continuamente, mas em silêncio.',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
         },
         {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText: 'Ola mundo',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
-        },
-        {
-          userImage: '',
-          userName: 'Karlla souzza',
-          time: '1 Minuto atraz',
-          cardText:
-            'O mundo tornou-se perigoso, porque os homens aprenderam a dominar a natureza antes de se dominarem a si mesmos.',
-          cntLove: 1,
-          cntFav: 2,
-          cntCmt: 3,
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
         },
       ],
 
       // Login
-      Login_Destaque_1: 'Crie sua conta',
-      Login_Destaque_2: 'preservação ambiental.',
+      login_title1: '',
+      login_texto: '',
+      login_button: '',
+      login_button2: '',
     }
   },
   head: {
-    title: 'NomeDoSite | Inicio',
+    title: 'CWIA | Sobre',
     meta: [
       {
         hid: 'description',
@@ -315,351 +171,475 @@ export default {
   },
   computed: {
     ...mapState({
-      /* Colors */
-      //
-      Color_000: (state) => state.Colors.Color_000,
-
-      //
-      Color_976: (state) => state.Colors.Color_976,
-
-      //
-      Color_004: (state) => state.Colors.Color_004,
-
-      //
-      Color_007: (state) => state.Colors.Color_007,
-
-      //
-      Color_00f: (state) => state.Colors.Color_00f,
-
-      //
-      Color_238: (state) => state.Colors.Color_238,
-
-      //
-      Color_fdc: (state) => state.Colors.Color_fdc,
-
-      //
-      Color_ff5: (state) => state.Colors.Color_ff5,
-
-      //
-      Color_d63: (state) => state.Colors.Color_d63,
-
-      //
       Color_fff: (state) => state.Colors.Color_fff,
-
-      //
-      Color_ffc: (state) => state.Colors.Color_ffc,
+      Color_000: (state) => state.Colors.Color_000,
+      Color_238: (state) => state.Colors.Color_238,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  methods: {
+    idioma_Site() {
+      if (this.idioma === 'pt') {
+        // Baner
+        this.baner_title1 = 'Plante árvores'
+        this.baner_title2 = 'Colha humanidade'
+        this.baner_button = 'Explorar'
+
+        // Sobre
+        this.sobre_title1 = '"Como vemos o mundo"'
+        this.sobre_texto =
+          'As vesses o mundo pode parecer um lugar sombrio mas sempre lembre que as pessoas colhem oque plantam a menos que todos nós de o primeiro passo para um mundo mais verde'
+        this.sobre_button = 'Ver mais'
+
+        // Blog
+        this.blog_title1 = 'Nosso blog'
+        this.blog_texto =
+          'Com atualizações semanais ajudamos a vocês a estabelecerem raízes consistentes com os métodos de preservação ambiental'
+        this.blog_button = 'Ver mais'
+
+        // Login
+        this.login_title1 = 'Junte se a nós'
+        this.login_texto =
+          'Vamos mostrar que com pequenas atitudes você faz uma grande diferença na preservação ambiental'
+        this.login_button = 'Entrar'
+        this.login_button2 = 'Criar conta'
+      }
+
+      // ingles
+      else if (this.idioma === 'en') {
+        // Baner
+        this.baner_title1 = 'Plant trees'
+        this.baner_title2 = 'Harvest humanity'
+        this.baner_button = 'explore'
+
+        // Sobre
+        this.sobre_title1 = '"How we see the world"'
+        this.sobre_texto =
+          'The vesses the world may seem like a dark place but always remember that people harvest what they plant unless we all take the first step towards a greener world'
+        this.sobre_button = 'See more'
+
+        // Blog
+        this.blog_title1 = 'Our blog'
+        this.blog_texto =
+          'With weekly updates we help you establish roots consistent with environmental preservation methods'
+        this.blog_button = 'See more'
+
+        // Login
+        this.login_title1 = 'Join us'
+        this.login_texto =
+          'Let us show that with small attitudes you make a great difference in environmental preservation'
+        this.login_button = 'Enter'
+        this.login_button2 = 'Create account'
+      }
+
+      // espanhol
+      else {
+        // Baner
+        this.baner_title1 = 'Plantar árboles'
+        this.baner_title2 = 'Cosecha de la humanidad'
+        this.baner_button = 'Explorar'
+
+        // Sobre
+        this.sobre_title1 = '"Cómo vemos el mundo"'
+        this.sobre_texto =
+          'Las vísperas del mundo pueden parecer un lugar oscuro, pero siempre recuerden que la gente cosecha lo que plantan a menos que todos demos el primer paso hacia un mundo más verde'
+        this.sobre_button = 'Ver más'
+
+        // Blog
+        this.blog_title1 = 'Nuestro blog'
+        this.blog_texto =
+          'Con actualizaciones semanales le ayudamos a establecer raíces consistentes con los métodos de preservación ambiental'
+        this.blog_button = 'Ver más'
+
+        // Login
+        this.login_title1 = 'Únete a nosotros'
+        this.login_texto =
+          'Vamos a demostrar que con pequeñas actitudes se hace una gran diferencia en la preservación del medio ambiente'
+        this.login_button = 'Entrar'
+        this.login_button2 = 'Crear cuenta'
+      }
+    },
   },
 }
 </script>
 
 <style scoped>
-/* Configurações da pagina */
-.container {
+main {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
-  grid-template-rows: 100vh 380px 450px 80vh;
-}
-
-.Ver_mais {
-  text-decoration: none;
-}
-.Ver_mais,
-.nuxt-link-active {
-  text-decoration: none;
+  grid-template-columns: 40px 1fr 1fr 40px;
+  grid-template-rows: 50vh 50vh 450px 400px 100vh;
 }
 
 /* Baner */
-.Baner {
+.baner {
+  grid-row: 1/3;
+  grid-column: 1/5;
   width: 100%;
   height: 100%;
-  padding: 0 40px;
-  grid-row: 1/2;
-  grid-column: 1/9;
+  background-image: url(assets/img/Inicio/Fotos/1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 40% 30% 30%;
+}
+.baner div {
+  grid-row: 2;
+  grid-column: 1/5;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  background-image: url(../assets/img/Inicio/Fotos/1.png);
-  background-repeat: no-repeat;
+  justify-content: space-between;
+  padding: 0 40px;
 }
-.Baner > .Text {
-  width: 408.562px;
-  margin-top: 16px;
-}
-.Baner > div {
-  width: 50%;
+.baner > div > p {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.baner > div > p > span {
   font-size: 35px;
 }
-.Baner > div > p {
-  margin-right: 1%;
-}
 
-/*  Parte remetente a pagina Sobre  */
-.Sobre_Img {
-  width: 280px;
-  height: 380px;
-  grid-row: 1/3;
-  grid-column: 2/3;
-  background-image: url(../assets/img/Inicio/Fotos/2.jpg);
-  background-size: cover;
-  background-position-x: right;
-  border-radius: 0 20px 0 20px;
-  display: flex;
-  align-self: flex-end;
-  margin-bottom: 20%;
-  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.11);
-}
-.Sobre {
-  width: 100%;
-  height: 100%;
-  grid-row: 2/3;
-  grid-column: 2/8;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 3%;
-}
-.Sobre > p.Title {
-  width: 487.656px;
-  text-align: left;
-  margin-top: 3%;
-  margin-bottom: 2%;
-}
-.Sobre > span.Text {
-  width: 487.656px;
-  height: 50%;
-}
-
-/*  Parte remetente a pagina Blog  */
-.Blog {
+/* Sobre  */
+.sobre {
   grid-row: 3/4;
-  grid-column: 2/8;
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+}
+.sobre > .img {
+  width: 350px;
+  height: 350px;
+  grid-column: 1;
+  border-radius: 5px;
+  margin: auto;
+  background: #000000f8 url(assets/img/Inicio/Fotos/terra.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.sobre > div {
+  width: 100%;
+  height: 50%;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
 }
-.Blog > p.Title {
-  display: flex;
-  justify-content: space-between;
-}
-.Blog > p.Title > a {
-  font-size: 16px;
-  padding: 6px;
-  border-radius: 0 20px 0 20px;
+.sobre > div > span {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.11);
+  width: 78%;
+  text-align: center;
 }
-.Scroll {
+.sobre > div > span:first-child {
+  font-size: 30px;
+}
+
+/* Blog */
+.blog {
+  grid-row: 4/5;
+  grid-column: 1/5;
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 40px;
+}
+.blog > div > span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 78%;
+}
+.blog > div > span:first-child {
+  font-size: 30px;
+}
+.blog > div:first-child {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80%;
+}
+.blog > div:last-child {
+  grid-column: 3/4;
+  width: 320px;
+  height: 98%;
   min-width: 100%;
   min-height: 350px;
   overflow-x: Scroll;
   display: flex;
-  width: 400px;
+  align-items: center;
   margin: 1px auto;
 }
-.Scroll::-webkit-scrollbar {
+.blog > div:last-child::-webkit-scrollbar {
   width: 16px;
   background: transparent;
 }
-.Scroll::-webkit-scrollbar-thumb {
+.blog > div:last-child::-webkit-scrollbar-thumb {
   background: #004b23de;
   cursor: pointer;
-  border-radius: 0 8px 0 8px;
+  border-radius: 8px;
 }
-.Scroll > .card:first-child {
+.blog > div:last-child > .card:first-child {
   margin-left: 1px;
 }
-.Title {
-  font-size: 35px;
-  font-weight: bold;
+.blog > div > a > .img {
+  width: 100%;
+  height: 50%;
+  background-image: url(assets/img/Inicio/Fotos/1.jpg);
+  background-size: contain;
 }
-
-/*  Parte remetente a pagina Loguin  */
-.Login {
-  grid-row: 4/5;
-  grid-column: 2/8;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.Login_text {
-  width: 488px;
-  height: 266px;
+.blog > div > a.card {
+  min-width: 216px;
+  min-height: 333px;
+  height: 333px;
+  width: 216px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: auto;
+  justify-content: space-between;
+  padding: 1%;
+  text-decoration: none;
+  margin: 0 20px;
 }
-.btn_inicio {
+.blog > div > a.card > .text {
+  height: 45%;
   width: 100%;
-  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.blog > div > a.card > .text > p > span {
   font-size: 20px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  background: rgb(35, 142, 35);
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0 10px 0 10px;
 }
-.Login_text > span.text {
-  width: 100%;
-  font-size: 26px;
-}
-.Login_text > span.text .txt {
-  font-size: 28px;
-}
-.Login .svg {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.Login .Login_svg {
-  width: 300px;
-  height: 327px;
-}
-.folha {
-  animation: 5s ease-in infinite slidein;
+.blog > .mobile {
+  display: none;
 }
 
-@keyframes slidein {
-  0% {
-    fill: #61e719;
-  }
-  25% {
-    fill: #5b983e;
-  }
-  50% {
-    fill: #3f992f;
-  }
-  75% {
-    fill: #589b4d;
-  }
-  90% {
-    fill: #0b5c00;
-  }
-  100% {
-    fill: #61e719;
-  }
+/* Login */
+.login {
+  grid-row: 5/6;
+  grid-column: 1/5;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/img/Inicio/Fotos/people.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 40% 30% 30%;
 }
-@media (max-width: 967px) {
-  .Baner div {
-    font-size: 25px;
+.login > div {
+  grid-row: 2;
+  grid-column: 1/3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+.login > div > p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.login > div > p > span {
+  font-size: 35px;
+}
+.login > div > div {
+  width: 100%;
+  display: flex;
+}
+.login > div > div > a:last-child {
+  margin-left: 20px;
+}
+/* responsividade antecipada para prevençao de bugs/quebras indevidas */
+@media (max-width: 890px) {
+  main {
+    grid-template-columns: 20px 1fr 1fr 20px;
   }
-  .Title {
-    font-size: 25px;
-  }
-  .Sobre > span.Text {
-    width: 50%;
-    height: 50%;
-  }
-  .Sobre > p.Title {
-    width: 50%;
-    text-align: left;
-    margin-top: 3%;
-  }
-  .Login_text > span.text .txt[data-v-2a183b29] {
-    font-size: 25px;
-  }
-  .Login_text > span.text[data-v-2a183b29] {
-    width: 100%;
-    font-size: 25px;
-  }
-  .container {
-    grid-template-columns: 20px 1fr 1fr 1fr 1fr 1fr 1fr 20px;
-    grid-template-rows: 100vh 320px 360px 60vh;
-  }
-  .Sobre_Img {
-    margin-bottom: 45%;
-    width: 200px;
+
+  /* Sobre  */
+  .sobre > img {
+    width: 260px;
     height: 260px;
   }
+  .sobre > div > span:first-child {
+    font-size: 27px;
+  }
 }
+
+/* responsividade antecipada para prevençao de bugs/quebras indevidas */
 @media (max-width: 800px) {
-  .Login_text > span.text {
+  .sobre > .img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Responsividade - Tablet */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 20px 1fr 1fr 20px;
+    grid-template-rows: 50vh 50vh 100vh 400px 100vh;
+  }
+  /* Baner */
+  .baner {
+    background-image: url(assets/img/Inicio/Fotos/1-tablet.jpg);
+  }
+  .baner > div > p > span {
+    font-size: 30px;
+  }
+  /* Sobre */
+  .sobre {
+    grid-template-rows: 50vh 50vh;
+  }
+  .sobre > .img {
     width: 100%;
-    font-size: 20px;
-  }
-}
-@media (max-width: 856px) {
-  .Login .Login_svg {
-    width: 280px;
-    height: 307px;
-  }
-  .Login_text {
-    width: 50%;
-  }
-  .btn_inicio {
-    height: 42px;
-  }
-}
-@media (max-width: 664px) {
-  .Login .svg {
-    display: none;
-  }
-  .Login_text {
-    width: 86%;
-    height: 50%;
-    justify-content: space-around;
+    height: 230px;
+    grid-row: 1;
+    grid-column: 1/3;
     margin: 0;
+    margin-top: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-  .Login {
-    align-items: center;
-    justify-content: center;
-  }
-  .container {
-    grid-template-rows: 100vh 320px 407px 60vh;
-  }
-  .Baner {
-    padding: 0 20px;
-  }
-  .Sobre_Img {
-    display: none;
-  }
-  .Sobre {
-    grid-column: 1/9;
-    padding: 0 20px;
-    align-items: center;
-    justify-content: center;
-  }
-  .Sobre > span.Text {
+  .sobre > div {
     width: 100%;
+    height: 85%;
+    grid-row: 2;
+    grid-column: 1/3;
   }
-  .Sobre > p.Title {
-    width: 100%;
+
+  /* Blog */
+  .blog > div:first-child {
+    height: 100%;
+  }
+
+  /* login */
+  .login {
+    background-image: url(assets/img/Inicio/Fotos/people-tablet.png);
+  }
+  .login > div {
+    grid-column: 1/4;
+  }
+  .login > div > p > span {
+    font-size: 30px;
   }
 }
-@media (max-width: 425px) {
-  .Baner > .Text {
-    width: 100%;
+
+/* responsividade antecipada para prevençao de bugs/quebras indevidas */
+@media (max-width: 692px) {
+  main {
+    grid-template-rows: 50vh 50vh 100vh 130vh 100vh;
   }
-  .Login_text {
-    width: 86%;
+
+  /* Blog */
+  .blog {
+    grid-template-rows: 35% 55% 10%;
+  }
+  .blog > div:first-child {
+    grid-column: 2/4;
     height: 80%;
-    justify-content: space-around;
-    margin: 0;
+  }
+  .blog > div:last-child {
+    grid-column: 2/4;
+    grid-row: 2/3;
+  }
+  .blog > .mobile {
+    display: flex;
+    grid-row: 3;
+    grid-column: 2;
+  }
+  .blog > div:first-child > a.desktop {
+    display: none;
+  }
+  .blog > div:last-child::-webkit-scrollbar {
+    width: 0px;
+  }
+  .blog > div:last-child::-webkit-scrollbar-thumb {
+    width: 0px;
+    background: none;
   }
 }
-@media (max-width: 375px) {
-  .container {
-    grid-template-columns: 5px 1fr 1fr 1fr 1fr 1fr 1fr 5px;
+
+/* responsividade antecipada para prevençao de bugs/quebras indevidas */
+@media (max-width: 466px) {
+  .sobre > div > span:first-child {
+    font-size: 24px;
   }
-  .Baner {
-    padding: 0 5px;
+
+  /* login  */
+  .login > div {
+    grid-column: 1/5;
+    padding: 40px;
+    grid-row: 1/3;
+  }
+}
+
+/* Responsibilidade - Mobile */
+@media (max-width: 425px) {
+  main {
+    grid-template-rows: 50vh 50vh 100vh 140vh 100vh;
+  }
+  /* Baner */
+  .baner {
+    background-image: url(assets/img/Inicio/Fotos/1-mobile.jpg);
+  }
+  .baner > div > p > span,
+  .blog > div:first-child > span:first-child {
+    font-size: 28px;
+  }
+  .baner {
+    grid-template-rows: 45% 30% 25%;
+  }
+  .baner > div {
+    padding: 0 30px;
+    justify-content: space-around;
+  }
+  /* Sobre */
+  .sobre > div > span {
+    width: 100%;
+  }
+  /* Blog */
+  .blog {
+    grid-template-columns: 20px 1fr 1fr 20px;
+  }
+  .blog > div:last-child {
+    width: 280px;
+  }
+  .blog > div > a.card > .text > p > span {
+    font-size: 18px;
+  }
+
+  /* login */
+  .login {
+    background-image: url(assets/img/Inicio/Fotos/people-mobile.png);
+  }
+}
+
+/* responsividade antecipada para prevençao de bugs/quebras indevidas */
+@media (max-width: 325px) {
+  main {
+    grid-template-columns: 10px 1fr 1fr 10px;
+    grid-template-rows: 50vh 50vh 100vh 140vh 100vh;
+  }
+  .blog > div:first-child > span:first-child {
+    font-size: 24px;
+  }
+  .blog > div:first-child {
+    grid-column: 2/4;
+    height: 100%;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 export const state = () => ({
   Criadores: '@Karlla,@Ana,@Matheus,@Debora',
-  Nome_do_site: 'Nome do site',
+  Nome_do_site: 'CWIA',
   Acessibilidade: [
     { text: 'Atalhos de acessibilidade', url: '' },
     { text: 'Mapa do site', url: '' },
