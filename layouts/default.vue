@@ -67,7 +67,7 @@ export default {
 </script>
 <style>
 html {
-  font-family: sans-serif, Arial, Helvetica;
+  font-family: 'Calibri', Helvetica, Arial;
   font-size: 16px;
   word-spacing: 1px;
   -moz-text-size-adjust: 100%;

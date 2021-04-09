@@ -51,13 +51,20 @@
             />
           </svg>
         </li>
+        <li>
+          <select v-model="language" name="" @change="idioma_Site()">
+            <option value="1">PT</option>
+            <option value="2">EN</option>
+            <option value="3">ES</option>
+          </select>
+        </li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   data: () => ({
     Botoes: [
@@ -72,14 +79,32 @@ export default {
       { conteudo: 'Contato', Link: '/contato', key: '5' },
       { conteudo: 'Criar conta', Link: '/user', key: '6' },
     ],
-    Logo: [{ conteudo: 'Nome do site', Link: '/', key: '1' }],
+    Logo: [{ conteudo: 'CWIA', Link: '/', key: '1' }],
+    language: 1,
   }),
   computed: {
     ...mapState({
       Color_004: (state) => state.Colors.Color_004,
       Color_fff: (state) => state.Colors.Color_fff,
       Color_00f: (state) => state.Colors.Color_00f,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  methods: {
+    ...mapMutations({
+      pt: 'Acessibilidade/pt',
+      en: 'Acessibilidade/en',
+      es: 'Acessibilidade/es',
+    }),
+    idioma_Site() {
+      if (this.language === '1') {
+        this.pt()
+      } else if (this.language === '2') {
+        this.en()
+      } else {
+        this.es()
+      }
+    },
   },
 }
 </script>

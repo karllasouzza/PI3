@@ -251,7 +251,7 @@ export default {
         this.$refs.ref_userName.focus()
         this.notf_erro_true()
         this.set_Erro({
-          mensagemErro: 'Nome está pequeno demais, utilize um nome maior.',
+          mensagemErro: 'Formato de nome invalido.',
         })
         return
       } /* else if (!this.lastName) {
@@ -317,7 +317,7 @@ export default {
         this.$refs.ref_email.focus()
         this.notf_erro_true()
         this.set_Erro({
-          mensagemErro: 'E-mail inválido.',
+          mensagemErro: 'Formato de E-mail inválido.',
         })
         return
       }
@@ -327,21 +327,21 @@ export default {
         this.$refs.ref_password.focus()
         this.notf_erro_true()
         this.set_Erro({
-          mensagemErro: 'Necessário haver uma senha.',
+          mensagemErro: 'Senha obrigatoria.',
         })
         return
       } else if (this.password.length <= 7) {
         this.$refs.ref_password.focus()
         this.notf_erro_true()
         this.set_Erro({
-          mensagemErro: 'A senha precisa ser maior que 7(sete) caracteres.',
+          mensagemErro: 'Senha de 7(sete) caracteres obrigatoria.',
         })
         return
       } else if (this.password !== this.confirmPassword) {
         this.$refs.ref_confirmPassword.focus()
         this.notf_erro_true()
         this.set_Erro({
-          mensagemErro: 'Necessário que o confirmar senha seja igual a senha.',
+          mensagemErro: 'Obrigatorio senhas iguais.',
         })
         return
       }
@@ -356,7 +356,7 @@ export default {
         .then(() => {
           this.notf_sucess_true()
           this.set_Sucess({
-            mensagemSucess: 'Você foi cadastrado com sucesso.',
+            mensagemSucess: 'Cadrastro realizado.',
           })
 
           // Limpa os campos do formulário

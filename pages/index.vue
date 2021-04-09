@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :as="idioma_Site()">
     <!-- Baner -->
     <div class="baner">
       <div>
@@ -11,7 +11,7 @@
           :text="baner_button"
           :background="Color_238"
           :color="Color_fff"
-          to="/"
+          to="/banco-de-sementes"
         />
       </div>
     </div>
@@ -26,8 +26,77 @@
           :text="sobre_button"
           :background="Color_238"
           :color="Color_fff"
-          to="/"
+          to="/sobre"
         />
+      </div>
+    </div>
+
+    <!-- Blog -->
+    <div class="blog" :style="{ background: Color_238 }">
+      <div>
+        <TitleBorder :text="blog_title1" :color="Color_fff" />
+        <span :style="{ color: Color_fff }">{{ blog_texto }}</span>
+        <ButtonSmall
+          :text="blog_button"
+          :background="Color_fff"
+          :color="Color_238"
+          to="/blog"
+          class="desktop"
+        />
+      </div>
+      <ButtonSmall
+        class="mobile"
+        :text="blog_button"
+        :background="Color_fff"
+        :color="Color_238"
+        to="/blog"
+      />
+      <div>
+        <nuxt-link
+          v-for="(cards, index) in card"
+          :key="index"
+          :to="cards.link"
+          :style="{ background: Color_fff }"
+          class="card"
+        >
+          <!-- 
+            :style="{ 'background-image': 'url(' + cards.img + ')' }"
+
+         -->
+          <div class="img"></div>
+          <div class="text">
+            <p><Title :text="cards.titulo" :color="Color_000" /></p>
+            <span :style="{ color: Color_000 }">{{ cards.resumo }}</span>
+          </div>
+        </nuxt-link>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div class="login">
+      <div>
+        <p>
+          <TitleBorder :text="login_title1" :color="Color_fff" />
+        </p>
+        <span :style="{ color: Color_fff }">
+          {{ login_texto }}
+        </span>
+        <div>
+          <ButtonSmall
+            :text="login_button"
+            :background="Color_fff"
+            :color="Color_238"
+            to="/user"
+            class="desktop"
+          />
+          <ButtonMiddle
+            :text="login_button2"
+            :background="Color_238"
+            :color="Color_fff"
+            to="/user"
+            class="desktop"
+          />
+        </div>
       </div>
     </div>
   </main>
@@ -39,23 +108,157 @@ export default {
   data() {
     return {
       // Baner
-      baner_title1: 'Plante arvores',
-      baner_title2: 'Colha humanidade',
-      baner_button: 'Explorar',
+      baner_title1: '',
+      baner_title2: '',
+      baner_button: '',
 
       // Sobre
-      sobre_title1: '"Como vemos o mundo"',
-      sobre_texto:
-        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis iure et labore magni culpa asperiores temporibus rerum aspernatur, fuga corrupti nobis ullam! Nam!',
-      sobre_button: 'Ver mais',
+      sobre_title1: '',
+      sobre_texto: '',
+      sobre_button: '',
+
+      // Blog
+      blog_title1: '',
+      blog_texto: '',
+      blog_button: '',
+      card: [
+        {
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
+        },
+        {
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
+        },
+        {
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
+        },
+        {
+          img: '',
+          titulo: 'Lorem ipsum dolor',
+          resumo:
+            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
+          link: '',
+        },
+      ],
+
+      // Login
+      login_title1: '',
+      login_texto: '',
+      login_button: '',
+      login_button2: '',
     }
+  },
+  head: {
+    title: 'CWIA | Sobre',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: '', // palavras utilizadas (SEO) "melhores remedios" , "soluçao adequada".
+      },
+    ],
   },
   computed: {
     ...mapState({
       Color_fff: (state) => state.Colors.Color_fff,
       Color_000: (state) => state.Colors.Color_000,
       Color_238: (state) => state.Colors.Color_238,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  methods: {
+    idioma_Site() {
+      if (this.idioma === 'pt') {
+        // Baner
+        this.baner_title1 = 'Plante árvores'
+        this.baner_title2 = 'Colha humanidade'
+        this.baner_button = 'Explorar'
+
+        // Sobre
+        this.sobre_title1 = '"Como vemos o mundo"'
+        this.sobre_texto =
+          'As vesses o mundo pode parecer um lugar sombrio mas sempre lembre que as pessoas colhem oque plantam a menos que todos nós de o primeiro passo para um mundo mais verde'
+        this.sobre_button = 'Ver mais'
+
+        // Blog
+        this.blog_title1 = 'Nosso blog'
+        this.blog_texto =
+          'Com atualizações semanais ajudamos a vocês a estabelecerem raízes consistentes com os métodos de preservação ambiental'
+        this.blog_button = 'Ver mais'
+
+        // Login
+        this.login_title1 = 'Junte se a nós'
+        this.login_texto =
+          'Vamos mostrar que com pequenas atitudes você faz uma grande diferença na preservação ambiental'
+        this.login_button = 'Entrar'
+        this.login_button2 = 'Criar conta'
+      }
+
+      // ingles
+      else if (this.idioma === 'en') {
+        // Baner
+        this.baner_title1 = 'Plant trees'
+        this.baner_title2 = 'Harvest humanity'
+        this.baner_button = 'explore'
+
+        // Sobre
+        this.sobre_title1 = '"How we see the world"'
+        this.sobre_texto =
+          'The vesses the world may seem like a dark place but always remember that people harvest what they plant unless we all take the first step towards a greener world'
+        this.sobre_button = 'See more'
+
+        // Blog
+        this.blog_title1 = 'Our blog'
+        this.blog_texto =
+          'With weekly updates we help you establish roots consistent with environmental preservation methods'
+        this.blog_button = 'See more'
+
+        // Login
+        this.login_title1 = 'Join us'
+        this.login_texto =
+          'Let us show that with small attitudes you make a great difference in environmental preservation'
+        this.login_button = 'Enter'
+        this.login_button2 = 'Create account'
+      }
+
+      // espanhol
+      else {
+        // Baner
+        this.baner_title1 = 'Plantar árboles'
+        this.baner_title2 = 'Cosecha de la humanidad'
+        this.baner_button = 'Explorar'
+
+        // Sobre
+        this.sobre_title1 = '"Cómo vemos el mundo"'
+        this.sobre_texto =
+          'Las vísperas del mundo pueden parecer un lugar oscuro, pero siempre recuerden que la gente cosecha lo que plantan a menos que todos demos el primer paso hacia un mundo más verde'
+        this.sobre_button = 'Ver más'
+
+        // Blog
+        this.blog_title1 = 'Nuestro blog'
+        this.blog_texto =
+          'Con actualizaciones semanales le ayudamos a establecer raíces consistentes con los métodos de preservación ambiental'
+        this.blog_button = 'Ver más'
+
+        // Login
+        this.login_title1 = 'Únete a nosotros'
+        this.login_texto =
+          'Vamos a demostrar que con pequeñas actitudes se hace una gran diferencia en la preservación del medio ambiente'
+        this.login_button = 'Entrar'
+        this.login_button2 = 'Crear cuenta'
+      }
+    },
   },
 }
 </script>
@@ -66,7 +269,7 @@ main {
   height: 100%;
   display: grid;
   grid-template-columns: 40px 1fr 1fr 40px;
-  grid-template-rows: 50vh 50vh 450px 50vh 100vh;
+  grid-template-rows: 50vh 50vh 450px 400px 100vh;
 }
 
 /* Baner */
@@ -141,6 +344,124 @@ main {
   font-size: 30px;
 }
 
+/* Blog */
+.blog {
+  grid-row: 4/5;
+  grid-column: 1/5;
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 40px;
+}
+.blog > div > span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 78%;
+}
+.blog > div > span:first-child {
+  font-size: 30px;
+}
+.blog > div:first-child {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80%;
+}
+.blog > div:last-child {
+  grid-column: 3/4;
+  width: 320px;
+  height: 98%;
+  min-width: 100%;
+  min-height: 350px;
+  overflow-x: Scroll;
+  display: flex;
+  align-items: center;
+  margin: 1px auto;
+}
+.blog > div:last-child::-webkit-scrollbar {
+  width: 16px;
+  background: transparent;
+}
+.blog > div:last-child::-webkit-scrollbar-thumb {
+  background: #004b23de;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.blog > div:last-child > .card:first-child {
+  margin-left: 1px;
+}
+.blog > div > a > .img {
+  width: 100%;
+  height: 50%;
+  background-image: url(assets/img/Inicio/Fotos/1.jpg);
+  background-size: contain;
+}
+.blog > div > a.card {
+  min-width: 216px;
+  min-height: 333px;
+  height: 333px;
+  width: 216px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1%;
+  text-decoration: none;
+  margin: 0 20px;
+}
+.blog > div > a.card > .text {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.blog > div > a.card > .text > p > span {
+  font-size: 20px;
+}
+.blog > .mobile {
+  display: none;
+}
+
+/* Login */
+.login {
+  grid-row: 5/6;
+  grid-column: 1/5;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/img/Inicio/Fotos/people.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 40% 30% 30%;
+}
+.login > div {
+  grid-row: 2;
+  grid-column: 1/3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+.login > div > p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.login > div > p > span {
+  font-size: 35px;
+}
+.login > div > div {
+  width: 100%;
+  display: flex;
+}
+.login > div > div > a:last-child {
+  margin-left: 20px;
+}
 /* responsividade antecipada para prevençao de bugs/quebras indevidas */
 @media (max-width: 890px) {
   main {
@@ -164,11 +485,12 @@ main {
     height: 300px;
   }
 }
+
 /* Responsividade - Tablet */
 @media (max-width: 768px) {
   main {
     grid-template-columns: 20px 1fr 1fr 20px;
-    grid-template-rows: 50vh 50vh 100vh 50vh 100vh;
+    grid-template-rows: 50vh 50vh 100vh 400px 100vh;
   }
   /* Baner */
   .baner {
@@ -198,6 +520,57 @@ main {
     grid-row: 2;
     grid-column: 1/3;
   }
+
+  /* Blog */
+  .blog > div:first-child {
+    height: 100%;
+  }
+
+  /* login */
+  .login {
+    background-image: url(assets/img/Inicio/Fotos/people-tablet.png);
+  }
+  .login > div {
+    grid-column: 1/4;
+  }
+  .login > div > p > span {
+    font-size: 30px;
+  }
+}
+
+/* responsividade antecipada para prevençao de bugs/quebras indevidas */
+@media (max-width: 692px) {
+  main {
+    grid-template-rows: 50vh 50vh 100vh 130vh 100vh;
+  }
+
+  /* Blog */
+  .blog {
+    grid-template-rows: 35% 55% 10%;
+  }
+  .blog > div:first-child {
+    grid-column: 2/4;
+    height: 80%;
+  }
+  .blog > div:last-child {
+    grid-column: 2/4;
+    grid-row: 2/3;
+  }
+  .blog > .mobile {
+    display: flex;
+    grid-row: 3;
+    grid-column: 2;
+  }
+  .blog > div:first-child > a.desktop {
+    display: none;
+  }
+  .blog > div:last-child::-webkit-scrollbar {
+    width: 0px;
+  }
+  .blog > div:last-child::-webkit-scrollbar-thumb {
+    width: 0px;
+    background: none;
+  }
 }
 
 /* responsividade antecipada para prevençao de bugs/quebras indevidas */
@@ -205,15 +578,26 @@ main {
   .sobre > div > span:first-child {
     font-size: 24px;
   }
+
+  /* login  */
+  .login > div {
+    grid-column: 1/5;
+    padding: 40px;
+    grid-row: 1/3;
+  }
 }
 
 /* Responsibilidade - Mobile */
 @media (max-width: 425px) {
+  main {
+    grid-template-rows: 50vh 50vh 100vh 140vh 100vh;
+  }
   /* Baner */
   .baner {
     background-image: url(assets/img/Inicio/Fotos/1-mobile.jpg);
   }
-  .baner > div > p > span {
+  .baner > div > p > span,
+  .blog > div:first-child > span:first-child {
     font-size: 28px;
   }
   .baner {
@@ -227,12 +611,35 @@ main {
   .sobre > div > span {
     width: 100%;
   }
+  /* Blog */
+  .blog {
+    grid-template-columns: 20px 1fr 1fr 20px;
+  }
+  .blog > div:last-child {
+    width: 280px;
+  }
+  .blog > div > a.card > .text > p > span {
+    font-size: 18px;
+  }
+
+  /* login */
+  .login {
+    background-image: url(assets/img/Inicio/Fotos/people-mobile.png);
+  }
 }
 
 /* responsividade antecipada para prevençao de bugs/quebras indevidas */
 @media (max-width: 325px) {
   main {
     grid-template-columns: 10px 1fr 1fr 10px;
+    grid-template-rows: 50vh 50vh 100vh 140vh 100vh;
+  }
+  .blog > div:first-child > span:first-child {
+    font-size: 24px;
+  }
+  .blog > div:first-child {
+    grid-column: 2/4;
+    height: 100%;
   }
 }
 </style>

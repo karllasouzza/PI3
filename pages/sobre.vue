@@ -225,7 +225,7 @@ export default {
     }
   },
   head: {
-    title: 'NomeDoSite | Sobre',
+    title: 'CWIA | Sobre',
     meta: [
       {
         hid: 'description',
