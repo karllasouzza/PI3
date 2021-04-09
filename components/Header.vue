@@ -117,7 +117,6 @@ header {
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 100%;
-  opacity: 90%;
   position: fixed;
   top: 0%;
   left: 0;
