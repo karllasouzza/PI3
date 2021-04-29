@@ -47,12 +47,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import Title from './Title'
 
 export default {
-  components: {
-    Title,
-  },
   data() {
     return {}
   },
@@ -84,7 +80,6 @@ footer {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-auto-rows: 9em 2.3em;
 }
-
 /* Classe do Título */
 .title {
   grid-row: 1/2;
