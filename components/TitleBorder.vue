@@ -22,8 +22,6 @@ export default {
 span {
   color: transparent;
   font-weight: bold;
-  -webkit-text-stroke-width: 1px; /* largura da borda */
-  /* -webkit-text-stroke-color: #fff; cor da borda */
 }
 @media (max-width: 967px) {
   span {

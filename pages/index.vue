@@ -95,9 +95,12 @@
             :color="Color_fff"
             to="/user"
             class="desktop"
+            @mouseenter.native="login_button_hover2 = true"
+            @mouseleave.native="login_button_hover2 = false"
           />
         </div>
       </div>
+      <FooterDetalhe />
     </div>
   </main>
 </template>
@@ -111,16 +114,19 @@ export default {
       baner_title1: '',
       baner_title2: '',
       baner_button: '',
+      baner_button_hover: false,
 
       // Sobre
       sobre_title1: '',
       sobre_texto: '',
       sobre_button: '',
+      sobre_button_hover: false,
 
       // Blog
       blog_title1: '',
       blog_texto: '',
       blog_button: '',
+      blog_button_hover: false,
       card: [
         {
           img: '',
@@ -157,6 +163,8 @@ export default {
       login_texto: '',
       login_button: '',
       login_button2: '',
+      login_button_hover: false,
+      login_button_hover2: false,
     }
   },
   head: {
@@ -165,7 +173,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '', // palavras utilizadas (SEO) "melhores remedios" , "soluçao adequada".
+        content: '', // palavras utilizadas (SEO) EX: "melhores remedios" , "soluçao adequada".
       },
     ],
   },
@@ -270,6 +278,11 @@ main {
   display: grid;
   grid-template-columns: 40px 1fr 1fr 40px;
   grid-template-rows: 50vh 50vh 450px 400px 100vh;
+}
+.Detalhe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 /* Baner */
@@ -434,6 +447,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 40% 30% 30%;
+  position: relative;
 }
 .login > div {
   grid-row: 2;
