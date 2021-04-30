@@ -279,6 +279,11 @@ main {
   grid-template-columns: 40px 1fr 1fr 40px;
   grid-template-rows: 50vh 50vh 450px 400px 100vh;
 }
+.Detalhe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 
 /* Baner */
 .baner {

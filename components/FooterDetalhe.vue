@@ -33,8 +33,5 @@ export default {
 <style scoped>
 .Detalhe {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
 }
 </style>
