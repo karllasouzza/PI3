@@ -1,4 +1,7 @@
 export const state = () => ({
+  // Dark Mode
+  Dark_mode: false,
+
   /* Colors */
   // Branco
   Color_fff: '#ffffff',
@@ -31,7 +34,7 @@ export const state = () => ({
   Color_976: '#0A3C02',
 
   // Preto
-  Color_000: '#000',
+  Color_000: '#000000',
 })
 
 // // mutations

@@ -16,6 +16,7 @@
         @click="fecharSucess()"
       />
     </transition>
+    <Configuracao />
     <ButtonMenu />
     <Header />
     <Nuxt />

@@ -140,7 +140,7 @@ export default {
       { conteudo: 'Blog', Link: '/blog', key: '2' },
       {
         conteudo: 'Banco de sementes',
-        Link: '/banco de sementes',
+        Link: '/banco-de-sementes',
         key: '3',
       },
       { conteudo: 'Sobre', Link: '/sobre', key: '4' },

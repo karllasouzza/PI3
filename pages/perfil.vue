@@ -64,6 +64,8 @@
           :preco="Card.preco"
           :preco-for="Card.precoFor"
           :comprar-color="Color_976"
+          :background="Color_fff"
+          :color="Color_000"
         />
       </div>
     </div>

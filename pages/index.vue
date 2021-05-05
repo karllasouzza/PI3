@@ -1,31 +1,31 @@
 <template>
-  <main :as="idioma_Site()">
+  <main :as="idioma_Site()" :style="{ background: Color_fff }">
     <!-- Baner -->
     <div class="baner">
       <div>
         <p>
-          <TitleBorder :text="baner_title1" :color="Color_fff" />
-          <TitleBorder :text="baner_title2" :color="Color_fff" />
+          <TitleBorder :text="baner_title1" color="#fff" />
+          <TitleBorder :text="baner_title2" color="#fff" />
         </p>
         <ButtonSmall
           :text="baner_button"
           :background="Color_238"
-          :color="Color_fff"
+          color="#fff"
           to="/banco-de-sementes"
         />
       </div>
     </div>
 
     <!-- Sobre -->
-    <div class="sobre">
+    <div class="sobre" :style="{ background: Color_fff }">
       <div class="img" />
       <div>
         <TitleBorder :text="sobre_title1" :color="Color_000" />
-        <span>{{ sobre_texto }}</span>
+        <span :style="{ color: Color_000 }">{{ sobre_texto }}</span>
         <ButtonSmall
           :text="sobre_button"
           :background="Color_238"
-          :color="Color_fff"
+          color="#fff"
           to="/sobre"
         />
       </div>
@@ -38,7 +38,7 @@
         <span :style="{ color: Color_fff }">{{ blog_texto }}</span>
         <ButtonSmall
           :text="blog_button"
-          :background="Color_fff"
+          background="#fff"
           :color="Color_238"
           to="/blog"
           class="desktop"
@@ -47,7 +47,7 @@
       <ButtonSmall
         class="mobile"
         :text="blog_button"
-        :background="Color_fff"
+        background="#fff"
         :color="Color_238"
         to="/blog"
       />
@@ -76,15 +76,15 @@
     <div class="login">
       <div>
         <p>
-          <TitleBorder :text="login_title1" :color="Color_fff" />
+          <TitleBorder :text="login_title1" color="#fff" />
         </p>
-        <span :style="{ color: Color_fff }">
+        <span style="color: #fff">
           {{ login_texto }}
         </span>
         <div>
           <ButtonSmall
             :text="login_button"
-            :background="Color_fff"
+            background="#fff"
             :color="Color_238"
             to="/user"
             class="desktop"
@@ -92,7 +92,7 @@
           <ButtonMiddle
             :text="login_button2"
             :background="Color_238"
-            :color="Color_fff"
+            color="#fff"
             to="/user"
             class="desktop"
             @mouseenter.native="login_button_hover2 = true"
