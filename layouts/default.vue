@@ -16,6 +16,8 @@
         @click="fecharSucess()"
       />
     </transition>
+    <AbaCarrinho />
+    <BlurCarrinho />
     <Configuracao />
     <ButtonMenu />
     <Header />

@@ -1,21 +1,25 @@
 <template>
-  <div class="cardJ p1" :style="{ background: background, color: color }">
+  <div class="card p1" :style="{ background: background, color: color }">
     <span :style="{ 'background-image': 'url(' + img + ')' }" class="img">
     </span>
     <span
       class="conteudo secondBackground"
       :style="{ background: Color_fff, color: Color_000 }"
     >
-      <p class="titulo">
-        {{ title }}
-      </p>
-      <hr class="S1" />
-      <span class="descricao S1">
-        {{ descricao }}
-      </span>
-      <hr />
-      <p class="preco">{{ Label_Preco }} {{ precoFor }}</p>
+      <p class="titulo">{{ title }}</p>
+      <p class="preco">{{ Label_Preco }} {{ preco }}</p>
+      <span class="descricao S1">{{ descricao }}</span>
+      <p class="autor">{{ Label_Autor }}{{ autor }}</p>
     </span>
+    <CartProdutos
+      :key="iten"
+      :iten="iten"
+      :img="img"
+      :title="title"
+      :preco="preco"
+      :autor="autor"
+      :descricao="descricao"
+    />
     <span
       class="comprar"
       :style="{ background: comprarColor, color: Color_fff }"
@@ -31,6 +35,11 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   props: {
+    iten: {
+      type: String,
+      require: true,
+      default: '',
+    },
     titleImg: {
       type: String,
       require: true,
@@ -46,27 +55,27 @@ export default {
       require: true,
       default: '',
     },
-    descricao: {
-      type: String,
-      require: true,
-      default: '',
-    },
     preco: {
       type: String,
       require: true,
       default: '',
     },
-    precoFor: {
+    descricao: {
       type: String,
       require: true,
       default: '',
     },
-    comprarColor: {
+    autor: {
       type: String,
       require: true,
       default: '',
     },
     // cores
+    comprarColor: {
+      type: String,
+      require: true,
+      default: '',
+    },
     color: {
       type: String,
       default: null,
@@ -82,6 +91,7 @@ export default {
     return {
       Label_Preco: 'Preço: ',
       Label_Comprar: 'Comprar',
+      Label_Autor: 'Por ',
     }
   },
   computed: {
@@ -99,7 +109,7 @@ export default {
 </script>
 
 <style scoped>
-.cardJ {
+.card {
   border-radius: 10px;
   max-width: 216px;
   min-width: 216px;
@@ -107,7 +117,8 @@ export default {
   padding: 2px;
   margin: 10px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   flex-wrap: wrap;
   transition: ease 0.1s;
   box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.205);
@@ -134,10 +145,7 @@ export default {
 .S1 {
   display: none;
 }
-hr {
-  margin: 3% 0;
-  border-color: #011a96;
-}
+
 .img {
   width: 100%;
   height: 170px;
@@ -147,6 +155,7 @@ hr {
   align-items: center;
   cursor: pointer;
   flex-wrap: wrap;
+  background-size: cover;
 }
 
 .conteudo {
@@ -154,8 +163,16 @@ hr {
   margin: 2% 0;
   width: 100%;
   border-radius: 0 0 10px 10px;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+p.autor {
+  color: #8c8c8c;
+  font-size: 12px;
+  line-height: 1;
+  margin: 2px 0 0;
+  position: unset;
 }
 .preco {
   display: flex;
@@ -166,7 +183,7 @@ hr {
   justify-content: flex-start;
   cursor: text;
   font-weight: bold;
-  color: #4bdd64;
+  color: #238e23;
 }
 .titulo {
   height: auto;
@@ -177,6 +194,11 @@ hr {
 }
 .descricao {
   font-size: 15px;
+}
+.p1:hover > .add-carrinho {
+  display: flex;
+  transition: 0.1s ease-out;
+  animation: C ease 2s;
 }
 @keyframes C {
   from {
@@ -196,5 +218,13 @@ hr {
   cursor: pointer;
   align-self: flex-end;
   width: 100%;
+}
+@media (max-width: 425px) {
+  .card {
+    max-width: 90% !important;
+    min-width: 90% !important;
+    font-size: 14px;
+    min-height: 280px;
+  }
 }
 </style>

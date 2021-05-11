@@ -54,12 +54,46 @@
     </div>
     <div class="content">
       <Dark />
+      <select v-model="language" name="" @change="idioma_Site()">
+        <option value="1">PT</option>
+        <option value="2">EN</option>
+        <option value="3">ES</option>
+      </select>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapState, mapMutations } from 'vuex'
+export default {
+  data: () => ({
+    language: 1,
+  }),
+  computed: {
+    ...mapState({
+      Color_004: (state) => state.Colors.Color_004,
+      Color_fff: (state) => state.Colors.Color_fff,
+      Color_00f: (state) => state.Colors.Color_00f,
+      idioma: (state) => state.Acessibilidade.idioma,
+    }),
+  },
+  methods: {
+    ...mapMutations({
+      pt: 'Acessibilidade/pt',
+      en: 'Acessibilidade/en',
+      es: 'Acessibilidade/es',
+    }),
+    idioma_Site() {
+      if (this.language === '1') {
+        this.pt()
+      } else if (this.language === '2') {
+        this.en()
+      } else {
+        this.es()
+      }
+    },
+  },
+}
 </script>
 
 <style>
