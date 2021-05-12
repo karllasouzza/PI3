@@ -50,7 +50,7 @@ export default {
 
   // Adicionado Atalho de api, futuramente quando tiver em produção esse url será substituido por um .env
   proxy: {
-    '/api/': 'http://pi-api.test/',
+    '/api/': 'http://cms-api-pi.test/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
