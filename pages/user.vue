@@ -98,21 +98,19 @@
           placeholder="* Nome"
         />
         <input
-          disabled
           v-model="lastName"
           ref="ref_lastName"
           type="text"
-          placeholder="* Sobrenome - Desabilitado"
+          placeholder="* Sobrenome"
         />
         <input
-          disabled
           v-model="dateOfBirth"
           ref="ref_dateOfBirth"
           type="date"
-          placeholder="* Data de nascimento - Desabilitado"
+          placeholder="* Data de nascimento"
         />
-        <select disabled v-model="genre" ref="ref_genre">
-          <option value="">Selecione seu Gênero - Desabilitado</option>
+        <select v-model="genre" ref="ref_genre">
+          <option value="">Selecione seu Gênero</option>
           <option value="female">Feminino</option>
           <option value="male">Masculino</option>
           <option value="lgbtqia">lgbtqia+</option>
@@ -254,7 +252,7 @@ export default {
           mensagemErro: 'Formato de nome invalido.',
         })
         return
-      } /* else if (!this.lastName) {
+      } else if (!this.lastName) {
         this.$refs.ref_lastName.focus()
         this.notf_erro_true()
         this.set_Erro({
@@ -302,7 +300,6 @@ export default {
         })
         return
       }
-      */
 
       // Verificação do E-mail
       const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
@@ -347,9 +344,13 @@ export default {
       }
 
       // Realiza o cadastro, se der certo ele funcionará senão dará um erro
+      // Os dados devem ter o mesmo nome do que é aceito pelo banco
       await this.$axios
         .$post('/api/user', {
           name: this.userName,
+          last_name: this.lastName,
+          date_of_birth: this.dateOfBirth,
+          genre: this.genre,
           email: this.email,
           password: this.password,
         })
