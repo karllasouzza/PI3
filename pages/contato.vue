@@ -309,7 +309,7 @@ export default {
         navigator.clipboard.writeText(this.outros[3].text)
       }
     },
-    Validacao() {
+    async Validacao() {
       // Portugues
       if (this.idioma === 'pt') {
         if (!this.nome) {
@@ -377,7 +377,12 @@ export default {
           mensagemSucess: 'Mensagem enviada.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        this.$router.push('/')
+        return await this.$axios.$post('/api/contacts', {
+          name: this.nome,
+          email: this.email,
+          category: this.opcoes,
+          message: this.mensagem,
+        })
       }
       // Ingles
       else if (this.idioma === 'en') {
@@ -446,7 +451,12 @@ export default {
           mensagemSucess: 'Message sent.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        this.$router.push('/')
+        return await this.$axios.$post('/api/contacts', {
+          name: this.nome,
+          email: this.email,
+          category: this.opcoes,
+          message: this.mensagem,
+        })
       }
       // Espanhol
       else {
@@ -515,7 +525,12 @@ export default {
           mensagemSucess: 'Mensage enviada.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        this.$router.push('/')
+        return await this.$axios.$post('/api/contacts', {
+          name: this.nome,
+          email: this.email,
+          category: this.opcoes,
+          message: this.mensagem,
+        })
       }
     },
     // nome > 3 sobrenome > 3
