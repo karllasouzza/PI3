@@ -146,36 +146,36 @@ export default {
       idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
-  created() {
+   created() {
     // Portugues-br
     if (this.idioma === 'pt') {
-      this.Label_sobre = ''
-      this.years = ''
-      this.sexo = ''
-      this.products = ''
-      this.email = ''
-      this.cit = ''
-      this.Label_Produtos = ''
+      this.Label_sobre = 'Sobre'
+      this.years = 'Idade'
+      this.sexo = 'Orientação sexual:'
+      this.products = 'Produtos postados:'
+      this.email = 'E-mail:'
+      this.cit = 'Cidade atual'
+      this.Label_Produtos = 'Produtos'
     }
     // Ingles
     else if (this.idioma === 'en') {
-      this.Label_sobre = ''
-      this.years = ''
-      this.sexo = ''
-      this.products = ''
-      this.email = ''
-      this.cit = ''
-      this.Label_Produtos = ''
+      this.Label_sobre = 'About'
+      this.years = 'Age'
+      this.sexo = 'Sexual orientation:'
+      this.products = 'Posted products:'
+      this.email = 'E-mail:'
+      this.cit = 'Current City'
+      this.Label_Produtos = 'Products'
     }
     // Espanhol
     else {
-      this.Label_sobre = ''
-      this.years = ''
-      this.sexo = ''
-      this.products = ''
-      this.email = ''
-      this.cit = ''
-      this.Label_Produtos = ''
+      this.Label_sobre = 'Acerca de'
+      this.years = 'Edad'
+      this.sexo = 'Orientación sexual:'
+      this.products = 'Productos publicados:'
+      this.email = 'Correo electrónico:'
+      this.cit = 'Ciudad Actual'
+      this.Label_Produtos = 'Productos'
     }
   },
 }

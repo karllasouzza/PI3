@@ -1,6 +1,6 @@
 export const state = () => ({
   // idiomas
-  idioma: 'en',
+  idioma: 'pt',
 })
 
 // mutations
