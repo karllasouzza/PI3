@@ -310,72 +310,213 @@ export default {
       }
     },
     Validacao() {
-      if (!this.nome) {
-        this.$refs.ref_nome.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo"nome" é obrigatorio.',
-        })
-        return false
-      } else if (!this.validname(this.nome)) {
-        this.$refs.ref_nome.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'Utilize um "Nome"válido.',
-        })
-        return false
-      }
-      // acaso o email nao esteja preenchido
-      if (!this.email) {
-        this.$refs.ref_email.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo "Email" é obrigatorio',
-        })
-        return false
-      }
-      // se o email estiver preenchido mas de modo errado
-      else if (!this.validEmail(this.email)) {
-        this.$refs.ref_email.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'Utilize um "e-mail"válido.',
-        })
-        return false
-      }
+      // Portugues
+      if (this.idioma === 'pt') {
+        if (!this.nome) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo"nome" é obrigatorio.',
+          })
+          return false
+        } else if (!this.validname(this.nome)) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilize um "Nome"válido.',
+          })
+          return false
+        }
+        // acaso o email nao esteja preenchido
+        if (!this.email) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo "Email" é obrigatorio',
+          })
+          return false
+        }
+        // se o email estiver preenchido mas de modo errado
+        else if (!this.validEmail(this.email)) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilize um "e-mail"válido.',
+          })
+          return false
+        }
 
-      if (!this.opcoes) {
-        this.$refs.ref_opcoes.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo "Categoria" é obrigatorio',
-        })
-        return false
-      }
-      if (!this.mensagem) {
-        this.$refs.ref_mensagem.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo "Mensagem" é obrigatorio',
-        })
-        return false
-      }
-      if (this.mensagem.length <= 30) {
-        this.$refs.ref_mensagem.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'Por favor nos conte um pouco mais',
-        })
-        return false
-      }
+        if (!this.opcoes) {
+          this.$refs.ref_opcoes.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo "Categoria" é obrigatorio.',
+          })
+          return false
+        }
+        if (!this.mensagem) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo "Mensagem" é obrigatorio.',
+          })
+          return false
+        }
+        if (this.mensagem.length <= 30) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Por favor nos conte um pouco mais.',
+          })
+          return false
+        }
 
-      // acaso tudo esteja correto :)
-      this.notf_sucess_true()
-      this.set_Sucess({
-        mensagemSucess: 'Mensagem enviada',
-      })
-      //  se tudo estiver certo ira enviar o usuario para a tela inicial
-      this.$router.push('/')
+        // acaso tudo esteja correto :)
+        this.notf_sucess_true()
+        this.set_Sucess({
+          mensagemSucess: 'Mensagem enviada.',
+        })
+        //  se tudo estiver certo ira enviar o usuario para a tela inicial
+        this.$router.push('/')
+      }
+      // Ingles
+      else if (this.idioma === 'en') {
+        if (!this.nome) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "name" field is required.',
+          })
+          return false
+        } else if (!this.validname(this.nome)) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Use a valid "Name".',
+          })
+          return false
+        }
+        // acaso o email nao esteja preenchido
+        if (!this.email) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "Email" field is mandatory.',
+          })
+          return false
+        }
+        // se o email estiver preenchido mas de modo errado
+        else if (!this.validEmail(this.email)) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Use a valid "email".',
+          })
+          return false
+        }
+
+        if (!this.opcoes) {
+          this.$refs.ref_opcoes.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "Category" field is mandatory.',
+          })
+          return false
+        }
+        if (!this.mensagem) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "Message" field is mandatory.',
+          })
+          return false
+        }
+        if (this.mensagem.length <= 30) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Please tell us a little more.',
+          })
+          return false
+        }
+
+        // acaso tudo esteja correto :)
+        this.notf_sucess_true()
+        this.set_Sucess({
+          mensagemSucess: 'Message sent.',
+        })
+        //  se tudo estiver certo ira enviar o usuario para a tela inicial
+        this.$router.push('/')
+      }
+      // Espanhol
+      else {
+        if (!this.nome) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo de "nombre" es obligatorio.',
+          })
+          return false
+        } else if (!this.validname(this.nome)) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilice un "Nombre" válido.',
+          })
+          return false
+        }
+        // acaso o email nao esteja preenchido
+        if (!this.email) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo "Correo electrónico" es obligatorio.',
+          })
+          return false
+        }
+        // se o email estiver preenchido mas de modo errado
+        else if (!this.validEmail(this.email)) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilice un "correo electrónico" válido.',
+          })
+          return false
+        }
+
+        if (!this.opcoes) {
+          this.$refs.ref_opcoes.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo "Categoría" es obligatorio.',
+          })
+          return false
+        }
+        if (!this.mensagem) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo "Mensaje" es obligatorio.',
+          })
+          return false
+        }
+        if (this.mensagem.length <= 30) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Cuéntanos un poco más.',
+          })
+          return false
+        }
+
+        // acaso tudo esteja correto :)
+        this.notf_sucess_true()
+        this.set_Sucess({
+          mensagemSucess: 'Mensage enviada.',
+        })
+        //  se tudo estiver certo ira enviar o usuario para a tela inicial
+        this.$router.push('/')
+      }
     },
     // nome > 3 sobrenome > 3
     validname(nome) {
