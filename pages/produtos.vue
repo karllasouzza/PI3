@@ -40,7 +40,7 @@
 </template>
 <script>
 // import { mapMutations } from 'vuex'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -113,9 +113,9 @@ export default {
     }
   },
   methods: {
-    // ...mapMutations({
-    //   Mproducts: 'Navegacao/Mproducts',
-    // }),
+    ...mapMutations({
+      Mproducts: 'Header/Page_on_produtos',
+    }),
   },
 }
 </script>

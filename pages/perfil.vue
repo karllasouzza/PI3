@@ -146,6 +146,38 @@ export default {
       idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
+  created() {
+    // Portugues-br
+    if (this.idioma === 'pt') {
+      this.Label_sobre = ''
+      this.years = ''
+      this.sexo = ''
+      this.products = ''
+      this.email = ''
+      this.cit = ''
+      this.Label_Produtos = ''
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
+      this.Label_sobre = ''
+      this.years = ''
+      this.sexo = ''
+      this.products = ''
+      this.email = ''
+      this.cit = ''
+      this.Label_Produtos = ''
+    }
+    // Espanhol
+    else {
+      this.Label_sobre = ''
+      this.years = ''
+      this.sexo = ''
+      this.products = ''
+      this.email = ''
+      this.cit = ''
+      this.Label_Produtos = ''
+    }
+  },
 }
 </script>
 

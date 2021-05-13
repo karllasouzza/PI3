@@ -10,17 +10,17 @@
       <!-- Muda de conta -->
       <div class="container-change-account">
         <Title
-          :text="changeOfForm ? 'Não tem uma conta? ' : 'Já tem uma conta? '"
+          :text="changeOfForm ? Label_N_conta : Label_S_conta"
           color="Color_000"
         />
         <button
+          :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
+          accesskey="t"
           @mouseover="buttonHover = true"
           @mouseleave="buttonHover = false"
-          :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
           @click="changeForm"
-          accesskey="t"
         >
-          {{ changeOfForm ? 'Criar conta' : 'Faça login' }}
+          {{ changeOfForm ? L_create_acount : L_login }}
         </button>
       </div>
 
@@ -30,15 +30,14 @@
         @submit.prevent="loginToAccount"
       >
         <input
-          v-model="userLogin"
           ref="ref_userLogin"
+          v-model="userLogin"
           type="email"
-          placeholder="Dígite seu e-mail."
+          :placeholder="P_email"
         />
 
         <!-- Olho para ver senha -->
         <svg
-          @click="changePasswordVisibility"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -47,6 +46,7 @@
           height="1em"
           width="2em"
           class="eye"
+          @click="changePasswordVisibility"
         >
           <path
             :style="passwordVisible ? { fill: Color_976 } : { fill: Color_238 }"
@@ -55,34 +55,34 @@
           />
         </svg>
         <input
-          v-model="userPassword"
           ref="ref_userPassword"
+          v-model="userPassword"
           :type="showPassword"
-          placeholder="Dígite sua senha."
+          :placeholder="P_senha"
         />
 
         <br />
 
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }"
-          >Esqueceu a senha?</nuxt-link
+        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">
+          {{ Label_E_senha }}</nuxt-link
         >
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }"
-          >Precisa de ajuda?</nuxt-link
-        >
+        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">{{
+          label_help
+        }}</nuxt-link>
 
         <br />
 
         <button
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
           :style="
             AccessAccountButton
               ? { backgroundColor: Color_976, color: Color_fff }
               : { backgroundColor: Color_238, color: Color_fff }
           "
+          type="submit"
+          @mouseover="AccessAccountButton = true"
+          @mouseleave="AccessAccountButton = false"
         >
-          Fazer login
+          {{ B_login }}
         </button>
       </form>
 
@@ -92,60 +92,60 @@
         @submit.prevent="registerAccount"
       >
         <input
-          v-model="userName"
           ref="ref_userName"
+          v-model="userName"
           type="text"
-          placeholder="* Nome"
+          :placeholder="P_nome"
         />
         <input
-          v-model="lastName"
           ref="ref_lastName"
+          v-model="lastName"
           type="text"
-          placeholder="* Sobrenome"
+          :placeholder="P_S_name"
         />
         <input
-          v-model="dateOfBirth"
           ref="ref_dateOfBirth"
+          v-model="dateOfBirth"
           type="date"
-          placeholder="* Data de nascimento"
+          :placeholder="P_date"
         />
-        <select v-model="genre" ref="ref_genre">
-          <option value="">Selecione seu Gênero</option>
-          <option value="female">Feminino</option>
-          <option value="male">Masculino</option>
-          <option value="lgbtqia">lgbtqia+</option>
-          <option value="nenhum">prefiro não dizer</option>
+        <select ref="ref_genre" v-model="genre">
+          <option value="">{{ O_S_genero }}</option>
+          <option value="female">{{ O_feminino }}</option>
+          <option value="male">{{ O_masculino }}</option>
+          <option value="lgbtqia">{{ O_lgbt }}</option>
+          <option value="nenhum">{{ O_null }}</option>
         </select>
         <input
-          v-model="email"
           ref="ref_email"
+          v-model="email"
           type="email"
-          placeholder="* E-mail"
+          :placeholder="P_I_email"
         />
         <input
-          v-model="password"
           ref="ref_password"
+          v-model="password"
           type="password"
-          placeholder="* Senha"
+          :placeholder="P_passwword"
         />
         <input
-          v-model="confirmPassword"
           ref="ref_confirmPassword"
+          v-model="confirmPassword"
           type="password"
-          placeholder="* Confirme sua senha"
+          :placeholder="P_R_password"
         />
 
         <button
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
           :style="
             AccessAccountButton
               ? { backgroundColor: Color_976, color: Color_fff }
               : { backgroundColor: Color_238, color: Color_fff }
           "
+          type="submit"
+          @mouseover="AccessAccountButton = true"
+          @mouseleave="AccessAccountButton = false"
         >
-          Criar conta
+          {{ B_create_acount }}
         </button>
       </form>
     </main>
@@ -158,7 +158,7 @@ import Title from '../components/Title'
 import BigTitle from '../components/BigTitle'
 
 export default {
-  name: 'user',
+  name: 'User',
   components: {
     BigTitle,
     Title,
@@ -185,7 +185,122 @@ export default {
     email: '',
     password: '',
     confirmPassword: '',
+
+    // Labels
+    Label_N_conta: '',
+    Label_S_conta: '',
+    L_login: '',
+    L_create_acount: '',
+    Label_E_senha: '',
+    Label_help: '',
+
+    // Placeholder
+    P_nome: '',
+    P_S_name: '',
+    P_I_email: '',
+    P_password: '',
+    P_R_password: '',
+    P_date: '',
+    P_email: '',
+    P_senha: '',
+
+    // Botoes
+    B_login: '',
+    B_create_acount: '',
+
+    // Option/Select
+    O_S_genero: '',
+    O_feminino: '',
+    O_masculino: '',
+    O_lgbt: '',
+    O_null: '',
   }),
+  computed: {
+    ...mapState({
+      // Cores
+      Color_000: (state) => state.Colors.Color_000,
+      Color_238: (state) => state.Colors.Color_238,
+      Color_976: (state) => state.Colors.Color_976,
+      Color_fff: (state) => state.Colors.Color_fff,
+
+      // Idiomas
+      idioma: (state) => state.Acessibilidade.idioma,
+    }),
+  },
+  created() {
+    // Portugues
+    if (this.idioma === 'pt') {
+      this.Label_N_conta = 'Não tem uma conta? '
+      this.Label_S_conta = 'Já tem uma conta? '
+      this.L_login = 'Faça login'
+      this.L_create_acount = 'Criar conta'
+      this.Label_E_senha = ' Esqueceu a senha?'
+      this.Label_help = 'Precisa de ajuda?'
+      this.P_nome = '* Nome'
+      this.P_S_name = '* Sobrenome'
+      this.P_I_email = '* E-mail'
+      this.P_password = '* Senha'
+      this.P_R_password = '* Confirme sua senha'
+      this.P_date = '* Data de nascimento'
+      this.P_email = 'Dígite seu e-mail.'
+      this.P_senha = 'Dígite sua senha.'
+      this.B_login = 'Fazer login'
+      this.B_create_acount = 'Criar conta'
+      this.O_S_genero = 'Selecione seu Gênero'
+      this.O_feminino = 'Feminino'
+      this.O_masculino = 'Masculino'
+      this.O_lgbt = 'lgbtqia+'
+      this.O_null = 'prefiro não dizer'
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
+      this.Label_N_conta = 'Não tem uma conta? '
+      this.Label_S_conta = 'Já tem uma conta? '
+      this.L_login = 'Faça login'
+      this.L_create_acount = 'Criar conta'
+      this.Label_E_senha = ' Esqueceu a senha?'
+      this.Label_help = 'Precisa de ajuda?'
+      this.P_nome = '* Nome'
+      this.P_S_name = '* Sobrenome'
+      this.P_I_email = '* E-mail'
+      this.P_password = '* Senha'
+      this.P_R_password = '* Confirme sua senha'
+      this.P_date = '* Data de nascimento'
+      this.P_email = 'Dígite seu e-mail.'
+      this.P_senha = 'Dígite sua senha.'
+      this.B_login = 'Fazer login'
+      this.B_create_acount = 'Criar conta'
+      this.O_S_genero = 'Selecione seu Gênero'
+      this.O_feminino = 'Feminino'
+      this.O_masculino = 'Masculino'
+      this.O_lgbt = 'lgbtqia+'
+      this.O_null = 'prefiro não dizer'
+    }
+    // Espanhol
+    else {
+      this.Label_N_conta = 'Não tem uma conta? '
+      this.Label_S_conta = 'Já tem uma conta? '
+      this.L_login = 'Faça login'
+      this.L_create_acount = 'Criar conta'
+      this.Label_E_senha = ' Esqueceu a senha?'
+      this.Label_help = 'Precisa de ajuda?'
+      this.P_nome = '* Nome'
+      this.P_S_name = '* Sobrenome'
+      this.P_I_email = '* E-mail'
+      this.P_password = '* Senha'
+      this.P_R_password = '* Confirme sua senha'
+      this.P_date = '* Data de nascimento'
+      this.P_email = 'Dígite seu e-mail.'
+      this.P_senha = 'Dígite sua senha.'
+      this.B_login = 'Fazer login'
+      this.B_create_acount = 'Criar conta'
+      this.O_S_genero = 'Selecione seu Gênero'
+      this.O_feminino = 'Feminino'
+      this.O_masculino = 'Masculino'
+      this.O_lgbt = 'lgbtqia+'
+      this.O_null = 'prefiro não dizer'
+    }
+  },
   methods: {
     ...mapActions({
       set_Erro: 'Notificacoes/setErro',
@@ -377,18 +492,6 @@ export default {
           })
         })
     },
-  },
-  computed: {
-    ...mapState({
-      // Cor preta
-      Color_000: (state) => state.Colors.Color_000,
-      // Cor Verde claro
-      Color_238: (state) => state.Colors.Color_238,
-      // Cor verde escuro
-      Color_976: (state) => state.Colors.Color_976,
-      // Cor de branco
-      Color_fff: (state) => state.Colors.Color_fff,
-    }),
   },
 }
 </script>

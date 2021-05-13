@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   data() {
     return {
@@ -265,6 +265,11 @@ export default {
       this.login_button = 'Entrar'
       this.login_button2 = 'Crear cuenta'
     }
+  },
+  methods: {
+    ...mapMutations({
+      PageOn: 'Header/Page_on_inicio',
+    }),
   },
 }
 </script>

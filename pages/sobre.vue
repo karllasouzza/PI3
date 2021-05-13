@@ -206,7 +206,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -260,6 +260,8 @@ export default {
 
       //  dark Mode
       Dark_mode: (state) => state.Colors.Dark_mode,
+
+      // Header
     }),
   },
   created() {
@@ -332,6 +334,11 @@ export default {
     } else {
       this.mainColor = '#e7e7e7'
     }
+  },
+  methods: {
+    ...mapMutations({
+      PageOn: 'Header/Page_on_sobre',
+    }),
   },
 }
 </script>

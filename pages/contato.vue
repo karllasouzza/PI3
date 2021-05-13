@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main :as="PageOn()" class="container">
     <section>
       <!-- formulario -->
       <div class="form" :style="{ background: Color_fff + '80' }">
@@ -193,6 +193,7 @@ export default {
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       notf_sucess_true: 'Notificacoes/notf_sucess_true',
+      PageOn: 'Header/Page_on_contato',
     }),
     // parte que copia na area de transferencia do user
     copiarText(valor) {

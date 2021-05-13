@@ -7,29 +7,29 @@ export const state = () => ({
 })
 
 export const mutations = {
-  Mhome(state) {
+  Page_on_inicio(state) {
     state.home = true
     state.products = false
     state.about = false
     state.loguin = false
     state.contacts = false
-    state.pedidos = false
+    state.perfil = false
   },
-  Mabout(state) {
+  Page_on_sobre(state) {
     state.home = false
     state.products = false
     state.about = true
     state.loguin = false
     state.contacts = false
-    state.pedidos = false
+    state.perfil = false
   },
-  Mproducts(state) {
+  Page_on_produtos(state) {
     state.home = false
     state.products = true
     state.about = false
     state.loguin = false
     state.contacts = false
-    state.pedidos = false
+    state.perfil = false
   },
   Mloguin(state) {
     state.home = false
@@ -37,15 +37,23 @@ export const mutations = {
     state.about = false
     state.loguin = true
     state.contacts = false
-    state.pedidos = false
+    state.perfil = false
   },
-  Mcontacts(state) {
+  Page_on_contato(state) {
     state.home = false
     state.products = false
     state.about = false
     state.loguin = false
     state.contacts = true
-    state.pedidos = false
+    state.perfil = false
+  },
+  Page_on_perfil(state) {
+    state.home = false
+    state.products = false
+    state.about = false
+    state.loguin = false
+    state.contacts = true
+    state.perfil = false
   },
 }
 
