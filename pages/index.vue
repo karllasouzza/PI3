@@ -1,5 +1,5 @@
 <template>
-  <main :as="idioma_Site()" :style="{ background: Color_fff }">
+  <main :style="{ background: Color_fff }">
     <!-- Baner -->
     <div class="baner">
       <div>
@@ -185,88 +185,86 @@ export default {
       idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
-  methods: {
-    idioma_Site() {
-      if (this.idioma === 'pt') {
-        // Baner
-        this.baner_title1 = 'Plante árvores'
-        this.baner_title2 = 'Colha humanidade'
-        this.baner_button = 'Explorar'
+  created() {
+    if (this.idioma === 'pt') {
+      // Baner
+      this.baner_title1 = 'Plante árvores'
+      this.baner_title2 = 'Colha humanidade'
+      this.baner_button = 'Explorar'
 
-        // Sobre
-        this.sobre_title1 = '"Como vemos o mundo"'
-        this.sobre_texto =
-          'As vesses o mundo pode parecer um lugar sombrio mas sempre lembre que as pessoas colhem oque plantam a menos que todos nós de o primeiro passo para um mundo mais verde'
-        this.sobre_button = 'Ver mais'
+      // Sobre
+      this.sobre_title1 = '"Como vemos o mundo"'
+      this.sobre_texto =
+        'As vesses o mundo pode parecer um lugar sombrio mas sempre lembre que as pessoas colhem oque plantam a menos que todos nós de o primeiro passo para um mundo mais verde'
+      this.sobre_button = 'Ver mais'
 
-        // Blog
-        this.blog_title1 = 'Nosso blog'
-        this.blog_texto =
-          'Com atualizações semanais ajudamos a vocês a estabelecerem raízes consistentes com os métodos de preservação ambiental'
-        this.blog_button = 'Ver mais'
+      // Blog
+      this.blog_title1 = 'Nosso blog'
+      this.blog_texto =
+        'Com atualizações semanais ajudamos a vocês a estabelecerem raízes consistentes com os métodos de preservação ambiental'
+      this.blog_button = 'Ver mais'
 
-        // Login
-        this.login_title1 = 'Junte se a nós'
-        this.login_texto =
-          'Vamos mostrar que com pequenas atitudes você faz uma grande diferença na preservação ambiental'
-        this.login_button = 'Entrar'
-        this.login_button2 = 'Criar conta'
-      }
+      // Login
+      this.login_title1 = 'Junte se a nós'
+      this.login_texto =
+        'Vamos mostrar que com pequenas atitudes você faz uma grande diferença na preservação ambiental'
+      this.login_button = 'Entrar'
+      this.login_button2 = 'Criar conta'
+    }
 
-      // ingles
-      else if (this.idioma === 'en') {
-        // Baner
-        this.baner_title1 = 'Plant trees'
-        this.baner_title2 = 'Harvest humanity'
-        this.baner_button = 'explore'
+    // ingles
+    else if (this.idioma === 'en') {
+      // Baner
+      this.baner_title1 = 'Plant trees'
+      this.baner_title2 = 'Harvest humanity'
+      this.baner_button = 'explore'
 
-        // Sobre
-        this.sobre_title1 = '"How we see the world"'
-        this.sobre_texto =
-          'The vesses the world may seem like a dark place but always remember that people harvest what they plant unless we all take the first step towards a greener world'
-        this.sobre_button = 'See more'
+      // Sobre
+      this.sobre_title1 = '"How we see the world"'
+      this.sobre_texto =
+        'The vesses the world may seem like a dark place but always remember that people harvest what they plant unless we all take the first step towards a greener world'
+      this.sobre_button = 'See more'
 
-        // Blog
-        this.blog_title1 = 'Our blog'
-        this.blog_texto =
-          'With weekly updates we help you establish roots consistent with environmental preservation methods'
-        this.blog_button = 'See more'
+      // Blog
+      this.blog_title1 = 'Our blog'
+      this.blog_texto =
+        'With weekly updates we help you establish roots consistent with environmental preservation methods'
+      this.blog_button = 'See more'
 
-        // Login
-        this.login_title1 = 'Join us'
-        this.login_texto =
-          'Let us show that with small attitudes you make a great difference in environmental preservation'
-        this.login_button = 'Enter'
-        this.login_button2 = 'Create account'
-      }
+      // Login
+      this.login_title1 = 'Join us'
+      this.login_texto =
+        'Let us show that with small attitudes you make a great difference in environmental preservation'
+      this.login_button = 'Enter'
+      this.login_button2 = 'Create account'
+    }
 
-      // espanhol
-      else {
-        // Baner
-        this.baner_title1 = 'Plantar árboles'
-        this.baner_title2 = 'Cosecha de la humanidad'
-        this.baner_button = 'Explorar'
+    // espanhol
+    else {
+      // Baner
+      this.baner_title1 = 'Plantar árboles'
+      this.baner_title2 = 'Cosecha de la humanidad'
+      this.baner_button = 'Explorar'
 
-        // Sobre
-        this.sobre_title1 = '"Cómo vemos el mundo"'
-        this.sobre_texto =
-          'Las vísperas del mundo pueden parecer un lugar oscuro, pero siempre recuerden que la gente cosecha lo que plantan a menos que todos demos el primer paso hacia un mundo más verde'
-        this.sobre_button = 'Ver más'
+      // Sobre
+      this.sobre_title1 = '"Cómo vemos el mundo"'
+      this.sobre_texto =
+        'Las vísperas del mundo pueden parecer un lugar oscuro, pero siempre recuerden que la gente cosecha lo que plantan a menos que todos demos el primer paso hacia un mundo más verde'
+      this.sobre_button = 'Ver más'
 
-        // Blog
-        this.blog_title1 = 'Nuestro blog'
-        this.blog_texto =
-          'Con actualizaciones semanales le ayudamos a establecer raíces consistentes con los métodos de preservación ambiental'
-        this.blog_button = 'Ver más'
+      // Blog
+      this.blog_title1 = 'Nuestro blog'
+      this.blog_texto =
+        'Con actualizaciones semanales le ayudamos a establecer raíces consistentes con los métodos de preservación ambiental'
+      this.blog_button = 'Ver más'
 
-        // Login
-        this.login_title1 = 'Únete a nosotros'
-        this.login_texto =
-          'Vamos a demostrar que con pequeñas actitudes se hace una gran diferencia en la preservación del medio ambiente'
-        this.login_button = 'Entrar'
-        this.login_button2 = 'Crear cuenta'
-      }
-    },
+      // Login
+      this.login_title1 = 'Únete a nosotros'
+      this.login_texto =
+        'Vamos a demostrar que con pequeñas actitudes se hace una gran diferencia en la preservación del medio ambiente'
+      this.login_button = 'Entrar'
+      this.login_button2 = 'Crear cuenta'
+    }
   },
 }
 </script>
@@ -332,7 +330,7 @@ main {
   grid-column: 1;
   border-radius: 5px;
   margin: auto;
-  background: #000000f8 url(assets/img/Inicio/Fotos/terra.jpg);
+  background: #001219 url(assets/img/Inicio/Fotos/terra.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

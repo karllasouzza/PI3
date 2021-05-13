@@ -1,6 +1,24 @@
 <template>
-  <main>
+  <main :style="{ background: mainColor }">
     <section class="cards">
+      <div class="Pesquisar">
+        <div>
+          <svg
+            width="35"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M0 8.66993C0 3.88166 3.84034 0 8.57764 0C10.8526 0 13.0343 0.913436 14.6429 2.53936C16.2516 4.16529 17.1553 6.37052 17.1553 8.66993C17.1553 13.4582 13.3149 17.3399 8.57764 17.3399C3.84034 17.3399 0 13.4582 0 8.66993ZM17.0134 15.6543L19.568 17.7164H19.6124C20.1292 18.2388 20.1292 19.0858 19.6124 19.6082C19.0955 20.1306 18.2576 20.1306 17.7407 19.6082L15.6207 17.1785C15.4203 16.9766 15.3076 16.7024 15.3076 16.4164C15.3076 16.1304 15.4203 15.8562 15.6207 15.6543C16.0072 15.2704 16.6268 15.2704 17.0134 15.6543Z"
+            />
+          </svg>
+        </div>
+        <input ref="refPesquisar" v-model="query" type="text" />
+      </div>
       <div class="carts">
         <CardsProdutos
           v-for="Card in computedList"
@@ -27,6 +45,7 @@ import { mapState } from 'vuex'
 export default {
   data() {
     return {
+      mainColor: '',
       query: '',
       infoProdutos: [
         {
@@ -35,7 +54,7 @@ export default {
             'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
           title: 'Sementes de Romã',
           descricao: 'Sementes de Romã',
-          preco: '15,00',
+          preco: 15.0,
           autor: 'karlla Souzza',
         },
         {
@@ -44,7 +63,7 @@ export default {
             'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
           title: 'Sementes de Romã',
           descricao: 'Sementes de Romã',
-          preco: '15,00',
+          preco: 15.0,
           autor: 'karlla Souzza',
         },
         {
@@ -53,16 +72,16 @@ export default {
             'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
           title: 'Sementes de Romã',
           descricao: 'Sementes de Romã',
-          preco: '15,00',
+          preco: 15.0,
           autor: 'karlla Souzza',
         },
       ],
     }
   },
   head: {
+    title: 'CWIA | Produtos',
     meta: [
       {
-        title: 'CWIA | Produtos',
         hid: 'description',
         name: 'description',
         content: '',
@@ -77,6 +96,7 @@ export default {
       Color_238: (state) => state.Colors.Color_238,
       Color_976: (state) => state.Colors.Color_976,
       idioma: (state) => state.Acessibilidade.idioma,
+      Dark_mode: (state) => state.Colors.Dark_mode,
     }),
     computedList() {
       const vm = this
@@ -84,6 +104,13 @@ export default {
         return item.title.match(vm.query)
       })
     },
+  },
+  created() {
+    if (this.Dark_mode) {
+      this.mainColor = '#001219'
+    } else {
+      this.mainColor = '#e7e7e7'
+    }
   },
   methods: {
     // ...mapMutations({
@@ -93,18 +120,70 @@ export default {
 }
 </script>
 <style scoped>
-main {
-  background: #e7e7e7;
-}
 .cards {
   width: 100%;
   grid-row: 2/3;
   grid-column: 2/6;
-  padding: 1%;
+  padding: 10px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 50px 50px auto auto 50px 50px;
+  grid-template-rows: 60px 50px 50px auto auto 50px 50px;
 }
+
+.Pesquisar {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  width: 58px;
+  padding: 0 5px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #238e23;
+  border-radius: 20px;
+  transition: 0.3s ease-out;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.205);
+}
+
+.Pesquisar:hover {
+  width: 385px;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+}
+.Pesquisar div {
+  margin: auto;
+}
+.Pesquisar > div svg {
+  fill: #fff;
+  transition: 0.3s ease-out;
+}
+.Pesquisar:hover > div svg {
+  fill: #238e23;
+}
+.Pesquisar:hover > input {
+  display: inline-block;
+  margin: auto;
+  margin-right: 14px;
+}
+@keyframes C {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.Pesquisar > input:focus {
+  outline: none;
+}
+.Pesquisar > input {
+  transition: 0.1s ease-out;
+  animation: C ease 2s;
+  display: none;
+  width: 306px;
+  height: 70%;
+  border-bottom: 1px solid #238e23;
+}
+
 @keyframes C {
   from {
     opacity: 0%;
@@ -117,7 +196,7 @@ main {
   margin: 0 auto auto auto !important;
 }
 .carts {
-  grid-row: 3;
+  grid-row: 4;
   grid-column: 1/4;
   display: grid;
   grid-template-rows: 400px 400px 400px 400px 400px;

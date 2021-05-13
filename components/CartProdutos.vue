@@ -1,7 +1,7 @@
 <template>
   <div v-if="prod === 0" class="add-carrinho">
     <span class="Adicionar" @click="adicionar()">
-      <span :title="dd">Add</span>
+      <span>Add</span>
     </span>
   </div>
 </template>
@@ -27,9 +27,9 @@ export default {
       default: '',
     },
     preco: {
-      type: String,
+      type: Number,
       require: true,
-      default: '',
+      default: 0,
     },
     descricao: {
       type: String,
@@ -44,7 +44,6 @@ export default {
   },
   data() {
     return {
-      dd: '',
       prod: 0,
     }
   },
@@ -97,6 +96,8 @@ export default {
   font-weight: bold;
   color: #02142b;
   cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 1%;
 }
 .Adicionar {
   width: 100%;

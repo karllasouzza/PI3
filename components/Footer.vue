@@ -3,14 +3,14 @@
     <!-- Título do site -->
     <ul class="title">
       <li>
-        <Title :color="Color_fff" :text="Nome_do_site" />
+        <Title color="#fff" :text="Nome_do_site" />
       </li>
     </ul>
 
     <!-- Acessibilidade -->
     <ul class="accessibility">
       <li>
-        <Title text="Acessibilidade" :color="Color_ff5" />
+        <Title text="Acessibilidade" class="titleL" :color="Color_000" />
       </li>
       <li v-for="(Acess, index) in Acessibilidade" :key="index">
         <a :style="{ color: Color_fff }" :href="Acess.url">{{ Acess.text }}</a>
@@ -20,7 +20,7 @@
     <!-- Fac -->
     <ul class="fac">
       <li>
-        <Title text="Fac" :color="Color_ff5" />
+        <Title text="Fac" class="titleL" :color="Color_000" />
       </li>
       <li v-for="(Fac, index) in Ajuda" :key="index">
         <a :style="{ color: Color_fff }" :href="Fac.url">{{ Fac.text }}</a>
@@ -30,7 +30,7 @@
     <!-- Redes Sociais -->
     <ul class="social-media">
       <li>
-        <Title text="Redes sociais" :color="Color_ff5" />
+        <Title text="Redes sociais" class="titleL" :color="Color_000" />
       </li>
       <li v-for="(Network, index) in Redes" :key="index">
         <a href="/" :style="{ color: Color_fff }">
@@ -86,6 +86,10 @@ footer {
   grid-column: 1/2;
 
   text-align: center;
+}
+.titleF {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* Classe da Acessibilidade */

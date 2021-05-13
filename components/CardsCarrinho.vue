@@ -1,13 +1,19 @@
 <template>
-  <div class="card" :style="{ background: Color_fff }">
+  <div
+    class="card"
+    :style="{
+      background: '#fff',
+      'box-shadow': '0 0px 3px 2px' + Color_000 + '0.205',
+    }"
+  >
     <div class="content" :style="{ background: Color_238 }">
       <span :style="{ 'background-image': 'url(' + img + ')' }" class="img">
       </span>
-      <span class="conteudo" :style="{ color: Color_fff }">
+      <span class="conteudo" :style="{ color: '#fff' }">
         <p class="titulo">
           {{ title }}
         </p>
-        <p class="preco">R${{ preco }}</p>
+        <p class="preco">{{ total }}</p>
       </span>
     </div>
 
@@ -40,6 +46,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import currencyFormatter from 'currency-formatter'
 export default {
   props: {
     iten: {
@@ -58,9 +65,9 @@ export default {
       default: '',
     },
     preco: {
-      type: String,
+      type: Number,
       require: true,
-      default: '',
+      default: 0,
     },
     descricao: {
       type: String,
@@ -78,19 +85,37 @@ export default {
       default: 0,
     },
   },
+  data() {
+    return {
+      total: 0,
+    }
+  },
   computed: {
     ...mapState({
       Color_fff: (state) => state.Colors.Color_fff,
       Color_000: (state) => state.Colors.Color_000,
       Color_238: (state) => state.Colors.Color_238,
       Color_ff5: (state) => state.Colors.Color_ff5,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  created() {
+    this.total = this.preco
+    if (this.idioma === 'pt') {
+      this.total = currencyFormatter.format(this.total, { code: 'BRL' })
+      return this.total
+    } else if (this.idioma === 'en') {
+      this.total = currencyFormatter.format(this.total, { code: 'USD' })
+      return this.total
+    } else {
+      this.total = currencyFormatter.format(this.total, { code: 'EUR' })
+      return this.total
+    }
   },
   methods: {
     ...mapActions({
       delet: 'Cart/delet',
     }),
-
     deletar() {
       this.delet({
         id: {

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :as="Cores()">
     <transition name="slide-fade">
       <NotfErro
         v-if="notfErro"
@@ -48,7 +48,20 @@ export default {
     ...mapMutations({
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
+      // Dark_mode
+      Dark_on: 'Colors/Dark_on',
+      Light_on: 'Colors/Light_on',
     }),
+    Cores() {
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        this.Dark_on()
+      } else {
+        this.Light_on()
+      }
+    },
     // setar um 'intervalo' para a notificaçao fechar
     loadErro() {
       this.intervaloErro = setInterval(this.fecharErro, 4000)

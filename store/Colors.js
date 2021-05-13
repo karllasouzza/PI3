@@ -2,6 +2,9 @@ export const state = () => ({
   // Dark Mode
   Dark_mode: false,
 
+  // Modo de cor selecionada pelo usuario
+  UserMColor: false,
+
   /* Colors */
   // Branco
   Color_fff: '#ffffff',
@@ -37,12 +40,36 @@ export const state = () => ({
   Color_000: '#000000',
 })
 
-// // mutations
-// export const mutations = {
-//   Select_Color_Header(state, colorUrgent) {
-//     state.Header_background = colorUrgent
-//   },
-// }
+// mutations
+export const mutations = {
+  Select_Color_Header(state, colorUrgent) {
+    state.Header_background = colorUrgent
+  },
+
+  // Dark_mode User
+  Dark_on(state) {
+    state.Dark_mode = true
+    state.UserMColor = true
+    //
+    state.Color_000 = '#ffffff'
+    state.Color_fff = '#001219'
+  },
+  Light_on(state) {
+    state.Dark_mode = false
+    state.UserMColor = true
+  },
+  // Dark_mode Auto
+  Dark_on_auto(state) {
+    if (!state.UserMColor) {
+      this.Dark_on()
+    }
+  },
+  Light_on_auto(state) {
+    if (!state.UserMColor) {
+      this.Light_on()
+    }
+  },
+}
 
 // // actions
 // export const actions = {

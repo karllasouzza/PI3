@@ -395,7 +395,7 @@ export default {
 
 <style scoped>
 section {
-  background-image: url('../assets/img/user-page/background-user-page.jpeg');
+  background-image: url('../assets/img/user-page/Conta-destop.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -418,7 +418,7 @@ section main {
   flex-direction: column;
 
   background-color: #ffffff93;
-  border-radius: 0 20px;
+  border-radius: 20px;
 
   margin: 6em 0;
   padding: 1em;
@@ -463,7 +463,7 @@ section main form select {
   margin: 0.5em 0;
 
   background: rgba(242, 242, 242, 0.7);
-  border-radius: 0px 20px;
+  border-radius: 20px;
 
   font-size: 12pt;
   padding: 0.5em;
@@ -503,6 +503,16 @@ section main form .link-for-help {
 
   100% {
     opacity: 1;
+  }
+}
+@media (max-width: 768px) {
+  section {
+    background-image: url('../assets/img/user-page/Conta-tablet.jpg');
+  }
+}
+@media (max-width: 425px) {
+  section {
+    background-image: url('../assets/img/user-page/Conta-mobile.jpg');
   }
 }
 </style>

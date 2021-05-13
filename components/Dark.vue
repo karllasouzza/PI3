@@ -35,20 +35,20 @@ export default {
   },
   methods: {
     ...mapMutations({
-      Ion: 'Colors/Darkon',
-      Ioff: 'Colors/Darkoff',
+      Dark_on: 'Colors/Dark_on',
+      Light_on: 'Colors/Light_on',
     }),
 
     A() {
       if (this.Dark) {
         this.ml = '65%'
         this.Bl = '#66ff66'
-        this.Ion()
+        this.Dark_on()
       } else {
         this.ml = '0%'
         this.Bl = '#ff9999'
 
-        this.Ioff()
+        this.Light_on()
       }
     },
   },

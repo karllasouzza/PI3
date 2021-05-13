@@ -47,7 +47,7 @@
           ></textarea>
         </form>
         <button
-          :style="{ background: Color_238, color: Color_fff }"
+          :style="{ background: Color_238, color: '#fff' }"
           @click="Validacao()"
         >
           {{ button }}
@@ -155,41 +155,33 @@ export default {
   computed: {
     ...mapState({
       /* Colors */
-      //
       Color_000: (state) => state.Colors.Color_000,
-
-      //
       Color_976: (state) => state.Colors.Color_976,
-
-      //
       Color_004: (state) => state.Colors.Color_004,
-
-      //
       Color_007: (state) => state.Colors.Color_007,
-
-      //
       Color_00f: (state) => state.Colors.Color_00f,
-
-      //
       Color_238: (state) => state.Colors.Color_238,
-
-      //
       Color_fdc: (state) => state.Colors.Color_fdc,
-
-      //
       Color_ff5: (state) => state.Colors.Color_ff5,
-
-      //
       Color_d63: (state) => state.Colors.Color_d63,
-
-      //
       Color_fff: (state) => state.Colors.Color_fff,
-
-      //
       Color_ffc: (state) => state.Colors.Color_ffc,
 
-      // notificaçao
+      // Idioma
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  created() {
+    if (this.idioma === 'pt') {
+      this.titulo1 = 'Formulário de contato'
+      this.button = 'Enviar'
+    } else if (this.idioma === 'en') {
+      this.titulo1 = 'Contact Form'
+      this.button = 'Submit'
+    } else {
+      this.titulo1 = 'Formulario de contacto'
+      this.button = 'Enviar'
+    }
   },
   methods: {
     ...mapActions({
@@ -303,9 +295,9 @@ export default {
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
   grid-template-rows: 100vh;
-  background-image: url(../assets/img/Inicio/Fotos/4.jpg);
+  background-image: url(../assets/img/Inicio/Fotos/contatos-desktop.jpg);
   background-position: center;
-  background-size: auto;
+  background-size: cover;
 }
 section {
   width: 70%;
@@ -326,7 +318,7 @@ section .form {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0 20px;
+  border-radius: 20px;
 }
 .form span {
   width: 100%;
@@ -356,7 +348,7 @@ form {
 textarea {
   width: 40%;
   height: 100%;
-  border-radius: 0 15px;
+  border-radius: 15px;
   background: rgba(255, 255, 255, 0.726);
   padding: 2%;
 }
@@ -364,7 +356,7 @@ input {
   width: 100%;
   height: 45px;
   border: none;
-  border-radius: 0 15px;
+  border-radius: 15px;
   background: rgba(255, 255, 255, 0.726);
   padding: 2%;
 }
@@ -372,7 +364,7 @@ select {
   width: 100%;
   height: 45px;
   border: none;
-  border-radius: 0 15px;
+  border-radius: 15px;
   background: #fff;
   padding: 2%;
 }
@@ -380,7 +372,7 @@ button {
   width: 100%;
   height: 45px;
   border: none;
-  border-radius: 0 15px;
+  border-radius: 15px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.226);
   padding: 1%;
   font-size: 18px;
@@ -392,7 +384,7 @@ section > div.outros {
   width: 28.5%;
   height: 100%;
   background: revert;
-  border-radius: 0 20px;
+  border-radius: 20px;
   padding: 2%;
   display: flex;
   flex-direction: column;
@@ -411,7 +403,7 @@ section > div.outros > span {
 section > div.outros > div {
   width: 100%;
   height: 80px;
-  border-radius: 0 20px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -433,8 +425,12 @@ section > div.outros > div > span > svg {
   width: 20px;
   height: 20px;
 }
-
-@media (max-width: 972px) {
+@media (max-width: 1107px) {
+  section {
+    width: 78%;
+  }
+}
+@media (max-width: 1026px) {
   section {
     width: 100%;
     height: 800px;
@@ -443,7 +439,7 @@ section > div.outros > div > span > svg {
   section > div.outros {
     width: 70%;
     height: 100%;
-    border-radius: 0 20px;
+    border-radius: 20px;
     padding: 2%;
     display: flex;
     flex-direction: column;
@@ -456,6 +452,11 @@ section > div.outros > div > span > svg {
   }
   .container {
     grid-template-rows: 200vh;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    background-image: url(../assets/img/Inicio/Fotos/contatos-tablet.jpg);
   }
 }
 @media (max-width: 679px) {
@@ -478,6 +479,9 @@ section > div.outros > div > span > svg {
   }
 }
 @media (max-width: 425px) {
+  .container {
+    background-image: url(../assets/img/Inicio/Fotos/contatos-mobile.jpg);
+  }
   form {
     flex-direction: column;
   }
@@ -511,7 +515,7 @@ section > div.outros > div > span > svg {
     font-size: 25px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 348px) {
   .form span {
     height: 37px;
     font-size: 22px;

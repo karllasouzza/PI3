@@ -2,12 +2,9 @@
   <div class="card p1" :style="{ background: background, color: color }">
     <span :style="{ 'background-image': 'url(' + img + ')' }" class="img">
     </span>
-    <span
-      class="conteudo secondBackground"
-      :style="{ background: Color_fff, color: Color_000 }"
-    >
+    <span class="conteudo" :style="{ background: '#fff', color: '#000000' }">
       <p class="titulo">{{ title }}</p>
-      <p class="preco">{{ Label_Preco }} {{ preco }}</p>
+      <p class="preco">{{ total }}</p>
       <span class="descricao S1">{{ descricao }}</span>
       <p class="autor">{{ Label_Autor }}{{ autor }}</p>
     </span>
@@ -22,7 +19,7 @@
     />
     <span
       class="comprar"
-      :style="{ background: comprarColor, color: Color_fff }"
+      :style="{ background: comprarColor, color: '#fff' }"
       @click="Comprar()"
     >
       {{ Label_Comprar }}
@@ -32,6 +29,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import currencyFormatter from 'currency-formatter'
 
 export default {
   props: {
@@ -56,9 +54,9 @@ export default {
       default: '',
     },
     preco: {
-      type: String,
+      type: Number,
       require: true,
-      default: '',
+      default: 0,
     },
     descricao: {
       type: String,
@@ -92,6 +90,7 @@ export default {
       Label_Preco: 'Preço: ',
       Label_Comprar: 'Comprar',
       Label_Autor: 'Por ',
+      total: 0,
     }
   },
   computed: {
@@ -99,7 +98,21 @@ export default {
       Color_fff: (state) => state.Colors.Color_fff,
       Color_000: (state) => state.Colors.Color_000,
       Color_238: (state) => state.Colors.Color_238,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  created() {
+    this.total = this.preco
+    if (this.idioma === 'pt') {
+      this.total = currencyFormatter.format(this.total, { code: 'BRL' })
+      return this.total
+    } else if (this.idioma === 'en') {
+      this.total = currencyFormatter.format(this.total, { code: 'USD' })
+      return this.total
+    } else {
+      this.total = currencyFormatter.format(this.total, { code: 'EUR' })
+      return this.total
+    }
   },
   methods: {
     ...mapMutations({}),
@@ -136,6 +149,8 @@ export default {
 }
 .p1:hover > .conteudo {
   transition: 0.1s ease-out;
+  height: 98px;
+  margin-top: 15px;
 }
 .p1:hover > .comprar {
   display: flex;
@@ -162,6 +177,7 @@ export default {
   padding: 0 5px;
   margin: 2% 0;
   width: 100%;
+  height: 80px;
   border-radius: 0 0 10px 10px;
   display: flex;
   flex-direction: column;

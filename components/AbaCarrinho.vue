@@ -1,12 +1,12 @@
 <template>
-  <transition name="fade">
+  <transition name="fade" :as="ON()">
     <div
       v-if="On_Off"
       :style="{ background: Color_fff, color: Color_000 }"
       class="Card"
     >
-      <p class="close" :style="{ background: Color_238, color: Color_fff }">
-        <span @click="off()"> Fechar </span>
+      <p class="close" :style="{ background: Color_238, color: '#fff' }">
+        <span @click="off()"> {{ Fechar }} </span>
       </p>
       <main>
         <CardsCarrinho
@@ -19,7 +19,7 @@
           :quantidade="Cart.quantidade"
         />
       </main>
-      <!-- <Total :T="total" /> -->
+      <Total :t="total" />
     </div>
   </transition>
 </template>
@@ -36,6 +36,8 @@ export default {
 
       // total
       total: 0,
+
+      Fechar: '',
     }
   },
   computed: {
@@ -45,36 +47,41 @@ export default {
       Color_238: (state) => state.Colors.Color_238,
       Color_fff: (state) => state.Colors.Color_fff,
       Color_000: (state) => state.Colors.Color_000,
+      Dark_mode: (state) => state.Colors.Dark_mode,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
-
+  created() {
+    if (this.idioma === 'pt') {
+      this.Fechar = 'Fechar'
+    } else if (this.idioma === 'en') {
+      this.Fechar = 'Close'
+    } else {
+      this.Fechar = 'Cerca'
+    }
+  },
   methods: {
     ...mapMutations({
       on: 'Cart/on',
       off: 'Cart/off',
     }),
-  },
+    ON() {
+      const A1 = this.Itens
 
-  // BG() {
-  //   if (this.Dark == true) {
-  //     this.B = '#cc0000'
-  //     this.C = 'black'
-  //   } else {
-  //     if (this.Dark == false) {
-  //       this.B = '#fff'
-  //       this.C = 'black'
-  //     }
-  //   }
-  //   if (this.Mingles == true) {
-  //     // jonson
-  //     if (this.jonson1 == true) {
-  //       this.i_VJ1()
-  //     } else {
-  //       this.totalJ1 = 0
-  //     }
-  //   }
+      const A3 = []
+
+      for (let index = 0; index < A1.length; index++) {
+        A3.push(A1[index].preco)
+      }
+      if (A1.length > 0) {
+        const reducer = (accumulator, currentValue) =>
+          accumulator + currentValue
+        this.total = A3.reduce(reducer)
+      }
+    },
+  },
 }
-// jonson
+// ex se for usar a quantidade x o preço
 // VJ1() {
 //   this.totalJ1 = parseFloat(this.jonson1V) * this.jonson1A
 // },
