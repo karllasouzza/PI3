@@ -109,21 +109,16 @@ export default {
   data() {
     return {
       // formulario
-      titulo1: 'Formulario de contato',
-      button: 'Enviar',
+      titulo1: '',
+      button: '',
       nome: '',
       email: '',
       opcoes: '',
       mensagem: '',
-      place_nome: '*Nome',
-      place_email: '*Email',
-      place_mensage: '*Mensagem',
-      option: [
-        { value: '', text: '*Selecione uma categoria', id: 'option0' },
-        { value: '1', text: 'O site nao abre', id: 'option1' },
-        { value: '2', text: 'O site esta com bugs', id: 'option2' },
-        { value: '3', text: 'Enviar um feedback', id: 'option3' },
-      ],
+      place_nome: '',
+      place_email: '',
+      place_mensage: '',
+      option: [],
 
       // outros
       titulo2: 'Outras opções',
@@ -172,15 +167,119 @@ export default {
     }),
   },
   created() {
+    // Ingles
     if (this.idioma === 'pt') {
       this.titulo1 = 'Formulário de contato'
       this.button = 'Enviar'
-    } else if (this.idioma === 'en') {
+      this.option = []
+      this.option.push(
+        { value: '', text: '*Selecione uma categoria', id: 'option0' },
+        { value: '1', text: 'O site nao abre', id: 'option1' },
+        { value: '2', text: 'O site esta com bugs', id: 'option2' },
+        { value: '3', text: 'Enviar um feedback', id: 'option3' }
+      )
+      this.titulo2 = 'Outras opções'
+      this.outros = []
+      this.outros.push(
+        {
+          label: 'Telefone:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'Email:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        }
+      )
+      this.place_nome = '*Nome'
+      this.place_email = '*Email'
+      this.place_mensage = '*Mensagem'
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
       this.titulo1 = 'Contact Form'
       this.button = 'Submit'
-    } else {
+      this.option = []
+      this.option.push(
+        { value: '', text: '*Selecione uma categoria', id: 'option0' },
+        { value: '1', text: 'O site nao abre', id: 'option1' },
+        { value: '2', text: 'O site esta com bugs', id: 'option2' },
+        { value: '3', text: 'Enviar um feedback', id: 'option3' }
+      )
+      this.titulo2 = 'Outras opções'
+      this.outros = []
+      this.outros.push(
+        {
+          label: 'Telefone:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'Email:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        }
+      )
+      this.place_nome = '*Nome'
+      this.place_email = '*Email'
+      this.place_mensage = '*Mensagem'
+    }
+    // Espanhol
+    else {
       this.titulo1 = 'Formulario de contacto'
       this.button = 'Enviar'
+      this.option = []
+      this.option.push(
+        { value: '', text: '*Selecione uma categoria', id: 'option0' },
+        { value: '1', text: 'O site nao abre', id: 'option1' },
+        { value: '2', text: 'O site esta com bugs', id: 'option2' },
+        { value: '3', text: 'Enviar um feedback', id: 'option3' }
+      )
+      this.titulo2 = 'Outras opções'
+      this.outros = []
+      this.outros.push(
+        {
+          label: 'Telefone:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'Email:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        }
+      )
     }
   },
   methods: {
