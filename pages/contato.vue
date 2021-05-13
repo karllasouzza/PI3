@@ -167,7 +167,7 @@ export default {
     }),
   },
   created() {
-    // Ingles
+    // Portugues-br
     if (this.idioma === 'pt') {
       this.titulo1 = 'Formulário de contato'
       this.button = 'Enviar'
@@ -212,21 +212,21 @@ export default {
       this.button = 'Submit'
       this.option = []
       this.option.push(
-        { value: '', text: '*Selecione uma categoria', id: 'option0' },
-        { value: '1', text: 'O site nao abre', id: 'option1' },
-        { value: '2', text: 'O site esta com bugs', id: 'option2' },
-        { value: '3', text: 'Enviar um feedback', id: 'option3' }
+        { value: '', text: '*Select a category', id: 'option0' },
+        { value: '1', text: 'The site does not open', id: 'option1' },
+        { value: '2', text: 'The site is buggy', id: 'option2' },
+        { value: '3', text: 'Send feedback', id: 'option3' }
       )
-      this.titulo2 = 'Outras opções'
+      this.titulo2 = 'Other options'
       this.outros = []
       this.outros.push(
         {
-          label: 'Telefone:',
+          label: 'Telephone:',
           text: '+55 (16) 999999999',
           valor: 0,
         },
         {
-          label: 'Email:',
+          label: 'E-mail:',
           text: 'exemplo@gmail.com',
           valor: 1,
         },
@@ -241,9 +241,9 @@ export default {
           valor: 3,
         }
       )
-      this.place_nome = '*Nome'
-      this.place_email = '*Email'
-      this.place_mensage = '*Mensagem'
+      this.place_nome = '*Name'
+      this.place_email = '*E-mail'
+      this.place_mensage = '*Message'
     }
     // Espanhol
     else {
@@ -251,21 +251,21 @@ export default {
       this.button = 'Enviar'
       this.option = []
       this.option.push(
-        { value: '', text: '*Selecione uma categoria', id: 'option0' },
-        { value: '1', text: 'O site nao abre', id: 'option1' },
-        { value: '2', text: 'O site esta com bugs', id: 'option2' },
-        { value: '3', text: 'Enviar um feedback', id: 'option3' }
+        { value: '', text: '*Seleccione una categoría', id: 'option0' },
+        { value: '1', text: 'El sitio no se abre', id: 'option1' },
+        { value: '2', text: 'El sitio tiene errores', id: 'option2' },
+        { value: '3', text: 'Envíe sus comentarios', id: 'option3' }
       )
-      this.titulo2 = 'Outras opções'
+      this.titulo2 = 'Otras opciones'
       this.outros = []
       this.outros.push(
         {
-          label: 'Telefone:',
+          label: 'Teléfono:',
           text: '+55 (16) 999999999',
           valor: 0,
         },
         {
-          label: 'Email:',
+          label: 'Correo electrónico:',
           text: 'exemplo@gmail.com',
           valor: 1,
         },
@@ -280,6 +280,9 @@ export default {
           valor: 3,
         }
       )
+      this.place_nome = '*Nombre'
+      this.place_email = '*Correo electrónico'
+      this.place_mensage = '*Mensaje'
     }
   },
   methods: {
