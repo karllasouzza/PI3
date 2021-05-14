@@ -554,7 +554,7 @@ export default {
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
   grid-template-rows: 100vh;
-  background-image: url(../assets/img/Inicio/Fotos/Contatos-desktop.jpg);
+  background-image: url(../assets/img/Inicio/Fotos/contatos-desktop.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -715,7 +715,7 @@ section > div.outros > div > span > svg {
 }
 @media (max-width: 768px) {
   .container {
-    background-image: url(../assets/img/Inicio/Fotos/Contatos-tablet.jpg);
+    background-image: url(../assets/img/Inicio/Fotos/contatos-tablet.jpg);
   }
 }
 @media (max-width: 679px) {
