@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "@vue-a11y/vlibras": "^0.1.0",
     "core-js": "^3.8.2",
+    "currency-formatter": "^1.5.8",
     "nuxt": "^2.14.12",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^5.0.0",

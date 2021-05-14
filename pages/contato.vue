@@ -1,5 +1,5 @@
 <template>
-  <main class="container">
+  <main :as="PageOn()" class="container">
     <section>
       <!-- formulario -->
       <div class="form" :style="{ background: Color_fff + '80' }">
@@ -47,7 +47,7 @@
           ></textarea>
         </form>
         <button
-          :style="{ background: Color_238, color: Color_fff }"
+          :style="{ background: Color_238, color: '#fff' }"
           @click="Validacao()"
         >
           {{ button }}
@@ -109,21 +109,16 @@ export default {
   data() {
     return {
       // formulario
-      titulo1: 'Formulario de contato',
-      button: 'Enviar',
+      titulo1: '',
+      button: '',
       nome: '',
       email: '',
       opcoes: '',
       mensagem: '',
-      place_nome: '*Nome',
-      place_email: '*Email',
-      place_mensage: '*Mensagem',
-      option: [
-        { value: '', text: '*Selecione uma categoria', id: 'option0' },
-        { value: '1', text: 'O site nao abre', id: 'option1' },
-        { value: '2', text: 'O site esta com bugs', id: 'option2' },
-        { value: '3', text: 'Enviar um feedback', id: 'option3' },
-      ],
+      place_nome: '',
+      place_email: '',
+      place_mensage: '',
+      option: [],
 
       // outros
       titulo2: 'Outras opções',
@@ -155,41 +150,140 @@ export default {
   computed: {
     ...mapState({
       /* Colors */
-      //
       Color_000: (state) => state.Colors.Color_000,
-
-      //
       Color_976: (state) => state.Colors.Color_976,
-
-      //
       Color_004: (state) => state.Colors.Color_004,
-
-      //
       Color_007: (state) => state.Colors.Color_007,
-
-      //
       Color_00f: (state) => state.Colors.Color_00f,
-
-      //
       Color_238: (state) => state.Colors.Color_238,
-
-      //
       Color_fdc: (state) => state.Colors.Color_fdc,
-
-      //
       Color_ff5: (state) => state.Colors.Color_ff5,
-
-      //
       Color_d63: (state) => state.Colors.Color_d63,
-
-      //
       Color_fff: (state) => state.Colors.Color_fff,
-
-      //
       Color_ffc: (state) => state.Colors.Color_ffc,
 
-      // notificaçao
+      // Idioma
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  created() {
+    // Portugues-br
+    if (this.idioma === 'pt') {
+      this.titulo1 = 'Formulário de contato'
+      this.button = 'Enviar'
+      this.option = []
+      this.option.push(
+        { value: '', text: '*Selecione uma categoria', id: 'option0' },
+        { value: '1', text: 'O site nao abre', id: 'option1' },
+        { value: '2', text: 'O site esta com bugs', id: 'option2' },
+        { value: '3', text: 'Enviar um feedback', id: 'option3' }
+      )
+      this.titulo2 = 'Outras opções'
+      this.outros = []
+      this.outros.push(
+        {
+          label: 'Telefone:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'Email:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        }
+      )
+      this.place_nome = '*Nome'
+      this.place_email = '*Email'
+      this.place_mensage = '*Mensagem'
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
+      this.titulo1 = 'Contact Form'
+      this.button = 'Submit'
+      this.option = []
+      this.option.push(
+        { value: '', text: '*Select a category', id: 'option0' },
+        { value: '1', text: 'The site does not open', id: 'option1' },
+        { value: '2', text: 'The site is buggy', id: 'option2' },
+        { value: '3', text: 'Send feedback', id: 'option3' }
+      )
+      this.titulo2 = 'Other options'
+      this.outros = []
+      this.outros.push(
+        {
+          label: 'Telephone:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'E-mail:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        }
+      )
+      this.place_nome = '*Name'
+      this.place_email = '*E-mail'
+      this.place_mensage = '*Message'
+    }
+    // Espanhol
+    else {
+      this.titulo1 = 'Formulario de contacto'
+      this.button = 'Enviar'
+      this.option = []
+      this.option.push(
+        { value: '', text: '*Seleccione una categoría', id: 'option0' },
+        { value: '1', text: 'El sitio no se abre', id: 'option1' },
+        { value: '2', text: 'El sitio tiene errores', id: 'option2' },
+        { value: '3', text: 'Envíe sus comentarios', id: 'option3' }
+      )
+      this.titulo2 = 'Otras opciones'
+      this.outros = []
+      this.outros.push(
+        {
+          label: 'Teléfono:',
+          text: '+55 (16) 999999999',
+          valor: 0,
+        },
+        {
+          label: 'Correo electrónico:',
+          text: 'exemplo@gmail.com',
+          valor: 1,
+        },
+        {
+          label: 'Facebook:',
+          text: 'Facebook/example',
+          valor: 2,
+        },
+        {
+          label: 'Telegram:',
+          text: 'tel.me/lalala',
+          valor: 3,
+        }
+      )
+      this.place_nome = '*Nombre'
+      this.place_email = '*Correo electrónico'
+      this.place_mensage = '*Mensaje'
+    }
   },
   methods: {
     ...mapActions({
@@ -201,6 +295,7 @@ export default {
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       notf_sucess_true: 'Notificacoes/notf_sucess_true',
+      PageOn: 'Header/Page_on_contato',
     }),
     // parte que copia na area de transferencia do user
     copiarText(valor) {
@@ -214,73 +309,229 @@ export default {
         navigator.clipboard.writeText(this.outros[3].text)
       }
     },
-    Validacao() {
-      if (!this.nome) {
-        this.$refs.ref_nome.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo"nome" é obrigatorio.',
-        })
-        return false
-      } else if (!this.validname(this.nome)) {
-        this.$refs.ref_nome.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'Utilize um "Nome"válido.',
-        })
-        return false
-      }
-      // acaso o email nao esteja preenchido
-      if (!this.email) {
-        this.$refs.ref_email.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo "Email" é obrigatorio',
-        })
-        return false
-      }
-      // se o email estiver preenchido mas de modo errado
-      else if (!this.validEmail(this.email)) {
-        this.$refs.ref_email.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'Utilize um "e-mail"válido.',
-        })
-        return false
-      }
+    async Validacao() {
+      // Portugues
+      if (this.idioma === 'pt') {
+        if (!this.nome) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo"nome" é obrigatorio.',
+          })
+          return false
+        } else if (!this.validname(this.nome)) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilize um "Nome"válido.',
+          })
+          return false
+        }
+        // acaso o email nao esteja preenchido
+        if (!this.email) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo "Email" é obrigatorio',
+          })
+          return false
+        }
+        // se o email estiver preenchido mas de modo errado
+        else if (!this.validEmail(this.email)) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilize um "e-mail"válido.',
+          })
+          return false
+        }
 
-      if (!this.opcoes) {
-        this.$refs.ref_opcoes.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo "Categoria" é obrigatorio',
-        })
-        return false
-      }
-      if (!this.mensagem) {
-        this.$refs.ref_mensagem.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'O campo "Mensagem" é obrigatorio',
-        })
-        return false
-      }
-      if (this.mensagem.length <= 30) {
-        this.$refs.ref_mensagem.focus()
-        this.notf_erro_true()
-        this.set_Erro({
-          mensagemErro: 'Por favor nos conte um pouco mais',
-        })
-        return false
-      }
+        if (!this.opcoes) {
+          this.$refs.ref_opcoes.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo "Categoria" é obrigatorio.',
+          })
+          return false
+        }
+        if (!this.mensagem) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'O campo "Mensagem" é obrigatorio.',
+          })
+          return false
+        }
+        if (this.mensagem.length <= 30) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Por favor nos conte um pouco mais.',
+          })
+          return false
+        }
 
-      // acaso tudo esteja correto :)
-      this.notf_sucess_true()
-      this.set_Sucess({
-        mensagemSucess: 'Mensagem enviada',
-      })
-      //  se tudo estiver certo ira enviar o usuario para a tela inicial
-      this.$router.push('/')
+        // acaso tudo esteja correto :)
+        this.notf_sucess_true()
+        this.set_Sucess({
+          mensagemSucess: 'Mensagem enviada.',
+        })
+        //  se tudo estiver certo ira enviar o usuario para a tela inicial
+        return await this.$axios.$post('/api/contacts', {
+          name: this.nome,
+          email: this.email,
+          category: this.opcoes,
+          message: this.mensagem,
+        })
+      }
+      // Ingles
+      else if (this.idioma === 'en') {
+        if (!this.nome) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "name" field is required.',
+          })
+          return false
+        } else if (!this.validname(this.nome)) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Use a valid "Name".',
+          })
+          return false
+        }
+        // acaso o email nao esteja preenchido
+        if (!this.email) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "Email" field is mandatory.',
+          })
+          return false
+        }
+        // se o email estiver preenchido mas de modo errado
+        else if (!this.validEmail(this.email)) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Use a valid "email".',
+          })
+          return false
+        }
+
+        if (!this.opcoes) {
+          this.$refs.ref_opcoes.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "Category" field is mandatory.',
+          })
+          return false
+        }
+        if (!this.mensagem) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'The "Message" field is mandatory.',
+          })
+          return false
+        }
+        if (this.mensagem.length <= 30) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Please tell us a little more.',
+          })
+          return false
+        }
+
+        // acaso tudo esteja correto :)
+        this.notf_sucess_true()
+        this.set_Sucess({
+          mensagemSucess: 'Message sent.',
+        })
+        //  se tudo estiver certo ira enviar o usuario para a tela inicial
+        return await this.$axios.$post('/api/contacts', {
+          name: this.nome,
+          email: this.email,
+          category: this.opcoes,
+          message: this.mensagem,
+        })
+      }
+      // Espanhol
+      else {
+        if (!this.nome) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo de "nombre" es obligatorio.',
+          })
+          return false
+        } else if (!this.validname(this.nome)) {
+          this.$refs.ref_nome.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilice un "Nombre" válido.',
+          })
+          return false
+        }
+        // acaso o email nao esteja preenchido
+        if (!this.email) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo "Correo electrónico" es obligatorio.',
+          })
+          return false
+        }
+        // se o email estiver preenchido mas de modo errado
+        else if (!this.validEmail(this.email)) {
+          this.$refs.ref_email.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Utilice un "correo electrónico" válido.',
+          })
+          return false
+        }
+
+        if (!this.opcoes) {
+          this.$refs.ref_opcoes.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo "Categoría" es obligatorio.',
+          })
+          return false
+        }
+        if (!this.mensagem) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'El campo "Mensaje" es obligatorio.',
+          })
+          return false
+        }
+        if (this.mensagem.length <= 30) {
+          this.$refs.ref_mensagem.focus()
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'Cuéntanos un poco más.',
+          })
+          return false
+        }
+
+        // acaso tudo esteja correto :)
+        this.notf_sucess_true()
+        this.set_Sucess({
+          mensagemSucess: 'Mensage enviada.',
+        })
+        //  se tudo estiver certo ira enviar o usuario para a tela inicial
+        return await this.$axios.$post('/api/contacts', {
+          name: this.nome,
+          email: this.email,
+          category: this.opcoes,
+          message: this.mensagem,
+        })
+      }
     },
     // nome > 3 sobrenome > 3
     validname(nome) {
@@ -303,9 +554,9 @@ export default {
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
   grid-template-rows: 100vh;
-  background-image: url(../assets/img/Inicio/Fotos/4.jpg);
+  background-image: url(../assets/img/Inicio/Fotos/contatos-desktop.jpg);
   background-position: center;
-  background-size: auto;
+  background-size: cover;
 }
 section {
   width: 70%;
@@ -326,7 +577,7 @@ section .form {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0 20px;
+  border-radius: 20px;
 }
 .form span {
   width: 100%;
@@ -356,7 +607,7 @@ form {
 textarea {
   width: 40%;
   height: 100%;
-  border-radius: 0 15px;
+  border-radius: 15px;
   background: rgba(255, 255, 255, 0.726);
   padding: 2%;
 }
@@ -364,7 +615,7 @@ input {
   width: 100%;
   height: 45px;
   border: none;
-  border-radius: 0 15px;
+  border-radius: 15px;
   background: rgba(255, 255, 255, 0.726);
   padding: 2%;
 }
@@ -372,7 +623,7 @@ select {
   width: 100%;
   height: 45px;
   border: none;
-  border-radius: 0 15px;
+  border-radius: 15px;
   background: #fff;
   padding: 2%;
 }
@@ -380,7 +631,7 @@ button {
   width: 100%;
   height: 45px;
   border: none;
-  border-radius: 0 15px;
+  border-radius: 15px;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.226);
   padding: 1%;
   font-size: 18px;
@@ -392,7 +643,7 @@ section > div.outros {
   width: 28.5%;
   height: 100%;
   background: revert;
-  border-radius: 0 20px;
+  border-radius: 20px;
   padding: 2%;
   display: flex;
   flex-direction: column;
@@ -411,7 +662,7 @@ section > div.outros > span {
 section > div.outros > div {
   width: 100%;
   height: 80px;
-  border-radius: 0 20px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -433,8 +684,12 @@ section > div.outros > div > span > svg {
   width: 20px;
   height: 20px;
 }
-
-@media (max-width: 972px) {
+@media (max-width: 1107px) {
+  section {
+    width: 78%;
+  }
+}
+@media (max-width: 1026px) {
   section {
     width: 100%;
     height: 800px;
@@ -443,7 +698,7 @@ section > div.outros > div > span > svg {
   section > div.outros {
     width: 70%;
     height: 100%;
-    border-radius: 0 20px;
+    border-radius: 20px;
     padding: 2%;
     display: flex;
     flex-direction: column;
@@ -456,6 +711,11 @@ section > div.outros > div > span > svg {
   }
   .container {
     grid-template-rows: 200vh;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    background-image: url(../assets/img/Inicio/Fotos/contatos-tablet.jpg);
   }
 }
 @media (max-width: 679px) {
@@ -478,6 +738,9 @@ section > div.outros > div > span > svg {
   }
 }
 @media (max-width: 425px) {
+  .container {
+    background-image: url(../assets/img/Inicio/Fotos/contatos-mobile.jpg);
+  }
   form {
     flex-direction: column;
   }
@@ -511,7 +774,7 @@ section > div.outros > div > span > svg {
     font-size: 25px;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 348px) {
   .form span {
     height: 37px;
     font-size: 22px;

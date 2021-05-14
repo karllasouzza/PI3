@@ -64,6 +64,8 @@
           :preco="Card.preco"
           :preco-for="Card.precoFor"
           :comprar-color="Color_976"
+          :background="Color_fff"
+          :color="Color_000"
         />
       </div>
     </div>
@@ -143,6 +145,38 @@ export default {
       Color_976: (state) => state.Colors.Color_976,
       idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+   created() {
+    // Portugues-br
+    if (this.idioma === 'pt') {
+      this.Label_sobre = 'Sobre'
+      this.years = 'Idade'
+      this.sexo = 'Orientação sexual:'
+      this.products = 'Produtos postados:'
+      this.email = 'E-mail:'
+      this.cit = 'Cidade atual'
+      this.Label_Produtos = 'Produtos'
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
+      this.Label_sobre = 'About'
+      this.years = 'Age'
+      this.sexo = 'Sexual orientation:'
+      this.products = 'Posted products:'
+      this.email = 'E-mail:'
+      this.cit = 'Current City'
+      this.Label_Produtos = 'Products'
+    }
+    // Espanhol
+    else {
+      this.Label_sobre = 'Acerca de'
+      this.years = 'Edad'
+      this.sexo = 'Orientación sexual:'
+      this.products = 'Productos publicados:'
+      this.email = 'Correo electrónico:'
+      this.cit = 'Ciudad Actual'
+      this.Label_Produtos = 'Productos'
+    }
   },
 }
 </script>

@@ -1,6 +1,7 @@
 export const state = () => ({
   // idiomas
   idioma: 'pt',
+  fonte: true,
 })
 
 // mutations
@@ -13,6 +14,12 @@ export const mutations = {
   },
   es(state) {
     state.idioma = 'es'
+  },
+  libras_on(state) {
+    state.fonte = false
+  },
+  libras_off(state) {
+    state.fonte = true
   },
 }
 

@@ -26,7 +26,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: './plugins/vuexPersisstedState.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -50,7 +50,7 @@ export default {
 
   // Adicionado Atalho de api, futuramente quando tiver em produção esse url será substituido por um .env
   proxy: {
-    '/api/': 'http://pi-api.test/',
+    '/api/': 'http://cms-api-pi.test/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

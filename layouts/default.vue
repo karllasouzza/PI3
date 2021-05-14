@@ -1,5 +1,9 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    :as="Cores()"
+    :style="{ 'font-family': fonte ? 'Arial' : 'Libras' }"
+  >
     <transition name="slide-fade">
       <NotfErro
         v-if="notfErro"
@@ -16,15 +20,24 @@
         @click="fecharSucess()"
       />
     </transition>
+    <AbaCarrinho />
+    <BlurCarrinho />
+    <Configuracao />
+    <BlurConfig />
     <ButtonMenu />
     <Header />
     <Nuxt />
+    <VLibras />
     <Footer />
   </div>
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex'
+import { VLibras } from '@vue-a11y/vlibras'
 export default {
+  components: {
+    VLibras,
+  },
   data() {
     return {
       intervaloErro: '',
@@ -39,13 +52,29 @@ export default {
       // notificaçao de sucesso
       notf_sucess: (state) => state.Notificacoes.mensagemSucess,
       notfSucess: (state) => state.Notificacoes.notfSucess,
+
+      // Fontes
+      fonte: (state) => state.Acessibilidade.fonte,
     }),
   },
   methods: {
     ...mapMutations({
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
+      // Dark_mode
+      Dark_on: 'Colors/Dark_on_auto',
+      Light_on: 'Colors/Light_on_auto',
     }),
+    Cores() {
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        this.Dark_on()
+      } else {
+        this.ight_on()
+      }
+    },
     // setar um 'intervalo' para a notificaçao fechar
     loadErro() {
       this.intervaloErro = setInterval(this.fecharErro, 4000)
@@ -67,7 +96,6 @@ export default {
 </script>
 <style>
 html {
-  font-family: Arial;
   font-size: 16px;
   word-spacing: 1px;
   -moz-text-size-adjust: 100%;
@@ -76,6 +104,10 @@ html {
   /* -ms-text-size-adjust: 100%; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: Libras;
+  src: url(../assets/font/libras.otf);
 }
 *,
 *::before,

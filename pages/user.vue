@@ -1,26 +1,26 @@
 <template>
   <section>
-    <main>
+    <main :style="{ background: Color_fff + '80' }">
       <BigTitle
         class="title"
         :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
-        color="Color_000"
+        :color="Color_000"
       />
 
       <!-- Muda de conta -->
       <div class="container-change-account">
         <Title
-          :text="changeOfForm ? 'Não tem uma conta? ' : 'Já tem uma conta? '"
-          color="Color_000"
+          :text="changeOfForm ? Label_N_conta : Label_S_conta"
+          :color="Color_000"
         />
         <button
+          :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
+          accesskey="t"
           @mouseover="buttonHover = true"
           @mouseleave="buttonHover = false"
-          :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
           @click="changeForm"
-          accesskey="t"
         >
-          {{ changeOfForm ? 'Criar conta' : 'Faça login' }}
+          {{ changeOfForm ? L_create_acount : L_login }}
         </button>
       </div>
 
@@ -30,15 +30,14 @@
         @submit.prevent="loginToAccount"
       >
         <input
-          v-model="userLogin"
           ref="ref_userLogin"
+          v-model="userLogin"
           type="email"
-          placeholder="Dígite seu e-mail."
+          :placeholder="P_email"
         />
 
         <!-- Olho para ver senha -->
         <svg
-          @click="changePasswordVisibility"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -47,6 +46,7 @@
           height="1em"
           width="2em"
           class="eye"
+          @click="changePasswordVisibility"
         >
           <path
             :style="passwordVisible ? { fill: Color_976 } : { fill: Color_238 }"
@@ -55,34 +55,34 @@
           />
         </svg>
         <input
-          v-model="userPassword"
           ref="ref_userPassword"
+          v-model="userPassword"
           :type="showPassword"
-          placeholder="Dígite sua senha."
+          :placeholder="P_senha"
         />
 
         <br />
 
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }"
-          >Esqueceu a senha?</nuxt-link
+        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">
+          {{ Label_E_senha }}</nuxt-link
         >
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }"
-          >Precisa de ajuda?</nuxt-link
-        >
+        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">{{
+          Label_help
+        }}</nuxt-link>
 
         <br />
 
         <button
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
           :style="
             AccessAccountButton
               ? { backgroundColor: Color_976, color: Color_fff }
               : { backgroundColor: Color_238, color: Color_fff }
           "
+          type="submit"
+          @mouseover="AccessAccountButton = true"
+          @mouseleave="AccessAccountButton = false"
         >
-          Fazer login
+          {{ B_login }}
         </button>
       </form>
 
@@ -92,62 +92,60 @@
         @submit.prevent="registerAccount"
       >
         <input
-          v-model="userName"
           ref="ref_userName"
+          v-model="userName"
           type="text"
-          placeholder="* Nome"
+          :placeholder="P_nome"
         />
         <input
-          disabled
-          v-model="lastName"
           ref="ref_lastName"
+          v-model="lastName"
           type="text"
-          placeholder="* Sobrenome - Desabilitado"
+          :placeholder="P_S_name"
         />
         <input
-          disabled
-          v-model="dateOfBirth"
           ref="ref_dateOfBirth"
+          v-model="dateOfBirth"
           type="date"
-          placeholder="* Data de nascimento - Desabilitado"
+          :placeholder="P_date"
         />
-        <select disabled v-model="genre" ref="ref_genre">
-          <option value="">Selecione seu Gênero - Desabilitado</option>
-          <option value="female">Feminino</option>
-          <option value="male">Masculino</option>
-          <option value="lgbtqia">lgbtqia+</option>
-          <option value="nenhum">prefiro não dizer</option>
+        <select ref="ref_genre" v-model="genre">
+          <option value="">{{ O_S_genero }}</option>
+          <option value="female">{{ O_feminino }}</option>
+          <option value="male">{{ O_masculino }}</option>
+          <option value="lgbtqia">{{ O_lgbt }}</option>
+          <option value="nenhum">{{ O_null }}</option>
         </select>
         <input
-          v-model="email"
           ref="ref_email"
+          v-model="email"
           type="email"
-          placeholder="* E-mail"
+          :placeholder="P_I_email"
         />
         <input
-          v-model="password"
           ref="ref_password"
+          v-model="password"
           type="password"
-          placeholder="* Senha"
+          :placeholder="P_password"
         />
         <input
-          v-model="confirmPassword"
           ref="ref_confirmPassword"
+          v-model="confirmPassword"
           type="password"
-          placeholder="* Confirme sua senha"
+          :placeholder="P_R_password"
         />
 
         <button
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
           :style="
             AccessAccountButton
               ? { backgroundColor: Color_976, color: Color_fff }
               : { backgroundColor: Color_238, color: Color_fff }
           "
+          type="submit"
+          @mouseover="AccessAccountButton = true"
+          @mouseleave="AccessAccountButton = false"
         >
-          Criar conta
+          {{ B_create_acount }}
         </button>
       </form>
     </main>
@@ -160,7 +158,7 @@ import Title from '../components/Title'
 import BigTitle from '../components/BigTitle'
 
 export default {
-  name: 'user',
+  name: 'User',
   components: {
     BigTitle,
     Title,
@@ -187,7 +185,122 @@ export default {
     email: '',
     password: '',
     confirmPassword: '',
+
+    // Labels
+    Label_N_conta: '',
+    Label_S_conta: '',
+    L_login: '',
+    L_create_acount: '',
+    Label_E_senha: '',
+    Label_help: '',
+
+    // Placeholder
+    P_nome: '',
+    P_S_name: '',
+    P_I_email: '',
+    P_password: '',
+    P_R_password: '',
+    P_date: '',
+    P_email: '',
+    P_senha: '',
+
+    // Botoes
+    B_login: '',
+    B_create_acount: '',
+
+    // Option/Select
+    O_S_genero: '',
+    O_feminino: '',
+    O_masculino: '',
+    O_lgbt: '',
+    O_null: '',
   }),
+  computed: {
+    ...mapState({
+      // Cores
+      Color_000: (state) => state.Colors.Color_000,
+      Color_238: (state) => state.Colors.Color_238,
+      Color_976: (state) => state.Colors.Color_976,
+      Color_fff: (state) => state.Colors.Color_fff,
+
+      // Idiomas
+      idioma: (state) => state.Acessibilidade.idioma,
+    }),
+  },
+  created() {
+    // Portugues
+    if (this.idioma === 'pt') {
+      this.Label_N_conta = 'Não tem uma conta? '
+      this.Label_S_conta = 'Já tem uma conta? '
+      this.L_login = 'Faça login'
+      this.L_create_acount = 'Criar conta'
+      this.Label_E_senha = ' Esqueceu a senha?'
+      this.Label_help = 'Precisa de ajuda?'
+      this.P_nome = '* Nome'
+      this.P_S_name = '* Sobrenome'
+      this.P_I_email = '* E-mail'
+      this.P_password = '* Senha'
+      this.P_R_password = '* Confirme sua senha'
+      this.P_date = '* Data de nascimento'
+      this.P_email = 'Dígite seu e-mail.'
+      this.P_senha = 'Dígite sua senha.'
+      this.B_login = 'Fazer login'
+      this.B_create_acount = 'Criar conta'
+      this.O_S_genero = 'Selecione seu Gênero'
+      this.O_feminino = 'Feminino'
+      this.O_masculino = 'Masculino'
+      this.O_lgbt = 'LGBTQIA+'
+      this.O_null = 'prefiro não dizer'
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
+      this.Label_N_conta = 'Do not have an account?'
+      this.Label_S_conta = 'Already have an account?'
+      this.L_login = 'Sign in'
+      this.L_create_acount = 'Create an account'
+      this.Label_E_senha = 'Forgot password?'
+      this.Label_help = 'Need help?'
+      this.P_nome = '* Name'
+      this.P_S_name = '* Surname'
+      this.P_I_email = '* E-mail'
+      this.P_password = '* Password'
+      this.P_R_password = '* Confirm your password'
+      this.P_date = '* Date of birth'
+      this.P_email = 'Type your e-mail.'
+      this.P_senha = 'Type your password.'
+      this.B_login = 'Login'
+      this.B_create_acount = 'Create an account'
+      this.O_S_genero = 'Select your Genre'
+      this.O_feminino = 'Feminine'
+      this.O_masculino = 'Masculino'
+      this.O_lgbt = 'LGBTQIA+'
+      this.O_null = 'Prefer not to say'
+    }
+    // Espanhol
+    else {
+      this.Label_N_conta = '¿No tienes una cuenta?'
+      this.Label_S_conta = '¿Ya tienes una cuenta?'
+      this.L_login = 'Registrarse'
+      this.L_create_acount = 'Crea una cuenta'
+      this.Label_E_senha = 'olvido la contraseña?'
+      this.Label_help = '¿Necesita ayuda?'
+      this.P_nome = '* Nombre'
+      this.P_S_name = '* Apellido'
+      this.P_I_email = '* Correo electrónico'
+      this.P_password = '* Contraseña'
+      this.P_R_password = '* Confirmar la contraseña'
+      this.P_date = '* Fecha de nacimiento'
+      this.P_email = 'Escriba su correo electrónico.'
+      this.P_senha = 'Escribe tu contraseña.'
+      this.B_login = 'Hacer login'
+      this.B_create_acount = 'Crea una cuenta'
+      this.O_S_genero = 'Seleccione su género'
+      this.O_feminino = 'Feminino'
+      this.O_masculino = 'Masculino'
+      this.O_lgbt = 'LGBTQIA+'
+      this.O_null = 'prefiero no decirlo'
+    }
+  },
   methods: {
     ...mapActions({
       set_Erro: 'Notificacoes/setErro',
@@ -254,7 +367,7 @@ export default {
           mensagemErro: 'Formato de nome invalido.',
         })
         return
-      } /* else if (!this.lastName) {
+      } else if (!this.lastName) {
         this.$refs.ref_lastName.focus()
         this.notf_erro_true()
         this.set_Erro({
@@ -302,7 +415,6 @@ export default {
         })
         return
       }
-      */
 
       // Verificação do E-mail
       const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi
@@ -347,9 +459,13 @@ export default {
       }
 
       // Realiza o cadastro, se der certo ele funcionará senão dará um erro
+      // Os dados devem ter o mesmo nome do que é aceito pelo banco
       await this.$axios
         .$post('/api/user', {
           name: this.userName,
+          last_name: this.lastName,
+          date_of_birth: this.dateOfBirth,
+          genre: this.genre,
           email: this.email,
           password: this.password,
         })
@@ -377,24 +493,12 @@ export default {
         })
     },
   },
-  computed: {
-    ...mapState({
-      // Cor preta
-      Color_000: (state) => state.Colors.Color_000,
-      // Cor Verde claro
-      Color_238: (state) => state.Colors.Color_238,
-      // Cor verde escuro
-      Color_976: (state) => state.Colors.Color_976,
-      // Cor de branco
-      Color_fff: (state) => state.Colors.Color_fff,
-    }),
-  },
 }
 </script>
 
 <style scoped>
 section {
-  background-image: url('../assets/img/user-page/background-user-page.jpeg');
+  background-image: url('../assets/img/user-page/Conta-destop.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -403,7 +507,7 @@ section {
   width: 100%;
 }
 
-/* Css básico para atribuir display flex no section, main e 
+/* Css básico para atribuir display flex no section, main e
 container-change-account (Botão de trocar conta) */
 section,
 section main,
@@ -416,8 +520,7 @@ section main .container-change-account {
 section main {
   flex-direction: column;
 
-  background-color: #ffffff93;
-  border-radius: 0 20px;
+  border-radius: 20px;
 
   margin: 6em 0;
   padding: 1em;
@@ -462,7 +565,7 @@ section main form select {
   margin: 0.5em 0;
 
   background: rgba(242, 242, 242, 0.7);
-  border-radius: 0px 20px;
+  border-radius: 20px;
 
   font-size: 12pt;
   padding: 0.5em;
@@ -502,6 +605,16 @@ section main form .link-for-help {
 
   100% {
     opacity: 1;
+  }
+}
+@media (max-width: 768px) {
+  section {
+    background-image: url('../assets/img/user-page/Conta-tablet.jpg');
+  }
+}
+@media (max-width: 425px) {
+  section {
+    background-image: url('../assets/img/user-page/Conta-mobile.jpg');
   }
 }
 </style>
