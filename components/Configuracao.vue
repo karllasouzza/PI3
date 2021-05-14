@@ -277,11 +277,6 @@ section > div.outros > div > span > svg {
     grid-template-rows: 200vh;
   }
 }
-@media (max-width: 768px) {
-  .container {
-    background-image: url(../assets/img/Inicio/Fotos/contatos-tablet.jpg);
-  }
-}
 @media (max-width: 679px) {
   .container {
     grid-template-columns: 20px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 20px;
@@ -302,9 +297,6 @@ section > div.outros > div > span > svg {
   }
 }
 @media (max-width: 425px) {
-  .container {
-    background-image: url(../assets/img/Inicio/Fotos/contatos-mobile.jpg);
-  }
   form {
     flex-direction: column;
   }
