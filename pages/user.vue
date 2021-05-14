@@ -1,17 +1,17 @@
 <template>
   <section>
-    <main>
+    <main :style="{ background: Color_fff + '80' }">
       <BigTitle
         class="title"
         :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
-        color="Color_000"
+        :color="Color_000"
       />
 
       <!-- Muda de conta -->
       <div class="container-change-account">
         <Title
           :text="changeOfForm ? Label_N_conta : Label_S_conta"
-          color="Color_000"
+          :color="Color_000"
         />
         <button
           :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
@@ -67,7 +67,7 @@
           {{ Label_E_senha }}</nuxt-link
         >
         <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">{{
-          label_help
+          Label_help
         }}</nuxt-link>
 
         <br />
@@ -126,7 +126,7 @@
           ref="ref_password"
           v-model="password"
           type="password"
-          :placeholder="P_passwword"
+          :placeholder="P_password"
         />
         <input
           ref="ref_confirmPassword"
@@ -520,7 +520,6 @@ section main .container-change-account {
 section main {
   flex-direction: column;
 
-  background-color: #ffffff93;
   border-radius: 20px;
 
   margin: 6em 0;

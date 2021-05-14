@@ -57,6 +57,7 @@ export default {
       // colors
       Color_976: (state) => state.Colors.Color_976,
       Color_004: (state) => state.Colors.Color_004,
+      Color_000: (state) => state.Colors.Color_000,
       Color_fff: (state) => state.Colors.Color_fff,
       Color_ff5: (state) => state.Colors.Color_ff5,
 

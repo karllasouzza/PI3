@@ -1,139 +1,351 @@
 <template>
-  <div class="config">
-    <div class="controlls">
-      <svg
-        width="41"
-        height="41"
-        viewBox="0 0 41 41"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect width="41" height="41" rx="20" fill="#007F5F" />
-        <path
-          d="M28.7385 19.701H15.3402L19.4411 14.7755C19.6328 14.5448 19.7251 14.2474 19.6975 13.9487C19.67 13.6499 19.5249 13.3744 19.2942 13.1826C19.0635 12.9909 18.7661 12.8986 18.4673 12.9262C18.1686 12.9537 17.8931 13.0988 17.7013 13.3295L12.0528 20.1077C12.0148 20.1616 11.9808 20.2183 11.9511 20.2772C11.9511 20.3337 11.9511 20.3676 11.872 20.424C11.8208 20.5536 11.794 20.6915 11.793 20.8307C11.794 20.97 11.8208 21.1079 11.872 21.2374C11.872 21.2939 11.872 21.3278 11.9511 21.3843C11.9808 21.4432 12.0148 21.4998 12.0528 21.5537L17.7013 28.332C17.8075 28.4595 17.9406 28.562 18.0909 28.6323C18.2412 28.7026 18.4052 28.7389 18.5712 28.7387C18.8352 28.7392 19.091 28.6472 19.2942 28.4788C19.4086 28.384 19.5032 28.2675 19.5725 28.1361C19.6418 28.0046 19.6845 27.8608 19.6981 27.7129C19.7118 27.5649 19.6961 27.4157 19.652 27.2738C19.6079 27.1319 19.5362 27.0001 19.4411 26.8859L15.3402 21.9604H28.7385C29.0382 21.9604 29.3255 21.8414 29.5374 21.6296C29.7492 21.4177 29.8682 21.1303 29.8682 20.8307C29.8682 20.5311 29.7492 20.2438 29.5374 20.0319C29.3255 19.82 29.0382 19.701 28.7385 19.701Z"
-          fill="white"
-        />
-      </svg>
-      <svg
-        width="41"
-        height="41"
-        viewBox="0 0 41 41"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g clip-path="url(#clip0)">
-          <path
-            d="M20.5 8.96875C19.6131 8.96875 18.7461 8.70575 18.0086 8.213C17.2712 7.72025 16.6964 7.01989 16.357 6.20047C16.0176 5.38106 15.9288 4.4794 16.1018 3.60952C16.2748 2.73964 16.7019 1.9406 17.3291 1.31344C17.9562 0.686294 18.7553 0.259199 19.6251 0.086168C20.495 -0.0868626 21.3967 0.00194304 22.2161 0.341355C23.0355 0.680766 23.7359 1.25554 24.2286 1.99299C24.7214 2.73044 24.9844 3.59745 24.9844 4.48438C24.9831 5.67332 24.5102 6.8132 23.6695 7.6539C22.8288 8.49461 21.6889 8.96748 20.5 8.96875Z"
-            fill="black"
-          />
-          <path
-            d="M34.5939 9.0327L34.5579 9.04231L34.5243 9.05272C34.4442 9.07514 34.3641 9.09916 34.284 9.12399C32.7938 9.56122 25.5611 11.6 20.4657 11.6C15.7307 11.6 9.15231 9.83829 7.04785 9.2401C6.83841 9.15912 6.62452 9.09014 6.40723 9.0335C4.88574 8.63311 3.84473 10.1786 3.84473 11.5912C3.84473 12.9902 5.10195 13.6564 6.37119 14.1345V14.1569L13.9962 16.5384C14.7754 16.8371 14.9836 17.1422 15.0853 17.4065C15.416 18.2545 15.1518 19.9337 15.0581 20.5199L14.5936 24.1234L12.0159 38.2324C12.0079 38.2708 12.0007 38.3101 11.9943 38.3501L11.9759 38.4518C11.7901 39.7451 12.7398 40.9999 14.5384 40.9999C16.1079 40.9999 16.8006 39.9164 17.1009 38.4422C17.4012 36.968 19.343 25.8243 20.4641 25.8243C21.5852 25.8243 23.8947 38.4422 23.8947 38.4422C24.195 39.9164 24.8877 40.9999 26.4572 40.9999C28.2605 40.9999 29.2103 39.7395 29.0197 38.4422C29.0033 38.3331 28.983 38.2247 28.9588 38.1171L26.3459 24.125L25.8822 20.5215C25.5467 18.4227 25.8166 17.7292 25.9079 17.5666C25.9103 17.5628 25.9124 17.5588 25.9143 17.5546C26.0007 17.3945 26.3947 17.0357 27.314 16.6906L34.4634 14.1913C34.5073 14.1796 34.5506 14.1657 34.5931 14.1497C35.8744 13.6692 37.1556 13.0046 37.1556 11.5928C37.1556 10.181 36.1154 8.63311 34.5939 9.0327Z"
-            fill="black"
-          />
-        </g>
-        <defs>
-          <clipPath id="clip0">
-            <rect width="41" height="41" fill="white" />
-          </clipPath>
-        </defs>
-      </svg>
-      <svg
-        width="41"
-        height="41"
-        viewBox="0 0 41 41"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M34.75 9H6.5625C5.88288 9 5.2311 9.26998 4.75054 9.75054C4.26998 10.2311 4 10.8829 4 11.5625V29.5C4 30.1796 4.26998 30.8314 4.75054 31.312C5.2311 31.7925 5.88288 32.0625 6.5625 32.0625H34.75C35.4296 32.0625 36.0814 31.7925 36.562 31.312C37.0425 30.8314 37.3125 30.1796 37.3125 29.5V11.5625C37.3125 10.8829 37.0425 10.2311 36.562 9.75054C36.0814 9.26998 35.4296 9 34.75 9ZM34.75 29.5H6.5625V11.5625H34.75V29.5ZM27.0625 14.125H24.5V16.6875H27.0625V14.125ZM24.5 19.25H21.9375V21.8125H24.5V19.25ZM29.625 14.125H32.1875V16.6875H29.625V14.125ZM32.1875 24.375H29.625V26.9375H32.1875V24.375ZM14.25 24.375H27.0625V26.9375H14.25V24.375ZM32.1875 19.25H27.0625V21.8125H32.1875V19.25ZM19.375 14.125H21.9375V16.6875H19.375V14.125ZM19.375 19.25H16.8125V21.8125H19.375V19.25ZM9.125 24.375H11.6875V26.9375H9.125V24.375ZM9.125 14.125H11.6875V16.6875H9.125V14.125ZM16.8125 14.125H14.25V16.6875H16.8125V14.125ZM9.125 19.25H14.25V21.8125H9.125V19.25Z"
-          fill="#238E23"
-        />
-      </svg>
-    </div>
-    <div class="content">
-      <Dark />
-      <select v-model="language" name="" @change="idioma_Site()">
-        <option value="1">PT</option>
-        <option value="2">EN</option>
-        <option value="3">ES</option>
-      </select>
-    </div>
-  </div>
+  <main v-if="config" class="container">
+    <section :style="{ background: Color_238 + '80' }">
+      <!-- formulario -->
+      <div class="form">
+        <!-- titulo  -->
+        <Title :color="Color_000" :text="titulo1" />
+        <form action="">
+          <div class="inputs">
+            <div>
+              <p class="label">{{ M_cores }}</p>
+              <Dark />
+            </div>
+            <div>
+              <p class="label">{{ I_site }}</p>
+
+              <Idioma />
+            </div>
+          </div>
+        </form>
+        <button
+          :style="{
+            background: Color_fff,
+            color: '#fff',
+            'font-family': fonte ? 'Arial' : 'Libras',
+          }"
+          @click="reload()"
+        >
+          {{ button }}
+        </button>
+      </div>
+
+      <div class="outros" :style="{ background: Color_fff + '80' }">
+        <Title :text="titulo2" :color="Color_000" />
+        <div :style="{ background: Color_fff }">
+          <span :style="{ color: Color_000 }">{{ F_site }}</span>
+
+          <Libras />
+        </div>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
-  data: () => ({
-    language: 1,
-  }),
+  data() {
+    return {
+      // formulario
+      titulo1: '',
+      button: '',
+
+      // outros
+      titulo2: 'Outras opções',
+      M_cores: 'Modo de cor do site',
+      I_site: 'Idioma do site',
+      F_site: 'Libras',
+    }
+  },
   computed: {
     ...mapState({
+      /* Colors */
+      Color_000: (state) => state.Colors.Color_000,
+      Color_976: (state) => state.Colors.Color_976,
       Color_004: (state) => state.Colors.Color_004,
-      Color_fff: (state) => state.Colors.Color_fff,
+      Color_007: (state) => state.Colors.Color_007,
       Color_00f: (state) => state.Colors.Color_00f,
+      Color_238: (state) => state.Colors.Color_238,
+      Color_fdc: (state) => state.Colors.Color_fdc,
+      Color_ff5: (state) => state.Colors.Color_ff5,
+      Color_d63: (state) => state.Colors.Color_d63,
+      Color_fff: (state) => state.Colors.Color_fff,
+      Color_ffc: (state) => state.Colors.Color_ffc,
+
+      // Idioma
       idioma: (state) => state.Acessibilidade.idioma,
+      fonte: (state) => state.Acessibilidade.fonte,
+      config: (state) => state.Header.config,
     }),
   },
+  created() {
+    // Portugues-br
+    if (this.idioma === 'pt') {
+      this.titulo1 = 'Configuração'
+      this.button = 'Salvar'
+      this.M_cores = 'Modo de cor'
+      this.I_site = 'Idioma'
+      this.F_site = 'Libras'
+      this.titulo2 = 'Acessibilidade'
+    }
+    // Ingles
+    else if (this.idioma === 'en') {
+      this.titulo1 = 'Settings'
+      this.button = 'Save'
+      this.M_cores = 'Color mode'
+      this.I_site = 'Language'
+      this.F_site = 'Pounds'
+      this.titulo2 = 'Accessibility'
+    }
+    // Espanhol
+    else {
+      this.titulo1 = 'Ajustes'
+      this.button = 'Salvar'
+      this.M_cores = 'Modo de color'
+      this.I_site = 'Idioma'
+      this.F_site = 'Libras'
+      this.titulo2 = 'Accesibilidad'
+    }
+  },
   methods: {
-    ...mapMutations({
-      pt: 'Acessibilidade/pt',
-      en: 'Acessibilidade/en',
-      es: 'Acessibilidade/es',
-    }),
-    idioma_Site() {
-      if (this.language === '1') {
-        this.pt()
-      } else if (this.language === '2') {
-        this.en()
-      } else {
-        this.es()
-      }
+    ...mapActions({}),
+    ...mapMutations({}),
+    reload() {
+      location.reload()
     },
   },
 }
 </script>
 
-<style>
-.config {
-  width: 753px;
-  height: 80%;
-  display: none;
+<style scoped>
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+  grid-template-rows: 100vh;
+  background-position: center;
+  background-size: cover;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+}
+section {
+  width: 70%;
+  height: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-row: 1/2;
+  grid-column: 2/8;
   margin: auto;
-  background: blueviolet;
+  border-radius: 20px;
+  z-index: 999;
+}
+/* formulario de contato  */
+section .form {
+  width: 70%;
+  height: 100%;
+  padding: 19.094px 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+}
+.form span {
+  width: 100%;
+  height: 45px;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  width: 100%;
+  height: 58%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputs {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputs > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 80px;
+}
+.label {
+  font-weight: bold;
+}
+button {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.226);
+  padding: 1%;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Outros  */
+section > div.outros {
+  width: 28.5%;
+  height: 100%;
+  background: revert;
+  border-radius: 20px;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-
-.config > .controlls {
-  height: 100%;
-  width: 50px;
-  background: white;
+section > div.outros > span {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+section > div.outros > div {
+  width: 100%;
+  height: 100px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
-  padding: 5px;
-  border-radius: 20px 0 0 20px;
+  padding: 7px;
+  cursor: pointer;
 }
 
-.config > .controlls > svg {
-  width: 36px;
-  height: 36px;
-  margin-bottom: 20px;
+section > div.outros > div:hover {
+  background: #238e23eb !important;
 }
-
-.conffig > .content {
-  width: 700px;
-  height: 100%;
-  background: white;
-  border-radius: 0 20px 20px 0;
+section > div.outros > div > span:first-child {
+  font-weight: bold;
+}
+section > div.outros > div > span:last-child {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+section > div.outros > div > span > svg {
+  width: 20px;
+  height: 20px;
+}
+@media (max-width: 1107px) {
+  section {
+    width: 78%;
+  }
+}
+@media (max-width: 1026px) {
+  section {
+    width: 100%;
+    height: 800px;
+    flex-direction: column;
+  }
+  section > div.outros {
+    width: 70%;
+    height: 100%;
+    border-radius: 20px;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  section > div.outros > div {
+    margin: 2% 6%;
+  }
+  .container {
+    grid-template-rows: 200vh;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    background-image: url(../assets/img/Inicio/Fotos/contatos-tablet.jpg);
+  }
+}
+@media (max-width: 679px) {
+  .container {
+    grid-template-columns: 20px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 20px;
+  }
+  section .form {
+    width: 80%;
+  }
+  section > div.outros {
+    width: 80%;
+  }
+}
+@media (max-width: 575px) {
+  section .form {
+    width: 100%;
+  }
+  section > div.outros {
+    width: 100%;
+  }
+}
+@media (max-width: 425px) {
+  .container {
+    background-image: url(../assets/img/Inicio/Fotos/contatos-mobile.jpg);
+  }
+  form {
+    flex-direction: column;
+  }
+  .inputs {
+    width: 100%;
+    height: 176px;
+  }
+  input {
+    height: 37px;
+  }
+  form {
+    height: 74%;
+  }
+  textarea {
+    height: 40%;
+    width: 100%;
+  }
+  section {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 3%;
+    height: 983px;
+    flex-direction: column;
+    padding: 3%;
+  }
+  .container {
+    grid-template-rows: 206vh;
+  }
+  .form span {
+    height: 30px;
+    font-size: 25px;
+  }
+}
+@media (max-width: 348px) {
+  .form span {
+    height: 37px;
+    font-size: 22px;
+  }
+  .container {
+    grid-template-rows: 206vh;
+    grid-template-columns: 10px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 10px;
+  }
 }
 </style>

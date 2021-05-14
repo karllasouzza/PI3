@@ -4,6 +4,7 @@ export const state = () => ({
   about: false,
   loguin: false,
   contacts: false,
+  config: false,
 })
 
 export const mutations = {
@@ -54,6 +55,12 @@ export const mutations = {
     state.loguin = false
     state.contacts = true
     state.perfil = false
+  },
+  config_on(state) {
+    state.config = true
+  },
+  config_off(state) {
+    state.config = false
   },
 }
 

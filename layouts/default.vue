@@ -1,5 +1,9 @@
 <template>
-  <div id="app" :as="Cores()">
+  <div
+    id="app"
+    :as="Cores()"
+    :style="{ 'font-family': fonte ? 'Arial' : 'Libras' }"
+  >
     <transition name="slide-fade">
       <NotfErro
         v-if="notfErro"
@@ -19,6 +23,7 @@
     <AbaCarrinho />
     <BlurCarrinho />
     <Configuracao />
+    <BlurConfig />
     <ButtonMenu />
     <Header />
     <Nuxt />
@@ -42,6 +47,9 @@ export default {
       // notificaçao de sucesso
       notf_sucess: (state) => state.Notificacoes.mensagemSucess,
       notfSucess: (state) => state.Notificacoes.notfSucess,
+
+      // Fontes
+      fonte: (state) => state.Acessibilidade.fonte,
     }),
   },
   methods: {
@@ -49,8 +57,8 @@ export default {
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       // Dark_mode
-      Dark_on: 'Colors/Dark_on',
-      Light_on: 'Colors/Light_on',
+      Dark_on: 'Colors/Dark_on_auto',
+      Light_on: 'Colors/Light_on_auto',
     }),
     Cores() {
       if (
@@ -59,7 +67,7 @@ export default {
       ) {
         this.Dark_on()
       } else {
-        this.Light_on()
+        this.ight_on()
       }
     },
     // setar um 'intervalo' para a notificaçao fechar
@@ -83,7 +91,6 @@ export default {
 </script>
 <style>
 html {
-  font-family: Arial;
   font-size: 16px;
   word-spacing: 1px;
   -moz-text-size-adjust: 100%;
@@ -92,6 +99,10 @@ html {
   /* -ms-text-size-adjust: 100%; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: Libras;
+  src: url(../assets/font/libras.otf);
 }
 *,
 *::before,

@@ -55,10 +55,11 @@
             :text="buttons.conteudo"
             :link="buttons.Link"
             :acess="buttons.key"
+            :class="buttons.class"
             color="#fff"
           />
         </li>
-        <li>
+        <li @click="config()">
           <svg
             width="26"
             height="26"
@@ -89,22 +90,29 @@ export default {
       Color_fff: (state) => state.Colors.Color_fff,
       Color_00f: (state) => state.Colors.Color_00f,
       idioma: (state) => state.Acessibilidade.idioma,
+      conf: (state) => state.Header.config,
     }),
   },
   created() {
     if (this.idioma === 'pt') {
       this.Botoes = []
       this.Botoes.push(
-        { conteudo: 'Inicio', Link: '/', key: '1' },
-        { conteudo: 'Blog', Link: '/blog', key: '2' },
+        { conteudo: 'Inicio', Link: '/', key: '1', class: 'Inicio' },
+        { conteudo: 'Blog', Link: '/blog', key: '2', class: 'Blog' },
         {
           conteudo: 'Produtos',
           Link: '/produtos',
           key: '3',
+          class: 'Produtos',
         },
-        { conteudo: 'Sobre', Link: '/sobre', key: '4' },
-        { conteudo: 'Contato', Link: '/contato', key: '5' },
-        { conteudo: 'Criar conta', Link: '/user', key: '6' }
+        { conteudo: 'Sobre', Link: '/sobre', key: '4', class: 'Sobre' },
+        { conteudo: 'Contato', Link: '/contato', key: '5', class: 'Contato' },
+        {
+          conteudo: 'Criar conta',
+          Link: '/user',
+          key: '6',
+          class: 'Criar conta',
+        }
       )
     } else if (this.idioma === 'en') {
       this.Botoes = []
@@ -139,17 +147,16 @@ export default {
   },
   methods: {
     ...mapMutations({
-      pt: 'Acessibilidade/pt',
-      en: 'Acessibilidade/en',
-      es: 'Acessibilidade/es',
+      confg_on: 'Header/config_on',
+      confg_off: 'Header/config_off',
     }),
-    idioma_Site() {
-      if (this.language === '1') {
-        this.pt()
-      } else if (this.language === '2') {
-        this.en()
+    config() {
+      if (!this.conf) {
+        this.confg_on()
+        window.scrollTo(0, 0)
       } else {
-        this.es()
+        this.confg_off()
+        window.scrollTo(0, 0)
       }
     },
   },
