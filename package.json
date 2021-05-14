@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "@vue-a11y/vlibras": "^0.1.0",
     "core-js": "^3.8.2",
     "currency-formatter": "^1.5.8",
     "nuxt": "^2.14.12",

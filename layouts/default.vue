@@ -27,12 +27,17 @@
     <ButtonMenu />
     <Header />
     <Nuxt />
+    <VLibras />
     <Footer />
   </div>
 </template>
 <script>
 import { mapState, mapMutations } from 'vuex'
+import { VLibras } from '@vue-a11y/vlibras'
 export default {
+  components: {
+    VLibras,
+  },
   data() {
     return {
       intervaloErro: '',
