@@ -35,24 +35,32 @@
     <nav>
       <ul>
         <li>
-          <nuxtLink :class="home" to="/">{{ inicio }}</nuxtLink>
+          <nuxtLink :class="home" to="/" accesskey="1">{{ inicio }}</nuxtLink>
         </li>
         <li>
-          <nuxtLink :class="bloG" to="/blog">{{ blog }}</nuxtLink>
+          <nuxtLink :class="bloG" to="/blog" accesskey="2">{{ blog }}</nuxtLink>
         </li>
         <li>
-          <nuxtLink :class="products" to="/produtos">{{ produtos }}</nuxtLink>
+          <nuxtLink :class="products" to="/produtos" accesskey="3">{{
+            produtos
+          }}</nuxtLink>
         </li>
         <li>
-          <nuxtLink :class="about" to="/sobre">{{ sobre }}</nuxtLink>
+          <nuxtLink :class="about" to="/sobre" accesskey="4">{{
+            sobre
+          }}</nuxtLink>
         </li>
         <li>
-          <nuxtLink :class="contacts" to="/contato">{{ contatos }}</nuxtLink>
+          <nuxtLink :class="contacts" to="/contato" accesskey="5">{{
+            contatos
+          }}</nuxtLink>
         </li>
         <li>
-          <nuxtLink :class="logIn" to="/user">{{ login }}</nuxtLink>
+          <nuxtLink :class="logIn" to="/user" accesskey="6">{{
+            login
+          }}</nuxtLink>
         </li>
-        <li @click="config()">
+        <li accesskey="7" @click="config()">
           <span>
             {{ configuracao }}
           </span>
@@ -67,6 +75,7 @@
         fill="currentColor"
         class="bi bi-bag"
         viewBox="0 0 16 16"
+        accesskey="8"
         @click="Cart()"
       >
         <path
@@ -121,7 +130,7 @@ export default {
       this.produtos = 'Produtos'
       this.sobre = 'Sobre'
       this.contatos = 'Contato'
-      this.login = 'Criar conta'
+      this.login = 'Conecte-se'
       this.configuracao = 'Configuração'
     } else if (this.idioma === 'en') {
       this.inicio = 'Home'
@@ -129,7 +138,7 @@ export default {
       this.produtos = 'Products'
       this.sobre = 'About'
       this.contatos = 'Contact'
-      this.login = 'Create account'
+      this.login = 'Login'
       this.configuracao = 'Settings'
     } else {
       this.inicio = 'Casa'
@@ -137,7 +146,7 @@ export default {
       this.produtos = 'Productos'
       this.sobre = 'Sobre'
       this.contatos = 'Acerca de'
-      this.login = 'Crear cuenta'
+      this.login = 'Acceso'
       this.configuracao = 'Ajustes'
     }
   },
@@ -335,6 +344,9 @@ nav > ul > li > a,
 nav > ul > li > span {
   text-decoration: none;
   color: white;
+}
+nav > ul > li > span {
+  cursor: pointer;
 }
 nav > ul > li > a:hover,
 nav > ul > li > span:hover {
