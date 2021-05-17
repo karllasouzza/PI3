@@ -1,6 +1,6 @@
 <template>
   <section>
-    <main :as="PageOn()" :style="{ background: Color_fff + '80' }">
+    <main :as="PageOn()" :style="{ background: Color_fff + 'cc' }">
       <BigTitle
         class="title"
         :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
@@ -14,7 +14,7 @@
           :color="Color_000"
         />
         <button
-          :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
+          :style="buttonHover ? { color: '#00cc00' } : { color: '#00b33c' }"
           accesskey="t"
           @mouseover="buttonHover = true"
           @mouseleave="buttonHover = false"
@@ -63,25 +63,16 @@
 
         <br />
 
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">
+        <nuxt-link to="" class="link-for-help" :style="{ color: '#00b33c' }">
           {{ Label_E_senha }}</nuxt-link
         >
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">{{
+        <nuxt-link to="" class="link-for-help" :style="{ color: '#00b33c' }">{{
           Label_help
         }}</nuxt-link>
 
         <br />
 
-        <button
-          :style="
-            AccessAccountButton
-              ? { backgroundColor: Color_976, color: Color_fff }
-              : { backgroundColor: Color_238, color: Color_fff }
-          "
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
-        >
+        <button class="btn-hover color-1" type="submit">
           {{ B_login }}
         </button>
       </form>
@@ -135,16 +126,7 @@
           :placeholder="P_R_password"
         />
 
-        <button
-          :style="
-            AccessAccountButton
-              ? { backgroundColor: Color_976, color: Color_fff }
-              : { backgroundColor: Color_238, color: Color_fff }
-          "
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
-        >
+        <button type="submit" class="btn-hover color-1">
           {{ B_create_acount }}
         </button>
       </form>
@@ -167,7 +149,6 @@ export default {
     changeOfForm: true,
 
     buttonHover: false,
-    AccessAccountButton: false,
 
     // Dados para ver senha
     passwordVisible: false,
@@ -222,6 +203,7 @@ export default {
       Color_238: (state) => state.Colors.Color_238,
       Color_976: (state) => state.Colors.Color_976,
       Color_fff: (state) => state.Colors.Color_fff,
+      Color_00f: (state) => state.Colors.Color_00f,
 
       // Idiomas
       idioma: (state) => state.Acessibilidade.idioma,
