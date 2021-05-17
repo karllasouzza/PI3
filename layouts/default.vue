@@ -142,4 +142,30 @@ html {
   transform: translateX(10px);
   opacity: 0;
 }
+
+.btn-hover {
+  color: #fff;
+  cursor: pointer;
+  background-size: 300% 100%;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-hover:hover {
+  background-position: 100% 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+.btn-hover.color-1 {
+  background-image: linear-gradient(
+    to right,
+    #238e23,
+    #40e495,
+    #30dd8a,
+    #2bb673
+  );
+}
 </style>
