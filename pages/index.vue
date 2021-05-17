@@ -607,8 +607,9 @@ main {
 /* Responsibilidade - Mobile */
 @media (max-width: 425px) {
   main {
-    grid-template-rows: 50vh 50vh 100vh 140vh 100vh;
+    grid-template-rows: 50vh 50vh 100vh 110vh 100vh;
   }
+
   /* Baner */
   .baner {
     background-image: url(assets/img/Inicio/Fotos/1-mobile.jpg);
@@ -621,7 +622,7 @@ main {
     grid-template-rows: 45% 30% 25%;
   }
   .baner > div {
-    padding: 0 30px;
+    padding: 0 10px;
     justify-content: space-around;
   }
   /* Sobre */
@@ -629,8 +630,14 @@ main {
     width: 100%;
   }
   /* Blog */
+
   .blog {
     grid-template-columns: 20px 1fr 1fr 20px;
+    grid-template-rows: 25% 65% 10%;
+  }
+  .blog > div:first-child {
+    grid-column: 2/4;
+    height: 100%;
   }
   .blog > div:last-child {
     width: 280px;

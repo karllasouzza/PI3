@@ -3,71 +3,122 @@
     <!-- Título do site -->
     <ul class="title">
       <li>
-        <Title color="#fff" :text="Nome_do_site" />
+        <Title color="#fff" text="CWIA" />
       </li>
     </ul>
 
     <!-- Acessibilidade -->
     <ul class="accessibility">
       <li>
-        <Title text="Acessibilidade" class="titleL" :color="Color_000" />
+        <Title :text="Acessibilidade" class="titleL" :color="Color_000" />
       </li>
-      <li v-for="(Acess, index) in Acessibilidade" :key="index">
-        <a :style="{ color: Color_fff }" :href="Acess.url">{{ Acess.text }}</a>
+      <li>
+        <nuxt-link :style="{ color: Color_fff }" to="/">{{
+          Acessibilidade1
+        }}</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link :style="{ color: Color_fff }" to="/">{{
+          Acessibilidade2
+        }}</nuxt-link>
       </li>
     </ul>
 
     <!-- Fac -->
     <ul class="fac">
       <li>
-        <Title text="Fac" class="titleL" :color="Color_000" />
+        <Title :text="Fac" class="titleL" :color="Color_000" />
       </li>
-      <li v-for="(Fac, index) in Ajuda" :key="index">
-        <a :style="{ color: Color_fff }" :href="Fac.url">{{ Fac.text }}</a>
+      <li>
+        <nuxt-link :style="{ color: Color_fff }" to="/">{{ Fac1 }}</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link :style="{ color: Color_fff }" to="/">{{ Fac2 }}</nuxt-link>
       </li>
     </ul>
 
     <!-- Redes Sociais -->
     <ul class="social-media">
       <li>
-        <Title text="Redes sociais" class="titleL" :color="Color_000" />
+        <Title :text="Network" class="titleL" :color="Color_000" />
       </li>
-      <li v-for="(Network, index) in Redes" :key="index">
-        <a href="/" :style="{ color: Color_fff }">
-          {{ Network.text }}
-        </a>
+      <li>
+        <nuxt-link to="/" :style="{ color: Color_fff }">
+          {{ Network1 }}
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/" :style="{ color: Color_fff }">
+          {{ Network2 }}
+        </nuxt-link>
       </li>
     </ul>
 
-    <div :style="{ background: Color_976, color: Color_fff }" class="makers">
-      <span>{{ Criadores }}</span>
+    <div :style="{ background: Color_976, color: '#fff' }" class="makers">
+      <span>Karlla, Matheus e Ana</span>
     </div>
   </footer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-
 export default {
   data() {
-    return {}
+    return {
+      Acessibilidade: 'Acessibilidade',
+      Acessibilidade1: 'Atalhos de acessibilidade',
+      Acessibilidade2: 'Mapa do site',
+      Fac: 'Suporte',
+      Fac1: 'Precisa de ajuda?',
+      Fac2: 'Enviar "freedback',
+      Network: 'Redes Sociais',
+      Network1: 'Facebook',
+      Network2: 'Telegram',
+    }
   },
   computed: {
     ...mapState({
-      // colors
-      Color_976: (state) => state.Colors.Color_976,
-      Color_004: (state) => state.Colors.Color_004,
-      Color_000: (state) => state.Colors.Color_000,
       Color_fff: (state) => state.Colors.Color_fff,
-      Color_ff5: (state) => state.Colors.Color_ff5,
+      Color_000: (state) => state.Colors.Color_000,
+      Color_238: (state) => state.Colors.Color_238,
+      Color_004: (state) => state.Colors.Color_004,
+      Color_976: (state) => state.Colors.Color_976,
 
-      // documentaçao
-      Criadores: (state) => state.Documentation.Criadores,
-      Nome_do_site: (state) => state.Documentation.Nome_do_site,
-      Acessibilidade: (state) => state.Documentation.Acessibilidade,
-      Ajuda: (state) => state.Documentation.Fac,
-      Redes: (state) => state.Documentation.Network,
+      idioma: (state) => state.Acessibilidade.idioma,
     }),
+  },
+  created() {
+    if (this.idioma === 'pt') {
+      this.Acessibilidade = 'Acessibilidade'
+      this.Acessibilidade1 = 'Atalhos de acessibilidade'
+      this.Acessibilidade2 = 'Mapa do site'
+      this.Fac = 'Suporte'
+      this.Fac1 = 'Precisa de ajuda?'
+      this.Fac2 = 'Enviar "freedback"'
+      this.Network = 'Redes Sociais'
+      this.Network1 = 'Facebook'
+      this.Network2 = 'Telegram'
+    } else if (this.idioma === 'en') {
+      this.Acessibilidade = 'Accessibility'
+      this.Acessibilidade1 = 'Accessibility shortcuts'
+      this.Acessibilidade2 = 'Site map'
+      this.Fac = 'Support'
+      this.Fac1 = 'Need help?'
+      this.Fac2 = 'Send feedback'
+      this.Network = 'Social networks'
+      this.Network1 = 'Facebook'
+      this.Network2 = 'Telegram'
+    } else {
+      this.Acessibilidade = 'Accesibilidad'
+      this.Acessibilidade1 = 'Atajos de accesibilidad'
+      this.Acessibilidade2 = 'Mapa del sitio'
+      this.Fac = 'Soporte'
+      this.Fac1 = '¿Necesita ayuda?'
+      this.Fac2 = 'Enviar comentarios'
+      this.Network = 'Redes sociales'
+      this.Network1 = 'Facebook'
+      this.Network2 = 'Telegram'
+    }
   },
 }
 </script>

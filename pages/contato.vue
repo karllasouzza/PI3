@@ -760,7 +760,7 @@ section > div.outros > div > span > svg {
   }
   section {
     width: 100%;
-    margin-top: auto;
+    margin-top: 20%;
     margin-bottom: 3%;
     height: 983px;
     flex-direction: column;

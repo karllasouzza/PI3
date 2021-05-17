@@ -30,50 +30,54 @@
           </clipPath>
         </defs>
       </svg>
-
-      <label id="input" for="check">
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 18 14"
-          xml:space="preserve"
-          class="responsive-menu-icon"
-          height="1.7em"
-        >
-          <path
-            style="fill: rgb(255, 255, 255)"
-            d="M0,2V0h18v2H0z M0,6h18V4H0V6z M18,10H0V8h18V10z M18,14H0v-2h18V14z"
-          />
-        </svg>
-      </label>
     </div>
+
     <nav>
       <ul>
-        <li v-for="(buttons, index) in Botoes" :key="index">
-          <Nlink
-            :text="buttons.conteudo"
-            :link="buttons.Link"
-            :acess="buttons.key"
-            :class="buttons.class"
-            color="#fff"
-          />
+        <li>
+          <nuxtLink to="/">{{ inicio }}</nuxtLink>
+        </li>
+        <li>
+          <nuxtLink to="/blog">{{ blog }}</nuxtLink>
+        </li>
+        <li>
+          <nuxtLink to="/produtos">{{ produtos }}</nuxtLink>
+        </li>
+        <li>
+          <nuxtLink to="/sobre">{{ sobre }}</nuxtLink>
+        </li>
+        <li>
+          <nuxtLink to="/contato">{{ contatos }}</nuxtLink>
+        </li>
+        <li>
+          <nuxtLink to="/user">{{ login }}</nuxtLink>
         </li>
         <li @click="config()">
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 36 36"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="white"
-          >
-            <path
-              d="M26.1732 27.4286L27.1857 26.4228C31.8702 26.5758 31.9422 26.4116 32.1481 25.9301L33.4351 22.797L33.5307 22.5L33.4261 22.2401C33.371 22.1028 33.2011 21.6933 30.2761 18.9045V17.4375C33.6511 14.1862 33.5791 14.0197 33.3867 13.5438L32.1054 10.3781C31.913 9.90335 31.8399 9.71772 27.1891 9.84485L26.1766 8.7986C26.2811 7.25746 26.228 5.70968 26.018 4.17935L25.8875 3.88347L22.5417 2.42097C22.049 2.19597 21.8757 2.11497 18.7167 5.55522L17.297 5.53385C14.0446 2.0621 13.8905 2.1251 13.4034 2.32197L10.2927 3.57972C9.80561 3.7766 9.63348 3.84635 9.82248 8.57135L8.81786 9.5726C4.13561 9.4196 4.06361 9.5861 3.85998 10.0653L2.57073 13.1996L2.46948 13.5L2.57523 13.761C2.63036 13.896 2.79348 14.301 5.72523 17.0932V18.5557C2.35023 21.807 2.42336 21.9735 2.61686 22.4505L3.89711 25.6196C4.09286 26.1045 4.16261 26.2766 8.81223 26.1551L9.82473 27.207C9.71978 28.7457 9.77143 30.2912 9.97886 31.8195L10.1094 32.1176L13.4765 33.5891C13.9659 33.7938 14.1357 33.867 17.2857 30.4391L18.7055 30.4571C21.9624 33.9333 22.1289 33.8658 22.6047 33.6735L25.7086 32.4191C26.1991 32.2245 26.3701 32.1558 26.1732 27.4286ZM12.833 20.0891C12.4404 19.0632 12.3596 17.9441 12.6007 16.8724C12.8417 15.8007 13.3939 14.8241 14.188 14.065C14.982 13.306 15.9826 12.7984 17.064 12.6059C18.1455 12.4134 19.2598 12.5445 20.267 12.9829C21.2742 13.4213 22.1295 14.1474 22.7255 15.0701C23.3216 15.9928 23.6319 17.071 23.6175 18.1694C23.6031 19.2678 23.2646 20.3374 22.6445 21.2442C22.0244 22.1509 21.1504 22.8543 20.132 23.2661C18.7425 23.8094 17.1944 23.7802 15.8265 23.1848C14.4585 22.5894 13.3822 21.4763 12.833 20.0891Z"
-            />
-          </svg>
+          <span>
+            {{ configuracao }}
+          </span>
         </li>
       </ul>
     </nav>
+    <div class="L_ci">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        @click="Cart()"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M12.1213 9.23312H14.8891C15.3088 9.23312 15.6386 8.88615 15.6386 8.46774C15.6386 8.03912 15.3088 7.70236 14.8891 7.70236H12.1213C11.7016 7.70236 11.3719 8.03912 11.3719 8.46774C11.3719 8.88615 11.7016 9.23312 12.1213 9.23312ZM18.1766 3.92749C18.7861 3.92749 19.1858 4.1418 19.5855 4.61123C19.9852 5.08067 20.0551 5.7542 19.9652 6.36549L19.0159 13.06C18.8361 14.3469 17.7569 15.2949 16.4879 15.2949H5.58639C4.25742 15.2949 3.15828 14.255 3.04837 12.908L2.12908 1.7834L0.620259 1.51807C0.22057 1.44664 -0.0592117 1.04864 0.0107338 0.640433C0.0806793 0.223045 0.470376 -0.0535127 0.880056 0.0087383L3.2632 0.375101C3.60293 0.437352 3.85274 0.722074 3.88272 1.06905L4.07257 3.35499C4.10254 3.68257 4.36234 3.92749 4.68209 3.92749H18.1766ZM5.42631 16.9079C4.58697 16.9079 3.9075 17.6018 3.9075 18.459C3.9075 19.3061 4.58697 20 5.42631 20C6.25567 20 6.93514 19.3061 6.93514 18.459C6.93514 17.6018 6.25567 16.9079 5.42631 16.9079ZM16.6676 16.9079C15.8282 16.9079 15.1487 17.6018 15.1487 18.459C15.1487 19.3061 15.8282 20 16.6676 20C17.4969 20 18.1764 19.3061 18.1764 18.459C18.1764 17.6018 17.4969 16.9079 16.6676 16.9079Z"
+        />
+      </svg>
+
+      <label id="input" class="L-i" for="check">
+        <span class="icon"></span>
+      </label>
+    </div>
   </header>
 </template>
 
@@ -81,7 +85,13 @@
 import { mapState, mapMutations } from 'vuex'
 export default {
   data: () => ({
-    Botoes: [],
+    inicio: 'Inicio',
+    blog: 'Blog',
+    produtos: 'Produtos',
+    sobre: 'Sobre',
+    contatos: 'Contato',
+    login: 'Criar conta',
+    configuracao: '',
     Logo: [{ conteudo: 'CWIA', Link: '/', key: '1' }],
   }),
   computed: {
@@ -91,64 +101,42 @@ export default {
       Color_00f: (state) => state.Colors.Color_00f,
       idioma: (state) => state.Acessibilidade.idioma,
       conf: (state) => state.Header.config,
+      cart: (state) => state.Cart.On_Off,
     }),
   },
   created() {
     if (this.idioma === 'pt') {
-      this.Botoes = []
-      this.Botoes.push(
-        { conteudo: 'Inicio', Link: '/', key: '1', class: 'Inicio' },
-        { conteudo: 'Blog', Link: '/blog', key: '2', class: 'Blog' },
-        {
-          conteudo: 'Produtos',
-          Link: '/produtos',
-          key: '3',
-          class: 'Produtos',
-        },
-        { conteudo: 'Sobre', Link: '/sobre', key: '4', class: 'Sobre' },
-        { conteudo: 'Contato', Link: '/contato', key: '5', class: 'Contato' },
-        {
-          conteudo: 'Criar conta',
-          Link: '/user',
-          key: '6',
-          class: 'Criar conta',
-        }
-      )
+      this.inicio = 'Inicio'
+      this.blog = 'Blog'
+      this.produtos = 'Produtos'
+      this.sobre = 'Sobre'
+      this.contatos = 'Contato'
+      this.login = 'Criar conta'
+      this.configuracao = 'Configuração'
     } else if (this.idioma === 'en') {
-      this.Botoes = []
-
-      this.Botoes.push(
-        { conteudo: 'Home', Link: '/', key: '1' },
-        { conteudo: 'Blog', Link: '/blog', key: '2' },
-        {
-          conteudo: 'Products',
-          Link: '/produtos',
-          key: '3',
-        },
-        { conteudo: 'About', Link: '/sobre', key: '4' },
-        { conteudo: 'Contact', Link: '/contato', key: '5' },
-        { conteudo: 'Create an account', Link: '/user', key: '6' }
-      )
+      this.inicio = 'Home'
+      this.blog = 'Blog'
+      this.produtos = 'Products'
+      this.sobre = 'About'
+      this.contatos = 'Contact'
+      this.login = 'Create account'
+      this.configuracao = 'Settings'
     } else {
-      this.Botoes = []
-      this.Botoes.push(
-        { conteudo: 'Inicio', Link: '/', key: '1' },
-        { conteudo: 'Blog', Link: '/blog', key: '2' },
-        {
-          conteudo: 'Productos',
-          Link: '/produtos',
-          key: '3',
-        },
-        { conteudo: 'Acerca de', Link: '/sobre', key: '4' },
-        { conteudo: 'Contacto', Link: '/contato', key: '5' },
-        { conteudo: 'Crea una cuenta', Link: '/user', key: '6' }
-      )
+      this.inicio = 'Casa'
+      this.blog = 'Blog'
+      this.produtos = 'Productos'
+      this.sobre = 'Sobre'
+      this.contatos = 'Acerca de'
+      this.login = 'Crear cuenta'
+      this.configuracao = 'Ajustes'
     }
   },
   methods: {
     ...mapMutations({
       confg_on: 'Header/config_on',
       confg_off: 'Header/config_off',
+      cart_on: 'Cart/on',
+      cart_off: 'Cart/off',
     }),
     config() {
       if (!this.conf) {
@@ -157,6 +145,13 @@ export default {
       } else {
         this.confg_off()
         window.scrollTo(0, 0)
+      }
+    },
+    Cart() {
+      if (!this.cart) {
+        this.cart_on()
+      } else {
+        this.cart_off()
       }
     },
   },
@@ -168,48 +163,81 @@ header {
   z-index: 100;
   width: 100%;
   height: 55px;
-  display: grid;
-  grid-template-columns: 132px 1fr 550px;
-  grid-template-rows: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0%;
   left: 0;
   right: 0;
+  padding: 0 40px;
+}
+
+/* Icone retraril */
+.L_ci {
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.L_ci > svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+.L-i {
+  width: 60px;
+  height: 40px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.icon {
+  width: 30px;
+  height: 4px;
+  position: relative;
+  border-radius: 10px;
+  left: 0px;
+  top: 0px;
+  transition: 0.7s ease-in-out;
+  background-color: white;
+  z-index: 4;
+  display: none;
+}
+.icon::before,
+.icon::after {
+  content: '';
+  background-color: white;
+  border-radius: 10px;
+  width: 30px;
+  left: 0;
+  height: 4px;
+  position: absolute;
+  transition: ease-in-out 0.7s;
+}
+.icon::before {
+  top: 10px;
+}
+.icon::after {
+  bottom: 10px;
 }
 
 /* Parte do logo e menu retrátil */
 .Logo {
-  grid-row: 1/2;
-  grid-column: 1/2;
-  height: 30px;
-  text-align: left;
+  height: 35px;
+  width: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-end;
-  margin: auto 2em;
 }
-.responsive-menu-icon {
-  display: none;
-}
-
-#icone {
-  cursor: pointer;
-}
-
-a {
+a,
+nav > ul > li > span {
   font-weight: bold;
   text-decoration: none;
 }
-
-/* Parte da navegação */
-nav {
-  grid-row: 1/2;
-  grid-column: 3/4;
-
-  width: 100%;
-}
-
 nav,
 ul {
   height: 100%;
@@ -233,7 +261,13 @@ ul > li {
   white-space: nowrap;
   margin: 0em 0.7em;
 }
-nav > ul > li > a:hover {
+nav > ul > li > a,
+nav > ul > li > span {
+  text-decoration: none;
+  color: white;
+}
+nav > ul > li > a:hover,
+nav > ul > li > span:hover {
   color: chartreuse !important;
 }
 
@@ -271,42 +305,43 @@ nav > ul > li > svg:hover {
 }
 
 @media (max-width: 967px) {
-  header {
-    grid-template-rows: 100% 100%;
-    grid-template-columns: 100%;
-  }
-
-  .logo {
-    grid-row: 1/2;
-    grid-column: 1/2;
-  }
-
-  .responsive-menu-icon {
+  .icon {
     display: inline-block;
   }
 
   nav {
-    grid-row: 2/3;
-    grid-column: 1/2;
-
     height: auto;
     padding: 0;
-  }
-
-  nav ul {
+    display: none;
     flex-direction: column;
     width: 100%;
-    height: auto;
-
-    position: relative;
-    top: 10.5em;
-
-    animation: visibleUl 0.7s forwards;
+    position: absolute;
+    left: 0;
+    top: 55px;
+    -webkit-animation: visibleUl-data-v-1a9bb128 0.7s forwards;
+    animation: visibleUl-data-v-1a9bb128 0.7s forwards;
+    background: rgb(0, 75, 35);
+  }
+  nav ul {
+    flex-direction: column;
+    width: 98%;
   }
 
   nav ul li {
     margin: 0.7em 0em;
     padding: 0.5em 100%;
+    background: rgba(0, 75, 35, 0.397);
+  }
+  .L-i {
+    display: flex;
+  }
+  .L_ci {
+    width: 95px;
+  }
+}
+@media (max-width: 425px) {
+  header {
+    padding: 0 10px;
   }
 }
 </style>

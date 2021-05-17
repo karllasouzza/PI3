@@ -129,16 +129,16 @@ export default {
 
 <style scoped>
 .card {
+  width: 98%;
+  height: 150px;
+  flex-direction: column;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.322);
   border-radius: 20px;
-  width: 100%;
-  height: 80px;
-  box-shadow: 0 0px 3px 2px rgba(0, 0, 0, 0.205);
   display: flex;
-  flex-direction: row;
+  align-items: center;
   transition: ease 0.7s;
   padding: 2px;
-  align-items: center;
-  margin: 1% 0 !important;
+  margin: 1% 0;
 }
 .content {
   display: flex;
@@ -149,11 +149,11 @@ export default {
   align-items: center;
 }
 .Buttons {
+  width: 100%;
+  height: 50%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 75px;
-  height: 100%;
   padding: 1px;
 }
 .img {
@@ -205,14 +205,18 @@ svg {
   margin: 4% 0;
 }
 .comprar {
-  border-radius: 20px;
   height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   padding: 6px;
-  width: 40px;
+  width: 30%;
+  border-radius: 0 20px 20px 0;
+}
+.comprar svg {
+  width: 24px;
+  height: 24px;
 }
 .add-carrinho {
   border-radius: 20px;

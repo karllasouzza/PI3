@@ -9,15 +9,15 @@
         <span @click="off()"> {{ Fechar }} </span>
       </p>
       <main>
-        <CardsCarrinho
-          v-for="Cart in Itens"
-          :key="Cart.id"
-          :iten="Cart.id"
-          :img="Cart.img"
-          :title="Cart.title"
-          :preco="Cart.preco"
-          :quantidade="Cart.quantidade"
-        />
+        <transition v-for="Cart in Itens" :key="Cart.id" name="fade">
+          <CardsCarrinho
+            :iten="Cart.id"
+            :img="Cart.img"
+            :title="Cart.title"
+            :preco="Cart.preco"
+            :quantidade="Cart.quantidade"
+          />
+        </transition>
       </main>
       <Total :t="total" />
     </div>
@@ -123,6 +123,7 @@ export default {
 main {
   border-radius: 20px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 2%;
   width: 100%;
@@ -148,8 +149,8 @@ footer {
     height: 50px !important;
   }
   .Card {
-    width: 99%;
-    height: 75%;
+    width: 100%;
+    height: 100%;
     font-size: 12px;
   }
   main {
@@ -168,11 +169,6 @@ footer {
   }
   hr {
     margin: 2px;
-  }
-  .card {
-    height: 150px;
-    flex-direction: column;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.322);
   }
   footer {
     border-radius: 0;

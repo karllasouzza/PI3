@@ -17,6 +17,7 @@
             />
           </svg>
         </div>
+        <span>{{ Pesquisar }}</span>
         <input ref="refPesquisar" v-model="query" type="text" />
       </div>
       <div class="carts">
@@ -30,7 +31,6 @@
           :preco="Card.preco"
           :autor="Card.autor"
           :comprar-color="Color_238"
-          background="#fff"
           color="#000"
           :descricao="Card.descricao"
         />
@@ -47,6 +47,7 @@ export default {
     return {
       mainColor: '',
       query: '',
+      Pesquisar: '',
       infoProdutos: [
         {
           id: '1',
@@ -106,6 +107,13 @@ export default {
     },
   },
   created() {
+    if (this.idioma === 'pt') {
+      this.Pesquisar = 'Pesquisar'
+    } else if (this.idioma === 'en') {
+      this.Pesquisar = 'Search'
+    } else {
+      this.Pesquisar = 'Buscar'
+    }
     if (this.Dark_mode) {
       this.mainColor = '#001219'
     } else {
@@ -133,11 +141,11 @@ export default {
 .Pesquisar {
   grid-row: 2/3;
   grid-column: 1/2;
-  width: 58px;
+  width: 118px;
   padding: 0 5px;
   height: 50px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 75px;
   background: #238e23;
   border-radius: 20px;
   transition: 0.3s ease-out;
@@ -148,6 +156,16 @@ export default {
   width: 385px;
   grid-template-columns: 1fr 1fr;
   background: #fff;
+}
+.Pesquisar > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+.Pesquisar:hover > span {
+  display: none;
 }
 .Pesquisar div {
   margin: auto;
@@ -221,6 +239,26 @@ export default {
   .carts {
     grid-template-rows: 380px 380px 380px 380px 380px 380px 380px 380px 380px;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .Pesquisar {
+    grid-column: 1/4;
+    margin-left: 10px;
+  }
+  .Pesquisar:hover {
+    width: 95%;
+  }
+  .Pesquisar > input {
+    width: 266px;
+  }
+  .cards {
+    grid-template-rows: 80px 50px 20px auto auto 50px 50px;
+    padding: 1px 0px;
+  }
+}
+@media (max-width: 320px) {
+  .Pesquisar > input {
+    width: 240px;
   }
 }
 </style>
