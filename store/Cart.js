@@ -18,7 +18,15 @@ export const mutations = {
     state.Itens.push(Itens)
     state.On_Off = true
   },
-
+  // edititens(state, Itens) {
+  //   function filter(element) {
+  //     return element.id === Itens.id
+  //   }
+  //   const iten = state.Itens
+  //   const s = state
+  //   const indice = iten.findIndex(filter)
+  //   s.Itens.slice([indice]{})
+  // },
   deletItens(state, id) {
     const numeroARemover = id
 

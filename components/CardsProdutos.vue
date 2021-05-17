@@ -1,5 +1,5 @@
 <template>
-  <div class="card p1" :style="{ background: background, color: color }">
+  <div class="card p1" :style="{ color: color }">
     <span :style="{ 'background-image': 'url(' + img + ')' }" class="img">
     </span>
     <span class="conteudo" :style="{ background: '#fff', color: '#000000' }">
@@ -18,8 +18,8 @@
       :descricao="descricao"
     />
     <span
-      class="comprar"
-      :style="{ background: comprarColor, color: '#fff' }"
+      class="comprar btn-hover color-1"
+      :style="{ color: '#fff' }"
       @click="Comprar()"
     >
       {{ Label_Comprar }}
@@ -69,17 +69,7 @@ export default {
       default: '',
     },
     // cores
-    comprarColor: {
-      type: String,
-      require: true,
-      default: '',
-    },
     color: {
-      type: String,
-      default: null,
-      required: true,
-    },
-    background: {
       type: String,
       default: null,
       required: true,
@@ -90,7 +80,11 @@ export default {
       Label_Preco: 'Preço: ',
       Label_Comprar: 'Comprar',
       Label_Autor: 'Por ',
-      total: 0,
+      total: '',
+
+      // Dinheiros
+      Dolar: 3.44,
+      Euro: 3.7,
     }
   },
   computed: {
@@ -102,15 +96,16 @@ export default {
     }),
   },
   created() {
-    this.total = this.preco
     if (this.idioma === 'pt') {
-      this.total = currencyFormatter.format(this.total, { code: 'BRL' })
+      this.total = currencyFormatter.format(this.preco, { code: 'BRL' })
       return this.total
     } else if (this.idioma === 'en') {
-      this.total = currencyFormatter.format(this.total, { code: 'USD' })
+      const valor = (this.preco / this.Dolar).toFixed(2)
+      this.total = currencyFormatter.format(valor, { code: 'USD' })
       return this.total
     } else {
-      this.total = currencyFormatter.format(this.total, { code: 'EUR' })
+      const valor = (this.preco / this.Euro).toFixed(2)
+      this.total = currencyFormatter.format(valor, { code: 'EUR' })
       return this.total
     }
   },
@@ -135,6 +130,7 @@ export default {
   flex-wrap: wrap;
   transition: ease 0.1s;
   box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.205);
+  background: white;
 }
 .p1:hover {
   height: 375px;
@@ -216,14 +212,6 @@ p.autor {
   transition: 0.1s ease-out;
   animation: C ease 2s;
 }
-@keyframes C {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .comprar {
   display: none;
   border-bottom-right-radius: 10px;
@@ -234,6 +222,15 @@ p.autor {
   cursor: pointer;
   align-self: flex-end;
   width: 100%;
+  color: white;
+}
+@keyframes C {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @media (max-width: 425px) {
   .card {
