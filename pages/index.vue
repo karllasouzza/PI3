@@ -1,5 +1,5 @@
 <template>
-  <main :style="{ background: Color_fff }">
+  <main :as="PageOn()" :style="{ background: Color_fff }">
     <!-- Baner -->
     <div class="baner">
       <div>

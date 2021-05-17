@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :as="PageOn()">
     <!-- User  -->
     <div class="User_fotos" :style="{ background: Color_238 }" />
     <div
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -146,7 +146,7 @@ export default {
       idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
-   created() {
+  created() {
     // Portugues-br
     if (this.idioma === 'pt') {
       this.Label_sobre = 'Sobre'
@@ -177,6 +177,11 @@ export default {
       this.cit = 'Ciudad Actual'
       this.Label_Produtos = 'Productos'
     }
+  },
+  methods: {
+    ...mapMutations({
+      PageOn: 'Header/Page_on_perfil',
+    }),
   },
 }
 </script>

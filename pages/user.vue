@@ -1,6 +1,6 @@
 <template>
   <section>
-    <main :style="{ background: Color_fff + '80' }">
+    <main :as="PageOn()" :style="{ background: Color_fff + '80' }">
       <BigTitle
         class="title"
         :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
@@ -311,6 +311,7 @@ export default {
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       notf_sucess_true: 'Notificacoes/notf_sucess_true',
+      PageOn: 'Header/Page_on_login',
     }),
 
     // Muda de formulário

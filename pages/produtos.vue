@@ -1,5 +1,5 @@
 <template>
-  <main :style="{ background: mainColor }">
+  <main :as="PageOn()" :style="{ background: mainColor }">
     <section class="cards">
       <div class="Pesquisar">
         <div>
@@ -123,6 +123,7 @@ export default {
   methods: {
     ...mapMutations({
       Mproducts: 'Header/Page_on_produtos',
+      PageOn: 'Header/Page_on_produtos',
     }),
   },
 }
@@ -141,17 +142,16 @@ export default {
 .Pesquisar {
   grid-row: 2/3;
   grid-column: 1/2;
-  width: 118px;
+  width: 128px;
   padding: 0 5px;
   height: 50px;
   display: grid;
-  grid-template-columns: 1fr 75px;
+  grid-template-columns: 1fr 83px;
   background: #238e23;
   border-radius: 20px;
   transition: 0.3s ease-out;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.205);
 }
-
 .Pesquisar:hover {
   width: 385px;
   grid-template-columns: 1fr 1fr;

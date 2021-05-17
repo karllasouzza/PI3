@@ -1,5 +1,5 @@
 <template>
-  <main class="container" :style="{ background: mainColor }">
+  <main :as="PageOn()" class="container" :style="{ background: mainColor }">
     <!-- visao  -->
     <div class="parte1">
       <div>
