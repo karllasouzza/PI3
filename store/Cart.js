@@ -15,8 +15,20 @@ export const mutations = {
 
   // Items
   addItens(state, Itens) {
-    state.Itens.push(Itens)
-    state.On_Off = true
+    if (state.Itens.length === 0) {
+      state.Itens.push(Itens)
+      state.On_Off = true
+    } else {
+      state.Itens.forEach((element) => {
+        if (element.id === Itens.id) {
+          element.quantidade++
+          console.log('fui lido')
+        } else {
+          state.Itens.push(Itens)
+          state.On_Off = true
+        }
+      })
+    }
   },
   // edititens(state, Itens) {
   //   function filter(element) {
