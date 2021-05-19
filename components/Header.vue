@@ -130,7 +130,7 @@ export default {
       this.produtos = 'Produtos'
       this.sobre = 'Sobre'
       this.contatos = 'Contato'
-      this.login = 'Conecte-se'
+      this.login = 'Conecte se'
       this.configuracao = 'Configuração'
     } else if (this.idioma === 'en') {
       this.inicio = 'Home'
@@ -249,6 +249,7 @@ header {
   left: 0;
   right: 0;
   padding: 0 40px;
+  font-family: 'Montserrat';
 }
 
 /* Icone retraril */

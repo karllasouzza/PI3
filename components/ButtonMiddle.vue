@@ -33,6 +33,7 @@ export default {
 
 <style scoped>
 a {
+  font-family: 'Montserrat';
   width: 160px;
   height: 40px;
   display: flex;

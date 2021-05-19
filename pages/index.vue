@@ -425,7 +425,7 @@ main {
   margin: 0 20px;
 }
 .blog > div > a.card > .text {
-  height: 45%;
+  height: 60%;
   width: 100%;
   display: flex;
   flex-direction: column;

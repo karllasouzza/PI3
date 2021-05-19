@@ -21,6 +21,8 @@ export default {
 </script>
 <style scoped>
 p {
+  font-family: 'Montserrat';
+
   font-weight: bold;
 }
 @media (max-width: 967px) {
