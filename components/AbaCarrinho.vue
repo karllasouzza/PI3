@@ -9,15 +9,17 @@
         <span @click="off()"> {{ Fechar }} </span>
       </p>
       <main>
-        <transition v-for="Cart in Itens" :key="Cart.id" name="fade">
+        <transition-group style="width: 100%" name="fade">
           <CardsCarrinho
+            v-for="Cart in Itens"
+            :key="Cart.id"
             :iten="Cart.id"
             :img="Cart.img"
             :title="Cart.title"
             :preco="Cart.preco"
             :quantidade="Cart.quantidade"
           />
-        </transition>
+        </transition-group>
       </main>
       <Total :t="total" />
     </div>
@@ -71,12 +73,14 @@ export default {
       const A3 = []
 
       for (let index = 0; index < A1.length; index++) {
-        A3.push(A1[index].preco)
+        A3.push(A1[index].preco * A1[index].quantidade)
       }
       if (A1.length > 0) {
         const reducer = (accumulator, currentValue) =>
           accumulator + currentValue
         this.total = A3.reduce(reducer)
+      } else {
+        this.total = 0
       }
     },
   },

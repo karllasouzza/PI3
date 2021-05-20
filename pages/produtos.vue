@@ -31,8 +31,9 @@
           :preco="Card.preco"
           :autor="Card.autor"
           :comprar-color="Color_238"
-          color="#000"
           :descricao="Card.descricao"
+          :quantidade="Card.quantidade"
+          color="#000"
         />
       </div>
     </section>
@@ -48,35 +49,6 @@ export default {
       mainColor: '',
       query: '',
       Pesquisar: '',
-      infoProdutos: [
-        {
-          id: '1',
-          img:
-            'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-          title: 'Sementes de Romã',
-          descricao: 'Sementes de Romã',
-          preco: 15.0,
-          autor: 'karlla Souzza',
-        },
-        {
-          id: '2',
-          img:
-            'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-          title: 'Sementes de Romã',
-          descricao: 'Sementes de Romã',
-          preco: 15.0,
-          autor: 'karlla Souzza',
-        },
-        {
-          id: '3',
-          img:
-            'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-          title: 'Sementes de Romã',
-          descricao: 'Sementes de Romã',
-          preco: 15.0,
-          autor: 'karlla Souzza',
-        },
-      ],
     }
   },
   head: {
@@ -96,8 +68,15 @@ export default {
       Color_004: (state) => state.Colors.Color_004,
       Color_238: (state) => state.Colors.Color_238,
       Color_976: (state) => state.Colors.Color_976,
+
+      // Idiomas
       idioma: (state) => state.Acessibilidade.idioma,
+
+      // Dark mode
       Dark_mode: (state) => state.Colors.Dark_mode,
+
+      // Produtos
+      infoProdutos: (state) => state.Produtos.Itens,
     }),
     computedList() {
       const vm = this

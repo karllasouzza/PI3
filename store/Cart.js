@@ -15,34 +15,35 @@ export const mutations = {
 
   // Items
   addItens(state, Itens) {
-    if (state.Itens.length === 0) {
-      state.Itens.push(Itens)
-      state.On_Off = true
+    state.Itens.push(Itens)
+  },
+
+  SomaItens(state, Itens) {
+    const numeroARemover = Itens.id
+
+    const indice = state.Itens.findIndex(
+      (element) => element.id === numeroARemover
+    )
+    state.Itens[indice].quantidade++
+  },
+
+  SubtraItens(state, Itens) {
+    const numeroARemover = Itens.id
+
+    const indice = state.Itens.findIndex(
+      (element) => element.id === numeroARemover
+    )
+    if (state.Itens[indice].quantidade === 1) {
+      state.Itens.splice(indice, 1)
     } else {
-      state.Itens.forEach((element) => {
-        if (element.id === Itens.id) {
-          element.quantidade++
-          console.log('fui lido')
-        } else {
-          state.Itens.push(Itens)
-          state.On_Off = true
-        }
-      })
+      state.Itens[indice].quantidade--
     }
   },
-  // edititens(state, Itens) {
-  //   function filter(element) {
-  //     return element.id === Itens.id
-  //   }
-  //   const iten = state.Itens
-  //   const s = state
-  //   const indice = iten.findIndex(filter)
-  //   s.Itens.slice([indice]{})
-  // },
+
   deletItens(state, id) {
     const numeroARemover = id
 
-    const indice = state.Itens.findIndex((obj) => obj.valor === numeroARemover)
+    const indice = state.Itens.findIndex((obj) => obj.id === numeroARemover)
     state.Itens.splice(indice, 1)
   },
 }
@@ -51,6 +52,12 @@ export const mutations = {
 export const actions = {
   add(context, Cart) {
     context.commit('addItens', Cart.Itens)
+  },
+  Soma(context, Cart) {
+    context.commit('SomaItens', Cart.Itens)
+  },
+  Sub(context, Cart) {
+    context.commit('SubtraItens', Cart.Itens)
   },
   delet(context, Cart) {
     context.commit('deletItens', Cart.Itens)

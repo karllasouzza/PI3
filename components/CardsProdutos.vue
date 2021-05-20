@@ -16,6 +16,7 @@
       :preco="preco"
       :autor="autor"
       :descricao="descricao"
+      :prod="quantidade"
     />
     <span
       class="comprar btn-hover color-1"
@@ -34,9 +35,9 @@ import currencyFormatter from 'currency-formatter'
 export default {
   props: {
     iten: {
-      type: String,
+      type: Number,
       require: true,
-      default: '',
+      default: 0,
     },
     titleImg: {
       type: String,
@@ -67,6 +68,11 @@ export default {
       type: String,
       require: true,
       default: '',
+    },
+    quantidade: {
+      type: Number,
+      require: true,
+      default: 0,
     },
     // cores
     color: {
