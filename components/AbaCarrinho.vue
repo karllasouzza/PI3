@@ -8,19 +8,17 @@
       <p class="close" :style="{ background: Color_238, color: '#fff' }">
         <span @click="off()"> {{ Fechar }} </span>
       </p>
-      <main>
-        <transition-group style="width: 100%" name="fade">
-          <CardsCarrinho
-            v-for="Cart in Itens"
-            :key="Cart.id"
-            :iten="Cart.id"
-            :img="Cart.img"
-            :title="Cart.title"
-            :preco="Cart.preco"
-            :quantidade="Cart.quantidade"
-          />
-        </transition-group>
-      </main>
+      <transition-group class="main" name="fade">
+        <CardsCarrinho
+          v-for="Cart in Itens"
+          :key="Cart.id"
+          :iten="Cart.id"
+          :img="Cart.img"
+          :title="Cart.title"
+          :preco="Cart.preco"
+          :quantidade="Cart.quantidade"
+        />
+      </transition-group>
       <Total :t="total" />
     </div>
   </transition>
@@ -124,7 +122,7 @@ export default {
   z-index: 999;
 }
 
-main {
+.main {
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -157,7 +155,7 @@ footer {
     height: 100%;
     font-size: 12px;
   }
-  main {
+  .main {
     padding: 2px;
   }
   .Buttons {

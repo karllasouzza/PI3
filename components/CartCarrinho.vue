@@ -128,7 +128,7 @@ export default {
 </script>
 <style scoped>
 .add-carrinho {
-  height: 35px;
+  height: 90%;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -140,7 +140,6 @@ export default {
   font-weight: bold;
   cursor: pointer;
   margin-top: auto;
-  margin-bottom: 1%;
   transition: ease-in-out 0.7s;
 }
 .add-carrinho .mais {
