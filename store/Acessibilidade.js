@@ -2,6 +2,8 @@ export const state = () => ({
   // idiomas
   idioma: 'pt',
   fonte: true,
+
+  text: 16,
 })
 
 // mutations

@@ -14,13 +14,10 @@
           <g id="Camada_1-2" data-name="Camada 1">
             <path
               d="M8.26,2H176.73a5.64,5.64,0,0,1,5.64,5.64V192.39a5.64,5.64,0,0,1-5.64,5.63H8.26Z"
-              style="fill: none; stroke-width: 1.5px"
-              :stroke="Color_238"
+              :fill="Color_238"
             />
             <path
               d="M2,2H162a5.63,5.63,0,0,1,5.64,5.64v166a5.64,5.64,0,0,1-5.64,5.64H2Z"
-              style="stroke-width: 1.5px"
-              :stroke="Color_238"
               fill="url(#pattern0)"
             />
             <defs>
@@ -39,7 +36,7 @@
                 id="image0"
                 width="360"
                 height="640"
-                href="../assets/img/Inicio/Fotos/2.jpg"
+                href="../assets/img/Inicio/Fotos/4.png"
               />
             </defs>
           </g>
@@ -67,8 +64,7 @@
       >
         <path
           d="M60 2H514C546.033 2 572 27.9675 572 60V277C572 309.033 546.033 335 514 335H60C27.9675 335 2 309.033 2 277V60C2 27.9675 27.9675 2 60 2Z"
-          stroke="#238E23"
-          stroke-width="4"
+          fill="#238E23"
         />
         <rect
           x="39"
@@ -86,7 +82,6 @@
           width="246"
           height="246"
           rx="123"
-          fill="url(#pattern6)"
           stroke="#238E23"
           stroke-width="4"
         />
@@ -96,7 +91,6 @@
           width="196"
           height="196"
           rx="98"
-          fill="url(#pattern7)"
           stroke="#238E23"
           stroke-width="4"
         />
@@ -112,39 +106,11 @@
               transform="translate(0 -0.103429) scale(0.000244141 0.000441426)"
             />
           </pattern>
-          <pattern
-            id="pattern6"
-            patternContentUnits="objectBoundingBox"
-            width="1"
-            height="1"
-          >
-            <use
-              xlink:href="#image8"
-              transform="translate(-0.0347092) scale(0.000261088 0.000365764)"
-            />
-          </pattern>
-          <pattern
-            id="pattern7"
-            patternContentUnits="objectBoundingBox"
-            width="1"
-            height="1"
-          >
-            <use
-              xlink:href="#image8"
-              transform="translate(-0.0347092) scale(0.000261088 0.000365764)"
-            />
-          </pattern>
-          <image
-            id="image8"
-            width="4096"
-            height="2734"
-            xlink:href="../assets/img/Inicio/Fotos/5.jpg"
-          />
           <image
             id="image9"
             width="4096"
             height="2734"
-            xlink:href="../assets/img/Inicio/Fotos/6.jpg"
+            xlink:href="../assets/img/Inicio/Fotos/2.jpg"
           />
         </defs>
       </svg>
@@ -172,14 +138,11 @@
       >
         <path
           d="M2 60H304C413.352 60 502 148.648 502 258V507H200C90.6476 507 2 418.352 2 309V60Z"
-          stroke="#238E23"
-          stroke-width="4"
+          fill="#238E23"
         />
         <path
           d="M46 2H348C457.352 2 546 90.6476 546 200V449H244C134.648 449 46 360.352 46 251V2Z"
           fill="url(#pattern3)"
-          stroke="#238E23"
-          stroke-width="4"
         />
         <defs>
           <pattern

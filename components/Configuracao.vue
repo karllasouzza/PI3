@@ -64,10 +64,10 @@ export default {
       button: '',
 
       // outros
-      titulo2: 'Outras opções',
-      M_cores: 'Modo de cor do site',
-      I_site: 'Idioma do site',
-      F_site: 'Libras',
+      titulo2: '',
+      M_cores: '',
+      I_site: '',
+      F_site: '',
 
       outros: [],
     }
@@ -110,7 +110,7 @@ export default {
         { title: 'Produtos:', text: 'ALT+3' },
         { title: 'Sobre:', text: 'ALT+4' },
         { title: 'Contatos:', text: 'ALT+5' },
-        { title: 'Conecte-se:', text: 'ALT+6' },
+        { title: 'Conecte se:', text: 'ALT+6' },
         { title: 'Configuração:', text: 'ALT+7' },
         { title: 'Carrinho:', text: 'ALT+8' }
       )
@@ -176,6 +176,7 @@ export default {
   background-position: center;
   background-size: cover;
   position: absolute;
+  font-family: 'Montserrat';
 }
 section {
   width: 70%;
@@ -188,6 +189,7 @@ section {
   margin: auto;
   border-radius: 20px;
   z-index: 999;
+  padding: 2px 0;
 }
 /* formulario de contato  */
 section .form {

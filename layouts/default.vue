@@ -1,9 +1,5 @@
 <template>
-  <div
-    id="app"
-    :as="Cores()"
-    :style="{ 'font-family': fonte ? 'Arial' : 'Libras' }"
-  >
+  <div id="app" :as="Cores()" :style="{ 'font-size': text + 'px' }">
     <transition name="slide-fade">
       <NotfErro
         v-if="notfErro"
@@ -27,7 +23,7 @@
     <ButtonMenu />
     <Header />
     <Nuxt />
-    <VLibras />
+    <VLibras v-if="fonte" />
     <Footer />
   </div>
 </template>
@@ -53,8 +49,11 @@ export default {
       notf_sucess: (state) => state.Notificacoes.mensagemSucess,
       notfSucess: (state) => state.Notificacoes.notfSucess,
 
-      // Fontes
+      // Vlibras
       fonte: (state) => state.Acessibilidade.fonte,
+
+      // Tamanho da fonte
+      text: (state) => state.Acessibilidade.text,
     }),
   },
   methods: {
@@ -96,7 +95,7 @@ export default {
 </script>
 <style>
 html {
-  font-size: 16px;
+  font-family: 'Raleway';
   word-spacing: 1px;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -104,10 +103,6 @@ html {
   /* -ms-text-size-adjust: 100%; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-@font-face {
-  font-family: Libras;
-  src: url(../assets/font/libras.otf);
 }
 *,
 *::before,
@@ -142,8 +137,11 @@ html {
   transform: translateX(10px);
   opacity: 0;
 }
-
+button {
+  font-family: 'Montserrat';
+}
 .btn-hover {
+  font-family: 'Montserrat';
   color: #fff;
   cursor: pointer;
   background-size: 300% 100%;
