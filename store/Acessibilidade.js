@@ -23,6 +23,12 @@ export const mutations = {
   libras_off(state) {
     state.fonte = true
   },
+  fontMais(state) {
+    state.text++
+  },
+  fontMenos(state) {
+    state.text--
+  },
 }
 
 // // actions

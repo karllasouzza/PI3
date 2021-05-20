@@ -22,6 +22,13 @@
               <Libras />
             </div>
           </div>
+          <div class="inputs">
+            <div>
+              <p class="label">{{ FS_site }}</p>
+
+              <FontSize />
+            </div>
+          </div>
         </form>
         <button
           :style="{
@@ -68,6 +75,7 @@ export default {
       M_cores: '',
       I_site: '',
       F_site: '',
+      FS_site: '',
 
       outros: [],
     }
@@ -102,6 +110,7 @@ export default {
       this.M_cores = 'Modo de cor'
       this.I_site = 'Idioma'
       this.F_site = 'VLibras'
+      this.FS_site = 'Tamanho da fonte'
       this.titulo2 = 'Acessibilidade'
       this.outros = []
       this.outros.push(
@@ -122,6 +131,7 @@ export default {
       this.M_cores = 'Color mode'
       this.I_site = 'Language'
       this.F_site = 'VLibras'
+      this.FS_site = 'Font size'
       this.titulo2 = 'Accessibility'
       this.outros = []
       this.outros.push(
@@ -142,6 +152,7 @@ export default {
       this.M_cores = 'Modo de color'
       this.I_site = 'Idioma'
       this.F_site = 'VLibras'
+      this.FS_site = 'Tamaño de fuente'
       this.titulo2 = 'Accesibilidad'
       this.outros = []
       this.outros.push(
