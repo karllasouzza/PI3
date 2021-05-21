@@ -38,7 +38,12 @@
           <nuxtLink :class="home" to="/" accesskey="1">{{ inicio }}</nuxtLink>
         </li>
         <li>
-          <nuxtLink :class="bloG" to="/blog" accesskey="2">{{ blog }}</nuxtLink>
+          <a
+            :class="bloG"
+            href="https://cwiameioambiente.000webhostapp.com/"
+            accesskey="2"
+            >{{ blog }}</a
+          >
         </li>
         <li>
           <nuxtLink :class="products" to="/produtos" accesskey="3">{{
