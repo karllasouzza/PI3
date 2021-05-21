@@ -294,12 +294,22 @@ export default {
           mensagemSucess: 'Mensagem enviada.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        return await this.$axios.$post('/api/contacts', {
+        const success = await this.$axios.$post('/api/contacts', {
           name: this.nome,
           email: this.email,
           category: this.opcoes,
           message: this.mensagem,
         })
+
+        // Se realmente for enviada ele limpa os campos
+        if (success) {
+          return (
+            (this.nome = ''),
+            (this.email = ''),
+            (this.opcoes = ''),
+            (this.mensagem = '')
+          )
+        }
       }
       // Ingles
       else if (this.idioma === 'en') {
@@ -368,12 +378,22 @@ export default {
           mensagemSucess: 'Message sent.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        return await this.$axios.$post('/api/contacts', {
+        const success = await this.$axios.$post('/api/contacts', {
           name: this.nome,
           email: this.email,
           category: this.opcoes,
           message: this.mensagem,
         })
+
+        // Se realmente for enviada ele limpa os campos
+        if (success) {
+          return (
+            (this.nome = ''),
+            (this.email = ''),
+            (this.opcoes = ''),
+            (this.mensagem = '')
+          )
+        }
       }
       // Espanhol
       else {
@@ -442,12 +462,22 @@ export default {
           mensagemSucess: 'Mensage enviada.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        return await this.$axios.$post('/api/contacts', {
+        const success = await this.$axios.$post('/api/contacts', {
           name: this.nome,
           email: this.email,
           category: this.opcoes,
           message: this.mensagem,
         })
+
+        // Se realmente for enviada ele limpa os campos
+        if (success) {
+          return (
+            (this.nome = ''),
+            (this.email = ''),
+            (this.opcoes = ''),
+            (this.mensagem = '')
+          )
+        }
       }
     },
     // nome > 3 sobrenome > 3
