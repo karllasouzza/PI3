@@ -16,10 +16,12 @@
         @click="fecharSucess()"
       />
     </transition>
-    <AbaCarrinho />
     <BlurCarrinho />
-    <Configuracao />
+    <BlurMakeProd />
     <BlurConfig />
+    <AbaCarrinho />
+    <Configuracao />
+    <MakeProds />
     <ButtonMenu />
     <Header />
     <Nuxt />

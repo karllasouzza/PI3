@@ -482,7 +482,7 @@ export default {
     },
     // nome > 3 sobrenome > 3
     validname(nome) {
-      const na = /^([a-z]{3,}([\s-][a-z]{3,})+)$/gi
+      const na = /^([a-z]{3,})$/gi
       return na.test(nome)
     },
     // funçao contendo o regex para a validaçao do email
