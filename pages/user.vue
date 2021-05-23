@@ -312,7 +312,7 @@ export default {
     },
 
     // Função para verificar se usuário existe
-    loginToAccount() {
+    async loginToAccount() {
       // userLogin e userPassword
       if (!this.userLogin) {
         this.$refs.ref_userLogin.focus()
@@ -330,7 +330,31 @@ export default {
         return
       }
 
-      console.log('Verificando se esse usuário existe!')
+      // Manda a requisição e valida se usuário existe.
+      await this.$axios
+        .$post('/api/user/login', {
+          email: this.userLogin,
+          password: this.userPassword,
+        })
+        .then((userData) => {
+          // Se usuário existir entrará neste método onde passará tudo por vuex
+          this.notf_sucess_true()
+          this.set_Sucess({
+            mensagemSucess: 'Logado com sucesso',
+          })
+
+          // Aqui deverá mandar para o vuex.
+          // userData é o parâmetro que receberá o objeto retornado da api.
+          return console.log('Validado', userData)
+          // !!!
+        })
+        .catch(() => {
+          // Caso usuário não exista ele mostrará um erro!
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'E-mail ou senha está incorreto.',
+          })
+        })
     },
 
     // Função para registrar usuário
