@@ -3,7 +3,7 @@ export const state = () => ({
   Dark_mode: false,
 
   // Modo de cor selecionada pelo usuario
-  UserMColor: true,
+  UserMColor: false,
 
   /* Colors */
   // Branco

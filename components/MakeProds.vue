@@ -6,6 +6,7 @@
   >
     <!-- Imagem -->
     <div class="icon">
+      <label>Fechar</label>
       <label>{{ Imagem }}</label>
       <div class="img" :as="imgSelect()">
         <div :style="{ borderColor: M00 }" @click="M_img = '0000'">
@@ -584,13 +585,7 @@ label {
   cursor: text;
 }
 
-@media (max-width: 600px) {
-  .abaCep {
-    width: 100%;
-    height: 100%;
-    border-radius: 0px;
-    flex-wrap: nowrap;
-  }
+@media (max-width: 720px) {
   .enviar {
     width: 90%;
     height: auto;
@@ -611,6 +606,36 @@ label {
   }
   label {
     width: 100%;
+  }
+  .icon {
+    width: 90%;
+    height: 38%;
+  }
+  .resposta div.I {
+    width: 100%;
+    height: 81%;
+    display: flex;
+    flex-flow: wrap;
+    align-content: space-around;
+    /* align-items: unset; */
+    justify-content: flex-start;
+  }
+  .abaCep {
+    width: 90%;
+    height: 833px;
+    position: absolute;
+    top: 80%;
+    border-radius: 20px;
+    flex-wrap: nowrap;
+  }
+
+  span.resposta {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  .img > div > svg {
+    width: 35px;
+    height: 35px;
   }
 }
 </style>
