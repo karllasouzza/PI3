@@ -287,6 +287,7 @@ export default {
     ...mapActions({
       set_Erro: 'Notificacoes/setErro',
       set_Sucess: 'Notificacoes/setSucess',
+      SetUser: 'Usuario/SetUser',
     }),
     ...mapMutations({
       notf_erro_true: 'Notificacoes/notf_erro_true',
@@ -345,8 +346,10 @@ export default {
 
           // Aqui deverá mandar para o vuex.
           // userData é o parâmetro que receberá o objeto retornado da api.
+          this.SetUser({
+            User: userData,
+          })
           return console.log('Validado', userData)
-          // !!!
         })
         .catch(() => {
           // Caso usuário não exista ele mostrará um erro!

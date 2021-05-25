@@ -88,17 +88,17 @@ export default {
       products: 'Produtos postados:',
       email: 'E-mail:',
       cit: 'Cidade atual:',
-      infoUser: [
-        {
-          name: 'Karlla Souzza',
-          sexo: 'Mulher Transgenera',
-          cit: 'Taquaritinga-Sp',
-          years: '18 anos',
-          email: 'Karlla.souzza7@gmail.com',
-          bio: 'Nascer em um corpo de "homem" nao me torna menos mulher',
-          NumberProdutos: '330',
-        },
-      ],
+      // infoUser: [
+      //   {
+      //     name: 'Karlla Souzza',
+      //     sexo: 'Mulher Transgenera',
+      //     cit: 'Taquaritinga-Sp',
+      //     years: '18 anos',
+      //     email: 'Karlla.souzza7@gmail.com',
+      //     bio: 'Nascer em um corpo de "homem" nao me torna menos mulher',
+      //     NumberProdutos: '330',
+      //   },
+      // ],
 
       // Produtos
       Label_Produtos: 'Produtos',
@@ -144,6 +144,9 @@ export default {
       Color_238: (state) => state.Colors.Color_238,
       Color_976: (state) => state.Colors.Color_976,
       idioma: (state) => state.Acessibilidade.idioma,
+
+      // Dados do usuario
+      infoUser: (state) => state.Usuario.User,
     }),
   },
   created() {
