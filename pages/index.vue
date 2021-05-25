@@ -9,8 +9,9 @@
         </p>
         <ButtonSmall
           :text="baner_button"
-          :background="Color_238"
+          background=""
           color="#fff"
+          class="btn-hover color-1"
           to="/banco-de-sementes"
         />
       </div>
@@ -24,7 +25,8 @@
         <span :style="{ color: Color_000 }">{{ sobre_texto }}</span>
         <ButtonSmall
           :text="sobre_button"
-          :background="Color_238"
+          background=""
+          class="btn-hover color-1"
           color="#fff"
           to="/sobre"
         />
@@ -36,21 +38,31 @@
       <div>
         <TitleBorder :text="blog_title1" :color="Color_fff" />
         <span :style="{ color: Color_fff }">{{ blog_texto }}</span>
-        <ButtonSmall
-          :text="blog_button"
-          background="#fff"
-          :color="Color_238"
-          to="/blog"
-          class="desktop"
-        />
+        <a
+          href="https://cwiameioambiente.000webhostapp.com/"
+          class="desktop btn"
+          :style="
+            blog_button_hover
+              ? { color: '#fff', background: Color_004 }
+              : { background: '#fff', color: Color_004 }
+          "
+          @mouseenter="blog_button_hover = true"
+          @mouseleave="blog_button_hover = false"
+          >{{ blog_button }}</a
+        >
       </div>
-      <ButtonSmall
-        class="mobile"
-        :text="blog_button"
-        background="#fff"
-        :color="Color_238"
-        to="/blog"
-      />
+      <a
+        class="mobile btn"
+        href="https://cwiameioambiente.000webhostapp.com/"
+        :style="
+          blog_button_hover
+            ? { color: '#fff', background: Color_004 }
+            : { background: '#fff', color: Color_004 }
+        "
+        @mouseenter="blog_button_hover = true"
+        @mouseleave="blog_button_hover = false"
+        >{{ blog_button }}</a
+      >
       <div>
         <nuxt-link
           v-for="(cards, index) in card"
@@ -83,20 +95,25 @@
         </span>
         <div>
           <ButtonSmall
+            :style="
+              login_button_hover
+                ? { color: '#fff', background: Color_004 }
+                : { background: '#fff', color: Color_004 }
+            "
             :text="login_button"
             background="#fff"
             :color="Color_238"
             to="/user"
-            class="desktop"
+            class="desktop btn-hover"
+            @mouseenter.native="login_button_hover = true"
+            @mouseleave.native="login_button_hover = false"
           />
           <ButtonMiddle
             :text="login_button2"
-            :background="Color_238"
+            background=""
             color="#fff"
             to="/user"
-            class="desktop"
-            @mouseenter.native="login_button_hover2 = true"
-            @mouseleave.native="login_button_hover2 = false"
+            class="desktop btn-hover color-1"
           />
         </div>
       </div>
@@ -114,13 +131,11 @@ export default {
       baner_title1: '',
       baner_title2: '',
       baner_button: '',
-      baner_button_hover: false,
 
       // Sobre
       sobre_title1: '',
       sobre_texto: '',
       sobre_button: '',
-      sobre_button_hover: false,
 
       // Blog
       blog_title1: '',
@@ -164,7 +179,6 @@ export default {
       login_button: '',
       login_button2: '',
       login_button_hover: false,
-      login_button_hover2: false,
     }
   },
   head: {
@@ -182,6 +196,7 @@ export default {
       Color_fff: (state) => state.Colors.Color_fff,
       Color_000: (state) => state.Colors.Color_000,
       Color_238: (state) => state.Colors.Color_238,
+      Color_004: (state) => state.Colors.Color_004,
       idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
@@ -405,6 +420,17 @@ main {
 }
 .blog > div:last-child > .card:first-child {
   margin-left: 1px;
+}
+.blog .btn {
+  font-family: 'Montserrat';
+  width: 130px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
 }
 .blog > div > a > .img {
   width: 100%;

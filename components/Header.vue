@@ -75,17 +75,23 @@
     <div class="L_ci">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-bag"
-        viewBox="0 0 16 16"
+        viewBox="0 0 14 17.25"
         accesskey="8"
         @click="Cart()"
       >
-        <path
-          d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
-        />
+        <g id="Camada_2" data-name="Camada 2">
+          <g id="Camada_1-2" data-name="Camada 1">
+            <path
+              d="M7,1A2.5,2.5,0,0,1,9.5,3.5V4h-5V3.5A2.5,2.5,0,0,1,7,1Zm3.5,3V3.5a3.5,3.5,0,0,0-7,0V4H0V14a2,2,0,0,0,2,2H12a2,2,0,0,0,2-2V4Z"
+            />
+            <text
+              transform="translate(4.0 13.25)"
+              style="font-size: 8px; fill: #000"
+            >
+              {{ total }}
+            </text>
+          </g>
+        </g>
       </svg>
 
       <label id="input" class="L-i" for="check">
@@ -116,6 +122,9 @@ export default {
     logIn: '',
     contacts: '',
     user: '',
+
+    // Cart
+    total: 0,
   }),
   computed: {
     ...mapState({
@@ -125,6 +134,7 @@ export default {
       idioma: (state) => state.Acessibilidade.idioma,
       conf: (state) => state.Header.config,
       tela: (state) => state.Header.tela,
+      Itens: (state) => state.Cart.Itens,
       cart: (state) => state.Cart.On_Off,
     }),
   },
@@ -135,7 +145,7 @@ export default {
       this.produtos = 'Produtos'
       this.sobre = 'Sobre'
       this.contatos = 'Contato'
-      this.login = 'Conecte se'
+      this.login = 'Login'
       this.configuracao = 'Configuração'
     } else if (this.idioma === 'en') {
       this.inicio = 'Home'
@@ -236,6 +246,23 @@ export default {
         this.contacts = ''
         this.user = 'On'
       }
+      this.ON()
+    },
+    ON() {
+      const A1 = this.Itens
+
+      const A3 = []
+
+      for (let index = 0; index < A1.length; index++) {
+        A3.push(A1[index].quantidade)
+      }
+      if (A1.length > 0) {
+        const reducer = (accumulator, currentValue) =>
+          accumulator + currentValue
+        this.total = A3.reduce(reducer)
+      } else {
+        this.total = 0
+      }
     },
   },
 }
@@ -269,6 +296,10 @@ header {
   width: 28px;
   height: 28px;
   fill: white;
+  transition: ease-in-out 0.7s;
+}
+.L_ci > svg:hover {
+  fill: limegreen;
 }
 .L-i {
   width: 60px;
