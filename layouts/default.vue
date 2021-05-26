@@ -58,6 +58,9 @@ export default {
       text: (state) => state.Acessibilidade.text,
     }),
   },
+  created() {
+    this.$store.commit('Produtos/products')
+  },
   methods: {
     ...mapMutations({
       notf_erro_false: 'Notificacoes/notf_erro_false',

@@ -77,6 +77,12 @@ export const mutations = {
     const indice = state.Itens.findIndex((obj) => obj.id === numeroARemover)
     state.Itens.splice(indice, 1)
   },
+
+  async products(state) {
+    const products = await this.$axios.$get('/api/product')
+    state.Itens = products
+    console.log(products)
+  },
 }
 
 // actions
