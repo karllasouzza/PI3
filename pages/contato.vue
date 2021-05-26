@@ -616,6 +616,7 @@ section > div.outros > div {
   justify-content: space-between;
   padding: 5%;
   cursor: pointer;
+  transition: ease-in-out 0.6s;
 }
 
 @media (max-width: 1107px) {

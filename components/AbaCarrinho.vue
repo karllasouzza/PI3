@@ -154,6 +154,7 @@ footer {
     width: 100%;
     height: 100%;
     font-size: 12px;
+    position: absolute;
   }
   .main {
     padding: 2px;

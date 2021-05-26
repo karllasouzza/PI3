@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     ...mapMutations({
-      on: 'Produtos/on',
       off: 'Produtos/off',
     }),
   },

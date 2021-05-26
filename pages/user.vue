@@ -3,7 +3,7 @@
     <main :as="PageOn()" :style="{ background: Color_fff + 'cc' }">
       <BigTitle
         class="title"
-        :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
+        :text="changeOfForm ? L_login : L_create_acount"
         :color="Color_000"
       />
 
@@ -238,8 +238,8 @@ export default {
     else if (this.idioma === 'en') {
       this.Label_N_conta = 'Do not have an account?'
       this.Label_S_conta = 'Already have an account?'
-      this.L_login = 'Sign in'
-      this.L_create_acount = 'Create an account'
+      this.L_login = 'Login'
+      this.L_create_acount = 'Create account'
       this.Label_E_senha = 'Forgot password?'
       this.Label_help = 'Need help?'
       this.P_nome = '* Name'
@@ -251,7 +251,7 @@ export default {
       this.P_email = 'Type your e-mail.'
       this.P_senha = 'Type your password.'
       this.B_login = 'Login'
-      this.B_create_acount = 'Create an account'
+      this.B_create_acount = 'Create account'
       this.O_S_genero = 'Select your Genre'
       this.O_feminino = 'Feminine'
       this.O_masculino = 'Masculino'
@@ -263,7 +263,7 @@ export default {
       this.Label_N_conta = '¿No tienes una cuenta?'
       this.Label_S_conta = '¿Ya tienes una cuenta?'
       this.L_login = 'Registrarse'
-      this.L_create_acount = 'Crea una cuenta'
+      this.L_create_acount = 'Crea cuenta'
       this.Label_E_senha = 'olvido la contraseña?'
       this.Label_help = '¿Necesita ayuda?'
       this.P_nome = '* Nombre'
@@ -275,7 +275,7 @@ export default {
       this.P_email = 'Escriba su correo electrónico.'
       this.P_senha = 'Escribe tu contraseña.'
       this.B_login = 'Hacer login'
-      this.B_create_acount = 'Crea una cuenta'
+      this.B_create_acount = 'Crea cuenta'
       this.O_S_genero = 'Seleccione su género'
       this.O_feminino = 'Feminino'
       this.O_masculino = 'Masculino'
@@ -287,6 +287,7 @@ export default {
     ...mapActions({
       set_Erro: 'Notificacoes/setErro',
       set_Sucess: 'Notificacoes/setSucess',
+      SetUser: 'Usuario/SetUser',
     }),
     ...mapMutations({
       notf_erro_true: 'Notificacoes/notf_erro_true',
@@ -345,8 +346,10 @@ export default {
 
           // Aqui deverá mandar para o vuex.
           // userData é o parâmetro que receberá o objeto retornado da api.
+          this.SetUser({
+            User: userData,
+          })
           return console.log('Validado', userData)
-          // !!!
         })
         .catch(() => {
           // Caso usuário não exista ele mostrará um erro!
@@ -581,10 +584,11 @@ section main form select {
 section main form button {
   width: 300px;
   height: 40px;
-
   border-radius: 20px;
   margin: 0.5em 0;
-
+  font-weight: bolder;
+  font-family: 'Montserrat';
+  font-size: 17px;
   cursor: pointer;
 }
 

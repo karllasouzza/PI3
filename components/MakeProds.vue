@@ -4,9 +4,9 @@
     class="abaCep"
     :style="{ color: Color_000, background: Color_fff }"
   >
+    <span class="close" @click="off()">{{ fechar }}</span>
     <!-- Imagem -->
     <div class="icon">
-      <label>Fechar</label>
       <label>{{ Imagem }}</label>
       <div class="img" :as="imgSelect()">
         <div :style="{ borderColor: M00 }" @click="M_img = '0000'">
@@ -170,6 +170,7 @@ export default {
       Label_preco: '',
       Finish: '',
       Imagem: '',
+      fechar: '',
 
       //  models
       title: '',
@@ -196,23 +197,26 @@ export default {
   },
   created() {
     if (this.idioma === 'pt') {
+      this.fechar = 'Fechar'
       this.Label_titulo = '* Título do produto'
       this.Label_desc = '* Descrição do produto'
       this.Label_preco = '* Preço do produto'
       this.Finish = 'Criar produto'
-      this.Imagem = 'Escolha um Ícone'
+      this.Imagem = '* Escolha um Ícone'
     } else if (this.idioma === 'en') {
+      this.fechar = 'Close'
       this.Label_titulo = '* Product title'
       this.Label_desc = '* Product description'
       this.Label_preco = '* Price of the product'
       this.Finish = 'Create product'
-      this.Imagem = 'Choose an Icon'
+      this.Imagem = '* Choose an Icon'
     } else {
+      this.fechar = 'Cerca'
       this.Label_titulo = '* Titulo del producto'
       this.Label_desc = '* Descripción del producto'
       this.Label_preco = '* Precio del producto'
       this.Finish = 'Crear producto'
-      this.Imagem = 'Elige un icono'
+      this.Imagem = '* Elige un icono'
     }
   },
   methods: {
@@ -221,6 +225,7 @@ export default {
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       notf_sucess_true: 'Notificacoes/notf_sucess_true',
+      off: 'Produtos/off',
     }),
     ...mapActions({
       set_Erro: 'Notificacoes/setErro',
@@ -481,7 +486,21 @@ export default {
   align-items: center;
   align-content: space-between;
 }
-
+.abaCep > span.close {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-self: flex-start;
+  font-weight: bold;
+  font-size: 17px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 50%;
+  padding: 10px;
+  color: red;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
 .recall {
   width: 400px;
   align-self: center;

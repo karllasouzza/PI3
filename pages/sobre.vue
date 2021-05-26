@@ -478,6 +478,10 @@ svg {
   }
 }
 @media (max-width: 425px) {
+  .container {
+    margin-top: 55px;
+    grid-template-rows: 150vh 150vh 160vh;
+  }
   .container > div.parte2 > div > p,
   .container > div.parte1 > div > p,
   .container > div.parte3 > div > p {
@@ -493,7 +497,7 @@ svg {
 @media (max-width: 375px) {
   .container {
     padding: 10px 0;
-    grid-template-rows: 150vh 150vh 150vh;
+    grid-template-rows: 150vh 150vh 160vh;
     grid-template-columns: 10px 1fr 1fr 1fr 1fr 1fr 1fr 10px;
   }
   .container > div.parte2 > div > p,
@@ -513,6 +517,11 @@ svg {
   .container > div.parte3 > div {
     width: 100%;
     height: 50%;
+  }
+}
+@media (max-width: 320px) {
+  .container {
+    grid-template-rows: 150vh 150vh 170vh;
   }
 }
 </style>

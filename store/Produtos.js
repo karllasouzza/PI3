@@ -31,7 +31,7 @@ export const state = () => ({
       quantidade: 0,
     },
   ],
-  On_Off: true,
+  On_Off: false,
 })
 
 // mutations
