@@ -12,7 +12,7 @@
           background=""
           color="#fff"
           class="btn-hover color-1"
-          to="/banco-de-sementes"
+          to="/produtos"
         />
       </div>
     </div>
@@ -71,11 +71,10 @@
           :style="{ background: Color_fff }"
           class="card"
         >
-          <!-- 
+          <div
+            class="img"
             :style="{ 'background-image': 'url(' + cards.img + ')' }"
-
-         -->
-          <div class="img"></div>
+          ></div>
           <div class="text">
             <p><Title :text="cards.titulo" :color="Color_000" /></p>
             <span :style="{ color: Color_000 }">{{ cards.resumo }}</span>
@@ -144,32 +143,13 @@ export default {
       blog_button_hover: false,
       card: [
         {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/222-2-1024x412.jpg',
+          titulo: 'Como fazer adubo.',
           resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
-        },
-        {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
-          resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
-        },
-        {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
-          resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
-        },
-        {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
-          resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
+            'Nesse post vamos ensinar como fazer um adubo caseiro com ingredientes que você joga fora. Vamos fazer o famoso NPK?',
+          link:
+            'https://cwiameioambiente.000webhostapp.com/2021/05/como-ter-um-adubo-npk-feito-em-casa',
         },
       ],
 
@@ -382,6 +362,9 @@ main {
   display: grid;
   grid-template-columns: 40px 1fr 1fr 40px;
 }
+.blog a {
+  transition: ease-in-out 0.7s;
+}
 .blog > div > span {
   display: flex;
   justify-content: flex-start;
@@ -435,8 +418,8 @@ main {
 .blog > div > a > .img {
   width: 100%;
   height: 50%;
-  background-image: url(assets/img/Inicio/Fotos/1.jpg);
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .blog > div > a.card {
   min-width: 216px;
