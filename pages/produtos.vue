@@ -23,16 +23,16 @@
       <div class="carts">
         <CardsProdutos
           v-for="Card in computedList"
-          :key="Card.id"
-          :iten="Card.id"
-          :img="Card.img"
-          :title-img="Card.title"
-          :title="Card.title"
-          :preco="Card.preco"
-          :autor="Card.autor"
+          :key="Card.product.id"
+          :iten="Card.product.id"
+          :img="Card.product.image"
+          :title-img="Card.product.title"
+          :title="Card.product.title"
+          :preco="Card.product.price"
+          :autor="Card.owner_user.name + Card.owner_user.last_name"
           :comprar-color="Color_238"
-          :descricao="Card.descricao"
-          :quantidade="Card.quantidade"
+          :descricao="Card.product.content"
+          :quantidade="Card.product.quantity"
           color="#000"
         />
       </div>
