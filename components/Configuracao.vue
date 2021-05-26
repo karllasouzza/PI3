@@ -16,17 +16,17 @@
 
               <Idioma />
             </div>
-            <div>
-              <p class="label">{{ F_site }}</p>
-
-              <Libras />
-            </div>
           </div>
           <div class="inputs">
             <div>
               <p class="label">{{ FS_site }}</p>
 
               <FontSize />
+            </div>
+            <div>
+              <p class="label">{{ F_site }}</p>
+
+              <Libras />
             </div>
           </div>
         </form>
