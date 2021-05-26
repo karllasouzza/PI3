@@ -1,36 +1,5 @@
 export const state = () => ({
-  Itens: [
-    {
-      id: 1,
-      img:
-        'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-      title: 'Sementes de Romã',
-      descricao: 'Sementes de Romã',
-      preco: 15.0,
-      autor: 'karlla Souzza',
-      quantidade: 0,
-    },
-    {
-      id: 2,
-      img:
-        'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-      title: 'Sementes de Romã',
-      descricao: 'Sementes de Romã',
-      preco: 15.0,
-      autor: 'karlla Souzza',
-      quantidade: 0,
-    },
-    {
-      id: 3,
-      img:
-        'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-      title: 'Sementes de Romã',
-      descricao: 'Sementes de Romã',
-      preco: 15.0,
-      autor: 'karlla Souzza',
-      quantidade: 0,
-    },
-  ],
+  Itens: [],
   On_Off: false,
 })
 
@@ -44,38 +13,40 @@ export const mutations = {
     state.On_Off = false
   },
 
-  // Items
-  addItens(state, Itens) {
-    state.Itens.push(Itens)
-  },
+  // // Items
+  // addItens(state, Itens) {
+  //   state.Itens.push(Itens)
+  // },
 
   SomaItens(state, Itens) {
-    const numeroARemover = Itens.id
+    const numeroARemover = Itens.product.id
 
-    const indice = state.Itens.findIndex(
+    const indice = state.Itens.products.findIndex(
       (element) => element.id === numeroARemover
     )
-    state.Itens[indice].quantidade++
+    state.Itens.product[indice].quantity++
   },
 
   SubtraItens(state, Itens) {
-    const numeroARemover = Itens.id
+    const numeroARemover = Itens.product.id
 
-    const indice = state.Itens.findIndex(
+    const indice = state.Itens.product.findIndex(
       (element) => element.id === numeroARemover
     )
-    if (state.Itens[indice].quantidade === 0) {
-      state.Itens[indice].quantidade = 0
+    if (state.Itens.product[indice].quantity === 0) {
+      state.Itens.product[indice].quantity = 0
     } else {
-      state.Itens[indice].quantidade--
+      state.Itens.product[indice].quantity--
     }
   },
 
   deletItens(state, id) {
     const numeroARemover = id
 
-    const indice = state.Itens.findIndex((obj) => obj.id === numeroARemover)
-    state.Itens.splice(indice, 1)
+    const indice = state.Itens.product.findIndex(
+      (obj) => obj.id === numeroARemover
+    )
+    state.Itens.product.splice(indice, 1)
   },
 
   async products(state) {
