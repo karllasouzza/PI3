@@ -134,7 +134,7 @@ export default {
       idioma: (state) => state.Acessibilidade.idioma,
       conf: (state) => state.Header.config,
       tela: (state) => state.Header.tela,
-      Itens: (state) => state.Cart.Itens,
+      Itens: (state) => state.Cart.Itens.product,
       cart: (state) => state.Cart.On_Off,
     }),
   },
@@ -254,7 +254,7 @@ export default {
       const A3 = []
 
       for (let index = 0; index < A1.length; index++) {
-        A3.push(A1[index].quantidade)
+        A3.push(A1[index].quantity)
       }
       if (A1.length > 0) {
         const reducer = (accumulator, currentValue) =>
