@@ -3,7 +3,7 @@
     <main :as="PageOn()" :style="{ background: Color_fff + 'cc' }">
       <BigTitle
         class="title"
-        :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
+        :text="changeOfForm ? L_login : L_create_acount"
         :color="Color_000"
       />
 
@@ -238,7 +238,7 @@ export default {
     else if (this.idioma === 'en') {
       this.Label_N_conta = 'Do not have an account?'
       this.Label_S_conta = 'Already have an account?'
-      this.L_login = 'Sign in'
+      this.L_login = 'Login'
       this.L_create_acount = 'Create an account'
       this.Label_E_senha = 'Forgot password?'
       this.Label_help = 'Need help?'
@@ -584,10 +584,11 @@ section main form select {
 section main form button {
   width: 300px;
   height: 40px;
-
   border-radius: 20px;
   margin: 0.5em 0;
-
+  font-weight: bolder;
+  font-family: 'Montserrat';
+  font-size: 17px;
   cursor: pointer;
 }
 
