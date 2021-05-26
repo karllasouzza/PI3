@@ -33,7 +33,8 @@
       </div>
       <div class="itens">
         <span :style="{ background: '#fff' }" class="years">
-          <span>{{ years }}</span> {{ infoUser.date_of_birth }}</span
+          <span>{{ years }}</span>
+          {{ FormataStringData(infoUser.date_of_birth) }}</span
         >
         <span :style="{ background: '#fff' }" class="sexo">
           <span>{{ sexo }}</span
@@ -193,6 +194,16 @@ export default {
     ...mapMutations({
       PageOn: 'Header/Page_on_perfil',
     }),
+
+    FormataStringData(data) {
+      console.log(data)
+      const dia = data.split('-')[0]
+      const mes = data.split('-')[1]
+      const ano = data.split('-')[2]
+
+      return ano + '/' + ('0' + mes).slice(-2) + '/' + ('0' + dia).slice(-4)
+      // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
+    },
   },
 }
 </script>
