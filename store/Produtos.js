@@ -19,7 +19,7 @@ export const mutations = {
   // },
 
   SomaItens(state, Itens) {
-    const numeroARemover = Itens.product.id
+    const numeroARemover = Itens.id
 
     const indice = state.Itens.product.findIndex(
       (element) => element.id === numeroARemover
@@ -28,7 +28,7 @@ export const mutations = {
   },
 
   SubtraItens(state, Itens) {
-    const numeroARemover = Itens.product.id
+    const numeroARemover = Itens.id
 
     const indice = state.Itens.product.findIndex(
       (element) => element.id === numeroARemover
