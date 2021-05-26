@@ -21,8 +21,8 @@ export const mutations = {
   SomaItens(state, Itens) {
     const numeroARemover = Itens.id
 
-    const indice = state.Itens.product.findIndex(
-      (element) => element.id === numeroARemover
+    const indice = state.Itens.findIndex(
+      (element) => element.product.id === numeroARemover
     )
     state.Itens.product[indice].quantity++
   },
@@ -30,8 +30,8 @@ export const mutations = {
   SubtraItens(state, Itens) {
     const numeroARemover = Itens.id
 
-    const indice = state.Itens.product.findIndex(
-      (element) => element.id === numeroARemover
+    const indice = state.Itens.findIndex(
+      (element) => element.product.id === numeroARemover
     )
     if (state.Itens.product[indice].quantity === 0) {
       state.Itens.product[indice].quantity = 0
