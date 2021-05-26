@@ -6,18 +6,14 @@
       class="Foto_perfil"
       :style="{ backgroundImage: 'url(' + User_img + ')' }"
     />
-    <div
-      v-for="(infos, index) in infoUser"
-      :key="'infos' + index"
-      class="User_info"
-    >
-      <h1>{{ infos.name + infos.last_name }}</h1>
+    <div class="User_info">
+      <h1>{{ infoUser.name }} {{ infoUser.last_name }}</h1>
       <span class="bio"></span>
     </div>
 
     <!-- Sobre -->
     <div class="Menu_background" :style="{ background: Color_238 }"></div>
-    <div v-for="(User, index) in infoUser" :key="'User' + index" class="Sobre">
+    <div class="Sobre">
       <div class="Menu" :style="{ 'border-right-color': Color_fff }">
         <span :style="{ color: Color_fff }">
           {{ Label_sobre }}
@@ -25,15 +21,15 @@
       </div>
       <div class="itens">
         <span :style="{ background: Color_fff }" class="years">
-          <span>{{ years }}</span> {{ User.date_of_birth }}</span
+          <span>{{ years }}</span> {{ infoUser.date_of_birth }}</span
         >
         <span :style="{ background: Color_fff }" class="sexo">
           <span>{{ sexo }}</span
-          >{{ User.genre }}</span
+          >{{ infoUser.genre }}</span
         >
         <span :style="{ background: Color_fff }" class="email">
           <span> {{ email }} </span>
-          {{ User.email }}</span
+          {{ infoUser.email }}</span
         >
         <!-- <span :style="{ background: Color_fff }" class="cit">
           <span>{{ cit }}</span
