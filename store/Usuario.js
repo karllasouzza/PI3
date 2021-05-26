@@ -1,12 +1,12 @@
 export const state = () => ({
-  User: [],
+  User: {},
 })
 
 // mutations
 export const mutations = {
   // Items
   addUser(state, User) {
-    state.User.push(User)
+    state.User = User
   },
 }
 
