@@ -8,7 +8,7 @@ export default ({ store }) => {
       Colors: state.Colors,
       Cart: state.Cart,
       Produtos: state.Produtos,
-      Usuario: state.User,
+      Usuario: state.Usuario,
     }),
     storage: {
       getItem(key) {
