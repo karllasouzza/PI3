@@ -20,22 +20,22 @@
         </span>
       </div>
       <div class="itens">
-        <span :style="{ background: Color_fff }" class="years">
+        <span :style="{ background: '#fff' }" class="years">
           <span>{{ years }}</span> {{ infoUser.date_of_birth }}</span
         >
-        <span :style="{ background: Color_fff }" class="sexo">
+        <span :style="{ background: '#fff' }" class="sexo">
           <span>{{ sexo }}</span
           >{{ infoUser.genre }}</span
         >
-        <span :style="{ background: Color_fff }" class="email">
+        <span :style="{ background: '#fff' }" class="email">
           <span> {{ email }} </span>
           {{ infoUser.email }}</span
         >
-        <!-- <span :style="{ background: Color_fff }" class="cit">
+        <!-- <span :style="{ background: '#fff' }" class="cit">
           <span>{{ cit }}</span
           >{{ User.cit }}</span
         > -->
-        <!-- <span :style="{ background: Color_fff }" class="NumberProdutos">
+        <!-- <span :style="{ background: '#fff' }" class="NumberProdutos">
           <span>{{ products }}</span
           >{{ User.NumberProdutos }}</span
         > -->
