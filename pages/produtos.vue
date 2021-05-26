@@ -81,7 +81,7 @@ export default {
     computedList() {
       const vm = this
       return vm.infoProdutos.filter(function (item) {
-        return item.title.match(vm.query)
+        return item.product.title.match(vm.query)
       })
     },
   },
