@@ -33,10 +33,10 @@ export const mutations = {
     const indice = state.Itens.findIndex(
       (element) => element.product.id === numeroARemover
     )
-    if (state.Itens.product[indice].quantity === 0) {
-      state.Itens.product[indice].quantity = 0
+    if (state.Itens[indice].product.quantity === 0) {
+      state.Itens[indice].product.quantity = 0
     } else {
-      state.Itens.product[indice].quantity--
+      state.Itens[indice].product.quantity--
     }
   },
 
