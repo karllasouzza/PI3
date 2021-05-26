@@ -11,8 +11,8 @@
       :key="'infos' + index"
       class="User_info"
     >
-      <h1>{{ infos.name }}</h1>
-      <span class="bio">{{ infos.bio }}</span>
+      <h1>{{ infos.name + infos.last_name }}</h1>
+      <span class="bio"></span>
     </div>
 
     <!-- Sobre -->
@@ -25,24 +25,24 @@
       </div>
       <div class="itens">
         <span :style="{ background: Color_fff }" class="years">
-          <span>{{ years }}</span> {{ User.years }}</span
+          <span>{{ years }}</span> {{ User.date_of_birth }}</span
         >
         <span :style="{ background: Color_fff }" class="sexo">
           <span>{{ sexo }}</span
-          >{{ User.sexo }}</span
+          >{{ User.genre }}</span
         >
         <span :style="{ background: Color_fff }" class="email">
           <span> {{ email }} </span>
           {{ User.email }}</span
         >
-        <span :style="{ background: Color_fff }" class="cit">
+        <!-- <span :style="{ background: Color_fff }" class="cit">
           <span>{{ cit }}</span
           >{{ User.cit }}</span
-        >
-        <span :style="{ background: Color_fff }" class="NumberProdutos">
+        > -->
+        <!-- <span :style="{ background: Color_fff }" class="NumberProdutos">
           <span>{{ products }}</span
           >{{ User.NumberProdutos }}</span
-        >
+        > -->
       </div>
     </div>
 
