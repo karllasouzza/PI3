@@ -24,7 +24,7 @@ export const mutations = {
     const indice = state.Itens.findIndex(
       (element) => element.product.id === numeroARemover
     )
-    state.Itens.product[indice].quantity++
+    state.Itens[indice].product.quantity++
   },
 
   SubtraItens(state, Itens) {
