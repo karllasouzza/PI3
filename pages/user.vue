@@ -349,7 +349,7 @@ export default {
           this.SetUser({
             User: userData.user,
           })
-          return console.log('Validado', userData)
+          return this.$router.push('/')
         })
         .catch(() => {
           // Caso usuário não exista ele mostrará um erro!
