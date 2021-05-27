@@ -13,10 +13,10 @@ export const mutations = {
     state.On_Off = false
   },
 
-  // // Items
-  // addItens(state, Itens) {
-  //   state.Itens.push(Itens)
-  // },
+  // Items
+  addItens(state, Itens) {
+    state.Itens = Itens
+  },
 
   SomaItens(state, Itens) {
     const numeroARemover = Itens.id
@@ -48,12 +48,6 @@ export const mutations = {
     )
     state.Itens.product.splice(indice, 1)
   },
-
-  async products(state) {
-    const products = await this.$axios.$get('/api/product')
-    state.Itens = products
-    console.log(products)
-  },
 }
 
 // actions
@@ -69,5 +63,9 @@ export const actions = {
   },
   delet(context, Produtos) {
     context.commit('deletItens', Produtos.Itens)
+  },
+  async products(context, Produtos) {
+    const Itens = await this.$axios.$get('/api/product')
+    context.commit('addItens', Itens)
   },
 }

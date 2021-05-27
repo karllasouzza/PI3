@@ -251,13 +251,14 @@ export default {
 .img {
   width: 24%;
   height: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 0 0 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
   flex-wrap: wrap;
   background-size: cover;
+  background: #004b23;
 }
 
 .conteudo {
@@ -269,8 +270,8 @@ export default {
   justify-content: space-around;
 }
 svg {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 .precoJ {
   display: flex;

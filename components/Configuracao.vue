@@ -34,7 +34,6 @@
           :style="{
             background: Color_fff,
             color: Color_000,
-            'font-family': fonte ? 'Arial' : 'Libras',
           }"
           @click="reload()"
         >

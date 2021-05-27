@@ -1,12 +1,14 @@
 export const state = () => ({
   User: {},
+  logado: false,
 })
 
 // mutations
 export const mutations = {
   // Items
   addUser(state, User) {
-    state.User = User
+    state.User = User.user
+    state.logado = User.success
   },
 }
 

@@ -196,7 +196,6 @@ export default {
     }),
 
     FormataStringData(data) {
-      console.log(data)
       const dia = data.split('-')[0]
       const mes = data.split('-')[1]
       const ano = data.split('-')[2]

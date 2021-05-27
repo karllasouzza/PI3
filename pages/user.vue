@@ -347,7 +347,7 @@ export default {
           // Aqui deverá mandar para o vuex.
           // userData é o parâmetro que receberá o objeto retornado da api.
           this.SetUser({
-            User: userData.user,
+            User: userData,
           })
           return this.$router.push('/')
         })

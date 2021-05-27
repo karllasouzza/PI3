@@ -62,7 +62,7 @@ export default {
     }),
   },
   created() {
-    if (!this.Libras) {
+    if (this.Libras) {
       this.ml = '65%'
       this.Bl = '#0863f7'
       this.F1 = '#fff'
@@ -80,7 +80,7 @@ export default {
     }),
 
     A() {
-      if (this.Libras) {
+      if (!this.Libras) {
         this.On()
 
         this.ml = '65%'

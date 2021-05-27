@@ -59,7 +59,7 @@ export default {
     }),
   },
   created() {
-    this.$store.commit('Produtos/products')
+    this.$store.dispatch('Produtos/products')
   },
   methods: {
     ...mapMutations({
