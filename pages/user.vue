@@ -475,6 +475,7 @@ export default {
           name: this.userName,
           last_name: this.lastName,
           date_of_birth: this.dateOfBirth,
+          image: '0000',
           genre: this.genre,
           email: this.email,
           password: this.password,
