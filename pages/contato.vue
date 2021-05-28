@@ -715,7 +715,7 @@ section > div.outros > div {
     font-size: 22px;
   }
   .container {
-    grid-template-rows: 206vh;
+    grid-template-rows: 216vh;
     grid-template-columns: 10px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 10px;
   }
 }

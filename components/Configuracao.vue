@@ -380,6 +380,7 @@ section > div.outros > div > div > span {
   .inputs {
     width: 100%;
     height: 176px;
+    flex-direction: row;
   }
   input {
     height: 37px;
@@ -393,9 +394,8 @@ section > div.outros > div > div > span {
   }
   section {
     width: 100%;
-    margin-top: auto;
-    margin-bottom: 3%;
-    height: 983px;
+    margin-top: 12%;
+    height: max-content;
     flex-direction: column;
     padding: 3%;
   }

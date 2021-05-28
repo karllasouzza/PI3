@@ -295,6 +295,7 @@ export default {
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       notf_sucess_true: 'Notificacoes/notf_sucess_true',
       PageOn: 'Header/Page_on_login',
+      clearUser: 'Usuario/clearUser',
     }),
 
     // Muda de formulário
@@ -339,17 +340,25 @@ export default {
         })
         .then((userData) => {
           // Se usuário existir entrará neste método onde passará tudo por vuex
-          this.notf_sucess_true()
-          this.set_Sucess({
-            mensagemSucess: 'Logado com sucesso',
-          })
 
           // Aqui deverá mandar para o vuex.
           // userData é o parâmetro que receberá o objeto retornado da api.
-          this.SetUser({
-            User: userData,
-          })
-          return this.$router.push('/')
+          if (userData.success === true) {
+            this.notf_sucess_true()
+            this.set_Sucess({
+              mensagemSucess: 'Logado com sucesso',
+            })
+            this.SetUser({
+              User: userData,
+            })
+            return this.$router.push('/')
+          } else {
+            this.notf_erro_true()
+            this.set_Erro({
+              mensagemErro: 'E-mail ou senha está incorreto.',
+            })
+            this.clearUser()
+          }
         })
         .catch(() => {
           // Caso usuário não exista ele mostrará um erro!

@@ -10,6 +10,10 @@ export const mutations = {
     state.User = User.user
     state.logado = User.success
   },
+  clearUser(state, User) {
+    state.User = {}
+    state.logado = false
+  },
 }
 
 // actions

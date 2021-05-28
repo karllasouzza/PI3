@@ -38,14 +38,6 @@
           <nuxtLink :class="home" to="/" accesskey="1">{{ inicio }}</nuxtLink>
         </li>
         <li>
-          <a
-            :class="bloG"
-            href="https://cwiameioambiente.000webhostapp.com/"
-            accesskey="2"
-            >{{ blog }}</a
-          >
-        </li>
-        <li>
           <nuxtLink :class="products" to="/produtos" accesskey="3">{{
             produtos
           }}</nuxtLink>
@@ -60,10 +52,22 @@
             contatos
           }}</nuxtLink>
         </li>
+
         <li>
-          <nuxtLink :class="logIn" to="/user" accesskey="6">{{
+          <nuxtLink v-if="!logado" :class="logIn" to="/user" accesskey="6">{{
             login
           }}</nuxtLink>
+          <nuxtLink v-else to="/perfil" :class="user" accesskey="6">{{
+            perfil
+          }}</nuxtLink>
+        </li>
+        <li>
+          <a
+            :class="bloG"
+            href="https://cwiameioambiente.000webhostapp.com/"
+            accesskey="2"
+            >{{ blog }}</a
+          >
         </li>
         <li accesskey="7" @click="config()">
           <span>
@@ -113,15 +117,22 @@ export default {
     login: 'Criar conta',
     configuracao: '',
     Logo: [{ conteudo: 'CWIA', Link: '/', key: '1' }],
-
+    perfil: '',
     // localizar a tela
     home: '',
+    homeF: '',
     bloG: '',
+    bloGF: '',
     about: '',
+    aboutF: '',
     products: '',
+    productsF: '',
     logIn: '',
+    logInF: '',
     contacts: '',
+    contactsF: '',
     user: '',
+    userF: '',
 
     // Cart
     total: 0,
@@ -136,6 +147,7 @@ export default {
       tela: (state) => state.Header.tela,
       Itens: (state) => state.Cart.Itens,
       cart: (state) => state.Cart.On_Off,
+      logado: (state) => state.Usuario.logado,
     }),
   },
   created() {
@@ -146,6 +158,7 @@ export default {
       this.sobre = 'Sobre'
       this.contatos = 'Contato'
       this.login = 'Login'
+      this.perfil = 'Perfil'
       this.configuracao = 'Configuração'
     } else if (this.idioma === 'en') {
       this.inicio = 'Home'
@@ -154,6 +167,7 @@ export default {
       this.sobre = 'About'
       this.contatos = 'Contact'
       this.login = 'Login'
+      this.perfil = 'Profile'
       this.configuracao = 'Settings'
     } else {
       this.inicio = 'Casa'
@@ -162,6 +176,7 @@ export default {
       this.sobre = 'Sobre'
       this.contatos = 'Acerca de'
       this.login = 'Acceso'
+      this.perfil = 'Perfil'
       this.configuracao = 'Ajustes'
     }
   },
@@ -196,6 +211,14 @@ export default {
         this.logIn = ''
         this.bloG = ''
         this.contacts = ''
+        this.user = ''
+
+        this.homeF = '18'
+        this.aboutF = ''
+        this.productsF = ''
+        this.logInF = ''
+        this.bloGF = ''
+        this.contactsF = ''
         this.user = ''
       } else if (this.tela === 'about') {
         this.home = ''
@@ -391,6 +414,7 @@ nav > ul > li > span:hover {
 }
 .On {
   color: chartreuse !important;
+  font-size: 18px;
 }
 nav > ul > li > svg:hover {
   cursor: pointer;
