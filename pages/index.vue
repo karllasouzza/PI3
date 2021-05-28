@@ -64,10 +64,10 @@
         >{{ blog_button }}</a
       >
       <div>
-        <nuxt-link
+        <a
           v-for="(cards, index) in card"
           :key="index"
-          :to="cards.link"
+          :href="cards.link"
           :style="{ background: Color_fff }"
           class="card"
         >
@@ -79,7 +79,7 @@
             <p><Title :text="cards.titulo" :color="Color_000" /></p>
             <span :style="{ color: Color_000 }">{{ cards.resumo }}</span>
           </div>
-        </nuxt-link>
+        </a>
       </div>
     </div>
 
@@ -149,7 +149,34 @@ export default {
           resumo:
             'Nesse post vamos ensinar como fazer um adubo caseiro com ingredientes que você joga fora. Vamos fazer o famoso NPK?',
           link:
-            'https://cwiameioambiente.000webhostapp.com/2021/05/como-ter-um-adubo-npk-feito-em-casa',
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-ter-um-adubo-npk-feito-em-casa',
+        },
+        {
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/plantas.jpg',
+          titulo: 'Preparo de terra.',
+          resumo:
+            'Como ter a terra perfeita para o plantio, algumas dicas de preparo para suas plantas crescerem lindas e fortes.',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-preparar-sua-terra-para-o-plantio',
+        },
+        {
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/5151.jpeg',
+          titulo: 'Bananas em casa.',
+          resumo:
+            'Como saber se seu pé de banana este pronto para colher? Ou se ainda não? Confira nesse post as dicas para saber.',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-saber-se-sua-bananeira-esta-produzindo',
+        },
+        {
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/Screenshot_29.jpg',
+          titulo: 'Tomates em casa',
+          resumo:
+            'Como cultivar aquele tomate cereja delicioso em casa, com uma procedência de qualidade e muito sabor.',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-cultivar-tomates-cereja-na-sua-casa',
         },
       ],
 
@@ -162,7 +189,7 @@ export default {
     }
   },
   head: {
-    title: 'CWIA | Sobre',
+    title: 'CWIA | Inicio',
     meta: [
       {
         hid: 'description',

@@ -64,7 +64,7 @@
         <li>
           <a
             :class="bloG"
-            href="https://cwiameioambiente.000webhostapp.com/"
+            href="https://cwiameioambiente2.000webhostapp.com"
             accesskey="2"
             >{{ blog }}</a
           >
