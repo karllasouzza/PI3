@@ -64,6 +64,7 @@ export default {
   display: flex;
   align-items: center;
   font-weight: bold;
+  font-family: 'Montserrat';
 }
 svg {
   width: 40px;

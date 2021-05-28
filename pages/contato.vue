@@ -46,58 +46,19 @@
             @keypress.enter="Validacao()"
           ></textarea>
         </form>
-        <button
-          :style="{ background: Color_238, color: '#fff' }"
-          @click="Validacao()"
-        >
+        <button class="btn-hover color-1" @click="Validacao()">
           {{ button }}
         </button>
       </div>
 
       <div class="outros" :style="{ background: Color_fff + '80' }">
         <Title :text="titulo2" :color="Color_000" />
-        <div
-          v-for="(Outros, index) in outros"
+        <CardsOutros
+          v-for="(op, index) in outros"
           :key="index"
-          :style="{ background: Color_fff }"
-          @click="copiarText(Outros.valor)"
-        >
-          <span :style="{ color: Color_000 }">{{ Outros.label }}</span>
-          <span :style="{ color: Color_000 }">{{ Outros.text }}</span>
-          <span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g>
-                <g>
-                  <path
-                    d="M12.1222 15.4361L12.1222 3.39508"
-                    :stroke="Color_000"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.0382 12.5084L12.1222 15.4364L9.20621 12.5084"
-                    :stroke="Color_000"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M16.7549 8.12799H17.6879C19.7229 8.12799 21.3719 9.77699 21.3719 11.813V16.697C21.3719 18.727 19.7269 20.372 17.6969 20.372L6.55695 20.372C4.52195 20.372 2.87195 18.722 2.87195 16.687V11.802C2.87195 9.77299 4.51795 8.12799 6.54695 8.12799L7.48895 8.12799"
-                    :stroke="Color_000"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-              </g>
-            </svg>
-          </span>
-        </div>
+          :text="op.text"
+          :label="op.label"
+        />
       </div>
     </section>
   </main>
@@ -121,30 +82,8 @@ export default {
       option: [],
 
       // outros
-      titulo2: 'Outras opções',
-      outros: [
-        {
-          label: 'Telefone:',
-          text: '+55 (16) 999999999',
-          valor: 0,
-        },
-        {
-          label: 'Email:',
-          text: 'exemplo@gmail.com',
-          valor: 1,
-        },
-        {
-          label: 'Facebook:',
-          text: 'Facebook/example',
-          valor: 2,
-        },
-        {
-          label: 'Telegram:',
-          text: 'tel.me/lalala',
-          valor: 3,
-        },
-      ],
-      copiar: '',
+      titulo2: '',
+      outros: [],
     }
   },
   computed: {
@@ -184,22 +123,18 @@ export default {
         {
           label: 'Telefone:',
           text: '+55 (16) 999999999',
-          valor: 0,
         },
         {
           label: 'Email:',
           text: 'exemplo@gmail.com',
-          valor: 1,
         },
         {
           label: 'Facebook:',
           text: 'Facebook/example',
-          valor: 2,
         },
         {
           label: 'Telegram:',
           text: 'tel.me/lalala',
-          valor: 3,
         }
       )
       this.place_nome = '*Nome'
@@ -223,22 +158,18 @@ export default {
         {
           label: 'Telephone:',
           text: '+55 (16) 999999999',
-          valor: 0,
         },
         {
           label: 'E-mail:',
           text: 'exemplo@gmail.com',
-          valor: 1,
         },
         {
           label: 'Facebook:',
           text: 'Facebook/example',
-          valor: 2,
         },
         {
           label: 'Telegram:',
           text: 'tel.me/lalala',
-          valor: 3,
         }
       )
       this.place_nome = '*Name'
@@ -262,22 +193,18 @@ export default {
         {
           label: 'Teléfono:',
           text: '+55 (16) 999999999',
-          valor: 0,
         },
         {
           label: 'Correo electrónico:',
           text: 'exemplo@gmail.com',
-          valor: 1,
         },
         {
           label: 'Facebook:',
           text: 'Facebook/example',
-          valor: 2,
         },
         {
           label: 'Telegram:',
           text: 'tel.me/lalala',
-          valor: 3,
         }
       )
       this.place_nome = '*Nombre'
@@ -298,17 +225,7 @@ export default {
       PageOn: 'Header/Page_on_contato',
     }),
     // parte que copia na area de transferencia do user
-    copiarText(valor) {
-      if (valor === 0) {
-        navigator.clipboard.writeText(this.outros[0].text)
-      } else if (valor === 1) {
-        navigator.clipboard.writeText(this.outros[1].text)
-      } else if (valor === 2) {
-        navigator.clipboard.writeText(this.outros[2].text)
-      } else {
-        navigator.clipboard.writeText(this.outros[3].text)
-      }
-    },
+
     async Validacao() {
       // Portugues
       if (this.idioma === 'pt') {
@@ -377,12 +294,22 @@ export default {
           mensagemSucess: 'Mensagem enviada.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        return await this.$axios.$post('/api/contacts', {
+        const success = await this.$axios.$post('/api/contacts', {
           name: this.nome,
           email: this.email,
           category: this.opcoes,
           message: this.mensagem,
         })
+
+        // Se realmente for enviada ele limpa os campos
+        if (success) {
+          return (
+            (this.nome = ''),
+            (this.email = ''),
+            (this.opcoes = ''),
+            (this.mensagem = '')
+          )
+        }
       }
       // Ingles
       else if (this.idioma === 'en') {
@@ -451,12 +378,22 @@ export default {
           mensagemSucess: 'Message sent.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        return await this.$axios.$post('/api/contacts', {
+        const success = await this.$axios.$post('/api/contacts', {
           name: this.nome,
           email: this.email,
           category: this.opcoes,
           message: this.mensagem,
         })
+
+        // Se realmente for enviada ele limpa os campos
+        if (success) {
+          return (
+            (this.nome = ''),
+            (this.email = ''),
+            (this.opcoes = ''),
+            (this.mensagem = '')
+          )
+        }
       }
       // Espanhol
       else {
@@ -525,17 +462,27 @@ export default {
           mensagemSucess: 'Mensage enviada.',
         })
         //  se tudo estiver certo ira enviar o usuario para a tela inicial
-        return await this.$axios.$post('/api/contacts', {
+        const success = await this.$axios.$post('/api/contacts', {
           name: this.nome,
           email: this.email,
           category: this.opcoes,
           message: this.mensagem,
         })
+
+        // Se realmente for enviada ele limpa os campos
+        if (success) {
+          return (
+            (this.nome = ''),
+            (this.email = ''),
+            (this.opcoes = ''),
+            (this.mensagem = '')
+          )
+        }
       }
     },
     // nome > 3 sobrenome > 3
     validname(nome) {
-      const na = /^([a-z]{3,}([\s-][a-z]{3,})+)$/gi
+      const na = /^([a-z]{3,})$/gi
       return na.test(nome)
     },
     // funçao contendo o regex para a validaçao do email
@@ -636,6 +583,7 @@ button {
   padding: 1%;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Outros  */
@@ -662,28 +610,15 @@ section > div.outros > span {
 section > div.outros > div {
   width: 100%;
   height: 80px;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 7%;
+  justify-content: space-between;
+  padding: 5%;
   cursor: pointer;
+  transition: ease-in-out 0.6s;
 }
-section > div.outros > div:hover {
-  background: #238e23eb !important;
-}
-section > div.outros > div > span:first-child {
-  font-weight: bold;
-}
-section > div.outros > div > span:last-child {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-section > div.outros > div > span > svg {
-  width: 20px;
-  height: 20px;
-}
+
 @media (max-width: 1107px) {
   section {
     width: 78%;
@@ -760,7 +695,7 @@ section > div.outros > div > span > svg {
   }
   section {
     width: 100%;
-    margin-top: auto;
+    margin-top: 20%;
     margin-bottom: 3%;
     height: 983px;
     flex-direction: column;
@@ -780,7 +715,7 @@ section > div.outros > div > span > svg {
     font-size: 22px;
   }
   .container {
-    grid-template-rows: 206vh;
+    grid-template-rows: 216vh;
     grid-template-columns: 10px 0.5fr 1fr 1fr 1fr 1fr 0.5fr 10px;
   }
 }

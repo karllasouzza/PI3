@@ -1,6 +1,10 @@
 <template>
   <transition v-if="Carrinho" name="fade">
-    <span class="blur" @click="off()"></span>
+    <span
+      class="blur"
+      :style="{ background: Color_000 + '63' }"
+      @click="off()"
+    ></span>
   </transition>
 </template>
 <script>
@@ -10,6 +14,7 @@ export default {
   computed: {
     ...mapState({
       Carrinho: (state) => state.Header.config,
+      Color_000: (state) => state.Colors.Color_000,
     }),
   },
   methods: {
@@ -28,6 +33,5 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.568);
 }
 </style>

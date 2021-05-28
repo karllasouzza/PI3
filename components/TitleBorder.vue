@@ -22,6 +22,7 @@ export default {
 span {
   color: transparent;
   font-weight: bold;
+  font-family: 'Montserrat';
 }
 @media (max-width: 967px) {
   span {

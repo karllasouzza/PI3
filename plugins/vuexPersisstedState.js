@@ -6,6 +6,9 @@ export default ({ store }) => {
     reducer: (state) => ({
       Acessibilidade: state.Acessibilidade,
       Colors: state.Colors,
+      Cart: state.Cart,
+      Produtos: state.Produtos,
+      Usuario: state.Usuario,
     }),
     storage: {
       getItem(key) {

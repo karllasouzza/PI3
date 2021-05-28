@@ -13,14 +13,13 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   computed: {
     ...mapState({
+      Carrinho: (state) => state.Produtos.On_Off,
       Color_000: (state) => state.Colors.Color_000,
-      Carrinho: (state) => state.Cart.On_Off,
     }),
   },
   methods: {
     ...mapMutations({
-      on: 'Cart/on',
-      off: 'Cart/off',
+      off: 'Produtos/off',
     }),
   },
 }
@@ -33,6 +32,7 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
+  /* background-color: rgba(0, 0, 0); */
   cursor: pointer;
 }
 </style>

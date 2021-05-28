@@ -1,6 +1,6 @@
 <template>
   <main v-if="config" class="container">
-    <section :style="{ background: Color_238 + '80' }">
+    <section :style="{ background: Color_238 }">
       <!-- formulario -->
       <div class="form">
         <!-- titulo  -->
@@ -17,12 +17,23 @@
               <Idioma />
             </div>
           </div>
+          <div class="inputs">
+            <div>
+              <p class="label">{{ FS_site }}</p>
+
+              <FontSize />
+            </div>
+            <div>
+              <p class="label">{{ F_site }}</p>
+
+              <Libras />
+            </div>
+          </div>
         </form>
         <button
           :style="{
             background: Color_fff,
-            color: '#fff',
-            'font-family': fonte ? 'Arial' : 'Libras',
+            color: Color_000,
           }"
           @click="reload()"
         >
@@ -32,10 +43,17 @@
 
       <div class="outros" :style="{ background: Color_fff + '80' }">
         <Title :text="titulo2" :color="Color_000" />
-        <div :style="{ background: Color_fff }">
-          <span :style="{ color: Color_000 }">{{ F_site }}</span>
-
-          <Libras />
+        <div class="scroll">
+          <div
+            v-for="(O, index) in outros"
+            :key="index"
+            :style="{ background: Color_fff }"
+          >
+            <span class="Label" :style="{ color: Color_000 }">{{
+              O.title
+            }}</span>
+            <span :style="{ color: Color_000 }">{{ O.text }}</span>
+          </div>
         </div>
       </div>
     </section>
@@ -52,10 +70,13 @@ export default {
       button: '',
 
       // outros
-      titulo2: 'Outras opções',
-      M_cores: 'Modo de cor do site',
-      I_site: 'Idioma do site',
-      F_site: 'Libras',
+      titulo2: '',
+      M_cores: '',
+      I_site: '',
+      F_site: '',
+      FS_site: '',
+
+      outros: [],
     }
   },
   computed: {
@@ -75,6 +96,7 @@ export default {
 
       // Idioma
       idioma: (state) => state.Acessibilidade.idioma,
+
       fonte: (state) => state.Acessibilidade.fonte,
       config: (state) => state.Header.config,
     }),
@@ -86,8 +108,20 @@ export default {
       this.button = 'Salvar'
       this.M_cores = 'Modo de cor'
       this.I_site = 'Idioma'
-      this.F_site = 'Libras'
+      this.F_site = 'VLibras'
+      this.FS_site = 'Tamanho da fonte'
       this.titulo2 = 'Acessibilidade'
+      this.outros = []
+      this.outros.push(
+        { title: 'Inicio:', text: 'ALT+1' },
+        { title: 'Blog:', text: 'ALT+2' },
+        { title: 'Produtos:', text: 'ALT+3' },
+        { title: 'Sobre:', text: 'ALT+4' },
+        { title: 'Contatos:', text: 'ALT+5' },
+        { title: 'Conecte se:', text: 'ALT+6' },
+        { title: 'Configuração:', text: 'ALT+7' },
+        { title: 'Carrinho:', text: 'ALT+8' }
+      )
     }
     // Ingles
     else if (this.idioma === 'en') {
@@ -95,8 +129,20 @@ export default {
       this.button = 'Save'
       this.M_cores = 'Color mode'
       this.I_site = 'Language'
-      this.F_site = 'Pounds'
+      this.F_site = 'VLibras'
+      this.FS_site = 'Font size'
       this.titulo2 = 'Accessibility'
+      this.outros = []
+      this.outros.push(
+        { title: 'Home:', text: 'ALT+1' },
+        { title: 'Blog:', text: 'ALT+2' },
+        { title: 'Products:', text: 'ALT+3' },
+        { title: 'About:', text: 'ALT+4' },
+        { title: 'Contact:', text: 'ALT+5' },
+        { title: 'Login:', text: 'ALT+6' },
+        { title: 'Settings:', text: 'ALT+7' },
+        { title: 'Cart:', text: 'ALT+8' }
+      )
     }
     // Espanhol
     else {
@@ -104,8 +150,20 @@ export default {
       this.button = 'Salvar'
       this.M_cores = 'Modo de color'
       this.I_site = 'Idioma'
-      this.F_site = 'Libras'
+      this.F_site = 'VLibras'
+      this.FS_site = 'Tamaño de fuente'
       this.titulo2 = 'Accesibilidad'
+      this.outros = []
+      this.outros.push(
+        { title: 'Casa:', text: 'ALT+1' },
+        { title: 'Blog:', text: 'ALT+2' },
+        { title: 'Productos:', text: 'ALT+3' },
+        { title: 'Sobre:', text: 'ALT+4' },
+        { title: 'Acerca de:', text: 'ALT+5' },
+        { title: 'Acceso:', text: 'ALT+6' },
+        { title: 'Ajustes:', text: 'ALT+7' },
+        { title: 'Carro:', text: 'ALT+8' }
+      )
     }
   },
   methods: {
@@ -128,6 +186,7 @@ export default {
   background-position: center;
   background-size: cover;
   position: absolute;
+  font-family: 'Montserrat';
 }
 section {
   width: 70%;
@@ -140,6 +199,7 @@ section {
   margin: auto;
   border-radius: 20px;
   z-index: 999;
+  padding: 2px 0;
 }
 /* formulario de contato  */
 section .form {
@@ -198,15 +258,19 @@ button {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.6s ease-in-out;
+}
+button:hover {
+  background: #23f323eb !important;
+  transition: 0.6s ease-in-out;
 }
 
 /* Outros  */
 section > div.outros {
   width: 28.5%;
   height: 100%;
-  background: revert;
   border-radius: 20px;
-  padding: 2%;
+  padding: 1%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -221,32 +285,45 @@ section > div.outros > span {
   font-size: 25px;
   font-weight: bold;
 }
-section > div.outros > div {
+div.scroll {
   width: 100%;
-  height: 100px;
-  border-radius: 20px;
+  height: 90%;
+  padding: 2%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+div.scroll::-webkit-scrollbar {
+  width: 14px;
+  background: transparent;
+}
+div.scroll::-webkit-scrollbar-thumb {
+  background: #238e23eb;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+section > div.outros > div > div {
+  width: 100%;
+  min-height: 65px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   padding: 7px;
   cursor: pointer;
+  margin: 5px 0;
 }
-
-section > div.outros > div:hover {
+section > div.outros > div > div:first-child {
+  margin-top: 0px;
+}
+section > div.outros > div > div:hover {
   background: #238e23eb !important;
 }
-section > div.outros > div > span:first-child {
+section > div.outros > div > div > span {
   font-weight: bold;
-}
-section > div.outros > div > span:last-child {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-section > div.outros > div > span > svg {
-  width: 20px;
-  height: 20px;
 }
 @media (max-width: 1107px) {
   section {
@@ -303,6 +380,7 @@ section > div.outros > div > span > svg {
   .inputs {
     width: 100%;
     height: 176px;
+    flex-direction: row;
   }
   input {
     height: 37px;
@@ -316,9 +394,8 @@ section > div.outros > div > span > svg {
   }
   section {
     width: 100%;
-    margin-top: auto;
-    margin-bottom: 3%;
-    height: 983px;
+    margin-top: 12%;
+    height: max-content;
     flex-direction: column;
     padding: 3%;
   }

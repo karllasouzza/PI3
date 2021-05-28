@@ -1,60 +1,29 @@
 export const state = () => ({
-  home: true,
-  products: false,
-  about: false,
-  loguin: false,
-  contacts: false,
+  tela: '',
   config: false,
 })
 
 export const mutations = {
   Page_on_inicio(state) {
-    state.home = true
-    state.products = false
-    state.about = false
-    state.loguin = false
-    state.contacts = false
-    state.perfil = false
+    state.tela = 'home'
   },
   Page_on_sobre(state) {
-    state.home = false
-    state.products = false
-    state.about = true
-    state.loguin = false
-    state.contacts = false
-    state.perfil = false
+    state.tela = 'about'
   },
   Page_on_produtos(state) {
-    state.home = false
-    state.products = true
-    state.about = false
-    state.loguin = false
-    state.contacts = false
-    state.perfil = false
+    state.tela = 'products'
   },
-  Mloguin(state) {
-    state.home = false
-    state.products = false
-    state.about = false
-    state.loguin = true
-    state.contacts = false
-    state.perfil = false
+  Page_on_login(state) {
+    state.tela = 'login'
   },
   Page_on_contato(state) {
-    state.home = false
-    state.products = false
-    state.about = false
-    state.loguin = false
-    state.contacts = true
-    state.perfil = false
+    state.tela = 'contacts'
   },
   Page_on_perfil(state) {
-    state.home = false
-    state.products = false
-    state.about = false
-    state.loguin = false
-    state.contacts = true
-    state.perfil = false
+    state.tela = 'user'
+  },
+  Page_on_bloG(state) {
+    state.tela = 'bloG'
   },
   config_on(state) {
     state.config = true

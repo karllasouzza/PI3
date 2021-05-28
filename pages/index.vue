@@ -1,5 +1,5 @@
 <template>
-  <main :style="{ background: Color_fff }">
+  <main :as="PageOn()" :style="{ background: Color_fff }">
     <!-- Baner -->
     <div class="baner">
       <div>
@@ -9,9 +9,10 @@
         </p>
         <ButtonSmall
           :text="baner_button"
-          :background="Color_238"
+          background=""
           color="#fff"
-          to="/banco-de-sementes"
+          class="btn-hover color-1"
+          to="/produtos"
         />
       </div>
     </div>
@@ -24,7 +25,8 @@
         <span :style="{ color: Color_000 }">{{ sobre_texto }}</span>
         <ButtonSmall
           :text="sobre_button"
-          :background="Color_238"
+          background=""
+          class="btn-hover color-1"
           color="#fff"
           to="/sobre"
         />
@@ -36,39 +38,48 @@
       <div>
         <TitleBorder :text="blog_title1" :color="Color_fff" />
         <span :style="{ color: Color_fff }">{{ blog_texto }}</span>
-        <ButtonSmall
-          :text="blog_button"
-          background="#fff"
-          :color="Color_238"
-          to="/blog"
-          class="desktop"
-        />
+        <a
+          href="https://cwiameioambiente.000webhostapp.com/"
+          class="desktop btn"
+          :style="
+            blog_button_hover
+              ? { color: '#fff', background: Color_004 }
+              : { background: '#fff', color: Color_004 }
+          "
+          @mouseenter="blog_button_hover = true"
+          @mouseleave="blog_button_hover = false"
+          >{{ blog_button }}</a
+        >
       </div>
-      <ButtonSmall
-        class="mobile"
-        :text="blog_button"
-        background="#fff"
-        :color="Color_238"
-        to="/blog"
-      />
+      <a
+        class="mobile btn"
+        href="https://cwiameioambiente.000webhostapp.com/"
+        :style="
+          blog_button_hover
+            ? { color: '#fff', background: Color_004 }
+            : { background: '#fff', color: Color_004 }
+        "
+        @mouseenter="blog_button_hover = true"
+        @mouseleave="blog_button_hover = false"
+        >{{ blog_button }}</a
+      >
       <div>
-        <nuxt-link
+        <a
           v-for="(cards, index) in card"
           :key="index"
-          :to="cards.link"
+          :href="cards.link"
           :style="{ background: Color_fff }"
           class="card"
         >
-          <!-- 
+          <div
+            class="img"
             :style="{ 'background-image': 'url(' + cards.img + ')' }"
-
-         -->
-          <div class="img"></div>
+          ></div>
           <div class="text">
             <p><Title :text="cards.titulo" :color="Color_000" /></p>
             <span :style="{ color: Color_000 }">{{ cards.resumo }}</span>
           </div>
-        </nuxt-link>
+        </a>
       </div>
     </div>
 
@@ -83,20 +94,25 @@
         </span>
         <div>
           <ButtonSmall
+            :style="
+              login_button_hover
+                ? { color: '#fff', background: Color_004 }
+                : { background: '#fff', color: Color_004 }
+            "
             :text="login_button"
             background="#fff"
             :color="Color_238"
             to="/user"
-            class="desktop"
+            class="desktop btn-hover"
+            @mouseenter.native="login_button_hover = true"
+            @mouseleave.native="login_button_hover = false"
           />
           <ButtonMiddle
             :text="login_button2"
-            :background="Color_238"
+            background=""
             color="#fff"
             to="/user"
-            class="desktop"
-            @mouseenter.native="login_button_hover2 = true"
-            @mouseleave.native="login_button_hover2 = false"
+            class="desktop btn-hover color-1"
           />
         </div>
       </div>
@@ -114,13 +130,11 @@ export default {
       baner_title1: '',
       baner_title2: '',
       baner_button: '',
-      baner_button_hover: false,
 
       // Sobre
       sobre_title1: '',
       sobre_texto: '',
       sobre_button: '',
-      sobre_button_hover: false,
 
       // Blog
       blog_title1: '',
@@ -129,32 +143,40 @@ export default {
       blog_button_hover: false,
       card: [
         {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/222-2-1024x412.jpg',
+          titulo: 'Como fazer adubo.',
           resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
+            'Nesse post vamos ensinar como fazer um adubo caseiro com ingredientes que você joga fora. Vamos fazer o famoso NPK?',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-ter-um-adubo-npk-feito-em-casa',
         },
         {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/plantas.jpg',
+          titulo: 'Preparo de terra.',
           resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
+            'Como ter a terra perfeita para o plantio, algumas dicas de preparo para suas plantas crescerem lindas e fortes.',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-preparar-sua-terra-para-o-plantio',
         },
         {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/5151.jpeg',
+          titulo: 'Bananas em casa.',
           resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
+            'Como saber se seu pé de banana este pronto para colher? Ou se ainda não? Confira nesse post as dicas para saber.',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-saber-se-sua-bananeira-esta-produzindo',
         },
         {
-          img: '',
-          titulo: 'Lorem ipsum dolor',
+          img:
+            'https://cwiameioambiente.000webhostapp.com/wp-content/uploads/2021/05/Screenshot_29.jpg',
+          titulo: 'Tomates em casa',
           resumo:
-            'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque magnam, nemo delectus minima natus perspiciatis veritatis',
-          link: '',
+            'Como cultivar aquele tomate cereja delicioso em casa, com uma procedência de qualidade e muito sabor.',
+          link:
+            'https://cwiameioambiente2.000webhostapp.com/2021/05/como-cultivar-tomates-cereja-na-sua-casa',
         },
       ],
 
@@ -164,11 +186,10 @@ export default {
       login_button: '',
       login_button2: '',
       login_button_hover: false,
-      login_button_hover2: false,
     }
   },
   head: {
-    title: 'CWIA | Sobre',
+    title: 'CWIA | Inicio',
     meta: [
       {
         hid: 'description',
@@ -182,6 +203,7 @@ export default {
       Color_fff: (state) => state.Colors.Color_fff,
       Color_000: (state) => state.Colors.Color_000,
       Color_238: (state) => state.Colors.Color_238,
+      Color_004: (state) => state.Colors.Color_004,
       idioma: (state) => state.Acessibilidade.idioma,
     }),
   },
@@ -367,6 +389,9 @@ main {
   display: grid;
   grid-template-columns: 40px 1fr 1fr 40px;
 }
+.blog a {
+  transition: ease-in-out 0.7s;
+}
 .blog > div > span {
   display: flex;
   justify-content: flex-start;
@@ -406,11 +431,22 @@ main {
 .blog > div:last-child > .card:first-child {
   margin-left: 1px;
 }
+.blog .btn {
+  font-family: 'Montserrat';
+  width: 130px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
 .blog > div > a > .img {
   width: 100%;
   height: 50%;
-  background-image: url(assets/img/Inicio/Fotos/1.jpg);
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .blog > div > a.card {
   min-width: 216px;
@@ -425,7 +461,7 @@ main {
   margin: 0 20px;
 }
 .blog > div > a.card > .text {
-  height: 45%;
+  height: 60%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -607,8 +643,9 @@ main {
 /* Responsibilidade - Mobile */
 @media (max-width: 425px) {
   main {
-    grid-template-rows: 50vh 50vh 100vh 140vh 100vh;
+    grid-template-rows: 50vh 50vh 100vh 110vh 100vh;
   }
+
   /* Baner */
   .baner {
     background-image: url(assets/img/Inicio/Fotos/1-mobile.jpg);
@@ -621,7 +658,7 @@ main {
     grid-template-rows: 45% 30% 25%;
   }
   .baner > div {
-    padding: 0 30px;
+    padding: 0 10px;
     justify-content: space-around;
   }
   /* Sobre */
@@ -629,8 +666,14 @@ main {
     width: 100%;
   }
   /* Blog */
+
   .blog {
     grid-template-columns: 20px 1fr 1fr 20px;
+    grid-template-rows: 25% 65% 10%;
+  }
+  .blog > div:first-child {
+    grid-column: 2/4;
+    height: 100%;
   }
   .blog > div:last-child {
     width: 280px;

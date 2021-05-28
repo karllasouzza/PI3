@@ -1,9 +1,9 @@
 <template>
   <section>
-    <main :style="{ background: Color_fff + '80' }">
+    <main :as="PageOn()" :style="{ background: Color_fff + 'cc' }">
       <BigTitle
         class="title"
-        :text="changeOfForm ? 'Fazer login' : 'Criar Conta'"
+        :text="changeOfForm ? L_login : L_create_acount"
         :color="Color_000"
       />
 
@@ -14,7 +14,7 @@
           :color="Color_000"
         />
         <button
-          :style="buttonHover ? { color: Color_976 } : { color: Color_238 }"
+          :style="buttonHover ? { color: '#00cc00' } : { color: '#00b33c' }"
           accesskey="t"
           @mouseover="buttonHover = true"
           @mouseleave="buttonHover = false"
@@ -63,25 +63,16 @@
 
         <br />
 
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">
+        <nuxt-link to="" class="link-for-help" :style="{ color: '#00b33c' }">
           {{ Label_E_senha }}</nuxt-link
         >
-        <nuxt-link to="" class="link-for-help" :style="{ color: Color_238 }">{{
+        <nuxt-link to="" class="link-for-help" :style="{ color: '#00b33c' }">{{
           Label_help
         }}</nuxt-link>
 
         <br />
 
-        <button
-          :style="
-            AccessAccountButton
-              ? { backgroundColor: Color_976, color: Color_fff }
-              : { backgroundColor: Color_238, color: Color_fff }
-          "
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
-        >
+        <button class="btn-hover color-1" type="submit">
           {{ B_login }}
         </button>
       </form>
@@ -135,16 +126,7 @@
           :placeholder="P_R_password"
         />
 
-        <button
-          :style="
-            AccessAccountButton
-              ? { backgroundColor: Color_976, color: Color_fff }
-              : { backgroundColor: Color_238, color: Color_fff }
-          "
-          type="submit"
-          @mouseover="AccessAccountButton = true"
-          @mouseleave="AccessAccountButton = false"
-        >
+        <button type="submit" class="btn-hover color-1">
           {{ B_create_acount }}
         </button>
       </form>
@@ -167,7 +149,6 @@ export default {
     changeOfForm: true,
 
     buttonHover: false,
-    AccessAccountButton: false,
 
     // Dados para ver senha
     passwordVisible: false,
@@ -222,6 +203,7 @@ export default {
       Color_238: (state) => state.Colors.Color_238,
       Color_976: (state) => state.Colors.Color_976,
       Color_fff: (state) => state.Colors.Color_fff,
+      Color_00f: (state) => state.Colors.Color_00f,
 
       // Idiomas
       idioma: (state) => state.Acessibilidade.idioma,
@@ -256,8 +238,8 @@ export default {
     else if (this.idioma === 'en') {
       this.Label_N_conta = 'Do not have an account?'
       this.Label_S_conta = 'Already have an account?'
-      this.L_login = 'Sign in'
-      this.L_create_acount = 'Create an account'
+      this.L_login = 'Login'
+      this.L_create_acount = 'Create account'
       this.Label_E_senha = 'Forgot password?'
       this.Label_help = 'Need help?'
       this.P_nome = '* Name'
@@ -269,7 +251,7 @@ export default {
       this.P_email = 'Type your e-mail.'
       this.P_senha = 'Type your password.'
       this.B_login = 'Login'
-      this.B_create_acount = 'Create an account'
+      this.B_create_acount = 'Create account'
       this.O_S_genero = 'Select your Genre'
       this.O_feminino = 'Feminine'
       this.O_masculino = 'Masculino'
@@ -281,7 +263,7 @@ export default {
       this.Label_N_conta = '¿No tienes una cuenta?'
       this.Label_S_conta = '¿Ya tienes una cuenta?'
       this.L_login = 'Registrarse'
-      this.L_create_acount = 'Crea una cuenta'
+      this.L_create_acount = 'Crea cuenta'
       this.Label_E_senha = 'olvido la contraseña?'
       this.Label_help = '¿Necesita ayuda?'
       this.P_nome = '* Nombre'
@@ -293,7 +275,7 @@ export default {
       this.P_email = 'Escriba su correo electrónico.'
       this.P_senha = 'Escribe tu contraseña.'
       this.B_login = 'Hacer login'
-      this.B_create_acount = 'Crea una cuenta'
+      this.B_create_acount = 'Crea cuenta'
       this.O_S_genero = 'Seleccione su género'
       this.O_feminino = 'Feminino'
       this.O_masculino = 'Masculino'
@@ -305,12 +287,15 @@ export default {
     ...mapActions({
       set_Erro: 'Notificacoes/setErro',
       set_Sucess: 'Notificacoes/setSucess',
+      SetUser: 'Usuario/SetUser',
     }),
     ...mapMutations({
       notf_erro_true: 'Notificacoes/notf_erro_true',
       notf_erro_false: 'Notificacoes/notf_erro_false',
       notf_sucess_false: 'Notificacoes/notf_sucess_false',
       notf_sucess_true: 'Notificacoes/notf_sucess_true',
+      PageOn: 'Header/Page_on_login',
+      clearUser: 'Usuario/clearUser',
     }),
 
     // Muda de formulário
@@ -329,7 +314,7 @@ export default {
     },
 
     // Função para verificar se usuário existe
-    loginToAccount() {
+    async loginToAccount() {
       // userLogin e userPassword
       if (!this.userLogin) {
         this.$refs.ref_userLogin.focus()
@@ -347,7 +332,41 @@ export default {
         return
       }
 
-      console.log('Verificando se esse usuário existe!')
+      // Manda a requisição e valida se usuário existe.
+      await this.$axios
+        .$post('/api/user/login', {
+          email: this.userLogin,
+          password: this.userPassword,
+        })
+        .then((userData) => {
+          // Se usuário existir entrará neste método onde passará tudo por vuex
+
+          // Aqui deverá mandar para o vuex.
+          // userData é o parâmetro que receberá o objeto retornado da api.
+          if (userData.success === true) {
+            this.notf_sucess_true()
+            this.set_Sucess({
+              mensagemSucess: 'Logado com sucesso',
+            })
+            this.SetUser({
+              User: userData,
+            })
+            return this.$router.push('/')
+          } else {
+            this.notf_erro_true()
+            this.set_Erro({
+              mensagemErro: 'E-mail ou senha está incorreto.',
+            })
+            this.clearUser()
+          }
+        })
+        .catch(() => {
+          // Caso usuário não exista ele mostrará um erro!
+          this.notf_erro_true()
+          this.set_Erro({
+            mensagemErro: 'E-mail ou senha está incorreto.',
+          })
+        })
     },
 
     // Função para registrar usuário
@@ -465,6 +484,7 @@ export default {
           name: this.userName,
           last_name: this.lastName,
           date_of_birth: this.dateOfBirth,
+          image: '0000',
           genre: this.genre,
           email: this.email,
           password: this.password,
@@ -574,10 +594,11 @@ section main form select {
 section main form button {
   width: 300px;
   height: 40px;
-
   border-radius: 20px;
   margin: 0.5em 0;
-
+  font-weight: bolder;
+  font-family: 'Montserrat';
+  font-size: 17px;
   cursor: pointer;
 }
 

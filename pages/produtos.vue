@@ -1,5 +1,5 @@
 <template>
-  <main :style="{ background: mainColor }">
+  <main :as="PageOn()" :style="{ background: mainColor }">
     <section class="cards">
       <div class="Pesquisar">
         <div>
@@ -17,22 +17,23 @@
             />
           </svg>
         </div>
+        <span>{{ Pesquisar }}</span>
         <input ref="refPesquisar" v-model="query" type="text" />
       </div>
       <div class="carts">
         <CardsProdutos
           v-for="Card in computedList"
-          :key="Card.id"
-          :iten="Card.id"
-          :img="Card.img"
-          :title-img="Card.title"
-          :title="Card.title"
-          :preco="Card.preco"
-          :autor="Card.autor"
+          :key="Card.product.id"
+          :iten="Card.product.id"
+          :img="Card.product.image"
+          :title-img="Card.product.title"
+          :title="Card.product.title"
+          :preco="Card.product.price"
+          :autor="Card.owner_user.name + Card.owner_user.last_name"
           :comprar-color="Color_238"
-          background="#fff"
+          :descricao="Card.product.content"
+          :quantidade="Card.product.quantity"
           color="#000"
-          :descricao="Card.descricao"
         />
       </div>
     </section>
@@ -47,35 +48,7 @@ export default {
     return {
       mainColor: '',
       query: '',
-      infoProdutos: [
-        {
-          id: '1',
-          img:
-            'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-          title: 'Sementes de Romã',
-          descricao: 'Sementes de Romã',
-          preco: 15.0,
-          autor: 'karlla Souzza',
-        },
-        {
-          id: '2',
-          img:
-            'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-          title: 'Sementes de Romã',
-          descricao: 'Sementes de Romã',
-          preco: 15.0,
-          autor: 'karlla Souzza',
-        },
-        {
-          id: '3',
-          img:
-            'https://cdn.pixabay.com/photo/2018/05/08/20/19/pomegranate-3383814_960_720.jpg',
-          title: 'Sementes de Romã',
-          descricao: 'Sementes de Romã',
-          preco: 15.0,
-          autor: 'karlla Souzza',
-        },
-      ],
+      Pesquisar: '',
     }
   },
   head: {
@@ -95,17 +68,31 @@ export default {
       Color_004: (state) => state.Colors.Color_004,
       Color_238: (state) => state.Colors.Color_238,
       Color_976: (state) => state.Colors.Color_976,
+
+      // Idiomas
       idioma: (state) => state.Acessibilidade.idioma,
+
+      // Dark mode
       Dark_mode: (state) => state.Colors.Dark_mode,
+
+      // Produtos
+      infoProdutos: (state) => state.Produtos.Itens,
     }),
     computedList() {
       const vm = this
       return vm.infoProdutos.filter(function (item) {
-        return item.title.match(vm.query)
+        return item.product.title.match(vm.query)
       })
     },
   },
   created() {
+    if (this.idioma === 'pt') {
+      this.Pesquisar = 'Pesquisar'
+    } else if (this.idioma === 'en') {
+      this.Pesquisar = 'Search'
+    } else {
+      this.Pesquisar = 'Buscar'
+    }
     if (this.Dark_mode) {
       this.mainColor = '#001219'
     } else {
@@ -115,6 +102,7 @@ export default {
   methods: {
     ...mapMutations({
       Mproducts: 'Header/Page_on_produtos',
+      PageOn: 'Header/Page_on_produtos',
     }),
   },
 }
@@ -133,21 +121,30 @@ export default {
 .Pesquisar {
   grid-row: 2/3;
   grid-column: 1/2;
-  width: 58px;
+  width: 128px;
   padding: 0 5px;
   height: 50px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 83px;
   background: #238e23;
   border-radius: 20px;
   transition: 0.3s ease-out;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.205);
 }
-
 .Pesquisar:hover {
   width: 385px;
   grid-template-columns: 1fr 1fr;
   background: #fff;
+}
+.Pesquisar > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+.Pesquisar:hover > span {
+  display: none;
 }
 .Pesquisar div {
   margin: auto;
@@ -221,6 +218,26 @@ export default {
   .carts {
     grid-template-rows: 380px 380px 380px 380px 380px 380px 380px 380px 380px;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .Pesquisar {
+    grid-column: 1/4;
+    margin-left: 10px;
+  }
+  .Pesquisar:hover {
+    width: 95%;
+  }
+  .Pesquisar > input {
+    width: 266px;
+  }
+  .cards {
+    grid-template-rows: 80px 50px 20px auto auto 50px 50px;
+    padding: 1px 0px;
+  }
+}
+@media (max-width: 320px) {
+  .Pesquisar > input {
+    width: 240px;
   }
 }
 </style>

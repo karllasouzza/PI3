@@ -8,7 +8,7 @@
       <p class="close" :style="{ background: Color_238, color: '#fff' }">
         <span @click="off()"> {{ Fechar }} </span>
       </p>
-      <main>
+      <transition-group class="main" name="fade">
         <CardsCarrinho
           v-for="Cart in Itens"
           :key="Cart.id"
@@ -18,7 +18,7 @@
           :preco="Cart.preco"
           :quantidade="Cart.quantidade"
         />
-      </main>
+      </transition-group>
       <Total :t="total" />
     </div>
   </transition>
@@ -71,12 +71,14 @@ export default {
       const A3 = []
 
       for (let index = 0; index < A1.length; index++) {
-        A3.push(A1[index].preco)
+        A3.push(A1[index].preco * A1[index].quantidade)
       }
       if (A1.length > 0) {
         const reducer = (accumulator, currentValue) =>
           accumulator + currentValue
         this.total = A3.reduce(reducer)
+      } else {
+        this.total = 0
       }
     },
   },
@@ -120,9 +122,10 @@ export default {
   z-index: 999;
 }
 
-main {
+.main {
   border-radius: 20px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 2%;
   width: 100%;
@@ -148,11 +151,12 @@ footer {
     height: 50px !important;
   }
   .Card {
-    width: 99%;
-    height: 75%;
+    width: 100%;
+    height: 100%;
     font-size: 12px;
+    position: absolute;
   }
-  main {
+  .main {
     padding: 2px;
   }
   .Buttons {
@@ -168,11 +172,6 @@ footer {
   }
   hr {
     margin: 2px;
-  }
-  .card {
-    height: 150px;
-    flex-direction: column;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.322);
   }
   footer {
     border-radius: 0;

@@ -22,5 +22,6 @@ export default {
 <style scoped>
 span {
   font-weight: bold;
+  font-family: 'Montserrat';
 }
 </style>
